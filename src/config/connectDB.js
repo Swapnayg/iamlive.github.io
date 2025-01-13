@@ -1,5 +1,5 @@
 const mysql = require('mysql2/promise');
-
+/* 
 const connection = mysql.createPool({
   host: 'dbtiran.cjakccac2nys.ap-south-1.rds.amazonaws.com',
   user: 'admin',
@@ -7,7 +7,16 @@ const connection = mysql.createPool({
   database: 'win',
   port: '3306' 
    
-});
+}); */
+
+const connection = mysql.createPool({
+  host: 'localhost',
+  user: 'Swapna',
+  password: 'Swapna@123',
+  database: 'swapna',
+  port: '3306' 
+   
+})
 
 export default connection;
 
