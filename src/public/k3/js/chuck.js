@@ -139,9 +139,7 @@ function GetMyEmerdList(list_orders) {
         }
 
         let join = '';
-        console.log(list_order.bet);
         let arr2 = list_order.bet.replace(/[$@%]/g, '').split(',');
-        console.log(arr2);
         for (let i = 0; i < arr2.length; i++) {
                 let check = isNumber(arr2[i]);
             if (check) {

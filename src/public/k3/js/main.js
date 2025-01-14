@@ -398,6 +398,7 @@ $('.item-volume').click(function (e) {
 
 $('.game-minutes .img, .game-minutes .txt').click(function (e) {
     e.preventDefault();
+    console.log("minutes");
     let parent = $(this).parent();
 
     $('.game-minutes .item').removeClass('action');
@@ -414,6 +415,7 @@ $('.game-minutes .img, .game-minutes .txt').click(function (e) {
 
     let data = $(this).attr('data');
     $('html').attr('data-dpr', data);
+    $('#history').click()
     callAjaxMeJoin();
     callListOrder();
 });
