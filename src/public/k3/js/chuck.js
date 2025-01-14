@@ -139,34 +139,27 @@ function GetMyEmerdList(list_orders) {
         }
 
         let join = '';
-        console.log(list_order);
-        let arr2 = list_order.bet.replace(/[$@%]/g, '').split('');
+        console.log(list_order.bet);
+        let arr2 = list_order.bet.replace(/[$@%]/g, '').split(',');
         console.log(arr2);
         for (let i = 0; i < arr2.length; i++) {
-            if(arr2[i] !== ",")
-            {
                 let check = isNumber(arr2[i]);
-            console.log(check);
-            console.log(arr2[i]);
             if (check) {
                 join += `
-          <div data-v-42f27458="">
+          <div data-v-42f27458="" class="my_bet_choose">
               <span data-v-42f27458="" style="color: rgb(0, 0, 0);">
                 <span data-v-42f27458="" class="li circle-black" style="color: rgb(0, 0, 0);">${arr2[i]}</span>  
               </span>
           </div>`;
             } else {
                 join += `
-          <div data-v-42f27458="">
+          <div data-v-42f27458="" class="my_bet_choose">
             <span data-v-42f27458="" style="color: rgb(0, 0, 0);">${(arr2[i] == 'c') ? "Even" : (arr2[i] == 'l') ? 'Odd' : (arr2[i] == 'b') ? 'Big' : 'Small'}</span>
           </div>
           `;
             }
-            }
             
         }
-
-        console.log(join);
         return (htmls += `
             <div data-v-03b808c2="" class="k3_bet_list">
                 <div data-v-03b808c2="" class="k3_item item c-row">

@@ -39,3 +39,32 @@
 }
 
 
+.my_bet_choose:not(:first-child) {
+    margin-left: 0.1em;  
+  }
+  
+  .my_bet_choose:first-child:empty ~ .my_bet_choose:not(:empty) {
+    margin-left: 0;  
+  }
+  
+  .my_bet_choose:first-child:empty ~ .my_bet_choose:not(:empty) ~ .my_bet_choose:not(:empty) {
+    margin-left: -.3em;  
+  }
+  
+  .my_bet_choose:empty {
+    display: none;
+  }
+  
+  .my_bet_choose:not(:first-child):before {
+    content: ", ";
+    color:black;
+  }
+  
+  .my_bet_choose:empty + .my_bet_choose:not(:empty):before {
+    content : "";
+  }
+  
+  .my_bet_choose:not(:empty) ~ .my_bet_choose:empty + .my_bet_choose:not(:empty):before {
+    content : ", ";
+  }
+
