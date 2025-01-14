@@ -122,6 +122,12 @@ $.ajax({
 
         var lastGame = data[data.length - 1];
         console.log(firstGame);
+        $(".game-list .con-box").css("display", "none");
+        $(".game-list .li .txt").removeClass("action");
+        $(".game-list .li .txt:eq(0)").addClass("action");
+        $(".game-list .li").removeClass("block-click");
+        $(this).addClass("block-click");
+        $(".game-list .con-box:eq(0)").css("display", "block");
         showListOrder2(data, 1);
 
         // Nested AJAX call
@@ -1052,7 +1058,7 @@ function showListOrder2(list_orders, x) {
                             </div>
                         </div>
 
-                        <div data-v-a9660e98="" class="details" style="display: none">
+                        <div data-v-a9660e98="" class="details" style="display: none" >
                             <div data-v-a9660e98="" class="tit">Details</div>
                             <div data-v-a9660e98="" class="li c-row c-row-between c-row-middle">
                                 <div data-v-a9660e98="">Order ID</div>
@@ -1189,7 +1195,9 @@ function showListOrder2(list_orders, x) {
                     `);
   });
   $(`.game-list .con-box:eq(${x}) .list #history-order`).html(htmls);
+  
 }
+
 $.ajax({
   type: "POST",
   url: "/api/webapi/GetNoaverageEmerdList",
@@ -1633,3 +1641,6 @@ $(`.game-betting .box .item:eq(${selectPageTime - 1})`).addClass('action');
 $(`.game-betting .box .item:eq(${selectPageTime - 1}) .img`).addClass('block-click');
 $(`.game-betting .box .item .img .van-image img`).attr('src', '/images/icon_clock-gerrn.svg');
 $(`.game-betting .box .item:eq(${selectPageTime - 1}) .img .van-image img`).attr('src', '/images/icon_clock-red.svg');
+
+
+

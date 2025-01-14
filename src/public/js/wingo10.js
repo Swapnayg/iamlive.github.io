@@ -128,6 +128,12 @@ $.ajax({
 
         var lastGame = data[data.length - 1];
         console.log(firstGame);
+        $(".game-list .con-box").css("display", "none");
+        $(".game-list .li .txt").removeClass("action");
+        $(".game-list .li .txt:eq(0)").addClass("action");
+        $(".game-list .li").removeClass("block-click");
+        $(this).addClass("block-click");
+        $(".game-list .con-box:eq(0)").css("display", "block");
         showListOrder2(data, 1);
 
         // Nested AJAX call
