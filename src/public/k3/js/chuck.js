@@ -139,9 +139,15 @@ function GetMyEmerdList(list_orders) {
         }
 
         let join = '';
-        let arr2 = list_order.bet.split('');
+        console.log(list_order);
+        let arr2 = list_order.bet.replace(/[$@%]/g, '').split('');
+        console.log(arr2);
         for (let i = 0; i < arr2.length; i++) {
-            let check = isNumber(list_order.bet);
+            if(arr2[i] !== ",")
+            {
+                let check = isNumber(arr2[i]);
+            console.log(check);
+            console.log(arr2[i]);
             if (check) {
                 join += `
           <div data-v-42f27458="">
@@ -156,7 +162,11 @@ function GetMyEmerdList(list_orders) {
           </div>
           `;
             }
+            }
+            
         }
+
+        console.log(join);
         return (htmls += `
             <div data-v-03b808c2="" class="k3_bet_list">
                 <div data-v-03b808c2="" class="k3_item item c-row">
