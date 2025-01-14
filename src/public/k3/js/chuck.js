@@ -28,6 +28,11 @@ socket.on("data-server-k3", function (msg) {
     }
 });
 
+function isNumber(params) {
+    let pattern = /^[0-9]*\d$/;
+    return pattern.test(params);
+}
+
 function ShowListOrder(list_orders) {
     if (list_orders.length == 0) {
         return $(`#list_order`).html(
@@ -122,9 +127,39 @@ function GetMyEmerdList(list_orders) {
     }
     let htmls = "";
     let result = list_orders.map((list_order) => {
+        let arr = list_order.result.split('');
+        let resultData = ``;
+        let total = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+            total += Number(arr[i]);
+            resultData += `
+          <div data-v-42f27458="" class="li circle-black">${arr[i]}</div>
+        `;
+        }
+
+        let join = '';
+        let arr2 = list_order.bet.split('');
+        for (let i = 0; i < arr2.length; i++) {
+            let check = isNumber(list_order.bet);
+            if (check) {
+                join += `
+          <div data-v-42f27458="">
+              <span data-v-42f27458="" style="color: rgb(0, 0, 0);">
+                <span data-v-42f27458="" class="li circle-black" style="color: rgb(0, 0, 0);">${arr2[i]}</span>  
+              </span>
+          </div>`;
+            } else {
+                join += `
+          <div data-v-42f27458="">
+            <span data-v-42f27458="" style="color: rgb(0, 0, 0);">${(arr2[i] == 'c') ? "Even" : (arr2[i] == 'l') ? 'Odd' : (arr2[i] == 'b') ? 'Big' : 'Small'}</span>
+          </div>
+          `;
+            }
+        }
         return (htmls += `
-            <div data-v-03b808c2="">
-                <div data-v-03b808c2="" class="item c-row">
+            <div data-v-03b808c2="" class="k3_bet_list">
+                <div data-v-03b808c2="" class="k3_item item c-row">
                     <div data-v-03b808c2="" class="c-row c-row-between c-row-middle info">
                         <div data-v-03b808c2="">
                             <div data-v-03b808c2="" class="issueName">
@@ -139,9 +174,74 @@ function GetMyEmerdList(list_orders) {
                             <span data-v-03b808c2="" class="${(list_order.status == 1) ? 'success' : 'fail'}"> ${(list_order.status == 1) ? '+' : '-'}${(list_order.status == 1) ? list_order.get : list_order.price}.00 </span>
                         </div>
                     </div>
+                    
                 </div>
                 <!---->
-            </div>    
+                        <div data-v-42f27458="" class="details display-none" >
+   <div data-v-42f27458="" class="tit">Details</div>
+   <div data-v-42f27458="" class="detailLi c-row c-row-between c-row-middle">
+      <div data-v-42f27458="">Order Number</div>
+      <div data-v-42f27458="" class="tag-read c-row c-row-between c-row-middle">
+      ${list_order.id_product}
+         <img data-v-42f27458="" data-clipboard-text="${list_order.id_product}" width="18px" height="15px" src="/images/copy.png" class="m-l-5 copy-to-img" />
+      </div>
+   </div>
+   <div data-v-42f27458="" class="detailLi c-row c-row-between c-row-middle">
+      <div data-v-42f27458="">Periods</div>
+      <div data-v-42f27458="">${list_order.stage}</div>
+   </div>
+   <div data-v-42f27458="" class="detailLi c-row c-row-between c-row-middle">
+      <div data-v-42f27458="">Spent Amount</div>
+      <div data-v-42f27458="">${list_order.money}.00</div>
+   </div>
+   <div data-v-42f27458="" class="detailLi c-row c-row-between c-row-middle">
+      <div data-v-42f27458="">Quantity Purchased</div>
+      <div data-v-42f27458="">${list_order.amount}</div>
+   </div>
+   <div data-v-42f27458="" class="detailLi c-row c-row-between c-row-middle">
+      <div data-v-42f27458="">After Tax Amount</div>
+      <div data-v-42f27458="" class="red">${list_order.price}.00</div>
+   </div>
+   <div data-v-42f27458="" class="detailLi c-row c-row-between c-row-middle">
+      <div data-v-42f27458="">Tax</div>
+      <div data-v-42f27458="">${list_order.fee}.00</div>
+   </div>
+   <div data-v-42f27458="" class="detailLi c-row c-row-between c-row-middle">
+      <div data-v-42f27458="">Opening Price</div>
+      <div data-v-42f27458="" style="display: ${(list_order.status == 0) ? 'none' : ''};">${list_order.result}</div>
+   </div>
+   <div data-v-42f27458="" class="detailLi c-row c-row-between c-row-middle">
+      <div data-v-42f27458="">Results</div>
+      <div data-v-42f27458="" class="c-row" style="display: ${(list_order.status == 0) ? 'none' : ''};">
+      ${resultData}
+      </div>
+   </div>
+   <div data-v-42f27458="" class="detailLi c-row c-row-between c-row-middle">
+      <div data-v-42f27458="">Choose</div>
+      <div data-v-42f27458="" class="c-row c-row-middle">
+         <div data-v-42f27458="" class="c-row m-r-5">
+            <div data-v-42f27458="">${(list_order.join_bet == 'total') ? "SUM" : list_order.join_bet.toUpperCase()}</div>
+         </div>
+          ${join}
+      </div>
+   </div>
+   <div data-v-42f27458="" class="detailLi c-row c-row-between c-row-middle">
+      <div data-v-42f27458="">Status</div>
+      <div data-v-42f27458="" class="${(list_order.status == 1) ? 'green' : 'red'}" style="display: ${(list_order.status == 0) ? 'none' : ''};">${(list_order.status == 1) ? 'Success' : 'Fail'}</div>
+                  <!---->
+   </div>
+   <div data-v-42f27458="" class="detailLi c-row c-row-between c-row-middle">
+      <div data-v-42f27458="">Win Or Loss</div>
+      <div data-v-42f27458="" class="${(list_order.status == 1) ? 'green' : 'red'}" style="display: ${(list_order.status == 0) ? 'none' : ''};">${(list_order.status == 1) ? '+' : '-'} ${(list_order.status == 1) ? list_order.get : list_order.price}.00</div>
+                  <!---->
+   </div>
+   <div data-v-42f27458="" class="detailLi c-row c-row-between c-row-middle">
+      <div data-v-42f27458="">Purchase Time</div>
+      <div data-v-42f27458="">${timerJoin(list_order.time)}</div>
+   </div>
+</div>  
+            </div>
+
         `);
     });
     $(`#list_order`).html(htmls);
@@ -191,6 +291,8 @@ function callAjaxMeJoin() {
         },
     });
 }
+
+
 
 
 $('#history').click(function (e) { 
@@ -327,4 +429,14 @@ $("#previous").click(function (e) {
             }
         },
     });
+});
+
+
+
+
+
+$(document).on('click', '#list_order .k3_bet_list', function(e)
+{
+    e.preventDefault();
+    $(this).find('.details').toggleClass("display-none");
 });

@@ -1106,5 +1106,10 @@ $('.confirm').click(async function (e) {
     } else if (game == 4) {
         await sendGame4();
     }
-    callAjaxMeJoin();
+    setTimeout(
+        function() 
+        {
+            callAjaxMeJoin();
+        }, 2000);
+    
 });
