@@ -736,7 +736,7 @@ function callAjaxMeJoin() {
 async function showMeJoin() {
     await callAjaxMeJoin();
     setTimeout(() => {
-        $('#showJoinMe .item').click(function (e) {
+        $('#showJoinMe .hb').click(function (e) {
             e.preventDefault();
             $(this).find('.details').toggleClass("display-none");
         });
@@ -821,7 +821,7 @@ $("#next").click(function (e) {
             } else {
                 await GetMyEmerdList(list_orders);
                 setTimeout(() => {
-                    $('#showJoinMe .item').click(function (e) {
+                    $('#showJoinMe .hb').click(function (e) {
                         e.preventDefault();
                         $(this).find('.details').toggleClass("display-none");
                     });
@@ -884,7 +884,7 @@ $("#previous").click(function (e) {
             } else {
                 await GetMyEmerdList(list_orders);
                 setTimeout(() => {
-                    $('#showJoinMe .item').click(function (e) {
+                    $('#showJoinMe .hb').click(function (e) {
                         e.preventDefault();
                         $(this).find('.details').toggleClass("display-none");
                     });
