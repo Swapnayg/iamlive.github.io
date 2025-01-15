@@ -7,7 +7,127 @@
   {
       line-height: 0;
   }
+  #rule_k3 .p-r-15
+    {
+        padding-right: 0.2rem !important;
+    }
+    #rule_k3 .van-checkbox__label
+    {
+        line-height: 10px;
+    }
+
+    #rule_k3 .container1 {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: .37333rem;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      /* Hide the browser's default checkbox */
+      #rule_k3 .container1 input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+      
+      #rule_k3 .agree
+      {
+        padding-top: 11px;
+      }
+
+      /* Create a custom checkbox */
+      #rule_k3 .checkmark1 {
+        position: absolute;
+        top: 7px;
+        left: 0;
+        height: 22px;
+        width: 22px;
+        background-color: white;
+        text-align: center;
+        padding-top: 4%;
+      }
+      
+      /* On mouse-over, add a grey background color */
+      #rule_k3 .van-checkbox__label .checkmark1:hover  {
+        background-color: #171b3f;
+        border:white 2px solid;
+      }
+      
+      /* When the checkbox is checked, add a blue background */
+      #rule_k3 .container1 input:checked ~ .checkmark1 {
+        background-color: #2196F3;
+      }
+      
+      /* Create the checkmark/indicator (hidden when not checked) */
+      #rule_k3 .checkmark1:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+      
+      /* Show the checkmark when checked */
+      #rule_k3 .container1 input:checked ~ .checkmark1:after {
+        display: block;
+      }
+      
+      /* Style the checkmark/indicator */
+      #rule_k3 .container1 .checkmark1:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+      
+    .disablesub-button {
+      text-decoration: none;
+      color: white;
+      pointer-events: none;
+  } 
+  .span_db
+  {
+    cursor: not-allowed;
+  } 
 </style>
+
+<script>
+
+    $("document").ready(function() {
+        $('.container1').click();
+    });
+    function tdOnclick(e) {
+       if($(e).find('input[type=checkbox]').is(':checked') == false)
+       {
+        $(e).find('input[type=checkbox]').prop('checked', true);
+        $(e).find('.checkmark1').html('&#10004;');
+        $(e).find('.checkmark1').css('background-color', '#171b3f');
+        $(e).find('.checkmark1').css('border', 'white 2px solid');
+        $('#d_submit').removeClass('disablesub-button');
+        $('#in_submit').removeClass('span_db');
+       }
+       else{
+        $(e).find('input[type=checkbox]').prop('checked', false);
+        $(e).find('.checkmark1').html('');
+        $(e).find('.checkmark1').css('background-color', 'white');
+        $(e).find('.checkmark1').css('border', '#171b3f 2px solid');
+        $('#d_submit').addClass('disablesub-button');
+        $('#in_submit').addClass('span_db');
+       }
+    }
+</script>
+
 
 <div data-v-03b808c2="" class="van-popup van-popup--round van-popup--bottom pop-total"
     style="max-width: 10rem; left: auto; box-shadow: rgba(63, 69, 83, 0.3) 0px -10px 20px 0px; z-index: 2004;transform: translateY(400px);transition: transform .5s,-webkit-transform .5s;"
@@ -63,25 +183,33 @@
                 </div>
             </div>
             <div data-v-03b808c2="" class="item c-row c-row-middle">
-                <div data-v-03b808c2="" id="rule_k3" role="checkbox" tabindex="0" aria-checked="true" class="van-checkbox">
-                    <div class="van-checkbox__icon van-checkbox__icon--square">
-                        <i
-                            class="van-icon"
-                            style="border-color:white;background-color:white;">
-                        </i>
-                    </div>
+                <div data-v-42f27458=""  id="rule_k3"  class="van-checkbox">
+                    <!-- <div class="van-checkbox__icon van-checkbox__icon--square"> -->
+                        <!-- <i class="van-icon "
+                            style="border-color: white;background-color: white;">
+                            
+                        </i> -->
+                    <!-- </div>  -->
                     <span class="van-checkbox__label">
-                        <div data-v-03b808c2="" class="agree p-r-15">I agree</div>
+                        <label class="container1" onclick="tdOnclick(this)"> 
+                            <span class="checkmark1"></span>
+                            <input type="checkbox">
+                            <div data-v-42f27458="" class="agree p-r-15">I agree to</div>
+                         </label>
+                        
                     </span>
-                </div><span data-v-03b808c2="" class="txt txt-qu-ytac">Pre-Selling Rules</span>
+                </div>
+                <span data-v-03b808c2="" class="txt txt-qu-ytac">Pre-Selling Rules</span>
             </div>
         </div> 
         <div data-v-03b808c2="" class="foot c-row">
             <div data-v-03b808c2="" class="left canned"> Cancel </div>
-            <div data-v-03b808c2="" class="right c-row c-row-middle-center confirm">
-                <span data-v-03b808c2="" class="p-r-5">Total Amount</span>
-                <span data-v-03b808c2="" value="" class="result">1</span>
-                <span class="info-bet" xvalue="1" money="1"></span>
+            <div data-v-42f27458="" class="right" id="d_submit">
+                <div id="in_submit">
+                    <span data-v-03b808c2="" class="p-r-5">Total Amount</span>
+                    <span data-v-03b808c2="" value="" class="result">1</span>
+                    <span class="info-bet" xvalue="1" money="1"></span>
+            </div>
             </div>
         </div>
     </div>

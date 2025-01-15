@@ -112,6 +112,11 @@ $(".circular .li").click(function (e) {
     $("body").addClass("van-overflow-hidden");
 });
 
+
+$('.van-overlay').click(function (e) {
+    e.preventDefault();
+    $(".van-overlay, .pop-quytac, .pop-quytac-buy").fadeOut(300);
+});
 $(".pop-quytac button, .pop-quytac-buy button").click(function (e) {
     e.preventDefault();
     $(".van-overlay, .pop-quytac, .pop-quytac-buy").fadeOut(300);
@@ -1114,3 +1119,5 @@ $('.confirm').click(async function (e) {
         }, 2000);
     
 });
+
+
