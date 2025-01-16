@@ -88,6 +88,7 @@ function ShowListOrder(list_orders) {
             </div>
         `);
     });
+    $('#kd_submit').addClass('confirm');
     $(`#list_order`).html(htmls);
 }
 

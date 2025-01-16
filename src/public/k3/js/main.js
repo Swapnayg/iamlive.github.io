@@ -328,6 +328,7 @@ function playAudio2() {
 
 function cownDownTimer() {
     let countDownDate = new Date("2030-07-16T23:59:59.9999999+01:00").getTime();
+    $('#kd_submit').addClass('confirm');
     setInterval(function () {
         let now = new Date().getTime();
         let distance = countDownDate - now;
