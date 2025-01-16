@@ -271,9 +271,9 @@ var myModal_result_Period = document.getElementById("myModal_result_Period");
       $(".num span").text(`₹ ${data.data.money_user}.00`);
     });
   });
-  $(".van-overlay, .foot .left").click(function (e) {
+  $(".foot .left").click(function (e) {
     e.preventDefault();
-    $(".van-overlay").fadeOut();
+    //$(".van-overlay").fadeOut();
     $('.van-popup-vf').fadeOut(100);
     $(".popup-join").css("transform", "translateY(600px)");
     $(".betting-mark .amount-box .li, .multiple-box .li").css({
@@ -287,6 +287,11 @@ var myModal_result_Period = document.getElementById("myModal_result_Period");
     $(".stepper-box .digit-box input").val(1);
     $(".amount-box").attr("data-money", "1");
     $(".foot .right span:eq(1)").text(1000 + "");
+  });
+  
+  $('.van-overlay').click(function (e) {
+    e.preventDefault();
+    $(".van-overlay, .pop-qt, .pop-quytac-buy, .popup-qt").fadeOut(200);
   });
   
   function xlad(x, color) {
@@ -1590,6 +1595,8 @@ function timerJoin(params = '', addHours = 0) {
           $(".box .mark-box ").css("display", "none");
         }
       }, 0);
+
+      $('.container1').click();
     }
   
     cownDownTimer();
@@ -1644,3 +1651,23 @@ function timerJoin(params = '', addHours = 0) {
   $(`.game-betting .box .item:eq(${selectPageTime - 1}) .img`).addClass('block-click');
   $(`.game-betting .box .item .img .van-image img`).attr('src', '/images/icon_clock-gerrn.svg');
   $(`.game-betting .box .item:eq(${selectPageTime - 1}) .img .van-image img`).attr('src', '/images/icon_clock-red.svg');
+
+
+  function tdOnclick(e) {
+    if($(e).find('input[type=checkbox]').is(':checked') == false)
+    {
+     $(e).find('input[type=checkbox]').prop('checked', true);
+     $(e).find('.checkmark1').html('&#10004;');
+     $('#wd_submit').removeClass('windisablesub-button');
+     $('#wd_submit').removeClass('confirm');
+     $('#win_submit').removeClass('winspan_db');
+    }
+    else{
+     $(e).find('input[type=checkbox]').prop('checked', false);
+     $(e).find('.checkmark1').html('');
+     $('#wd_submit').addClass('windisablesub-button');
+     $('#wd_submit').addClass('confirm');
+     $('#win_submit').addClass('winspan_db');
+    }
+  }
+  
