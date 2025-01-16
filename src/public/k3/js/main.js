@@ -588,6 +588,7 @@ $(".list-join-total .item").click(function (e) {
         </div>
     `);
     totalMoney();
+    $('.container1').click();
 });
 
 // 2 số trùng nhau
@@ -1120,4 +1121,24 @@ $('.confirm').click(async function (e) {
     
 });
 
-
+function tdOnclick(e) {
+    if($(e).find('input[type=checkbox]').is(':checked') == false)
+    {
+     $(e).find('input[type=checkbox]').prop('checked', true);
+     $(e).find('.checkmark1').html('&#10004;');
+     $(e).find('.checkmark1').css('background-color', '#171b3f');
+     $(e).find('.checkmark1').css('border', 'white 2px solid');
+     $('#kd_submit').removeClass('kdisablesub-button');
+     $('#kd_submit').removeClass('confirm');
+     $('#kin_submit').removeClass('kspan_db');
+    }
+    else{
+     $(e).find('input[type=checkbox]').prop('checked', false);
+     $(e).find('.checkmark1').html('');
+     $(e).find('.checkmark1').css('background-color', 'white');
+     $(e).find('.checkmark1').css('border', '#171b3f 2px solid');
+     $('#kd_submit').addClass('kdisablesub-button');
+     $('#kd_submit').addClass('confirm');
+     $('#kin_submit').addClass('kspan_db');
+    }
+ }

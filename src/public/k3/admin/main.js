@@ -8,6 +8,7 @@ $(window).on('load', function () {
 $(document).ready(function () {
     $(`a[href="${window.location.pathname}"]`).addClass('active');
     $(`a[href="${window.location.pathname}"]`).css('pointerEvents', 'none');
+    //$('.container1').click();
 });
  
 $('.back-to-tops').click(function() {

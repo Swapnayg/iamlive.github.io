@@ -1,4 +1,10 @@
 <style>
+    #kd_submit
+    {
+        background-color: white;
+        color: #171B45;
+        width: 100%;
+    }
     #rule_k3 .p-r-15
     {
         padding-right: 0.2rem !important;
@@ -91,12 +97,12 @@
         transform: rotate(45deg);
       }
       
-    .disablesub-button {
+    .kdisablesub-button {
       text-decoration: none;
       color: white;
       pointer-events: none;
   } 
-  .span_db
+  .kspan_db
   {
     cursor: not-allowed;
   } 
@@ -104,28 +110,7 @@
 
 <script>
 
-    $("document").ready(function() {
-        $('.container1').click();
-    });
-    function tdOnclick(e) {
-       if($(e).find('input[type=checkbox]').is(':checked') == false)
-       {
-        $(e).find('input[type=checkbox]').prop('checked', true);
-        $(e).find('.checkmark1').html('&#10004;');
-        $(e).find('.checkmark1').css('background-color', '#171b3f');
-        $(e).find('.checkmark1').css('border', 'white 2px solid');
-        $('#d_submit').removeClass('disablesub-button');
-        $('#in_submit').removeClass('span_db');
-       }
-       else{
-        $(e).find('input[type=checkbox]').prop('checked', false);
-        $(e).find('.checkmark1').html('');
-        $(e).find('.checkmark1').css('background-color', 'white');
-        $(e).find('.checkmark1').css('border', '#171b3f 2px solid');
-        $('#d_submit').addClass('disablesub-button');
-        $('#in_submit').addClass('span_db');
-       }
-    }
+   
 </script>
 
 
@@ -204,8 +189,8 @@
         </div> 
         <div data-v-03b808c2="" class="foot c-row">
             <div data-v-03b808c2="" class="left canned"> Cancel </div>
-            <div data-v-42f27458="" class="right" id="d_submit">
-                <div id="in_submit">
+            <div data-v-42f27458="" class="right c-row c-row-middle-center confirm" id="kd_submit">
+                <div id="kin_submit">
                     <span data-v-03b808c2="" class="p-r-5">Total Amount</span>
                     <span data-v-03b808c2="" value="" class="result">1</span>
                     <span class="info-bet" xvalue="1" money="1"></span>
