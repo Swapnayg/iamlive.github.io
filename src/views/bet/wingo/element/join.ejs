@@ -1,5 +1,113 @@
 
 <style>
+
+  #wd_submit
+  {
+      background-color: white;
+      color: #171B45;
+      width: 100%;
+  }
+  #rule_win .p-r-15
+  {
+      padding-right: 0.2rem !important;
+  }  
+#rule_win .van-checkbox__label
+{
+    line-height: 0;
+}
+#rule_win .p-r-15
+  {
+      padding-right: 0.2rem !important;
+  }
+  #rule_win .van-checkbox__label
+  {
+      line-height: 10px;
+  }
+
+  #rule_win .container1 {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: .37333rem;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* Hide the browser's default checkbox */
+    #rule_win .container1 input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    
+    #rule_win .agree
+    {
+      padding-top: 11px;
+    }
+
+    /* Create a custom checkbox */
+    #rule_win .checkmark1 {
+      position: absolute;
+      top: 7px;
+      left: 0;
+      height: 22px;
+      width: 22px;
+      background-color: white;
+      text-align: center;
+      padding-top: 4%;
+    }
+    
+    /* On mouse-over, add a grey background color */
+    #rule_win .van-checkbox__label .checkmark1:hover  {
+      background-color: #171b3f;
+      border:white 2px solid;
+    }
+    
+    /* When the checkbox is checked, add a blue background */
+    #rule_win .container1 input:checked ~ .checkmark1 {
+      background-color: #2196F3;
+    }
+    
+    /* Create the checkmark/indicator (hidden when not checked) */
+    #rule_win .checkmark1:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+    
+    /* Show the checkmark when checked */
+    #rule_win .container1 input:checked ~ .checkmark1:after {
+      display: block;
+    }
+    
+    /* Style the checkmark/indicator */
+    #rule_win .container1 .checkmark1:after {
+      left: 9px;
+      top: 5px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    
+  .windisablesub-button {
+    text-decoration: none;
+    color: white;
+    pointer-events: none;
+} 
+.winspan_db
+{
+  cursor: not-allowed;
+}
   #wingo_join .tit, #wingo_join [data-v-a9660e98],#pop-choose
   {
     color: #171b3f;
@@ -62,20 +170,34 @@
         </div>
       </div>
       <div data-v-a9660e98="" class="item c-row c-row-middle">
-        <div data-v-a9660e98="" role="checkbox"  id="rule_wingo" tabindex="0" aria-checked="true" class="van-checkbox">
-          <div class="van-checkbox__icon van-checkbox__icon--square "><i class=" van-icon van-icon-success" style="border-color: #171b3f; background-color: #171b3f;">              <!---->
-            </i></div><span class="van-checkbox__label">
-            <div data-v-a9660e98="" class="agree p-r-15">I agree to</div>
+        <div data-v-42f27458=""  id="rule_win"  class="van-checkbox">
+          <!-- <div class="van-checkbox__icon van-checkbox__icon--square"> -->
+              <!-- <i class="van-icon "
+                  style="border-color: white;background-color: white;">
+                  
+              </i> -->
+          <!-- </div>  -->
+          <span class="van-checkbox__label">
+              <label class="container1" onclick="tdOnclick(this)"> 
+                  <span class="checkmark1"></span>
+                  <input type="checkbox">
+                  <div data-v-42f27458="" class="agree p-r-15">I agree to</div>
+               </label>
+              
           </span>
-        </div>
+      </div>
         <span data-v-a9660e98="" class="txt">Pre-selling rules</span>
       </div>
     </div>
     <div data-v-a9660e98="" class="foot c-row">
       <div data-v-a9660e98="" class="left" style="color: white;"> Cancel </div>
-      <div data-v-a9660e98="" class="right" style="background-color: rgb(251, 78, 78);"><span data-v-a9660e98="" class="p-r-5">Total Amount</span>
-        <!----><span data-v-a9660e98="">1 </span>
-      </div>
+      <div data-v-42f27458="" class="right c-row c-row-middle-center confirm" id="wd_submit">
+        <div id="win_submit">
+            <span data-v-03b808c2="" class="p-r-5">Total Amount</span>
+            <span data-v-03b808c2="" value="" class="result">1</span>
+            <span class="info-bet" xvalue="1" money="1"></span>
+    </div>
+    </div>
     </div>
   </div>
 </div>
