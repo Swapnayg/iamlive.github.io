@@ -272,9 +272,9 @@ $(".reload_money").click(function (e) {
     $(".num span").text(`₹ ${data.data.money_user}.00 `);
   });
 });
-$(".van-overlay, .foot .left").click(function (e) {
+$(".foot .left").click(function (e) {
   e.preventDefault();
-  $(".van-overlay").fadeOut();
+  //$(".van-overlay").fadeOut();
   $('.van-popup-vf').fadeOut(100);
   $(".popup-join").css("transform", "translateY(600px)");
   $(".betting-mark .amount-box .li, .multiple-box .li").css({
@@ -288,6 +288,11 @@ $(".van-overlay, .foot .left").click(function (e) {
   $(".stepper-box .digit-box input").val(1);
   $(".amount-box").attr("data-money", "1");
   $(".foot .right span:eq(1)").text(1000 + "");
+});
+
+$('.van-overlay').click(function (e) {
+  e.preventDefault();
+  $(".van-overlay, .pop-qt, .pop-quytac-buy").fadeOut(300);
 });
 
 function xlad(x, color) {

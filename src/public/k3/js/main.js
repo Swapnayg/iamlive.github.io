@@ -1,3 +1,5 @@
+var Rules_var='rule_close';
+
 function totalMoney() {
     let amount = $('.xvalue').val();
     let money = $('.amount-box').find('.action').attr("value");
@@ -108,6 +110,7 @@ $(window).resize(() => {
 
 $(".circular .li").click(function (e) {
     e.preventDefault();
+    Rules_var = 'rule_open';
     $(".van-overlay, .pop-quytac").fadeIn(300);
     $("body").addClass("van-overflow-hidden");
 });
@@ -115,6 +118,7 @@ $(".circular .li").click(function (e) {
 
 $('.van-overlay').click(function (e) {
     e.preventDefault();
+    Rules_var = 'rule_close';
     $(".van-overlay, .pop-quytac, .pop-quytac-buy").fadeOut(300);
 });
 $(".pop-quytac button, .pop-quytac-buy button").click(function (e) {
@@ -260,6 +264,7 @@ $('.minus-plus .plus').click(function (e) {
 
 $('.txt-qu-ytac').click(function (e) {
     e.preventDefault();
+    Rules_var='rule_open';
     $('.pop-quytac-buy').fadeIn(200);
     $('.van-overlay').fadeIn(200);
 });
@@ -419,7 +424,8 @@ $('.game-minutes .img, .game-minutes .txt').click(function (e) {
 
     let data = $(this).attr('data');
     $('html').attr('data-dpr', data);
-    $('#history').click()
+    $('#history').click();
+    $('#kd_submit').addClass('confirm');
     callAjaxMeJoin();
     callListOrder();
 });
@@ -436,7 +442,7 @@ $('.bet-tab .item').click(function (e) {
     $('.list-join-ao span').addClass('d-none');
     $('.bet-tab .item').removeClass('block-click');
     $(this).addClass('block-click');
-
+    $('#kd_submit').addClass('confirm');
     dropDown();
 });
 
@@ -588,7 +594,6 @@ $(".list-join-total .item").click(function (e) {
         </div>
     `);
     totalMoney();
-    $('.container1').click();
 });
 
 // 2 số trùng nhau
@@ -1142,3 +1147,4 @@ function tdOnclick(e) {
      $('#kin_submit').addClass('kspan_db');
     }
  }
+
