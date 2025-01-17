@@ -1669,3 +1669,115 @@ function timerJoin(params = '', addHours = 0) {
     }
   }
   
+
+  var pageno = 0;
+  var limit = 10;
+  var page = 1;
+  $(".game-list .con-box:eq(2) .page-nav .arr:eq(1)").click(function (e) {
+    e.preventDefault();
+    pageno += 10;
+    let pageto = limit;
+    $.ajax({
+      type: "POST",
+      url: "/api/webapi/GetNoaverageEmerdList",
+      data: {
+        typeid: "10",
+        pageno: pageno,
+        pageto: pageto,
+        language: "vi",
+      },
+      dataType: "json",
+      success: function (response) {
+        if (response.status === false) {
+          pageno -= 10;
+          $(".game-list .con-box:eq(2) .page-nav .arr:eq(1)").addClass(
+            "block-click"
+          );
+          $(".game-list .con-box:eq(2) .page-nav .arr:eq(1)").removeClass(
+            "action"
+          );
+          $(".game-list .con-box:eq(2) .page-nav .van-icon-arrow-right").css(
+            "color",
+            "#7f7f7f"
+          );
+          alertMessJoin(response.msg);
+          return false;
+        }
+        $(".game-list .con-box:eq(2) .page-nav .arr:eq(0)").removeClass(
+          "block-click"
+        );
+        $(".game-list .con-box:eq(2) .page-nav .arr:eq(0)").addClass("action");
+        $(".game-list .con-box:eq(2) .page-nav .van-icon-arrow-left").css(
+          "color",
+          "#fff"
+        );
+        page += 1;
+        $(".game-list .con-box:eq(2) .page-nav .number").text(
+          page + "/" + response.page
+        );
+        let list_orders = response.data.gameslist;
+        $(".time-box .info .number").text(response.period);
+        showListOrder_t(list_orders, 2);
+      },
+    });
+  });
+  $(".game-list .con-box:eq(2) .page-nav .arr:eq(0)").click(function (e) {
+    e.preventDefault();
+    $(".game-list .con-box:eq(2) .page-nav .arr:eq(1)").removeClass(
+      "block-click"
+    );
+    $(".game-list .con-box:eq(2) .page-nav .arr:eq(1)").addClass("action");
+    $(".game-list .con-box:eq(2) .page-nav .van-icon-arrow-right").css(
+      "color",
+      "#fff"
+    );
+    pageno -= 10;
+    let pageto = limit;
+    $.ajax({
+      type: "POST",
+      url: "/api/webapi/GetNoaverageEmerdList",
+      data: {
+        typeid: "10",
+        pageno: pageno,
+        pageto: pageto,
+        language: "vi",
+      },
+      dataType: "json",
+      success: function (response) {
+        if (page - 1 <= 1) {
+          $(".game-list .con-box:eq(2) .page-nav .arr:eq(0)").addClass(
+            "block-click"
+          );
+          $(".game-list .con-box:eq(2) .page-nav .arr:eq(0)").removeClass(
+            "action"
+          );
+          $(".game-list .con-box:eq(2) .page-nav .van-icon-arrow-left").css(
+            "color",
+            "#7f7f7f"
+          );
+        }
+        if (response.status === false) {
+          pageno = 0;
+          $(".game-list .con-box:eq(2) .page-nav .arr:eq(0)").addClass(
+            "block-click"
+          );
+          $(".game-list .con-box:eq(2) .page-nav .arr:eq(0)").removeClass(
+            "action"
+          );
+          $(".game-list .con-box:eq(2) .page-nav .van-icon-arrow-left").css(
+            "color",
+            "#7f7f7f"
+          );
+          alertMessJoin(response.msg);
+          return false;
+        }
+        page -= 1;
+        $(".game-list .con-box:eq(2) .page-nav .number").text(
+          page + "/" + response.page
+        );
+        let list_orders = response.data.gameslist;
+        $(".time-box .info .number").text(response.period);
+        showListOrder_t(list_orders, 2);
+      },
+    });
+  });
