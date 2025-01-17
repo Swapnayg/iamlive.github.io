@@ -1683,7 +1683,7 @@ var pageno = 0;
       type: "POST",
       url: "/api/webapi/GetNoaverageEmerdList",
       data: {
-        typeid: "10",
+        typeid: "1",
         pageno: pageno,
         pageto: pageto,
         language: "vi",
@@ -1739,7 +1739,7 @@ var pageno = 0;
       type: "POST",
       url: "/api/webapi/GetNoaverageEmerdList",
       data: {
-        typeid: "10",
+        typeid: "1",
         pageno: pageno,
         pageto: pageto,
         language: "vi",

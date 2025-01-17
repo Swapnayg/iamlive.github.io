@@ -1681,7 +1681,7 @@ function timerJoin(params = '', addHours = 0) {
       type: "POST",
       url: "/api/webapi/GetNoaverageEmerdList",
       data: {
-        typeid: "10",
+        typeid: "3",
         pageno: pageno,
         pageto: pageto,
         language: "vi",
@@ -1737,7 +1737,7 @@ function timerJoin(params = '', addHours = 0) {
       type: "POST",
       url: "/api/webapi/GetNoaverageEmerdList",
       data: {
-        typeid: "10",
+        typeid: "3",
         pageno: pageno,
         pageto: pageto,
         language: "vi",
