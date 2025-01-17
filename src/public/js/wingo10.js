@@ -534,6 +534,7 @@ var myModal_result_Period = document.getElementById("myModal_result_Period");
     e.preventDefault();
     let addTop = $(this).text().trim(); // Green - do - tim (x - d - t)
     let addText = $(this).text(); // Green - do - tim
+    $('.container1').click();
     alertBox(addTop, addText);
   });
   $(".btn-box button").click(function (e) {

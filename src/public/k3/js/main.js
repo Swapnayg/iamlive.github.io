@@ -677,7 +677,6 @@ $('.bet-con[game="2"] .num-box[data="chon-1-cap-duy-nhat"] .item').click(async f
         let data = $(this).attr('data');
         $(`.c-row[game=2_2] li[data=${data}]`).remove();
         $(this).removeClass('action');
-
         let game = $(this).attr('game');
         await handlingGame2();
         let count = $(`.list-join-ao li`);
@@ -1106,6 +1105,8 @@ function sendGame4() {
 }
 
 $('.confirm').click(async function (e) {
+    if($('.container1').find('input[type=checkbox]').is(':checked') == true)
+    {
     e.preventDefault();
     $(this).addClass('block-click');
     let game = $('.bet-tab .action').attr('game');
@@ -1124,8 +1125,8 @@ $('.confirm').click(async function (e) {
         {
             callAjaxMeJoin();
         }, 2000);
-    
-});
+    }
+    });
 
 function tdOnclick(e) {
     if($(e).find('input[type=checkbox]').is(':checked') == false)

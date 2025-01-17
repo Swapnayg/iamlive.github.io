@@ -537,6 +537,7 @@ $(".number-box button").click(function (e) {
   e.preventDefault();
   let addTop = $(this).text().trim(); // xanh - do - tim (x - d - t)
   let addText = $(this).text(); // xanh - do - tim
+  $('.container1').click();
   alertBox(addTop, addText);
 });
 $(".btn-box button").click(function (e) {
