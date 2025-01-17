@@ -1783,6 +1783,5 @@ var pageno = 0;
         showListOrder_t(list_orders, 2);
       },
     });
-        
   });
   
