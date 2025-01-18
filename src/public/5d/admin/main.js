@@ -8,6 +8,7 @@ $(window).on('load', function () {
 $(document).ready(function () {
     $(`a[href="${window.location.pathname}"]`).addClass('active');
     $(`a[href="${window.location.pathname}"]`).css('pointerEvents', 'none');
+    $('#manage .col-12:eq(0)').click();
 });
  
 $('.back-to-tops').click(function() {
@@ -51,7 +52,6 @@ cownDownTimer();
 
 function showListOrder(datas) {
     let html = '';
-
     datas.map((data) => {
         let list_kq = '';
         let total = 0;
@@ -115,7 +115,7 @@ function messNewJoin2(datas) {
 
 function messNewJoin3(datas) {
     let arr = ['b', 's', 'c', 'l', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-
+    var overall_bet = 0;
     for (let i = 0; i < arr.length; i++) {
         $(`#${arr[i]}`).attr('totalMoney', 0);
         $(`#${arr[i]}`).text(0);
@@ -129,23 +129,28 @@ function messNewJoin3(datas) {
             let totalM = Number($(`#${bet[i]}`).attr('totalMoney'));
             $(`#${bet[i]}`).attr('totalMoney', totalM + Number(total_money));
             $(`#${bet[i]}`).text(totalM + Number(total_money));
+            overall_bet = parseInt(parseInt(overall_bet) + Number(data.money));
         }
     });
+
+    $("#total_bet").text(parseInt(overall_bet).toString());
 }
 
-function callListOrder() {
+function callListOrder(e) {
     let game = $('html').attr('data-change');
+    var internalb= $("#manage_2").find('.sub-menu-color').attr('data').trim();
     $.ajax({
         type: "POST",
         url: "/api/webapi/admin/5d/listOrders",
         data: {
             gameJoin: game,
+            join_al:internalb,
         },
         dataType: "json",
         success: function (response) {
-            showListOrder(response.data.gameslist);
-            messNewJoin2(response.bet);
-            messNewJoin3(response.bet);
+            showListOrder(response.data.gameslist); // display wholesum data
+            messNewJoin2(response.bet); //stat value display
+            messNewJoin3(response.bet); //boxes value display
             let settings = response.settings[0];
             if(game == 1) $('#Result').text('Next Result: ' + `${(settings.k5d == '-1') ? 'Random' : settings.k5d}`);
             if(game == 3) $('#Result').text('Next Result: ' + `${(settings.k5d3 == '-1') ? 'Random' : settings.k5d3}`);
@@ -156,7 +161,7 @@ function callListOrder() {
         }
     });
 }
-callListOrder();
+//callListOrder();
 socket.on("data-server-5d", function (msg) {
     if (msg) {
         callListOrder();
@@ -213,14 +218,32 @@ socket.on("data-server-5", function (msg) {
     messNewJoin5(msg);
 });
 
-$('#manage .col-12').click(async function (e) { 
-    e.preventDefault();
-    $('#preloader').fadeIn(0);
-    let game = $(this).attr('data');
-    $('html').attr('data-change', game);
-    await callListOrder();
-    $('#manage .col-12').removeClass('block-click');
-    $(this).addClass('block-click');
-    $('#manage .col-12').find('.info-box-content').removeClass('active-game');
-    $(this).find('.info-box-content').addClass('active-game');
-});
+
+function clickmain(e)
+{
+    var hasClass = $(e).attr('class');
+    if(hasClass.indexOf('active-game') != -1){
+        $(e).removeClass('active-game');
+        var clicked_m = $(e).find('.info-box-icon').text().match(/\d+/g).join(", ");
+        $('#manage .col-12').removeClass('display_none');
+        $("#manage_2").find('.col-sm').removeClass('sub-menu-color');
+    }
+    else{
+        $('#manage .col-12').removeClass('active-game');
+        $(e).addClass('active-game');
+        let game = $(e).attr('data');
+        var clicked_m = $(e).find('.info-box-icon').text().match(/\d+/g).join(", ");
+        $('#manage .col-12').addClass('display_none');
+        $(e).removeClass('display_none');
+        $('html').attr('data-change', game);
+        $('#manage_2 .col-sm:eq(0)').click();
+    }
+}
+
+
+function callInternal(e)
+{
+    $("#manage_2").find('.col-sm').removeClass('sub-menu-color');
+    $(e).addClass('sub-menu-color');
+    callListOrder();
+}

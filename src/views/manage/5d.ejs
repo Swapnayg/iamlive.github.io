@@ -30,6 +30,10 @@
       color: #bbb;
       background-color: #fff;
     }
+    #manage_2 .col-sm
+    {
+      width:20%;
+    }
     .active {
       background-color: #007bff !important;
     }
@@ -98,6 +102,10 @@
       background-color: #e67e22 !important;
       cursor: pointer;
     }
+    .game1{
+      background-color: #db5fd1 !important;
+      cursor: pointer;
+    }
 
     .cursor-pointer {
       cursor: pointer;
@@ -106,6 +114,14 @@
     .active-game {
       color: rgb(230, 126, 34);
       font-weight: 600;
+    }
+
+    .display_none {
+      display: none;
+    }
+
+    .sub-menu-color .game1{
+      background-color: #e67e22 !important;
     }
   </style>
 </head>
@@ -126,16 +142,16 @@
       <section class="content">
         <div class="container-fluid">
           <div class="row info-box" id="manage">
-            <div class="col-12 col-sm-6 col-md-3 cursor-pointer block-click" data="1">
+            <div class="col-12 col-sm-6 col-md-3 cursor-pointer" data="1" onclick="clickmain(this);">
               <div class="info-box mb-3">
                 <span class="info-box-icon elevation-1 bg-primary game">1M</span>
 
-                <div class="info-box-content active-game">
+                <div class="info-box-content">
                   <span class="info-box-text">5D 1P</span>
                 </div>
               </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-3 cursor-pointer" data="3">
+            <div class="col-12 col-sm-6 col-md-3 cursor-pointer" data="3" onclick="clickmain(this);">
               <div class="info-box mb-3">
                 <span class="info-box-icon elevation-1 bg-primary game">3M</span>
 
@@ -144,7 +160,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-3 cursor-pointer" data="5">
+            <div class="col-12 col-sm-6 col-md-3 cursor-pointer" data="5"  onclick="clickmain(this);">
               <div class="info-box mb-3">
                 <span class="info-box-icon elevation-1 bg-primary game">5M</span>
 
@@ -153,7 +169,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-3 cursor-pointer" data="10">
+            <div class="col-12 col-sm-6 col-md-3 cursor-pointer" data="10" onclick="clickmain(this);">
               <div class="info-box">
                 <span class="info-box-icon elevation-1 bg-primary game">10M</span>
                 <div class="info-box-content">
@@ -162,8 +178,38 @@
               </div>
             </div>
           </div>
+          <div class="container">
+          <div class="row info-box" id="manage_2">
+            <div class="col-sm cursor-pointer" data="a" onclick="callInternal(this);">
+              <div class="info-box mb-3">
+                <span class="info-box-icon elevation-1 bg-primary game1">A</span>
+              </div>
+            </div>
+            <div class="col-sm cursor-pointer" data="b" onclick="callInternal(this);">
+              <div class="info-box mb-3">
+                <span class="info-box-icon elevation-1 bg-primary game1">B</span>
+              </div>
+            </div>
+            <div class="col-sm cursor-pointer" data="c" onclick="callInternal(this);">
+              <div class="info-box mb-3">
+                <span class="info-box-icon elevation-1 bg-primary game1">C</span>
+              </div>
+            </div>
+            <div class="col-sm cursor-pointer" data="d" onclick="callInternal(this);">
+              <div class="info-box mb-3">
+                <span class="info-box-icon elevation-1 bg-primary game1" >D</span>
+              </div>
+            </div>
+            <div class="col-sm cursor-pointer" data="e" onclick="callInternal(this);">
+              <div class="info-box mb-3">
+                <span class="info-box-icon elevation-1 bg-primary game1">E</span>
+              </div>
+            </div>
+            
+          </div>
+          </div>
           <div class="row">
-            <div class="col-12 col-sm-6 col-md-3">
+            <div class="col-sm">
               <div class="info-box mb-3">
                 <span class="info-box-icon bg-danger elevation-1">
                   <i class="fas fa-shopping-cart"></i>
@@ -177,7 +223,7 @@
             </div>
             <div class="clearfix hidden-md-up"></div>
 
-            <div class="col-12 col-sm-6 col-md-3">
+            <div class="col-sm">
               <div class="info-box mb-3">
                 <span class="info-box-icon elevation-1" style="background-color: #8e44ad;"><i class="fas fa-shopping-cart"></i></span>
                 <div class="info-box-content">
@@ -186,7 +232,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-3">
+            <div class="col-sm">
               <div class="info-box mb-3">
                 <span class="info-box-icon bg-success elevation-1">
                   <i class="fas fa-shopping-cart"></i>
@@ -198,7 +244,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-3">
+            <div class="col-sm">
               <div class="info-box">
                 <span class="info-box-icon bg-info elevation-1">
                   <i class="fas fa-shopping-cart"></i>
@@ -207,6 +253,18 @@
                 <div class="info-box-content">
                   <span class="info-box-text">Join Even</span>
                   <span totalMoney="0" class="info-box-number" id="c">0</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="info-box">
+                <span class="info-box-icon elevation-1" style="background-color: #952c8d !important;">
+                  <i class="fas fa-shopping-cart"></i>
+                </span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Total Amt</span>
+                  <span totalMoney="0" class="info-box-number" id="total_bet">0</span>
                 </div>
               </div>
             </div>
