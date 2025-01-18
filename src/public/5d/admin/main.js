@@ -202,6 +202,7 @@ function messNewJoin5(data) {
     if (data.chane == 1) return;
     if (data.game != game) return;
 
+    var overall_bet = 0;
     let bet = data.list_join.split(''); // là người dùng Join đặt cược
 
     for (let i = 0; i < bet.length; i++) {
@@ -209,7 +210,10 @@ function messNewJoin5(data) {
         let totalM = Number($(`#${bet[i]}`).attr('totalMoney'));
         $(`#${bet[i]}`).attr('totalMoney', totalM + money);
         $(`#${bet[i]}`).text(totalM + money);
+        overall_bet = parseInt(parseInt(overall_bet) + Number(data.money));
     }
+
+    $("#total_bet").text(parseInt(overall_bet).toString());
 }
 
 socket.on("data-server-5", function (msg) {
