@@ -568,10 +568,11 @@ const handling5D = async(typeid) => {
         let check = isNumber(orders.bet); 
         if (check) {
             let arr = orders.bet.split('');
-            let total = (orders.money / arr.length / orders.amount);
+            let total = (orders.money / arr.length );
             let fee = total * 0.02;
             let price = total - fee;
             nhan_duoc += price * 9;
+            console.log(nhan_duoc);
         } else {
             nhan_duoc += orders.price * 2;
         }
