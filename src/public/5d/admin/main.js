@@ -40,7 +40,9 @@ function cownDownTimer() {
         if(checkID != 1) {
             $(".time .time-sub:eq(1)").text(minute);
         }
-
+        else{
+            $(".time .time-sub:eq(1)").text(0);
+        }
         $(".time .time-sub:eq(2)").text(seconds1);
         $(".time .time-sub:eq(3)").text(seconds2);
     }, 0);
