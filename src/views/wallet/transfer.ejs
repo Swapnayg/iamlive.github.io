@@ -274,17 +274,13 @@
                             },
                             dataType: "json",
                             success: function (response) {
-                                // if (response.status === true) {
-                                // $('.van-overlay').fadeOut(300);
-                                // $('.Loading').fadeIn(10);
+                                if(response.transfer_mode.trim()=='instant')
+                                {
+                                    $('.money').text("₹" + response.curr_user_m + ".00");
+                                }
+                                $('input:eq(0)').val('');
+                                $('input:eq(1)').val('');
                                 alertMess(response.message);
-                                // setTimeout(() => {
-                                //     location.href = '/home';
-                                // }, 500);
-                                // } else {
-                                //     // $('.van-overlay').fadeOut(300);
-                                //     alertMess(response.message);
-                                // }
                             }
                         });
                     }

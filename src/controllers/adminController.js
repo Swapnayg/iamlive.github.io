@@ -576,15 +576,23 @@ const rechargeDuyet = async (req, res) => {
         await connection.query(`UPDATE recharge SET status = 1 WHERE id = ?`, [id]);
 
         const [info] = await connection.query(`SELECT * FROM recharge WHERE id = ?`, [id]);
-
-        const user = await getUserDataByPhone(info?.[0]?.phone)
-
-        addUserAccountBalance({
-            money: info[0].money,
-            phone: user.phone,
-            invite: user.invite
-        })
-
+        if(info?.[0]?.type.trim() == 'wallet')
+        {
+            const [withdrainfo] = await connection.query(`SELECT * FROM withdraw WHERE id_order = ?`, [info?.[0]?.id_order]);
+            let withInfo = withdrainfo[0];
+            await connection.query(`UPDATE withdraw SET status = 1 WHERE id_order = ?`, [info?.[0]?.id_order]);
+            await connection.query('UPDATE users SET money = money + ? WHERE phone = ?', [info?.[0]?.money, info?.[0]?.phone]);
+            await connection.query(`UPDATE users SET money = money - ? WHERE phone = ?`, [info?.[0]?.money, withInfo.phone]);
+        }
+        else{
+            
+            const user = await getUserDataByPhone(info?.[0]?.phone)
+            addUserAccountBalance({
+                money: info[0].money,
+                phone: user.phone,
+                invite: user.invite
+            })
+        }
         return res.status(200).json({
             message: 'Successful application confirmation',
             status: true,
@@ -682,7 +690,16 @@ const handlWithdraw = async (req, res) => {
     }
     if (type == 'confirm') {
         await connection.query(`UPDATE withdraw SET status = 1 WHERE id = ?`, [id]);
-        const [info] = await connection.query(`SELECT * FROM withdraw WHERE id = ?`, [id]);
+        const [winfo] = await connection.query(`SELECT * FROM withdraw WHERE id = ?`, [id]);
+        let withInfo = winfo[0];
+        if(withInfo.type.trim() == 'manual')
+        {
+            const [recharge] = await connection.query(`SELECT * FROM recharge WHERE id_order = ?`, [withInfo.id_order]);
+            let rechInfo = recharge[0];
+            await connection.query(`UPDATE recharge SET status = 1 WHERE id_order = ?`, [withInfo.id_order]);
+            await connection.query('UPDATE users SET money =  money - ? WHERE phone = ?', [withInfo.money, withInfo.phone]);
+            await connection.query(`UPDATE users SET money = money + ? WHERE phone = ?`, [withInfo.money, rechInfo.phone]);
+        }
         return res.status(200).json({
             message: 'Successful application confirmation',
             status: true,
@@ -768,6 +785,18 @@ const deleteBankRechargeById = async (id) => {
 
     return recharge
 }
+
+const tranfermode = async (req, res) => {
+    let auth = req.cookies.auth;
+    let tran_mode = req.body.mode_tran;
+    const [rows] = await connection.query('SELECT * FROM users WHERE `token` = ? ', [auth]);
+    let user = rows[0];
+    await connection.execute("UPDATE users SET transfer_mode = ?  WHERE `level` = ? ", [tran_mode,1] );
+    return res.status(200).json({
+        message: 'Submitted successfully',
+        status: true,
+        });
+    } 
 
 const settingCskh = async (req, res) => {
     let auth = req.cookies.auth;
@@ -1972,6 +2001,28 @@ const getSalary = async (req, res) => {
 };
 
 
+const gettranfermode = async (req, res) => {
+    let auth = req.cookies.auth;
+    const [rows] = await connection.query('SELECT transfer_mode FROM users WHERE `token` = ? ', [auth]);
+
+    if (!rows) {
+        return res.status(200).json({
+            message: 'Failed',
+            status: false,
+
+        });
+    }
+    return res.status(200).json({
+        message: 'Success',
+        status: true,
+        data: {
+
+        },
+        rows: rows
+    })
+};
+
+
 module.exports = {
     adminPage,
     adminPage3,
@@ -1988,6 +2039,7 @@ module.exports = {
     statistical2,
     rechargePage,
     recharge,
+    tranfermode,
     rechargeDuyet,
     rechargeRecord,
     withdrawRecord,
@@ -2025,4 +2077,5 @@ module.exports = {
     CreatedSalaryRecord,
     CreatedSalary,
     getSalary,
+    gettranfermode,
 }

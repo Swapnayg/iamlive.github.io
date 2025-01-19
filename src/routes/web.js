@@ -228,6 +228,9 @@ const initWebRouter = (app) => {
     router.post('/api/webapi/admin/listctv', adminController.middlewareAdminController, adminController.listCTV); // get info account
     router.post('/api/webapi/admin/withdraw', adminController.middlewareAdminController, adminController.handlWithdraw); // get info account
     router.post('/api/webapi/admin/recharge', adminController.middlewareAdminController, adminController.recharge); // get info account
+    router.post('/api/webapi/admin/tranfermode', adminController.middlewareAdminController, adminController.tranfermode); // store transfer mode
+    router.get('/api/webapi/admin/gettranfermode', adminController.middlewareAdminController, adminController.gettranfermode); // get transfer mode
+    
     router.post('/api/webapi/admin/rechargeDuyet', adminController.middlewareAdminController, adminController.rechargeDuyet); // get info account
     router.post('/api/webapi/admin/member/info', adminController.middlewareAdminController, adminController.userInfo); // get info account
     router.post('/api/webapi/admin/statistical', adminController.middlewareAdminController, adminController.statistical2); // get info account
