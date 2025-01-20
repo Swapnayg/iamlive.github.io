@@ -467,17 +467,21 @@ const userInfo = async (req, res) => {
             }
         }
     }
-    // console.log("TOTAL_F_TODAY:" + f_all_today);
-    // console.log("F1: " + f1s.length);
-    // console.log("F2: " + f2);
-    // console.log("F3: " + f3);
-    // console.log("F4: " + f4);
+    console.log("TOTAL_F_TODAY:" + f_all_today);
+    console.log("F1: " + f1s.length);
+    console.log("F2: " + f2);
+    console.log("F3: " + f3);
+    console.log("F4: " + f4);
 
     const [recharge] = await connection.query('SELECT SUM(`money`) as total FROM recharge WHERE phone = ? AND status = 1 ', [phone]);
     const [withdraw] = await connection.query('SELECT SUM(`money`) as total FROM withdraw WHERE phone = ? AND status = 1 ', [phone]);
     const [bank_user] = await connection.query('SELECT * FROM user_bank WHERE phone = ? ', [phone]);
     const [telegram_ctv] = await connection.query('SELECT `telegram` FROM point_list WHERE phone = ? ', [userInfo.ctv]);
     const [ng_moi] = await connection.query('SELECT `phone` FROM users WHERE code = ? ', [userInfo.invite]);
+    console.log(bank_user);
+    console.log(recharge);
+    console.log(withdraw);
+    console.log(telegram_ctv);
     return res.status(200).json({
         message: 'Success',
         status: true,

@@ -216,8 +216,11 @@
                 let user = response.datas[0];
                 // user
                 $('.profile-username').text(user.name_user);
-                $('#telegram').text(response.telegram.telegram);
-                $('#telegram').attr('href', response.telegram.telegram);
+                if(response.telegram != null)
+                {
+                    $('#telegram').text(response.telegram.telegram);
+                    $('#telegram').attr('href', response.telegram.telegram);
+                }
                 $('#id_user').text("ID: " + user.id_user);
                 $('#money').text(user.money + ".0");
                 $('#roses_all').text(user.roses_f + user.roses_f1 + '.0');
