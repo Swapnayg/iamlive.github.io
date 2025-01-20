@@ -71,6 +71,7 @@ const initWebRouter = (app) => {
     router.get('/recordsalary', middlewareController, homeController.recordsalary);
     router.get('/getrecord', middlewareController, homeController.getSalaryRecord);
     router.get('/about', middlewareController, homeController.aboutPage);
+    router.get('/notification', middlewareController, homeController.notificationPage);
     router.get('/chat', middlewareController, homeController.chatPage);
 	router.get('/wingochat', middlewareController, homeController.wingochat);
     router.get('/redenvelopes', middlewareController, homeController.redenvelopes);

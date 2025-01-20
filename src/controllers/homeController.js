@@ -124,6 +124,10 @@ const aboutPage = async (req, res) => {
     return res.render("member/about/index.ejs");
 }
 
+const notificationPage = async (req, res) => {
+    return res.render("member/notification.ejs");
+}
+
 const chatPage = async (req, res) => {
     return res.render("member/chat.ejs");
 }
@@ -218,6 +222,7 @@ module.exports = {
     withdrawalrecordPage,
     aboutPage,
     privacyPolicy,
+    notificationPage,
     riskAgreement,
     newtutorial,
     redenvelopes,

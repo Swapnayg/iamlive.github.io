@@ -13,7 +13,7 @@ const connection = mysql.createPool({
   host: 'localhost',
   user: 'Swapna',
   password: 'Swapna@123',
-  database: 'swapna',
+  database: 'swapna_test',
   port: '3306' 
    
 })

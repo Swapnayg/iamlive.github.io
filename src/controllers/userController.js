@@ -1282,6 +1282,11 @@ const transfer = async (req, res) => {
                     await connection.execute(sql_recharge, [client_transaction_id, 0, receiver_phone, amount, 'wallet', 1, checkTime, 0, time]);
                     const sql_recharge_with = "INSERT INTO withdraw (id_order, phone, money, stk, name_bank, name_user, ifsc, sdt, tp, status, today, time, type,with_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?)";
                     await connection.execute(sql_recharge_with, [client_transaction_id, sender_phone, amount,0,0,0,0,0,0, 1, checkTime, time,trans_mode,'transfer']);
+                    let sql_noti = 'INSERT INTO notification SET recipient = ?, description = ?, isread = ?';
+                    await connection.query(sql_noti, [receiver[0]?.id, "Recharge of Amount "+amount+" is successfull.", '0']);
+                    let sql_noti1 = "INSERT INTO notification SET recipient = ?, description = ?, isread = ?";
+                    let withdrdesc = "Amount of "+ amount + " have been transferred successfully.";
+                    await connection.query(sql_noti1, [userInfo.id, withdrdesc , "0"]);
                     return res.status(200).json({
                         message: `Requested ${amount} sent successfully`,
                         curr_user_m:money,
@@ -1289,6 +1294,7 @@ const transfer = async (req, res) => {
                         status: true,
                         timeStamp: timeNow,
                     });
+                    
                 }
                 else{
                     const sql_recharge_with = "INSERT INTO withdraw (id_order, phone, money, stk, name_bank, name_user, ifsc, sdt, tp, status, today, time, type,with_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?)";
@@ -1297,6 +1303,8 @@ const transfer = async (req, res) => {
                     await connection.execute(sql, [sender_phone, receiver_phone, amount]);
                     const sql_recharge = "INSERT INTO recharge (id_order, transaction_id, phone, money, type, status, today, url, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     await connection.execute(sql_recharge, [client_transaction_id, 0, receiver_phone, amount, 'wallet', 0, checkTime, 0, time]);
+                    let sql_noti = 'INSERT INTO notification SET recipient = ?, description = ?, isread = ?';
+                    await connection.query(sql_noti, [userInfo.id, "Balance Transfer of Amount "+amount+" Initiated Successfully.", '0']);
                     return res.status(200).json({
                         message: `Waiting for admin approval`,
                         curr_user_m:money,
@@ -1390,7 +1398,6 @@ const recharge2 = async (req, res) => {
             timeStamp: timeNow,
         });
     }
-
 }
 
 const listRecharge = async (req, res) => {

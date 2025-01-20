@@ -846,6 +846,8 @@
                     dataType: "json",
                     success: function (response) {
                         $(this).addClass('block-click');
+                        $('input:eq(1)').val('');
+                        $('input:eq(0)').val('');
                         if (response.status == true) {
                             $('.money').text("₹" + response.money + '0');
                         }

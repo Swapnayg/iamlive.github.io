@@ -323,8 +323,17 @@
     font-weight: 400 !important;
 }        
         
-        
-        
+.text-not-span{
+    background:red;
+    border-radius:50%;
+    height: 26px;
+    width: 26px;
+    line-height: 26px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 10px;
+}
+
     </style>
 </head>
 
@@ -520,15 +529,16 @@
                 
                 <div data-v-0341cbde="" data-v-5768d7f3="" class="settingPanel__container panel-default">
                     <div data-v-0341cbde="" class="settingPanel__container-items">
-                      <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                      <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b" onclick="location.href='/notification'">
                         <div data-v-0341cbde="" class="settingPanel__container-items__title">
                           <img data-v-0341cbde="" src="/assets/png/notifyIcon-2d005e7b.png">
                           <span data-v-0341cbde="">
                             Notification
                           </span>
+                        
                         </div>
                         <div data-v-0341cbde="" class="settingPanel__container-items-right">
-                          
+                            <span class="text-not-span" id="not_count">5</span>
                           <i data-v-0341cbde="" class="van-badge__wrapper van-icon van-icon-arrow"
                           style="color: rgb(255, 255, 255);">
                             <!---->

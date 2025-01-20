@@ -152,7 +152,6 @@ const register = async (req, res) => {
 
                     if(check_i.name_user !=='Admin'){
                         let levels = [2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41, 44];
-
                         for (let i = 0; i < levels.length; i++) {
                             if (check_code.length >= levels[i]) {
                                 await connection.execute('UPDATE users SET user_level = ? WHERE code = ?', [i + 1, invitecode]);
@@ -161,8 +160,8 @@ const register = async (req, res) => {
                             }
                         }
                     }
-
-
+                    let sql_noti = 'INSERT INTO notification SET recipient = ?, description = ?, isread = ?';
+                    await connection.query(sql_noti, [check_i.id, "Your invitee "+ username.replace(/[0-9]+5/g,i=>"*****".slice(0,i.length)) +" had joined our platform, referral code " + code +" Congartualtions...!", '0']);
                     let sql4 = 'INSERT INTO turn_over SET phone = ?, code = ?, invite = ?';
                     await connection.query(sql4, [username, code, invitecode]);
 
@@ -315,6 +314,8 @@ const forGotPassword = async (req, res) => {
         if (user.time_otp - now > 0) {
             if (user.otp == otp) {
                 await connection.execute("UPDATE users SET password = ?, otp = ?, time_otp = ? WHERE phone = ? ", [md5(pwd), otp2, timeEnd, username]);
+                let sql_noti = 'INSERT INTO notification SET recipient = ?, description = ?, isread = ?';
+                await connection.query(sql_noti, [user.id, "Password Changed Successfully", '0']);
                 return res.status(200).json({
                     message: 'Change password successfully',
                     status: true,
