@@ -692,13 +692,17 @@ const handlWithdraw = async (req, res) => {
         await connection.query(`UPDATE withdraw SET status = 1 WHERE id = ?`, [id]);
         const [winfo] = await connection.query(`SELECT * FROM withdraw WHERE id = ?`, [id]);
         let withInfo = winfo[0];
-        if(withInfo.type.trim() == 'manual')
+        if(withInfo.type != null)
         {
-            const [recharge] = await connection.query(`SELECT * FROM recharge WHERE id_order = ?`, [withInfo.id_order]);
-            let rechInfo = recharge[0];
-            await connection.query(`UPDATE recharge SET status = 1 WHERE id_order = ?`, [withInfo.id_order]);
-            await connection.query('UPDATE users SET money =  money - ? WHERE phone = ?', [withInfo.money, withInfo.phone]);
-            await connection.query(`UPDATE users SET money = money + ? WHERE phone = ?`, [withInfo.money, rechInfo.phone]);
+            if(withInfo.type.trim() == 'manual')
+            {
+                await connection.query(`UPDATE withdraw SET status = 1 WHERE id = ?`, [id]);
+                const [recharge] = await connection.query(`SELECT * FROM recharge WHERE id_order = ?`, [withInfo.id_order]);
+                let rechInfo = recharge[0];
+                await connection.query(`UPDATE recharge SET status = 1 WHERE id_order = ?`, [withInfo.id_order]);
+                await connection.query('UPDATE users SET money =  money - ? WHERE phone = ?', [withInfo.money, withInfo.phone]);
+                await connection.query(`UPDATE users SET money = money + ? WHERE phone = ?`, [withInfo.money, rechInfo.phone]);
+            }
         }
         return res.status(200).json({
             message: 'Successful application confirmation',
