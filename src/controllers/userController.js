@@ -1148,8 +1148,10 @@ const withdrawal3 = async (req, res) => {
                     name_user = ?,
                     status = ?,
                     today = ?,
-                    time = ?`;
-                        await connection.execute(sql, [id_time + '' + id_order, userInfo.phone, money, infoBank.stk, infoBank.name_bank, infoBank.email, infoBank.name_user, 0, checkTime, dates]);
+                    time = ?,
+                    type = ?,
+                    with_type = ?`;
+                        await connection.execute(sql, [id_time + '' + id_order, userInfo.phone, money, infoBank.stk, infoBank.name_bank, infoBank.email, infoBank.name_user, 0, checkTime, dates,'manual','bank']);
                         await connection.query('UPDATE users SET money = money - ? WHERE phone = ? ', [money, userInfo.phone]);
                         return res.status(200).json({
                             message: 'Withdrawal successful',
@@ -1257,15 +1259,19 @@ const transfer = async (req, res) => {
 
     // console.log('date:', result);
     if (result == 0) {
+        console.log(1);
         if (sender_money >= amount) {
+            console.log(2);
             let [receiver] = await connection.query('SELECT * FROM users WHERE `phone` = ?', [receiver_phone]);
             if (receiver.length === 1 && sender_phone !== receiver_phone) {
+                console.log(3);
                 let money = sender_money - amount;
                 let total_money = amount + receiver[0].total_money;
                 let trans_mode = '';
                 const [admin_user] = await connection.query('SELECT * FROM users WHERE level = ? ', [1]);
                 let adminInfo = admin_user[0];
                 trans_mode = adminInfo.transfer_mode; 
+                console.log(trans_mode);
                 if(trans_mode == 'instant')
                 {
                     await connection.query('UPDATE users SET money = ? WHERE phone = ?', [money, sender_phone]);
@@ -1274,8 +1280,8 @@ const transfer = async (req, res) => {
                     await connection.execute(sql, [sender_phone, receiver_phone, amount]);
                     const sql_recharge = "INSERT INTO recharge (id_order, transaction_id, phone, money, type, status, today, url, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     await connection.execute(sql_recharge, [client_transaction_id, 0, receiver_phone, amount, 'wallet', 1, checkTime, 0, time]);
-                    const sql_recharge_with = "INSERT INTO withdraw (id_order, phone, money, stk, name_bank, name_user, ifsc, sdt, tp, status, today, time, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
-                    await connection.execute(sql_recharge_with, [client_transaction_id, sender_phone, amount,0,0,0,0,0,0, 1, checkTime, time,trans_mode]);
+                    const sql_recharge_with = "INSERT INTO withdraw (id_order, phone, money, stk, name_bank, name_user, ifsc, sdt, tp, status, today, time, type,with_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?)";
+                    await connection.execute(sql_recharge_with, [client_transaction_id, sender_phone, amount,0,0,0,0,0,0, 1, checkTime, time,trans_mode,'transfer']);
                     return res.status(200).json({
                         message: `Requested ${amount} sent successfully`,
                         curr_user_m:money,
@@ -1285,8 +1291,8 @@ const transfer = async (req, res) => {
                     });
                 }
                 else{
-                    const sql_recharge_with = "INSERT INTO withdraw (id_order, phone, money, stk, name_bank, name_user, ifsc, sdt, tp, status, today, time, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
-                    await connection.execute(sql_recharge_with, [client_transaction_id, sender_phone, amount,0,0,0,0,0,0, 0, checkTime, time,trans_mode]);
+                    const sql_recharge_with = "INSERT INTO withdraw (id_order, phone, money, stk, name_bank, name_user, ifsc, sdt, tp, status, today, time, type,with_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?)";
+                    await connection.execute(sql_recharge_with, [client_transaction_id, sender_phone, amount,0,0,0,0,0,0, 0, checkTime, time,trans_mode,'transfer']);
                     const sql = "INSERT INTO balance_transfer (sender_phone, receiver_phone, amount) VALUES (?, ?, ?)";
                     const sql_recharge = "INSERT INTO recharge (id_order, transaction_id, phone, money, type, status, today, url, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     await connection.execute(sql_recharge, [client_transaction_id, 0, receiver_phone, amount, 'wallet', 0, checkTime, 0, time]);

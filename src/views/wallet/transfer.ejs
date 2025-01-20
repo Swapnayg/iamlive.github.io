@@ -274,9 +274,15 @@
                             },
                             dataType: "json",
                             success: function (response) {
-                                if(response.transfer_mode.trim()=='instant')
+                                if(response.status != false)
                                 {
-                                    $('.money').text("₹" + response.curr_user_m + ".00");
+                                    if(response.transfer_mode.trim()=='instant')
+                                    {
+                                        $('.money').text("₹" + response.curr_user_m + ".00");
+                                    }
+                                    $('input:eq(0)').val('');
+                                    $('input:eq(1)').val('');
+                                    alertMess(response.message);
                                 }
                                 $('input:eq(0)').val('');
                                 $('input:eq(1)').val('');

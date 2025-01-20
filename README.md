@@ -35,5 +35,10 @@ added two web api for one to store balance_tarnsfer setting another to get balan
     /api/webapi/admin/withdraw
 
     /wallet/transfer
+
+
+    add with_type in withdrawtable :
+
+    "ALTER TABLE `withdraw` ADD `with_type` VARCHAR(200) NULL DEFAULT NULL AFTER `type`;"
     
 
