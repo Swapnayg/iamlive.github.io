@@ -1111,25 +1111,38 @@ const withdrawal3 = async (req, res) => {
     let checkTime = timerJoin(dates);
     const [recharge] = await connection.query('SELECT * FROM recharge WHERE phone = ? AND status = 1', [userInfo.phone]);
     const [minutes_1] = await connection.query('SELECT * FROM minutes_1 WHERE phone = ?', [userInfo.phone]);
+    const [k3_bet_money] = await connection.query('SELECT * FROM result_k3 WHERE phone = ?', [userInfo.phone]);
+    const [d5_bet_money] = await connection.query('SELECT * FROM result_5d WHERE phone = ?', [userInfo.phone]);
     let total = 0;
     recharge.forEach((data) => {
         total += parseFloat(data.money);
     });
     let total2 = 0;
+    let total_w = 0;
+    let total_k3 = 0;
+    let total_5d = 0;
     minutes_1.forEach((data) => {
-        total2 += parseFloat(data.money);
+        total_w += parseFloat(data.money);
     });
+    k3_bet_money.forEach((data) => {
+        total_k3 += parseFloat(data.money);
+    });
+    d5_bet_money.forEach((data) => {
+        total_5d += parseFloat(data.money);
+    });
+    total2 += parseInt(total_w) + parseInt(total_k3) + parseInt(total_5d) ;
     let result = 0;
     if (total - total2 > 0) result = total - total2;
     result = Math.max(result, 0);
+    let result2 = parseInt ((parseInt(total) * 80)/100);
     const [user_bank] = await connection.query('SELECT * FROM user_bank WHERE `phone` = ?', [userInfo.phone]);
     const [withdraw] = await connection.query('SELECT * FROM withdraw WHERE `phone` = ? AND today = ?', [userInfo.phone, checkTime]);
     if (user_bank.length != 0) {
         if (withdraw.length < 3) {
             if (userInfo.money - money >= 0) {
-                if (result == 0) {
+                if (total2 >= result2) {
                     if (total - total2 >= 0) {
-                        if (result == 0) {
+                        if (total2 >= result2) {
                             return res.status(200).json({
                                 message: 'The total bet is not enough to fulfill the request',
                                 status: false,
@@ -1200,7 +1213,7 @@ const transfer = async (req, res) => {
     let time = new Date().getTime();
     let client_transaction_id = id_order;
 
-    const [user] = await connection.query('SELECT `phone`,`money`, `code`,`invite` FROM users WHERE `token` = ? ', [auth]);
+    const [user] = await connection.query('SELECT `id`,`phone`,`money`, `code`,`invite` FROM users WHERE `token` = ? ', [auth]);
     let userInfo = user[0];
     let sender_phone = userInfo.phone;
     let sender_money = parseInt(userInfo.money);
@@ -1245,33 +1258,40 @@ const transfer = async (req, res) => {
     let checkTime = timerJoin(dates);
     const [recharge] = await connection.query('SELECT * FROM recharge WHERE phone = ? AND status = 1 ', [userInfo.phone]);
     const [minutes_1] = await connection.query('SELECT * FROM minutes_1 WHERE phone = ? ', [userInfo.phone]);
+    const [k3_bet_money] = await connection.query('SELECT * FROM result_k3 WHERE phone = ?', [userInfo.phone]);
+    const [d5_bet_money] = await connection.query('SELECT * FROM result_5d WHERE phone = ?', [userInfo.phone]);
     let total = 0;
     recharge.forEach((data) => {
-        total += data.money;
+        total += parseFloat(data.money);
     });
     let total2 = 0;
+    let total_w = 0;
+    let total_k3 = 0;
+    let total_5d = 0;
     minutes_1.forEach((data) => {
-        total2 += data.money;
+        total_w += parseFloat(data.money);
     });
+    k3_bet_money.forEach((data) => {
+        total_k3 += parseFloat(data.money);
+    });
+    d5_bet_money.forEach((data) => {
+        total_5d += parseFloat(data.money);
+    });
+    total2 += parseInt(total_w) + parseInt(total_k3) + parseInt(total_5d) ;
 
     let result = 0;
     if (total - total2 > 0) result = total - total2;
-
-    // console.log('date:', result);
-    if (result == 0) {
-        console.log(1);
+    let result2 = parseInt ((parseInt(total) * 80)/100)
+    if (total2 >= result2) {
         if (sender_money >= amount) {
-            console.log(2);
             let [receiver] = await connection.query('SELECT * FROM users WHERE `phone` = ?', [receiver_phone]);
             if (receiver.length === 1 && sender_phone !== receiver_phone) {
-                console.log(3);
                 let money = sender_money - amount;
                 let total_money = amount + receiver[0].total_money;
                 let trans_mode = '';
                 const [admin_user] = await connection.query('SELECT * FROM users WHERE level = ? ', [1]);
                 let adminInfo = admin_user[0];
                 trans_mode = adminInfo.transfer_mode; 
-                console.log(trans_mode);
                 if(trans_mode == 'instant')
                 {
                     await connection.query('UPDATE users SET money = ? WHERE phone = ?', [money, sender_phone]);
@@ -1282,11 +1302,11 @@ const transfer = async (req, res) => {
                     await connection.execute(sql_recharge, [client_transaction_id, 0, receiver_phone, amount, 'wallet', 1, checkTime, 0, time]);
                     const sql_recharge_with = "INSERT INTO withdraw (id_order, phone, money, stk, name_bank, name_user, ifsc, sdt, tp, status, today, time, type,with_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?)";
                     await connection.execute(sql_recharge_with, [client_transaction_id, sender_phone, amount,0,0,0,0,0,0, 1, checkTime, time,trans_mode,'transfer']);
-                    let sql_noti = 'INSERT INTO notification SET recipient = ?, description = ?, isread = ?';
-                    await connection.query(sql_noti, [receiver[0]?.id, "Recharge of Amount "+amount+" is successfull.", '0']);
-                    let sql_noti1 = "INSERT INTO notification SET recipient = ?, description = ?, isread = ?";
+                    let sql_noti = 'INSERT INTO notification SET recipient = ?, description = ?, isread = ?, noti_type = ?';
+                    await connection.query(sql_noti, [receiver[0]?.id, "Congrates! you received an reward of "+amount+" from your friend " + userInfo.code +".", '0', "Recharge"]);
+                    let sql_noti1 = "INSERT INTO notification SET recipient = ?, description = ?, isread = ?, noti_type = ?";
                     let withdrdesc = "Amount of "+ amount + " have been transferred successfully.";
-                    await connection.query(sql_noti1, [userInfo.id, withdrdesc , "0"]);
+                    await connection.query(sql_noti1, [userInfo.id, withdrdesc , "0", "Withdraw"]);
                     return res.status(200).json({
                         message: `Requested ${amount} sent successfully`,
                         curr_user_m:money,
@@ -1303,8 +1323,8 @@ const transfer = async (req, res) => {
                     await connection.execute(sql, [sender_phone, receiver_phone, amount]);
                     const sql_recharge = "INSERT INTO recharge (id_order, transaction_id, phone, money, type, status, today, url, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     await connection.execute(sql_recharge, [client_transaction_id, 0, receiver_phone, amount, 'wallet', 0, checkTime, 0, time]);
-                    let sql_noti = 'INSERT INTO notification SET recipient = ?, description = ?, isread = ?';
-                    await connection.query(sql_noti, [userInfo.id, "Balance Transfer of Amount "+amount+" Initiated Successfully.", '0']);
+                    let sql_noti = 'INSERT INTO notification SET recipient = ?, description = ?, isread = ?, noti_type = ?';
+                    await connection.query(sql_noti, [userInfo.id, "Balance Transfer of Amount "+amount+" Initiated Successfully.", '0', "Transfer"]);
                     return res.status(200).json({
                         message: `Waiting for admin approval`,
                         curr_user_m:money,
@@ -1515,6 +1535,29 @@ const listWithdraw = async (req, res) => {
         timeStamp: timeNow,
     });
 }
+
+const getnotificationCount = async (req, res) => {
+    let auth = req.cookies.auth;
+    if (!auth) {
+        return res.status(200).json({
+            message: 'Failed',
+            status: false,
+            timeStamp: timeNow,
+            N_Count: 0,
+        });
+    }
+    let [user] = await connection.query('SELECT * FROM users WHERE `token` = ?', [auth]);
+    const [notifications] = await connection.query(`SELECT COUNT(id) as total FROM notification WHERE recipient  = ? AND isread = ? `,[user[0]?.id, '0']);
+
+    let countNot = notifications[0].total;
+    
+    return res.status(200).json({
+            message: 'Success',
+            status: true,
+            N_Count: countNot,
+        });
+}
+
 
 const useRedenvelope = async (req, res) => {
     let auth = req.cookies.auth;
@@ -1869,10 +1912,38 @@ const updateRecharge = async (req, res) => {
             timeStamp: timeNow,
         });
     }
-
-
 }
 
+const getnotifications = async (req, res) => {
+    let auth = req.cookies.auth;
+    let [user] = await connection.query('SELECT * FROM users WHERE `token` = ?', [auth]);
+    const [rows] = await connection.query('SELECT * FROM notification WHERE `recipient` = ? ORDER BY id DESC',[user[0]?.id]);
+
+    if (!rows) {
+        return res.status(200).json({
+            message: 'Failed',
+            status: false,
+
+        });
+    }
+    return res.status(200).json({
+        message: 'Success',
+        status: true,
+        data: {
+        },
+        rows: rows
+    })
+};
+
+const updatenotifications = async (req, res) => {
+    let auth = req.cookies.auth;
+    let [user] = await connection.query('SELECT * FROM users WHERE `token` = ?', [auth]);
+    await connection.execute("UPDATE notification SET isread = ?  WHERE `recipient` = ? AND  isread = ? ", [1,user[0]?.id,'0'] );
+    return res.status(200).json({
+        message: 'Updated',
+        status: true,
+        });
+    } 
 
 module.exports = {
     userInfo,
@@ -1900,5 +1971,8 @@ module.exports = {
     updateRecharge,
     confirmRecharge,
     cancelRecharge,
-    confirmUSDTRecharge
+    confirmUSDTRecharge,
+    getnotificationCount,
+    getnotifications,
+    updatenotifications,
 }

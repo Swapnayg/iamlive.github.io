@@ -3265,6 +3265,25 @@ style="z-index: 2001;">
     $(document).ready(function () {
       // Select the overlay element
       $('.van-overlay').fadeIn(10);
+      $(".button__badge").css({"display":"none"});
+      $.ajax({
+        type: "GET",
+        url: "/api/webapi/getnotificationCount",
+        data: {
+
+        },
+        dataType: "json",
+        success: function (response) {
+          if(response.message == "Failed")
+          {
+            $(".button__badge").css({"display":"none"});
+          }
+          else{
+            $(".button__badge").text(response.N_Count);
+            $(".button__badge").css({"display":"block"});
+          }
+        }
+      });
     });
     $(window).on('load', function () {
       // Select the overlay element

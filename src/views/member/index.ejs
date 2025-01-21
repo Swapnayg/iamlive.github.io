@@ -993,6 +993,26 @@
             }
         }
 
+            $("#not_count").css({"display":"none"});
+			  $.ajax({
+                type: "GET",
+                url: "/api/webapi/getnotificationCount",
+                data: {
+        
+                },
+                dataType: "json",
+                success: function (response) {
+                  if(response.message == "Failed")
+                  {
+                    $("#not_count").css({"display":"none"});
+                  }
+                  else{
+                    $("#not_count").text(response.N_Count);
+                    $("#not_count").css({"display":"block"});
+                  }
+                }
+              });
+
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

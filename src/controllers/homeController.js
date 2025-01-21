@@ -167,6 +167,7 @@ const myProfilePage = async (req, res) => {
     return res.render("member/myProfile.ejs");
 }
 
+
 const getSalaryRecord = async (req, res) => {
     const auth = req.cookies.auth;
 

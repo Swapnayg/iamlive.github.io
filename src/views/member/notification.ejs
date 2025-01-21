@@ -167,8 +167,6 @@
                     <div data-v-3966082f="" role="feed" class="van-list">
 
                         <div class="lisys">
-
-                            <!----->
                         </div>
 
                     </div>
@@ -185,136 +183,111 @@
     <script src="/js/client.js"></script>
     <script>
     $(document).ready(function () {
-        function formateT(params) {
-            let result = (params < 10) ? "0" + params : params;
-            return result;
+        
+        
+        Date.prototype.toShortFormat = function() {
+
+            const monthNames = ["Jan", "Feb", "Mar", "Apr",
+                                "May", "Jun", "Jul", "Aug",
+                                "Sep", "Oct", "Nov", "Dec"];
+            
+            const day = this.getDate();
+            
+            const monthIndex = this.getMonth();
+            const monthName = monthNames[monthIndex];
+            
+            const year = this.getFullYear();
+            
+            return `${day}-${monthName}-${year}`;  
         }
 
-        function timerJoin(params = '', addHours = 0) {
-            let date = '';
-            if (params) {
-                date = new Date(Number(params));
-            } else {
-                date = new Date();
-            }
+        function formatAMPM(date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            var strTime = hours + ':' + minutes + ' ' + ampm;
+            return strTime;
+          }
+          
 
-            date.setHours(date.getHours() + addHours);
-
-            let years = formateT(date.getFullYear());
-            let months = formateT(date.getMonth() + 1);
-            let days = formateT(date.getDate());
-
-            let hours = date.getHours() % 12;
-            hours = hours === 0 ? 12 : hours;
-            let ampm = date.getHours() < 12 ? "AM" : "PM";
-
-            let minutes = formateT(date.getMinutes());
-            let seconds = formateT(date.getSeconds());
-
-            return years + '-' + months + '-' + days + ' ' + hours + ':' + minutes + ':' + seconds + ' ' + ampm;
-        }
-
-         function loadsRecharge(datas) {
-                // Filter only successful recharge transactions
-                let successfulRecharges = datas.filter(data => data.status === 1);
-                
-                let html = successfulRecharges.map((data) => {
-                return `
-                    <div data-v-3966082f="" class="item c-row c-row-between m-b-10">
+        $.ajax({
+            type: "GET",
+            url: "/api/webapi/updatenotifications",
+            dataType: "json",
+            success: function (response) {
+                $.ajax({
+                    type: "GET",
+                    url: "/api/webapi/getnotifications",
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.rows.length == 0) return;
+                        let html = response.rows.map((data,ind) => {
+                            let today = new Date(data.datetime);
+                            let not_time = formatAMPM(new Date(data.datetime));
+                            
+                            return `  <div data-v-3966082f="" class="item c-row c-row-between m-b-10">
                     
-                        <div data-v-3966082f="">
-                        <span style="color:red" >Deposit</span>
-                            <div data-v-3966082f="" class="number c-row">
-                                ${data.id_order}
-                                <div data-v-3966082f="" class="m-l-10 tag-read van-image" data-clipboard-text="${data.id_order}" style="width: 18px; height: 15px;"><img src="/images/copy.png" class="van-image__img" /></div>
-                            </div>
-                            <div data-v-3966082f="">
-                                <div data-v-3966082f="" class="money action m-b-10 m-t-10">
-                                    <!---->
-                                    <span data-v-3966082f="">₹ ${data.money}.00</span>
-                                </div>
-                            </div>
-                            <div data-v-3966082f="" class="time">${timerJoin(data.time)}</div>
-                        </div>
-                        <div data-v-3966082f="">
-                            <div data-v-3966082f="" class="state m-b-5">
-                                <!---->
-                                <div data-v-4e585e69="" style="color: ${(data.status == 1) ? 'rgb(107, 190, 88)' : (data.status == 0) ? 'rgb(255 171 0);' : 'red'}"> ${(data.status == 1) ? 'Success' : (data.status == 2) ? 'Cancelled' : 'Pending'}</div>
-                                <!---->
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join("");
-            $('.box:eq(0) .lisys').html(html);
-        }
-
-        function loadsWithdrawal(datas) {
-            let html = datas.map((data) => {
-                return `
-                    <div data-v-4e585e69="" class="item">
-                            <div data-v-4e585e69="">
-                            <span style="color:#2cff2c" >Withdraw</span>
-                                <div data-v-4e585e69="" class="tit c-row c-row-between c-row-middle">
-                                    <div data-v-4e585e69="" class="c-row c-row-between c-row-middle">
-                                        <span data-v-4e585e69="" class="c-row c-row-between c-row-middle">
-                                            <div data-v-4e585e69="" class="m-r-5 van-image" style="width: 24px; height: 20px;">
-                                                <img src="/images/king (10).png" class="van-image__img">
-                                            </div>BankCard</span>
-                                        </div>
-                                        <div data-v-4e585e69="" data-clipboard-text="${data.id_order}" class="tag-read"> ${data.id_order} 
-                                            <img data-v-4e585e69="" width="18px" height="15px" src="/images/copy.png" class="m-l-5">
+                                <div data-v-3966082f="" data-source="${data.noti_type}" onclick="redirect_click(this);">
+                                
+                                    <div data-v-3966082f="" class="number c-row">
+                                        ${ind+1}
+                                        <div data-v-3966082f="" class="m-l-10 tag-read van-image" data-clipboard-text="" style="width: 18px; height: 15px;"><img src="/images/copy.png" class="van-image__img" /></div>
+                                    </div>
+                                    <div data-v-3966082f="">
+                                        <div data-v-3966082f="" class="money action m-b-10 m-t-10">
+                                            <!---->
+                                            <span data-v-3966082f="">${data.description}</span>
                                         </div>
                                     </div>
-                                    <div data-v-4e585e69="" class="c-row c-row-between m-b-5 m-t-5">
-                                        <div data-v-4e585e69="">
-                                            <!---->
-                                            <div data-v-4e585e69="" class="number green"><!---->
-                                                <span data-v-4e585e69="" style="color:red" >₹ ${data.money}.00</span>
-                                            </div>
-                                            <!---->
-                                        </div>
+                                    <div data-v-3966082f="" class="time">`+ not_time+`</div>
+                                </div>
+                                <div data-v-3966082f="" style="width:40%;">
+                                    <div data-v-3966082f="" class="state m-b-5" style="font-weight: 500;">
                                         <!---->
-                                        <div data-v-4e585e69="" style="color: ${(data.status == 1) ? 'rgb(107, 190, 88)' : 'rgb(242, 65, 59)'}"> ${(data.status == 1) ? 'Agree' : (data.status == 2) ? 'Cancelled' : 'Waiting'}</div>
+                                        <div data-v-4e585e69="" > ` + today.toShortFormat() + `</div>
                                         <!---->
                                     </div>
-                                    <!---->
                                 </div>
-                            <div data-v-4e585e69="" class="time">${timerJoin(data.time)}</div>
-                        </div>
-                    </div>
-                    <br>
-                `;
-            }).join("");
-            $('.box:eq(1) .lisys').html(html);
-        }
-
-        // Load recharge records
-        $.ajax({
-            type: "GET",
-            url: "/api/webapi/recharge/list",
-            dataType: "json",
-            success: function (response) {
-                if (response.datas.length > 0) {
-                    loadsRecharge(response.datas);
-                }
+                            </div>`;
+                        }).join("");
+                        $('.box:eq(1) .lisys').html(html);
+                    }
+                });
             }
-        });
-
-        // Load withdrawal records
-        $.ajax({
-            type: "GET",
-            url: "/api/webapi/withdraw/list",
-            dataType: "json",
-            success: function (response) {
-                if (response.datas.length > 0) {
-                    loadsWithdrawal(response.datas);
-                }
-            }
-        });
-
-        // Other functions like clipboard and alertMess can remain unchanged
+        }); // Other functions like clipboard and alertMess can remain unchanged
     });
+
+    function redirect_click(ev)
+    {
+        var note_type = $(ev).attr('data-source').trim();
+        let redirect_link = "/";
+        if(note_type == 'Referral' ||  note_type == 'Password' || note_type == 'Transfer')
+        {
+            redirect_link = '/';
+        }
+        else if(note_type == 'Withdraw')
+        {
+            redirect_link = '/wallet/withdrawalrecord';
+        }
+        else if(note_type == 'Recharge')
+        {
+            redirect_link = '/wallet/rechargerecord';
+        }
+        else if(note_type == 'Commission')
+        {
+            redirect_link = '/promotion/promotionDes';
+        }
+        else if(note_type == 'Level')
+        {
+            redirect_link = '/promotion/tutorial';
+        }
+        window.location.href = redirect_link;
+        return false;
+
+    }
 </script>
     
     
