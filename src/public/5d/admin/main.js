@@ -116,8 +116,9 @@ function messNewJoin2(datas) {
 }
 
 function messNewJoin3(datas) {
+    //var prev_total = parseInt($("#total_bet").text().trim());
     let arr = ['b', 's', 'c', 'l', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    var overall_bet = 0;
+    var overall_bet = 0 ;
     for (let i = 0; i < arr.length; i++) {
         $(`#${arr[i]}`).attr('totalMoney', 0);
         $(`#${arr[i]}`).text(0);
@@ -125,17 +126,20 @@ function messNewJoin3(datas) {
     
     datas.map((data) => {
         let bet = data.bet.split(''); // là người dùng Join đặt cược
-
+        let x = data.x;
         for (let i = 0; i < bet.length; i++) {
-            let total_money = Number(data.money) / Number(bet.length);
+            let money =  (Number(data.money) * Number(x));
             let totalM = Number($(`#${bet[i]}`).attr('totalMoney'));
-            $(`#${bet[i]}`).attr('totalMoney', totalM + Number(total_money));
-            $(`#${bet[i]}`).text(totalM + Number(total_money));
-            overall_bet = parseInt(parseInt(overall_bet) + Number(data.money));
+            $(`#${bet[i]}`).attr('totalMoney', totalM + money);
+            $(`#${bet[i]}`).text(totalM + money);
+            overall_bet = parseInt(parseInt(overall_bet) + (Number(data.money) * Number(x)));
+            $("#total_bet").text(parseInt(overall_bet).toString());
         }
     });
-
-    $("#total_bet").text(parseInt(overall_bet).toString());
+    if(datas.length == 0)
+    {
+        $("#total_bet").text('0');
+    }
 }
 
 function callListOrder(e) {
@@ -200,27 +204,26 @@ function messNewJoin(data) {
 }
 
 function messNewJoin5(data) {
+    
     let game = $('html').attr('data-change');
     if (data.chane == 1) return;
     if (data.game != game) return;
-
-    var overall_bet = 0;
+    var prev_total = parseInt($("#total_bet").text().trim());
+    var overall_bet = 0 + prev_total;
     let bet = data.list_join.split(''); // là người dùng Join đặt cược
-
+    let x = data.x;
     for (let i = 0; i < bet.length; i++) {
-        let money = Number(data.money);
+        let money =  (Number(data.money) * Number(x));
         let totalM = Number($(`#${bet[i]}`).attr('totalMoney'));
         $(`#${bet[i]}`).attr('totalMoney', totalM + money);
         $(`#${bet[i]}`).text(totalM + money);
-        overall_bet = parseInt(parseInt(overall_bet) + Number(data.money));
+        overall_bet = parseInt(parseInt(overall_bet) + (Number(data.money) * Number(x)));
+        $("#total_bet").text(parseInt(overall_bet).toString());
     }
-
-    $("#total_bet").text(parseInt(overall_bet).toString());
 }
 
 socket.on("data-server-5", function (msg) {
     messNewJoin(msg);
-    console.log(msg);
     messNewJoin5(msg);
 });
 
