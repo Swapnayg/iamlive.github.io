@@ -42,6 +42,10 @@ const membersPage = async (req, res) => {
     return res.render("manage/members.ejs");
 }
 
+const adminChatPage = async (req, res) => {
+    return res.render("manage/aChat.ejs");
+}
+
 const ctvPage = async (req, res) => {
     return res.render("manage/ctv.ejs");
 }
@@ -2057,6 +2061,7 @@ module.exports = {
     middlewareAdminController,
     changeAdmin,
     membersPage,
+    adminChatPage,
     listMember,
     infoMember,
     userInfo,

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chat Messages</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/dist/css/adminlte.min.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+  <style>
+    .block-click {
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <%- include('nav') %>
+      <div class="content-wrapper">
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Chat Messages</h1>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <!-- Default box -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Chat Messages</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+              </div>
+            </div>
+            <div class="card-body p-0" style="overflow-y: hidden">
+              <table class="table table-striped projects" id="table1">
+                <thead>
+                  <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Sender</th>
+                    <th class="text-center">Message</th>
+                    <th class="text-center">Date</th>
+                    <th class="text-center">Time</th>
+                    <th class="text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- #region -->
+                </tbody>
+              </table>
+            </div>
+            <nav aria-label="Page navigation example" style="margin-top: 20px; display: flex; justify-content: center">
+
+
+    
+
+              <script  src="https://code.jquery.com/jquery-3.7.1.js">
+                      </script>
+                      <script src=
+              "https://cdn.datatables.net/2.2.1/js/dataTables.js">
+                      </script>
+            </nav>
+          </div>
+        </section>
+      </div>
+      <div id="messages"></div>
+  </div> 
+  <script src="/plugins/jquery/jquery.min.js"></script>
+  <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/dist/js/adminlte.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+  <script src="/js/admin/admin.js"></script> 
+    <script>
+      module = {};
+  </script>
+  <script type="module">
+    $("#search").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("tbody tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
+  });
+
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+      import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDXiVMk3XgvOtgqwl_ERe6ODnDlDYiV5gM",
+  authDomain: "example-firebase-db-21b0b.firebaseapp.com",
+  projectId: "example-firebase-db-21b0b",
+  storageBucket: "example-firebase-db-21b0b.firebasestorage.app",
+  messagingSenderId: "512258180846",
+  appId: "1:512258180846:web:9c20193809838ec7cbd5ff",
+  measurementId: "G-K6WE9VHDY7"
+};
+var chatname = "chat123";
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+
+      // variables
+      var msgTxt = document.getElementById('msgTxt');
+      var sender = chatname;
+      // if(sessionStorage.getItem('sender')){
+      //     sender = sessionStorage.getItem('sender');
+      // } else {
+      //     sender = prompt('PLEASE ENTER YOUR NAME');
+      //     sessionStorage.setItem('sender',sender);
+      // }
+
+      // TO SEND MESSAGES
+      module.sendMsg = function sendMsg(){
+          var msg = msgTxt.value;
+          var timestamp = new Date().getTime();
+          set(ref(db,"messages/"+timestamp),{
+              msg : msg,
+              sender : sender,
+              status:"active",
+          })
+
+          msgTxt.value="";
+      }
+      let rows = '';
+      let count = 0;
+      // TO RECEIVE MSG
+      onChildAdded(ref(db,"messages"), (data)=>{
+        count += 1;
+         rows += `<tr class="text-center" style="" id=`+data.key+`>
+          <td>`+count+`</td>
+          <td>
+            <b style="color: #2003db">`+data.val().sender+`</b>
+          </td>
+          <td>
+            <b>`+data.val().msg+`</b>
+          </td>
+          <td>
+            <b style="color: #2003db"><b>`+data.val().datetime+`</b>
+          </td>
+         <td>
+            <b style="color: #2003db"><b>`+data.val().time+`</b>
+          </td>
+          <td class="project-actions text-center" style="min-width: 100px">
+            
+           
+          <a class="btn btn-danger btn-sm delete-btn" onclick=module.dltMsg(`+data.key+`)>
+              <i class="fas fa-trash"></i> Delete
+            </a>
+          </td>
+        </tr>`;
+        $("#table1 tbody").html(rows);
+        //$("#table1").dataTable().fnDestroy();
+
+      });
+      new DataTable('#table1', {
+          
+        "bDestroy": true
+    });
+      
+      
+
+      // TO DELETE MSG
+      module.dltMsg = function dltMsg(key){
+        remove(ref(db,"messages/"+key));
+    }
+
+      // WHEN MSG IS DELETED
+      onChildRemoved(ref(db,"messages"),(data)=>{
+          $('#'+data.key).remove();
+      })
+
+
+  </script>
+</body>
+
+</html>

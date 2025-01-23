@@ -11,6 +11,7 @@ const cronJobGame1p = (io) => {
         const [winGo1] = await connection.execute('SELECT * FROM `wingo` WHERE `game` = "wingo" ORDER BY `id` DESC LIMIT 2 ', []);
         const data = winGo1; // Cầu mới chưa có kết quả
         io.emit('data-server', { data: data });
+        io.emit('data-server-chat', { data: data, 'game': '1' });
 
         await k5Controller.add5D(1);
         await k5Controller.handling5D(1);

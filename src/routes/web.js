@@ -193,6 +193,7 @@ const initWebRouter = (app) => {
 
 
     router.get('/admin/manager/members', adminController.middlewareAdminController, adminController.membersPage); // get info account
+    router.get('/admin/manager/adminChatPage', adminController.middlewareAdminController, adminController.adminChatPage); 
     router.get('/admin/manager/createBonus', adminController.middlewareAdminController, adminController.giftPage); // get info account
     router.get('/admin/manager/ctv', adminController.middlewareAdminController, adminController.ctvPage); // get info account
     router.get('/admin/manager/ctv/profile/:phone', adminController.middlewareAdminController, adminController.ctvProfilePage); // get info account

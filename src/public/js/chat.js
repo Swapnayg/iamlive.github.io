@@ -5,6 +5,7 @@ window.onload = function() {
       d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
       let expires = "expires=" + d.toUTCString();
       document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      console.log("123");
   }
   function getCookie(cname) {
       let name = cname + "=";
@@ -36,6 +37,7 @@ window.onload = function() {
           };
           $('.name').text(data.data.name_user);
           chatname = data.data.name_user;
+          console.log("123");
           console.log(chatname);
           var firebaseConfig = {
 apiKey: "AIzaSyDRtK5Z_TAgMUhDIBAV2X_psj4n5D09iqw",
