@@ -98,9 +98,9 @@ function messNewJoin2(datas) {
         let list_join2 = data.bet; // là người dùng Join đặt cược
         let x = data.amount; // là người dùng Join đặt cược
     
-        let total_money = (Number(data.money) * Number(x)) * list_join.length;
+        //let total_money = (Number(data.money) * Number(x)) * list_join.length;
+        let total_money = (Number(data.money)) * list_join.length;
         let money = formatMoney(total_money, ',');
-        
         result += `
         <div class="direct-chat-infos clearfix mt-2">
             <span class="direct-chat-name float-left"></span>
@@ -127,7 +127,12 @@ function messNewJoin3(datas) {
     datas.map((data) => {
         let bet = data.bet.split(''); // là người dùng Join đặt cược
         let x = data.x;
+        if(x == null)
+        {
+            x = 1;
+        }
         for (let i = 0; i < bet.length; i++) {
+            
             let money =  (Number(data.money) * Number(x));
             let totalM = Number($(`#${bet[i]}`).attr('totalMoney'));
             $(`#${bet[i]}`).attr('totalMoney', totalM + money);
@@ -170,12 +175,16 @@ function callListOrder(e) {
 //callListOrder();
 socket.on("data-server-5d", function (msg) {
     if (msg) {
+
         callListOrder();
         $('.direct-chat-msg').html('');
     }
 });
 
 function messNewJoin(data) {
+    var internalb= $("#manage_2").find('.sub-menu-color').attr('data').trim();
+    if(internalb == data.join.trim())
+    {
     let game = $('html').attr('data-change');
     if (data.change == 1) return;
     if (data.game != game) return;
@@ -202,9 +211,12 @@ function messNewJoin(data) {
         scrollTop: $(".direct-chat-msg").prop("scrollHeight")
     }, 750);
 }
+}
 
 function messNewJoin5(data) {
-    
+    var internalb= $("#manage_2").find('.sub-menu-color').attr('data').trim();
+    if(internalb == data.join.trim())
+    {
     let game = $('html').attr('data-change');
     if (data.chane == 1) return;
     if (data.game != game) return;
@@ -220,6 +232,7 @@ function messNewJoin5(data) {
         overall_bet = parseInt(parseInt(overall_bet) + (Number(data.money) * Number(x)));
         $("#total_bet").text(parseInt(overall_bet).toString());
     }
+}
 }
 
 socket.on("data-server-5", function (msg) {
