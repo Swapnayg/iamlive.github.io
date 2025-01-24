@@ -166,7 +166,7 @@
                         <i class="fa-light fa-angle-left fa-fade fa-xl center" style="color: #FFF"></i>
                     </div>
                 </div>
-                <div data-v-106b99c8="" class="navbar-title"> My Team </div>
+                <div data-v-106b99c8="" class="navbar-title"> My Team</div>
                 <div data-v-106b99c8="" class="navbar-right" onclick="location.href='/promotion/bonusrecord'">
                     <div data-v-7c8bbbf4="" data-v-106b99c8="" class="c-row">
                         <i class="fa-duotone fa-calendar-lines fa-fade fa-lg"
@@ -312,7 +312,7 @@
                                     <div data-v-0ff6946a="">Self RC:${data.total_money}</div>
                                 </div>
                                <div data-v-0ff6946a="">REG time: ${timerJoin(data.time)}</div>
-                               <div data-v-0ff6946a="" id="subordinateList">Subordinate: ${Array.isArray(data.invite_count) ? data.invite_count.map(item => `<li>${item}</li>`).join('') : 'No Subordinates'}</div>
+                               <div data-v-0ff6946a="" id="subordinateList">Subordinate: ${data.invite_count}</div>
                             </div>
                         </div>
                         `;
@@ -321,6 +321,7 @@
 
                     $('.showListButton').on('click', function () {
                         const inviteCount = $(this).data('invite-count');
+                        console.log(inviteCount);
                         const listHTML = Array.isArray(inviteCount) ? `<ul>${inviteCount.map(item => `<li>${item}</li>`).join('')}</ul>` : 'No Subordinates';
                         $('#subordinateList').html(`Subordinate: ${listHTML}`);
                     });
@@ -338,7 +339,6 @@
                             item.daily_turn_over = item.daily_turn_over || 0;
                             item.invite_count = Array.isArray(item.invite_count) ? item.invite_count.join(', ') : '';
                             item.total_turn_over = item.total_turn_over || 0;
-                            console.log(item.invite_count);
                             return item;
                         });
                         const totalTurnover = f1Data.reduce((total, item) => {
@@ -396,7 +396,7 @@
                                                 <div data-v-0ff6946a="">Self RC: ${data.total_money}</div>
                                             </div>
                                            
-                <div data-v-0ff6946a="" id="subordinateList">Subordinate: ${Array.isArray(data.invite_count) ? data.invite_count.map(item => `<li>${item}</li>`).join('') : 'No Subordinates'}</div>
+                <div data-v-0ff6946a="" id="subordinateList">Subordinate: ${data.invite_count}</div>
                                         </div>
                                  </div>
                     `;
@@ -405,6 +405,7 @@
 
                                 $('.showListButton').on('click', function () {
                                     const inviteCount = $(this).data('invite-count');
+                                    console.log(inviteCount);
                                     const listHTML = Array.isArray(inviteCount) ? `<ul>${inviteCount.map(item => `<li>${item}</li>`).join('')}</ul>` : 'No Subordinates';
                                     $('#subordinateList').html(`Subordinate: ${listHTML}`);
                                 });

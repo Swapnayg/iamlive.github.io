@@ -22,7 +22,7 @@
                 <img src="/images/avatar.svg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Admin | DigiSlay</a>
+                <a href="#" class="d-block">Admin | <span class="admin_name"></span></a>
             </div>
         </div>
         <nav class="mt-2">
@@ -135,4 +135,21 @@
             </ul>
         </nav>
     </div>
+    <style>
+        .admin_name
+        {
+            text-transform: capitalize;
+        }
+    </style>
+    <script>
+        fetch('/api/webapi/GetUserInfo')
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === false) {
+                unsetCookie();
+                return false;
+            };
+            $('.admin_name').text(data.data.name_user);
+        });
+    </script>
 </aside>
