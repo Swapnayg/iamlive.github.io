@@ -209,7 +209,7 @@
     #messages{
         position: absolute;
         left:0;
-        top:20%;
+        top:16%;
         width:100%;
         height:400px;
         overflow-y:scroll;
@@ -391,22 +391,36 @@
         var seconds = 1000 * 60;
         var timer;
         
-        function myFunction() {
-           if(seconds == 60000)
-             timer = setInterval(myFunction, 1000)
-           seconds -= 1000;
-           document.getElementById("timer").innerHTML = '0:' + seconds/1000;
-           if (seconds == 0) {
-               seconds = 1000 * 60;
-           }
-        } 
+        function calltimer()
+        {
+          var timer2 = "0:60";
+        var interval = setInterval(function() {
+        
+        
+          var timer = timer2.split(':');
+          //by parsing integer, I avoid all extra string processing
+          var minutes = parseInt(timer[0], 10);
+          var seconds = parseInt(timer[1], 10);
+          --seconds;
+          minutes = (seconds < 0) ? --minutes : minutes;
+          seconds = (seconds < 0) ? 59 : seconds;
+          seconds = (seconds < 10) ? '0' + seconds : seconds;
+          //minutes = (minutes < 10) ?  minutes : minutes;
+          $('#timer').html(minutes + ':' + seconds);
+          if (minutes < 0) clearInterval(interval);
+          //check if both minutes and seconds are 0
+          if ((seconds <= 0) && (minutes <= 0)) clearInterval(interval);
+          timer2 = minutes + ':' + seconds;
+        }, 1000);
+        
+        }
 
         const socket = io();
         
         socket.on("data-server-chat", function (msg) {
             if (msg) {
                 
-                myFunction();
+              calltimer();
                 $("#period_id").text(msg.data[1].period);
                 $(".b_number").text(msg.data[1].amount);
                 if(msg.data[1].amount == 5 || msg.data[1].amount == 0)

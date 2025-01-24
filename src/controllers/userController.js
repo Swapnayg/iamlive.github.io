@@ -451,13 +451,14 @@ const promotion = async (req, res) => {
     let userInfo = user[0];
 
     // Directly referred level-1 users
-    const [f1s] = await connection.query('SELECT `phone`, `code`,`invite`, `time` FROM users WHERE `invite` = ? ', [userInfo.code]);
+    console.log(userInfo.code);
+    const [f1s] = await connection.query('SELECT `phone`, `code`,`invite`, `time`,`today` FROM users WHERE `invite` = ? ', [userInfo.code]);
 
     // Directly referred users today
     let f1_today = 0;
     for (let i = 0; i < f1s.length; i++) {
-        const f1_time = f1s[i].time;
-        let check = (timerJoin(f1_time) == timerJoin()) ? true : false;
+        const f1_time = f1s[i].today;
+        let check = (new Date(f1_time).getDate() == new Date().getDate()) && (new Date(f1_time).getMonth() == new Date().getMonth()) && (new Date(f1_time).getFullYear()  == new Date().getFullYear() )  ? true : false;
         if (check) {
             f1_today += 1;
         }
@@ -467,32 +468,32 @@ const promotion = async (req, res) => {
     let f_all_today = 0;
     for (let i = 0; i < f1s.length; i++) {
         const f1_code = f1s[i].code;
-        const f1_time = f1s[i].time;
-        let check_f1 = (timerJoin(f1_time) == timerJoin()) ? true : false;
+        const f1_time = f1s[i].today;
+        let check_f1 = (new Date(f1_time).getDate() == new Date().getDate()) && (new Date(f1_time).getMonth() == new Date().getMonth()) && (new Date(f1_time).getFullYear()  == new Date().getFullYear() )  ? true : false;
         if (check_f1) f_all_today += 1;
 
         // Total level-2 referrals today
-        const [f2s] = await connection.query('SELECT `phone`, `code`,`invite`, `time` FROM users WHERE `invite` = ? ', [f1_code]);
+        const [f2s] = await connection.query('SELECT `phone`, `code`,`invite`, `time`,`today` FROM users WHERE `invite` = ? ', [f1_code]);
         for (let i = 0; i < f2s.length; i++) {
             const f2_code = f2s[i].code;
-            const f2_time = f2s[i].time;
-            let check_f2 = (timerJoin(f2_time) == timerJoin()) ? true : false;
+            const f2_time = f2s[i].today;
+            let check_f2 = (new Date(f2_time).getDate() == new Date().getDate()) && (new Date(f2_time).getMonth() == new Date().getMonth()) && (new Date(f2_time).getFullYear()  == new Date().getFullYear() )  ? true : false;
             if (check_f2) f_all_today += 1;
 
             // Total level-3 referrals today
-            const [f3s] = await connection.query('SELECT `phone`, `code`,`invite`, `time` FROM users WHERE `invite` = ? ', [f2_code]);
+            const [f3s] = await connection.query('SELECT `phone`, `code`,`invite`, `time`,`today` FROM users WHERE `invite` = ? ', [f2_code]);
             for (let i = 0; i < f3s.length; i++) {
                 const f3_code = f3s[i].code;
-                const f3_time = f3s[i].time;
-                let check_f3 = (timerJoin(f3_time) == timerJoin()) ? true : false;
+                const f3_time = f3s[i].today;
+                let check_f3 = (new Date(f3_time).getDate() == new Date().getDate()) && (new Date(f3_time).getMonth() == new Date().getMonth()) && (new Date(f3_time).getFullYear()  == new Date().getFullYear() )  ? true : false;
                 if (check_f3) f_all_today += 1;
 
                 // Total level-4 referrals today
-                const [f4s] = await connection.query('SELECT `phone`, `code`,`invite`, `time` FROM users WHERE `invite` = ? ', [f3_code]);
+                const [f4s] = await connection.query('SELECT `phone`, `code`,`invite`, `time`,`today` FROM users WHERE `invite` = ? ', [f3_code]);
                 for (let i = 0; i < f4s.length; i++) {
                     const f4_code = f4s[i].code;
-                    const f4_time = f4s[i].time;
-                    let check_f4 = (timerJoin(f4_time) == timerJoin()) ? true : false;
+                    const f4_time = f4s[i].today;
+                    let check_f4 = (new Date(f4_time).getDate() == new Date().getDate()) && (new Date(f4_time).getMonth() == new Date().getMonth()) && (new Date(f4_time).getFullYear()  == new Date().getFullYear() )  ? true : false
                     if (check_f4) f_all_today += 1;
                 }
             }
@@ -573,10 +574,14 @@ const promotion = async (req, res) => {
             total_f: selectedData.length,
             f1_today: f1_today,
             f_all_today: f_all_today,
-            roses_f1: userInfo.roses_f1,
-            roses_f: userInfo.roses_f,
-            roses_all: rosesAdd,
-            roses_today: userInfo.roses_today,
+            // roses_f1: userInfo.roses_f1,
+            // roses_f: userInfo.roses_f,
+            // roses_all: rosesAdd,
+            // roses_today: userInfo.roses_today,
+            roses_f1: 10,
+            roses_f: 20,
+            roses_all: 30,
+            roses_today: 40,
         },
         timeStamp: timeNow,
     });

@@ -493,7 +493,7 @@
                               0
                             </div>
                             <div data-v-167a3387="" class="amount_txt">
-                              Yesterday's total commission
+                              Today's total commission
                             </div>
                             <div data-v-167a3387="" class="tip">
                               Upgrade the level to increase commission income
@@ -757,7 +757,6 @@
                 $('#f1').text(response.invite.f1);
                 $('#f1_today').text(response.invite.f1_today);
                 const f1Count =response.invite.f1_today;
-                console.log(f1Count);
                 $('#f_all_today').text(response.invite.f_all_today);
                 $('#f_total').text(response.invite.total_f);
 
@@ -765,8 +764,8 @@
                 $('#roses_f').text("Team Commission: " + response.invite.roses_f);
                 $('#roses_all').text(response.invite.roses_all);
                 $('#roses_today').text(response.invite.roses_today);
+                $('.amount').text(response.invite.roses_today);
                 $('#invite_code').text(window.location.hostname + `/register?r_code=${response.info[0].code}`);
-
                 if (response.status === false) return location.href = '/home';
                 RosesRender(response.level);
                 $('.btn-box .btn:eq(0)').attr('data-clipboard-text', response.info[0].code);
