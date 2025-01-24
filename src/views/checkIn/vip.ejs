@@ -7,7 +7,6 @@
     <meta name="robots" content="noindex,nofollow">
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
     <title>BINOD</title>
-    <link rel="modulepreload" as="script" crossorigin="" href="../assets/js/vip-4b032763.js">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css">
@@ -15503,7 +15502,7 @@ textarea {
       <div data-v-aa7d19c8="" class="vip-content">
         <div data-v-aa7d19c8="" class="vip-content-empirical">
           <div data-v-aa7d19c8="">
-            <p data-v-aa7d19c8="" class="red">
+            <p data-v-aa7d19c8="" class="red" id="xp_gain">
               0 EXP
             </p>
             <p data-v-aa7d19c8="">
@@ -16176,6 +16175,7 @@ textarea {
   <!---->
   
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <script>
@@ -16187,6 +16187,17 @@ textarea {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
+    });
+    $.ajax({
+        type: "GET",
+        url: "/api/webapi/xpgain_value",
+        data: {
+
+        },
+        dataType: "json",
+        success: function (response) {
+            $("#xp_gain").text(response.xp_value +" EXP")
+        }
     });
 </script>
 </html>

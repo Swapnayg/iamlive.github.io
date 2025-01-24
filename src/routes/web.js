@@ -253,6 +253,9 @@ const initWebRouter = (app) => {
     router.post('/api/webapi/admin/5d/editResult', adminController.middlewareAdminController, adminController.editResult); // get info account
     router.post('/api/webapi/admin/k3/editResult', adminController.middlewareAdminController, adminController.editResult2); // get info account
 
+
+    router.get('/api/webapi/xpgain_value', middlewareController, userController.xpgain_value);
+
     return app.use('/', router);
 }
 

@@ -504,25 +504,25 @@
                                   Direct subordinates
                                 </div>
                                 <div data-v-167a3387="" class="line1">
-                                  <div data-v-167a3387="">
+                                  <div data-v-167a3387="" class="d_n_register">
                                     0
                                   </div>
-                                  number of register
+                                  Number of register
                                 </div>
                                 <div data-v-167a3387="" class="line2">
-                                  <div data-v-167a3387="">
+                                  <div data-v-167a3387="" class="d_dep_num">
                                     0
                                   </div>
                                   Deposit number
                                 </div>
                                 <div data-v-167a3387="" class="line3">
-                                  <div data-v-167a3387="">
+                                  <div data-v-167a3387="" class="d_d_amount">
                                     0
                                   </div>
                                   Deposit amount
                                 </div>
                                 <div data-v-167a3387="" class="line1">
-                                  <div data-v-167a3387="">
+                                  <div data-v-167a3387="" class="d_p_f_deposit">
                                     0
                                   </div>
                                   Number of people making first deposit
@@ -533,25 +533,25 @@
                                   Team subordinates
                                 </div>
                                 <div data-v-167a3387="" class="line1">
-                                  <div data-v-167a3387="">
+                                  <div data-v-167a3387="" class="ts_n_register">
                                     0
                                   </div>
-                                  number of register
+                                  Number of register
                                 </div>
                                 <div data-v-167a3387="" class="line2">
-                                  <div data-v-167a3387="">
+                                  <div data-v-167a3387="" class="ts_dep_num">
                                     0
                                   </div>
                                   Deposit number
                                 </div>
                                 <div data-v-167a3387="" class="line3">
-                                  <div data-v-167a3387="">
+                                  <div data-v-167a3387="" class="ts_d_amount">
                                     0
                                   </div>
                                   Deposit amount
                                 </div>
                                 <div data-v-167a3387="" class="line1">
-                                  <div data-v-167a3387="">
+                                  <div data-v-167a3387="" class="ts_p_f_deposit">
                                     0
                                   </div>
                                   Number of people making first deposit
@@ -765,6 +765,17 @@
                 $('#roses_all').text(response.invite.roses_all);
                 $('#roses_today').text(response.invite.roses_today);
                 $('.amount').text(response.invite.roses_today);
+
+                $('.d_n_register').text(response.invite.d_n_register);
+                $('.d_dep_num').text(response.invite.d_dep_num);
+                $('.d_d_amount').text(response.invite.d_d_amount);
+                $('.d_p_f_deposit').text(response.invite.d_p_f_deposit);
+
+                $('.ts_n_register').text(response.invite.ts_n_register);
+                $('.ts_dep_num').text(response.invite.ts_dep_num);
+                $('.ts_d_amount').text(response.invite.ts_d_amount);
+                $('.ts_p_f_deposit').text(response.invite.ts_p_f_deposit);
+
                 $('#invite_code').text(window.location.hostname + `/register?r_code=${response.info[0].code}`);
                 if (response.status === false) return location.href = '/home';
                 RosesRender(response.level);
