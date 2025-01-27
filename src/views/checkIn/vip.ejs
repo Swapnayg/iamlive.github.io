@@ -5915,7 +5915,6 @@
         },
         dataType: "json",
         success: function (response) {
-            $("#xp_gain").text(response.xp_value +" EXP");
             var xp_Score = parseInt(response.xp_value);
             $(".swiper-slide").each(function(index){
                 var infodiv = parseInt($(this).find("#pro_div_span"+(index+1)).find("span").attr("data-max")); 
