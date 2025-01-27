@@ -5919,21 +5919,28 @@
             var xp_Score = parseInt(response.xp_value);
             $(".swiper-slide").each(function(index){
                 var infodiv = parseInt($(this).find("#pro_div_span"+(index+1)).find("span").attr("data-max")); 
-                var percetage = parseInt(parseInt(xp_Score) / infodiv).toFixed(0) * 100 ;
+                var percetage1 = xp_Score / infodiv;
+                if(percetage1.toString().split(".")[1].indexOf('e-') != -1) 
+                {
+                    var percetage = 0;
+                }
+                else{
+                    var percetage = parseInt(percetage1 * 100).toFixed(0);
+                }
                 //document.getElementById('vip_lev_img').style.backgroundImage = 'url(/assets/png/levl-img'+ (index+1) +'.png);';
                 //$("#vip_lev_img").css('background-image', 'url(/assets/png/levl-img'+ (index+1) +'.png)');
                 $(this).find("#pro_div_span"+(index+1)).find("span").text(parseInt(xp_Score) +"/"+infodiv)
-                if(parseInt(percetage) >= 100)
-                {
-                    updateProgress(100,'level'+(index+1));
-                }
-                else if(parseInt(percetage) <= 0)
+                if(parseInt(percetage) <= 0)
                 {
                     updateProgress(0,'level'+(index+1));
                 }
-                else
+                else if(parseInt(percetage) <= 100)
                 {
                     updateProgress(parseInt(percetage),'level'+(index+1));
+                }
+                else if(parseInt(percetage) > 100)
+                {
+                    updateProgress(100,'level'+(index+1));
                 }
               });
         }
