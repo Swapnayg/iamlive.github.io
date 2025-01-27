@@ -5919,7 +5919,7 @@
             $(".swiper-slide").each(function(index){
                 var infodiv = parseInt($(this).find("#pro_div_span"+(index+1)).find("span").attr("data-max")); 
                 var percetage1 = xp_Score / infodiv;
-                if(percetage1.toString().split(".")[1].indexOf('e-') != -1) 
+                if(percetage1.toString().indexOf('e-') != -1) 
                 {
                     var percetage = 0;
                 }
