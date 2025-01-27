@@ -5922,7 +5922,7 @@
                 var percetage = parseInt(parseInt(xp_Score) / infodiv).toFixed(0) * 100 ;
                 //document.getElementById('vip_lev_img').style.backgroundImage = 'url(/assets/png/levl-img'+ (index+1) +'.png);';
                 //$("#vip_lev_img").css('background-image', 'url(/assets/png/levl-img'+ (index+1) +'.png)');
-
+                $(this).find("#pro_div_span"+(index+1)).find("span").text(parseInt(xp_Score) +"/"+infodiv)
                 if(parseInt(percetage) >= 100)
                 {
                     updateProgress(100,'level'+(index+1));
