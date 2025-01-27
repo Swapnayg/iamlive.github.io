@@ -5927,6 +5927,10 @@
                 {
                     updateProgress(100,'level'+(index+1));
                 }
+                else if(parseInt(percetage) <= 0)
+                {
+                    updateProgress(0,'level'+(index+1));
+                }
                 else
                 {
                     updateProgress(parseInt(percetage),'level'+(index+1));
