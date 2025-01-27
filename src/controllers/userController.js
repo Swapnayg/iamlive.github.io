@@ -2019,6 +2019,19 @@ const xpgain_value = async (req, res) => {
     const [wingo_xp] = await connection.query(`SELECT SUM(money) as total FROM minutes_1 WHERE phone = ? `, user[0].phone);
     const [k3_xp] = await connection.query(`SELECT SUM(money) as total FROM result_k3 WHERE phone = ? `, user[0].phone);
     const [d5_xp] = await connection.query(`SELECT SUM(money) as total FROM result_5d WHERE phone = ? `, user[0].phone);
+    if(wingo_xp[0].total == null)
+    {
+        wingo_xp[0].total = 0;
+    }
+    if(k3_xp[0].total == null)
+    {
+        k3_xp[0].total = 0;
+    }
+    if(d5_xp[0].total == null)
+    {
+        d5_xp[0].total = 0;
+    }
+
     xp_gain_val = parseInt(wingo_xp[0].total) + parseInt(k3_xp[0].total) + parseInt(d5_xp[0].total);
 
     return res.status(200).json({
