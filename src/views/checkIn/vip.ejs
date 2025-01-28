@@ -5916,6 +5916,7 @@
         dataType: "json",
         success: function (response) {
             var xp_Score = parseInt(response.xp_value);
+            $("#xp_gain").text(xp_Score);
             $(".swiper-slide").each(function(index){
                 var infodiv = parseInt($(this).find("#pro_div_span"+(index+1)).find("span").attr("data-max")); 
                 var percetage1 = xp_Score / infodiv;
