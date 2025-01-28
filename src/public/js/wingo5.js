@@ -799,129 +799,75 @@ var myModal_result_Period = document.getElementById("myModal_result_Period");
   }
   
   function showListOrder_t(list_orders, x) {
-  if (list_orders.length == 0) {
-    return $(`.game-list .con-box:eq(${x}) .hb`).html(
-      `
-        <div data-v-a9660e98="" class="van-empty">
-          <div class="van-empty__image">
-            <img src="/images/empty-image-default.png" />
+    if (list_orders.length == 0) {
+      return $(`.game-list .con-box:eq(${x}) .hb`).html(
+        `
+          <div data-v-a9660e98="" class="van-empty">
+            <div class="van-empty__image">
+              <img src="/images/empty-image-default.png" />
+            </div>
+            <p class="van-empty__description">No data</p>
           </div>
-          <p class="van-empty__description">No data</p>
-        </div>
-      `
-    );
-  }
-
-  let htmls = "";
-  
-  let amounts = list_orders.map((order) => order.amount);
-  let labels = list_orders.map((order) => order.period % 100);
-  
-
-  htmls = `
-    <style>
-      canvas {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        transform: rotate(360deg);
-        transform-origin: center;
-        
-      }
-    </style>
-  
-   <canvas id="graphCanvas" width="380" height="400"></canvas>
-   
-    <script>
-    labels1 = ${JSON.stringify(labels)};
-    amounts1 = [${amounts.join(', ')}];
-    labels1.reverse();
-    amounts1.reverse();
-    
-    data = {
-      labels: labels1,
-      values: amounts1
-    };
-
-       canvas = document.getElementById('graphCanvas');
-   ctx = canvas.getContext('2d');
-
-  function createGradient(value, ctx, x, y, prevX, prevY) {
-    gradient = ctx.createLinearGradient(prevX, prevY, x, y);
-    if (value === 0) {
-      gradient.addColorStop(0, 'rgba(149,2,156,1)');
-      gradient.addColorStop(0.35, 'rgba(121,9,111,1)');
-      gradient.addColorStop(1, 'rgba(1,255,0,1)');
-    } else if (value === 5) {
-      gradient.addColorStop(0, 'rgba(149,2,156,1)');
-      gradient.addColorStop(0.35, 'rgba(121,9,111,1)');
-      gradient.addColorStop(1, 'rgba(255,0,14,1)');
+        `
+      );
     }
-    return gradient;
-  }
-
-  function plotGraph(data) {
-     padding = 50;
-     spaceBetween = (canvas.width - padding * 2) / (data.values.length - 1);
-    
-    ctx.font = '14px Arial';
-    ctx.lineWidth = 2;
-
-    // Draw the Y axis labels
-    for (let i = 0; i <= 9; i++) {
-      ctx.fillText(9 - i, padding - 30, padding + i * (canvas.height - padding * 2) / 9);
-    }
-
-    data.values.forEach((value, index) => {
-       x = padding + index * spaceBetween;
-       y = padding + (9 - value) * (canvas.height - padding * 2) / 9;
-
-      if (index > 0) {
-         prevX = padding + (index - 1) * spaceBetween;
-         prevY = padding + (9 - data.values[index - 1]) * (canvas.height - padding * 2) / 9;
-        
-        ctx.beginPath();
-        ctx.moveTo(prevX, prevY);
-        ctx.lineTo(x, y);
-        
-        if (value === 0 || value === 5) {
-          ctx.strokeStyle = createGradient(value, ctx, x, y, prevX, prevY);
-        } else {
-          ctx.strokeStyle = getColorForValue(value);
-        }
-        ctx.stroke();
+    var updated = false;
+    $(list_orders).each(function (index, el) {
+      $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-IssueNumber').text(el.period);
+      $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item").removeClass("action");
+      $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item").css('background', '');
+      $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item:contains('"+(parseInt(el.amount))+"')").addClass("action");
+      if(parseInt(el.amount) > 4)
+      {
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-BS").text('B');
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-BS").css('background', '#FEAA57');
       }
-
-      ctx.beginPath();
-      ctx.arc(x, y, 5, 0, Math.PI * 2);
-      ctx.fillStyle = getColorForValue(value);
-      ctx.fill();
-
-      ctx.fillText(data.labels[index], x - ctx.measureText(data.labels[index]).width / 2, canvas.height - padding + 20);
+      else{
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-BS").text('S');
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-BS").css('background', '#6EA8F4');
+      }
+      if(parseInt(el.amount) == 5 || parseInt(el.amount) == 5)
+      {
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item:contains('"+(parseInt(el.amount))+"')").css('background', '#db5fd1');
+      }
+      else if(parseInt(el.amount) % 2 === 0)
+      {
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item:contains('"+(parseInt(el.amount))+"')").css('background', '#fb4e4e');
+      }
+      else 
+      {
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item:contains('"+(parseInt(el.amount))+"')").css('background', '#5cba47');
+      }
+      updated = true;
     });
-  }
-
-  function getColorForValue(value) {
-    switch (value) {
-      case 1:
-      case 3:
-      case 7:
-      case 9: return 'green';
-      case 2:
-      case 4:
-      case 6:
-      case 8: return 'red';
-     
-      default: return '#000'; // default color
+    if(updated == true)
+    {
+      for(var i = 0; i < 10; i++)
+      {
+        var b3 = $(".Trend__C-body2").find('[rowid='+(i)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item")[0].getBoundingClientRect();
+        var b1 = $(".Trend__C-body2").find('[rowid='+(i)+']').find('.Trend__C-body2-Num').find(".action")[0].getBoundingClientRect();
+        var left_val = parseInt(b1.left) - parseInt(b3.left);
+        if( $(".Trend__C-body2").find('[rowid='+(i+1)+']').find('.Trend__C-body2-Num').find(".action")[0] != null)
+        { 
+          var b2 = $(".Trend__C-body2").find('[rowid='+(i+1)+']').find('.Trend__C-body2-Num').find(".action")[0].getBoundingClientRect();
+          $(".Trend__C-body2").find('[rowid='+(i)+']').find('.Trend__C-body2-Num') .find("#myCanvas"+(i)).css('left',(parseInt(left_val)+'px'));
+          var dx = (b1.left+(b1.right-b1.left)/2) - (b2.left+(b2.right-b2.left)/2);
+          var dy = (b1.top+(b1.bottom-b1.top)/2) - (b2.top+(b2.bottom-b2.top)/2);
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          var dx1 = b2.x - b1.x 
+          var dy1 = b2.y - b1.y
+          var angle = Math.atan2(dx1, dy1) * 180 / Math.PI;
+          var angle1 = Math.atan2(b2.y - b1.y, b2.x - b1.x) * 180 / Math.PI;
+          $(".Trend__C-body2").find('[rowid='+(i)+']').find('.Trend__C-body2-Num') .find("#myCanvas"+(i)).css('width',(parseInt(dist)+'px'));
+          $(".Trend__C-body2").find('[rowid='+(i)+']').find('.Trend__C-body2-Num') .find("#myCanvas"+(i)).css('transform',('rotate('+parseInt(angle1) + 'deg)'));
+        }
+        else{
+          $(".Trend__C-body2").find('[rowid='+(i)+']').find('.Trend__C-body2-Num') .find("#myCanvas"+(i)).css('left',(left_val+'px'));
+          $(".Trend__C-body2").find('[rowid='+(i)+']').find('.Trend__C-body2-Num') .find("#myCanvas"+(i)).css('width',('2px'));
+        }
+      } 
     }
-  }
-
-  plotGraph(data);
-    </script>
-  `;
-  
-    const $targetDiv = $(`.game-list .con-box:eq(${x}) .hb`);
-    $targetDiv.empty();
-    $targetDiv.html(htmls);
-}
+    }
   const isNumber = (params) => {
     let pattern = /^[0-9]*\d$/;
     return pattern.test(params);
