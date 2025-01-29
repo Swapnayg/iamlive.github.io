@@ -40,7 +40,9 @@ function cownDownTimer() {
         if(checkID != 1) {
             $(".time .time-sub:eq(1)").text(minute);
         }
-
+        else{
+            $(".time .time-sub:eq(1)").text(0);
+        }
         $(".time .time-sub:eq(2)").text(seconds1);
         $(".time .time-sub:eq(3)").text(seconds2);
     }, 0);
@@ -197,6 +199,10 @@ function callListOrder() {
 callListOrder();
 socket.on("data-server-k3", function (msg) {
     if (msg) {
+        $(`#total`).text('0');
+        $(`#2-so-trung`).text('0');
+        $(`#3-so-trung`).text('0');
+        $(`#khac-so`).text('0');
         callListOrder();
         $('.direct-chat-msg').html('');
     }
@@ -213,17 +219,28 @@ function messNewJoin(data) {
     if (data.gameJoin == 3) typeGame = 'three-same';
     if (data.gameJoin == 4) typeGame = 'unlike';
     let result = '';
-
     let list_join = data.listJoin.split(','); // là người dùng Join đặt cược
     let list_join2 = data.listJoin; // là người dùng Join đặt cược
     let x = data.xvalue; // là người dùng Join đặt cược
-    let d_money = Number(data.money);
-    for (let i = 0; i < list_join.length; i++) {
+    let d_money = parseInt(Number(data.money)); 
+    for (let i = 0; i < list_join.length; i++) 
+    {
         if(list_join.length > 1)
         {
             d_money = parseInt(Number(data.money) * list_join.length);
+            if(parseInt(x) > 1)
+            {
+                d_money = parseInt(Number(d_money) * parseInt(x));
+            }
+        }
+        else{
+            if(parseInt(x) > 1)
+            {
+                d_money = parseInt(Number(data.money) * parseInt(x));
+            } 
         }
     }
+
     if (typeGame == 'total') {
         result += `
             <div class="direct-chat-infos clearfix mt-2">
@@ -280,33 +297,51 @@ function messNewJoin5(data) {
     let list_join = data.listJoin.split(','); // là người dùng Join đặt cược
     let list_join2 = data.listJoin; // là người dùng Join đặt cược
     let x = data.xvalue; // là người dùng Join đặt cược
-    let d_money = Number(data.money);
-    for (let i = 0; i < list_join.length; i++) {
+    let d_money = parseInt(Number(data.money)); 
+    for (let i = 0; i < list_join.length; i++) 
+    {
         if(list_join.length > 1)
         {
             d_money = parseInt(Number(data.money) * list_join.length);
+            if(parseInt(x) > 1)
+            {
+                d_money = parseInt(Number(d_money) * parseInt(x));
+            }
+        }
+        else{
+            if(parseInt(x) > 1)
+            {
+                d_money = parseInt(Number(data.money) * parseInt(x));
+            } 
         }
     }
-
     if (typeGame == "total") {
+        let ac_total =  parseInt($(`#total`).text());
+        d_money = d_money + ac_total;
         let money = Number($(`#total`).attr('totalMoney')) + d_money;
-        $(`#total`).attr('totalMoney', money);
-        $(`#total`).text(money);
+        $(`#total`).attr('totalMoney', d_money);
+        $(`#total`).text(d_money);
     }
     if (typeGame == "two-same") {
+        let aso2_total =  parseInt($(`#2-so-trung`).text());
+        d_money = d_money + aso2_total;
         let money = Number($(`#2-so-trung`).attr('totalMoney')) + d_money;
-        $(`#2-so-trung`).attr('totalMoney', money);
-        $(`#2-so-trung`).text(money);
+        $(`#2-so-trung`).attr('totalMoney', d_money);
+        $(`#2-so-trung`).text(d_money);
     }
     if (typeGame == "three-same") {
+        let aso3_total =  parseInt($(`#3-so-trung`).text());
+        d_money = d_money + aso3_total;
         let money = Number($(`#3-so-trung`).attr('totalMoney')) + d_money;
-        $(`#3-so-trung`).attr('totalMoney', money);
-        $(`#3-so-trung`).text(money);
+        $(`#3-so-trung`).attr('totalMoney', d_money);
+        $(`#3-so-trung`).text(d_money);
     }
     if (typeGame == "unlike") {
+        let khac_total =  parseInt($(`#khac-so`).text());
+        d_money = d_money + khac_total;
         let money = Number($(`#khac-so`).attr('totalMoney')) + d_money;
-        $(`#khac-so`).attr('totalMoney', money);
-        $(`#khac-so`).text(money);
+        $(`#khac-so`).attr('totalMoney', d_money);
+        $(`#khac-so`).text(d_money);
     }
 }
 
@@ -316,14 +351,14 @@ socket.on("data-server-3", function (msg) {
 });
 
 $('#manage .col-12').click(async function (e) {
-    $(`#total`).text('0');
-    $(`#2-so-trung`).text('0');
-    $(`#3-so-trung`).text('0');
-    $(`#khac-so`).text('0');
     e.preventDefault();
     $('#preloader').fadeIn(0);
     let game = $(this).attr('data');
     $('html').attr('data-change', game);
+    $(`#total`).text('0');
+    $(`#2-so-trung`).text('0');
+    $(`#3-so-trung`).text('0');
+    $(`#khac-so`).text('0');
     await callListOrder();
     $('#manage .col-12').removeClass('block-click');
     $(this).addClass('block-click');
