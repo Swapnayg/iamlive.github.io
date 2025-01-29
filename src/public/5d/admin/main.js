@@ -100,6 +100,8 @@ function messNewJoin2(datas) {
     
         //let total_money = (Number(data.money) * Number(x)) * list_join.length;
         let total_money = (Number(data.money)) * list_join.length;
+        console.log(Number(data.money));
+        console.log(list_join.length);
         let money = formatMoney(total_money, ',');
         result += `
         <div class="direct-chat-infos clearfix mt-2">
@@ -195,6 +197,9 @@ function messNewJoin(data) {
     let x = data.x; // là người dùng Join đặt cược
 
     let total_money = (Number(data.money) * Number(x)) * list_join.length;
+    console.log(Number(data.money));
+    console.log(Number(x));
+    console.log(Number(list_join.length));
     let money = formatMoney(total_money, ',');
     let result = '';
     result += `
