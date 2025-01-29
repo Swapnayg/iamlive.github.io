@@ -450,7 +450,7 @@ $('.bet-tab .item').click(function (e) {
 // Tổng số
 $(".list-join-total .item").click(function (e) {
     e.preventDefault();
-    $('#kd_submit').removeClass('block-click');
+    //$('#kd_submit').removeClass('block-click');
     $("#k3_check").click();
     $('.list-join-ao span[game="1"]').removeClass('d-none');
     $(".pop-total").css("transform", "translateY(0px)");
@@ -1110,7 +1110,7 @@ $('.confirm').click(async function (e) {
     if($('.container1').find('input[type=checkbox]').is(':checked') == true)
     {
     e.preventDefault();
-    $(this).addClass('block-click');
+    $(this).addClass('confirm');
     let game = $('.bet-tab .action').attr('game');
 
     if (game == 1) {
