@@ -177,9 +177,13 @@ function callListOrder() {
         },
         dataType: "json",
         success: function (response) {
+            $(`#total`).text('0');
+            $(`#2-so-trung`).text('0');
+            $(`#3-so-trung`).text('0');
+            $(`#khac-so`).text('0');
             showListOrder(response.data.gameslist);
-            messNewJoin2(response.bet);
-            messNewJoin3(response.bet);
+            messNewJoin2(response.bet);  // graph code
+            messNewJoin3(response.bet); // block code
             let settings = response.settings[0];
             if(game == 1) $('#ketQua').text('next result: ' + `${(settings.k3d == '-1') ? 'Random' : settings.k3d}`);
             if(game == 3) $('#ketQua').text('next result: ' + `${(settings.k3d3 == '-1') ? 'Random' : settings.k3d3}`);
@@ -210,13 +214,23 @@ function messNewJoin(data) {
     if (data.gameJoin == 4) typeGame = 'unlike';
     let result = '';
 
+    let list_join = data.listJoin.split(','); // là người dùng Join đặt cược
+    let list_join2 = data.listJoin; // là người dùng Join đặt cược
+    let x = data.xvalue; // là người dùng Join đặt cược
+    let d_money = Number(data.money);
+    for (let i = 0; i < list_join.length; i++) {
+        if(list_join.length > 1)
+        {
+            d_money = parseInt(Number(data.money) * list_join.length);
+        }
+    }
     if (typeGame == 'total') {
         result += `
             <div class="direct-chat-infos clearfix mt-2">
                 <span class="direct-chat-name float-left"></span>
             </div>
             <img class="direct-chat-img" src="/images/myimg.png" alt="message user image">
-            <div class="direct-chat-text" style="background-color: #1eb93d"> Join Total(${data.listJoin}) with the A mount of money ${Number(data.money) * Number(data.xvalue)}</div>
+            <div class="direct-chat-text" style="background-color: #1eb93d"> Join Total(${data.listJoin}) with the A mount of money ${d_money}</div>
         `; 
     }
     if (typeGame == 'three-same') {
@@ -225,7 +239,7 @@ function messNewJoin(data) {
                 <span class="direct-chat-name float-left"></span>
             </div>
             <img class="direct-chat-img" src="/images/myimg.png" alt="message user image">
-            <div class="direct-chat-text" style="background-color: #1eb93d"> Join 3 same numbers(${data.listJoin}) with the A mount of money ${Number(data.money) * Number(data.xvalue)}</div>
+            <div class="direct-chat-text" style="background-color: #1eb93d"> Join 3 same numbers(${data.listJoin}) with the A mount of money ${d_money}</div>
         `; 
     }
 
@@ -235,7 +249,7 @@ function messNewJoin(data) {
                 <span class="direct-chat-name float-left"></span>
             </div>
             <img class="direct-chat-img" src="/images/myimg.png" alt="message user image">
-            <div class="direct-chat-text" style="background-color: #1eb93d"> Join 3 same numbers(${data.listJoin}) with the A mount of money ${Number(data.money) * Number(data.xvalue)}</div>
+            <div class="direct-chat-text" style="background-color: #1eb93d"> Join 3 same numbers(${data.listJoin}) with the A mount of money ${d_money}</div>
         `; 
     }
     if (typeGame == 'unlike') {
@@ -244,7 +258,7 @@ function messNewJoin(data) {
                 <span class="direct-chat-name float-left"></span>
             </div>
             <img class="direct-chat-img" src="/images/myimg.png" alt="message user image">
-            <div class="direct-chat-text" style="background-color: #1eb93d"> Join another number(${data.listJoin}) with the A mount of money ${Number(data.money) * Number(data.xvalue)}</div>
+            <div class="direct-chat-text" style="background-color: #1eb93d"> Join another number(${data.listJoin}) with the A mount of money ${d_money}</div>
         `; 
     }
     $('.direct-chat-msg').append(result);
@@ -263,34 +277,49 @@ function messNewJoin5(data) {
     if (data.gameJoin == 3) typeGame = "three-same";
     if (data.gameJoin == 4) typeGame = "unlike";
 
+    let list_join = data.listJoin.split(','); // là người dùng Join đặt cược
+    let list_join2 = data.listJoin; // là người dùng Join đặt cược
+    let x = data.xvalue; // là người dùng Join đặt cược
+    let d_money = Number(data.money);
+    for (let i = 0; i < list_join.length; i++) {
+        if(list_join.length > 1)
+        {
+            d_money = parseInt(Number(data.money) * list_join.length);
+        }
+    }
+
     if (typeGame == "total") {
-        let money = Number($(`#total`).attr('totalMoney')) + Number(data.money) * Number(data.xvalue);
+        let money = Number($(`#total`).attr('totalMoney')) + d_money;
         $(`#total`).attr('totalMoney', money);
         $(`#total`).text(money);
     }
     if (typeGame == "two-same") {
-        let money = Number($(`#2-so-trung`).attr('totalMoney')) + Number(data.money) * Number(data.xvalue);
+        let money = Number($(`#2-so-trung`).attr('totalMoney')) + d_money;
         $(`#2-so-trung`).attr('totalMoney', money);
         $(`#2-so-trung`).text(money);
     }
     if (typeGame == "three-same") {
-        let money = Number($(`#3-so-trung`).attr('totalMoney')) + Number(data.money) * Number(data.xvalue);
+        let money = Number($(`#3-so-trung`).attr('totalMoney')) + d_money;
         $(`#3-so-trung`).attr('totalMoney', money);
         $(`#3-so-trung`).text(money);
     }
     if (typeGame == "unlike") {
-        let money = Number($(`#khac-so`).attr('totalMoney')) + Number(data.money) * Number(data.xvalue);
+        let money = Number($(`#khac-so`).attr('totalMoney')) + d_money;
         $(`#khac-so`).attr('totalMoney', money);
         $(`#khac-so`).text(money);
     }
 }
 
 socket.on("data-server-3", function (msg) {
-    messNewJoin(msg);
-    messNewJoin5(msg);
+    messNewJoin(msg); // graph code
+    messNewJoin5(msg); //  block code
 });
 
-$('#manage .col-12').click(async function (e) { 
+$('#manage .col-12').click(async function (e) {
+    $(`#total`).text('0');
+    $(`#2-so-trung`).text('0');
+    $(`#3-so-trung`).text('0');
+    $(`#khac-so`).text('0');
     e.preventDefault();
     $('#preloader').fadeIn(0);
     let game = $(this).attr('data');
