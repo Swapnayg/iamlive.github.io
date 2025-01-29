@@ -195,39 +195,6 @@ socket.on("data-server-5d", function (msg) {
     }
 });
 
-/* function messNewJoin(data) {
-    var internalb= $("#manage_2").find('.sub-menu-color').attr('data').trim();
-    if(internalb == data.join.trim())
-    {
-    let game = $('html').attr('data-change');
-    if (data.change == 1) return;
-    if (data.game != game) return;
-
-    let bet = data.join; // Join game ví dụ a b c d e tổng
-    let list_join = data.list_join.split(''); // là người dùng Join đặt cược
-    let list_join2 = data.list_join; // là người dùng Join đặt cược
-    let x = data.x; // là người dùng Join đặt cược
-    console
-    let total_money = (Number(data.money) * Number(x)) * list_join.length;
-    let money = formatMoney(total_money, ',');
-    let result = '';
-    result += `
-        <div class="direct-chat-infos clearfix mt-2">
-        <span class="direct-chat-name float-left"></span>
-        </div>
-        <img class="direct-chat-img" src="/images/myimg.png" alt="message user image">
-        <div class="direct-chat-text" style="background-color: #1eb93d">
-        Join ${(isNumber(list_join2)) ? "( " + list_join2 + " )" : (list_join2 == 'b') ? 'Big' : (list_join2 == 's') ? 'Small' : (list_join2 == 'c') ? 'Even' : 'Odd'} ${money}
-        </div>
-        `;
-        //overall_bet = parseInt(parseInt(overall_bet) + money);
-        $('.direct-chat-msg').html(result);
-    $(".direct-chat-warning .direct-chat-messages").animate({
-        scrollTop: $(".direct-chat-msg").prop("scrollHeight")
-    }, 750);
-}
-} */
-
 
 function messNewJoin(data) {
     var internalb= $("#manage_2").find('.sub-menu-color').attr('data').trim();

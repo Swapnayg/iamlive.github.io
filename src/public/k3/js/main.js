@@ -450,6 +450,8 @@ $('.bet-tab .item').click(function (e) {
 // Tổng số
 $(".list-join-total .item").click(function (e) {
     e.preventDefault();
+    $('#kd_submit').removeClass('block-click');
+    $("#k3_check").click();
     $('.list-join-ao span[game="1"]').removeClass('d-none');
     $(".pop-total").css("transform", "translateY(0px)");
     let check = $(this).find('.li').hasClass('action');
