@@ -217,7 +217,7 @@ function downAndHidden() {
     $('.0-9 .bet-num-line .bet-box-num').removeClass('active');
     $('.small-big .bet-type-btn').attr('class', 'bet-type-btn flex-row-between');
     $('#result').attr('list-join', '');
-    $('#result').attr('value', '1000');
+    $('#result').attr('value', '1');
     $('#plus-minus .minus').removeClass('action');
     $('#value-join').val(1);
     $('.amount-box .li').removeClass('action');
