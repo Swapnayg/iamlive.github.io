@@ -136,7 +136,10 @@ const chatPage = async (req, res) => {
 }
 
 const wingochat = async (req, res) => {
-    return res.render("member/wingochat.ejs");
+    const [winGo1] = await connection.execute('SELECT * FROM `wingo` WHERE `game` = "wingo" ORDER BY `id` DESC LIMIT 1 ', []);
+    const period = winGo1[0].period;
+    const amount = winGo1[0].amount;
+    return res.render("member/wingochat.ejs", { d_period: period, d_amount :amount });
 }
 
 const recordsalary = async (req, res) => {

@@ -260,6 +260,7 @@
         box-sizing: border-box;
         border-radius:10px;
         font-size: 20px;
+        line-height: 30px;
     }
     .me{
         background:#342c80;
@@ -415,11 +416,37 @@
         
         }
 
+
+        function cownDownTimer() {
+          var countDownDate = new Date("2030-07-16T23:59:59.9999999+01:00").getTime();
+          setInterval(function () {
+              var now = new Date().getTime();
+              var distance = countDownDate - now;
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var minute = Math.ceil(minutes % Number(1));
+              var seconds1 = Math.floor((distance % (1000 * 60)) / 10000);
+              var seconds2 = Math.floor(((distance % (1000 * 60)) / 1000) % 10);
+              const p_details = `<%=d_period%>`;
+              const a_details = `<%=d_amount%>`;
+              $('#timer').html('0' + ':' + seconds1 + seconds2);
+              $("#period_id").text(p_details);
+              $(".b_number").text(a_details);
+              if(a_details== 5 || a_details== 0)
+              {
+                  $(".num_color").css('background-color', '#eb43dd');
+              }
+              else if (a_details % 2 == 0) {
+                  $(".num_color").css('background-color', '#fb4e4e');
+              }
+              else{
+                  $(".num_color").css('background-color', '#5cba47');
+              }
+          }, 1000);
+      }
+      cownDownTimer();
         const socket = io();
-        
         socket.on("data-server-chat", function (msg) {
             if (msg) {
-                
               calltimer();
                 $("#period_id").text(msg.data[1].period);
                 $(".b_number").text(msg.data[1].amount);
@@ -479,13 +506,14 @@
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyDXiVMk3XgvOtgqwl_ERe6ODnDlDYiV5gM",
-    authDomain: "example-firebase-db-21b0b.firebaseapp.com",
-    projectId: "example-firebase-db-21b0b",
-    storageBucket: "example-firebase-db-21b0b.firebasestorage.app",
-    messagingSenderId: "512258180846",
-    appId: "1:512258180846:web:9c20193809838ec7cbd5ff",
-    measurementId: "G-K6WE9VHDY7"
+  apiKey: "AIzaSyDRtK5Z_TAgMUhDIBAV2X_psj4n5D09iqw",
+  authDomain: "live-chess-dede7.firebaseapp.com",
+  databaseURL: "https://live-chess-dede7-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "live-chess-dede7",
+  storageBucket: "live-chess-dede7.firebasestorage.app",
+  messagingSenderId: "1002758569165",
+  appId: "1:1002758569165:web:5af6a95b24f5de03913d84",
+  measurementId: "G-ZSNFPJ63B8"
   };
 
         const app = initializeApp(firebaseConfig);
@@ -511,7 +539,7 @@ const firebaseConfig = {
                 sender : sender,
                 status:"active",
                 datetime:  moment().format('DD/MM/YYYY'),
-                time:moment().format("h:mm:ss a"),
+                time:moment().format("h:mm a"),
             })
 
             msgTxt.value="";
@@ -520,9 +548,9 @@ const firebaseConfig = {
         // TO RECEIVE MSG
         onChildAdded(ref(db,"messages"), (data)=>{
             if(data.val().sender == sender){
-                messages.innerHTML += "<div style=justify-content:end class=outer id="+data.key+"><div id=inner class=me>you : "+data.val().msg+"<button id=dltMsg onclick=module.dltMsg("+data.key+")><i class='fa fa-trash-o'></i></button></div></div>";
+                messages.innerHTML += "<div style=justify-content:end class=outer id="+data.key+"><div id=inner class=me>you : "+data.val().msg+ " "+data.val().time+ "<button id=dltMsg onclick=module.dltMsg("+data.key+")><i class='fa fa-trash-o'></i></button></div></div>";
             } else {
-                messages.innerHTML += "<div class=outer id="+data.key+"><div id=inner class=notMe>"+data.val().sender+" : "+data.val().msg+"</div></div>";
+                messages.innerHTML += "<div class=outer id="+data.key+"><div id=inner class=notMe>"+data.val().sender+" : "+data.val().msg+ " "+data.val().time+ "</div></div>";
             }
           $('#messages').scrollTop($('#messages')[0].scrollHeight);
         })
