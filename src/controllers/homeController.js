@@ -139,14 +139,14 @@ const wingochat = async (req, res) => {
 }
 
 const k3chat = async (req, res) => {
-    const [winGo1] = await connection.execute('SELECT * FROM `wingo` WHERE `game` = "wingo" ORDER BY `id` DESC LIMIT 1 ', []);
+    const [winGo1] = await connection.execute('SELECT * FROM `d5` WHERE `game` = "1" ORDER BY `id` DESC LIMIT 1 ', []);
     const period = winGo1[0].period;
     const amount = winGo1[0].amount;
     return res.render("member/k3chat.ejs", { d_period: period, d_amount :amount });
 }
 
 const d5chat = async (req, res) => {
-    const [winGo1] = await connection.execute('SELECT * FROM `wingo` WHERE `game` = "wingo" ORDER BY `id` DESC LIMIT 1 ', []);
+    const [winGo1] = await connection.execute('SELECT * FROM `k3` WHERE `game` = "1" ORDER BY `id` DESC LIMIT 1 ', []);
     const period = winGo1[0].period;
     const amount = winGo1[0].amount;
     return res.render("member/d5chat.ejs", { d_period: period, d_amount :amount });
