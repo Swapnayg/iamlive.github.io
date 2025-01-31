@@ -87,6 +87,7 @@
   <script src="/dist/js/adminlte.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
   <script src="/js/admin/admin.js"></script> 
+  <script src="https://momentjs.com/downloads/moment.js"></script>
     <script>
       module = {};
   </script>
@@ -131,7 +132,12 @@ const firebaseConfig = {
       let dataSet = [];
       onChildAdded(ref(db,"messages"), (data)=>{
         count += 1;
-        dataSet.push({Id: count,Sender: data.val().sender, Message: data.val().msg,Date:data.val().datetime,Time:data.val().time,Key:data.key});
+        let date1 = data.val().datetime;
+        if(data.val().datetime == null)
+        {
+          date1 = moment().format('DD/MM/YYYY');
+        }
+        dataSet.push({Id: count,Sender: data.val().sender, Message: data.val().msg,Date:date1,Time:data.val().time,Key:data.key});
         $(function () {
           $('#table1').DataTable({
             data: dataSet,
