@@ -426,8 +426,8 @@
               var minute = Math.ceil(minutes % Number(1));
               var seconds1 = Math.floor((distance % (1000 * 60)) / 10000);
               var seconds2 = Math.floor(((distance % (1000 * 60)) / 1000) % 10);
-              const p_details = `<%=d_period%>`;
-              const a_details = `<%=d_amount%>`;
+              const p_details = `<%=d5_period%>`;
+              const a_details = `<%=d5_amount%>`;
               $('#timer').html('0' + ':' + seconds1 + seconds2);
               $("#period_id").text(p_details);
               $(".b_number").text(a_details);

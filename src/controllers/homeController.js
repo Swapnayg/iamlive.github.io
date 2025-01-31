@@ -139,17 +139,17 @@ const wingochat = async (req, res) => {
 }
 
 const k3chat = async (req, res) => {
-    const [k31] = await connection.execute('SELECT * FROM `d5` WHERE `game` = "1" ORDER BY `id` DESC LIMIT 1 ', []);
+    const [k31] = await connection.execute('SELECT * FROM `k3` WHERE `game` = "1" ORDER BY `id` DESC LIMIT 1 ', []);
     const k_period = k31[0].period;
-    const k_amount = k31[0].amount;
-    return res.render("member/k3chat.ejs", { d_period: k_period, d_amount :k_amount });
+    const k_amount = k31[0].result;
+    return res.render("member/k3chat.ejs", { kd_period: k_period, kd_amount :k_amount });
 }
 
 const d5chat = async (req, res) => {
-    const [d51] = await connection.execute('SELECT * FROM `k3` WHERE `game` = "1" ORDER BY `id` DESC LIMIT 1 ', []);
+    const [d51] = await connection.execute('SELECT * FROM `d5` WHERE `game` = "1" ORDER BY `id` DESC LIMIT 1 ', []);
     const d5_period = d51[0].period;
-    const d5_amount = d51[0].amount;
-    return res.render("member/d5chat.ejs", { d_period: d5_period, d_amount :d5_amount });
+    const d5_amount = d51[0].result;
+    return res.render("member/d5chat.ejs", { d5_period: d5_period, d5_amount :d5_amount });
 }
 
 const recordsalary = async (req, res) => {
