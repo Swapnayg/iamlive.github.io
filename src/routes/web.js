@@ -72,8 +72,9 @@ const initWebRouter = (app) => {
     router.get('/getrecord', middlewareController, homeController.getSalaryRecord);
     router.get('/about', middlewareController, homeController.aboutPage);
     router.get('/notification', middlewareController, homeController.notificationPage);
-    router.get('/chat', middlewareController, homeController.chatPage);
 	router.get('/wingochat', middlewareController, homeController.wingochat);
+    router.get('/k3chat', middlewareController, homeController.k3chat);
+    router.get('/d5chat', middlewareController, homeController.d5chat);
     router.get('/redenvelopes', middlewareController, homeController.redenvelopes);
     router.get('/mian/forgot', middlewareController, homeController.forgot);
     router.get('/newtutorial', homeController.newtutorial);
@@ -193,7 +194,10 @@ const initWebRouter = (app) => {
 
 
     router.get('/admin/manager/members', adminController.middlewareAdminController, adminController.membersPage); // get info account
-    router.get('/admin/manager/adminChatPage', adminController.middlewareAdminController, adminController.adminChatPage); 
+    router.get('/admin/manager/adminChatPage', adminController.middlewareAdminController, adminController.adminChatPage);
+    router.get('/admin/manager/k3chatPage', adminController.middlewareAdminController, adminController.k3chatPage);
+    router.get('/admin/manager/d5chatPage', adminController.middlewareAdminController, adminController.d5chatPage);
+     
     router.get('/admin/manager/createBonus', adminController.middlewareAdminController, adminController.giftPage); // get info account
     router.get('/admin/manager/ctv', adminController.middlewareAdminController, adminController.ctvPage); // get info account
     router.get('/admin/manager/ctv/profile/:phone', adminController.middlewareAdminController, adminController.ctvProfilePage); // get info account

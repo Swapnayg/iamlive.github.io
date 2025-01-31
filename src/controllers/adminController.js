@@ -46,6 +46,14 @@ const adminChatPage = async (req, res) => {
     return res.render("manage/aChat.ejs");
 }
 
+const k3chatPage = async (req, res) => {
+    return res.render("manage/ChatK3.ejs");
+}
+
+const d5chatPage = async (req, res) => {
+    return res.render("manage/Chat5d.ejs");
+}
+
 const ctvPage = async (req, res) => {
     return res.render("manage/ctv.ejs");
 }
@@ -2044,6 +2052,7 @@ const gettranfermode = async (req, res) => {
 
 
 module.exports = {
+    adminChatPage,
     adminPage,
     adminPage3,
     adminPage5,
@@ -2052,7 +2061,8 @@ module.exports = {
     middlewareAdminController,
     changeAdmin,
     membersPage,
-    adminChatPage,
+    k3chatPage,
+    d5chatPage,
     listMember,
     infoMember,
     userInfo,

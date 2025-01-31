@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html translate="no" data-dpr="1" style="font-size: 44.64px">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport" />
+  <title>BINOD</title>
+
+  <link rel="stylesheet" href="/css/bet/wingo/main.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c0.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c1.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c2.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c3.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c4.css" />
+  <link rel="shortcut icon" href="/images/bitbug_favicon.ico" type="image/x-icon">
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      background-color: #090909;
+      padding: 0;
+      margin: 0;
+    }
+
+    .block-click {
+      pointer-events: none;
+    }
+  </style>
+  <style>
+    /* The Modal (background) */
+    .modal {
+      display: blocked;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 20001;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+    }
+
+    .text-over-image {
+      position: absolute;
+      /* Position relative to the parent element */
+      top: 35%;
+      /* Center vertically */
+      left: 50%;
+      /* Center horizontally */
+      transform: translate(-50%, -50%);
+      /* Adjust the positioning */
+      color: #fff;
+      /* Text color */
+      font-size: 24px;
+      /* Text size */
+      font-weight: bold;
+      /* Text weight */
+      text-align: center;
+      /* Center text */
+    }
+
+    .text-over-image-l {
+      position: absolute;
+      /* Position relative to the parent element */
+      top: 48%;
+      /* Center vertically */
+      left: 49%;
+      /* Center horizontally */
+      transform: translate(-50%, -50%);
+      /* Adjust the positioning */
+      color: #fff;
+      /* Text color */
+      font-size: 10px;
+      /* Text size */
+      font-weight: bold;
+      /* Text weight */
+      text-align: center;
+      /* Center text */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      text-align: -webkit-center;
+      position: relative;
+      top: 20%;
+    }
+
+    .modal-content img {
+      width: 280px;
+      /* Use this to ensure the image is full width */
+      height: auto;
+      /* Adjust height automatically */
+      display: block;
+      /* Change display to block to avoid extra space */
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Circle button style */
+    .close-btn {
+      border: 2px solid #fff;
+      /* Black border */
+      border-radius: 50%;
+      /* Circle shape */
+      background-color: transparent;
+      /* Transparent background */
+      width: 30px;
+      /* Width and height should be equal for a circle */
+      height: 30px;
+      /* Width and height should be equal for a circle */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .close-btn:hover {
+      background-color: #ddd;
+      /* Light grey background on hover */
+    }
+
+    /* "X" line style */
+    .close-x {
+      font-size: 35px;
+      /* Large font size for the "X" */
+      font-family: none;
+      line-height: 1;
+      /* Tight line height for the "X" */
+      color: #fff;
+      /* Black color for the "X" */
+      padding: 0;
+      /* No padding */
+      margin: 0;
+      /* No margin */
+    }
+
+    .text-over-image-2 {
+      position: absolute;
+      top: 65%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ff850f;
+      font-size: 25px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .text-over-image-3 {
+      position: absolute;
+      top: 72%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #8c4500;
+      font-size: 12px;
+      font-weight: none;
+      text-align: center;
+    }
+
+    .btn-boox {
+      background: linear-gradient(to bottom, #20d90a, #aae69d);
+      border: none;
+      color: white;
+      padding: 5px 6px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 10px;
+      margin: 4px 4px;
+      cursor: pointer;
+      font-family: monospace;
+      border-radius: 5px;
+    }
+  </style>
+  <style>
+
+    #dltMsg
+    {
+        border:0;
+        background:none;       
+    }
+    #dltMsg i{
+        color: red;
+        font-size: 17px;
+        font-weight: 500;
+        padding-left: 5px;
+    }
+    #d5chat{
+        position: absolute;
+        left:0;
+        top:16%;
+        width:100%;
+        height:400px;
+        overflow-y:scroll;
+        padding:10px;
+        box-sizing: border-box;
+    }
+    #sendMsg{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+        background: #AAA;
+        text-align: center;
+        margin-left: 0%;
+        margin-right: 31%;
+    }
+    #msgTxt{
+        position: absolute;
+        left:0;
+        top:0;
+        width:calc(100% - 100px);
+        height:100%;
+        padding-left:10px;
+        box-sizing: border-box;
+        color:black;
+    }
+    #msgBtn{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100px;
+        height: 100%;
+        background: #2e24b8;
+        border: 2px white solid;
+        color: white;
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    .outer{
+        width:100%;
+        margin-top:10px;
+        display:flex;
+    }
+    #inner{
+        padding:10px;
+        box-sizing: border-box;
+        border-radius:10px;
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .me{
+        background:#342c80;
+        color:#fff;
+    }
+    .notMe{
+        background:#FFF;
+        color:#a38b8b;
+    }
+    .bet_details .num_color
+    {
+        
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+        line-height: 26px;
+        display: inline-block;
+        text-align: center;
+        margin-right: 0px;
+        margin-left: 10px;
+    }
+    .bet_details
+    {
+        width: 75%;
+        float: right;
+        color: white;
+        text-align: right;
+        font-size: 25px;
+        padding-right: 50px;
+        line-height: 0px;
+        margin-top: 3%;
+    }
+    #period_id
+    {
+        width: 5%;
+        float: right;
+        color: white;
+        margin-right: -120px;
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 40px
+    }
+    .bank
+    {
+        height: 50px;
+        position: relative;
+    }
+    .bank img{
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        margin-left: 2%;
+        margin-top: 1.5%;
+    }
+    #timer
+    {
+        float: right;
+        font-size: 35px;
+        color: white;
+        font-weight: 600;
+        margin-top: 0%;
+    
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"
+    integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/js/client.js"></script>
+
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+</head>
+
+<body style="font-size: 12px">
+  <div id="app" style="position: relative;">
+    <div data-v-a9660e98="" class="mian game">
+      <div data-v-106b99c8="" data-v-a9660e98="" class="navbar">
+        <div data-v-106b99c8="" class="navbar-left" onclick="location.href='/home'">
+          <div data-v-a9660e98="" data-v-106b99c8="" class="c-row c-row-middle-center">
+            <img data-v-a9660e98="" data-v-106b99c8="" src="/images/back.c3244ab0.png" class="navbar-back" />
+          </div>
+        </div>
+        <div data-v-106b99c8="" class="navbar-title">
+          <div data-v-a9660e98="" data-v-106b99c8="" class="c-row c-row-middle-center">
+            <img data-v-a9660e98="" data-v-106b99c8="" src="/index_files/h5setting_202401100608011fs2.png" class="logo"
+              style="width: 2.98667rem;height: 1.12rem;background-repeat: no-repeat;background-size: 2.98667rem 1.12rem;background-position: center;">
+          </div>
+        </div>
+        <div data-v-106b99c8="" class="navbar-right">
+          <div data-v-a9660e98="" data-v-106b99c8="" class="c-row navbarR">
+            
+          </div>
+        </div>
+      </div>
+      <!---------->
+        <!---------->
+
+
+        <div id="d5chat"></div>
+                        <div data-v-106b99c8="" >
+                            <div class="bet_details">
+                                <span class="b_number">
+                                    
+                                </span>
+                                <span class="num_color">
+                                    
+                                </span>
+                            </div> 
+                            
+                            <div id="timer"></div>
+                        </div>
+                        <div id="period_id"></div>
+                    
+        </div>
+        <div id="sendMsg">
+            <input type="text" id="msgTxt" placeholder="TYPE YOUR MSG ...">
+            <input type="submit" id="msgBtn" value="send" onclick="module.sendMsg()">
+        </div>
+    </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"
+    integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H"
+    crossorigin="anonymous"></script>
+    <script>
+        module = {};
+    </script>
+    <script type="module">
+        var seconds = 1000 * 60;
+        var timer;
+        
+        function calltimer()
+        {
+          var timer2 = "0:60";
+        var interval = setInterval(function() {
+        
+        
+          var timer = timer2.split(':');
+          //by parsing integer, I avoid all extra string processing
+          var minutes = parseInt(timer[0], 10);
+          var seconds = parseInt(timer[1], 10);
+          --seconds;
+          minutes = (seconds < 0) ? --minutes : minutes;
+          seconds = (seconds < 0) ? 59 : seconds;
+          seconds = (seconds < 10) ? '0' + seconds : seconds;
+          //minutes = (minutes < 10) ?  minutes : minutes;
+          $('#timer').html(minutes + ':' + seconds);
+          if (minutes < 0) clearInterval(interval);
+          //check if both minutes and seconds are 0
+          if ((seconds <= 0) && (minutes <= 0)) clearInterval(interval);
+          timer2 = minutes + ':' + seconds;
+        }, 1000);
+        
+        }
+
+
+        function cownDownTimer() {
+          var countDownDate = new Date("2030-07-16T23:59:59.9999999+01:00").getTime();
+          setInterval(function () {
+              var now = new Date().getTime();
+              var distance = countDownDate - now;
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var minute = Math.ceil(minutes % Number(1));
+              var seconds1 = Math.floor((distance % (1000 * 60)) / 10000);
+              var seconds2 = Math.floor(((distance % (1000 * 60)) / 1000) % 10);
+              const p_details = `<%=d_period%>`;
+              const a_details = `<%=d_amount%>`;
+              $('#timer').html('0' + ':' + seconds1 + seconds2);
+              $("#period_id").text(p_details);
+              $(".b_number").text(a_details);
+              if(a_details== 5 || a_details== 0)
+              {
+                  $(".num_color").css('background-color', '#eb43dd');
+              }
+              else if (a_details % 2 == 0) {
+                  $(".num_color").css('background-color', '#fb4e4e');
+              }
+              else{
+                  $(".num_color").css('background-color', '#5cba47');
+              }
+          }, 1000);
+      }
+      cownDownTimer();
+        const socket = io();
+        socket.on("data-server-chat", function (msg) {
+            if (msg) {
+              calltimer();
+                $("#period_id").text(msg.data[1].period);
+                $(".b_number").text(msg.data[1].amount);
+                if(msg.data[1].amount == 5 || msg.data[1].amount == 0)
+                {
+                    $(".num_color").css('background-color', '#eb43dd');
+                }
+                else if (msg.data[1].amount % 2 == 0) {
+                    $(".num_color").css('background-color', '#fb4e4e');
+                }
+                else{
+                    $(".num_color").css('background-color', '#5cba47');
+                }
+            }
+        });
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
+
+        var chatname = "chat123";
+  function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+  function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+          }
+      }
+      return "";
+  }
+
+  function unsetCookie() {
+      setCookie('token', '', 0);
+      setCookie('auth', '', 0);
+  }
+  fetch('/api/webapi/GetUserInfo')
+      .then(response => response.json())
+      .then(data => {
+          $('.Loading').fadeOut(100);
+          if (data.status === false) {
+              unsetCookie();
+              return false;
+          };
+          $('.name').text(data.data.name_user);
+          chatname = data.data.name_user;
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDRtK5Z_TAgMUhDIBAV2X_psj4n5D09iqw",
+  authDomain: "live-chess-dede7.firebaseapp.com",
+  databaseURL: "https://live-chess-dede7-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "live-chess-dede7",
+  storageBucket: "live-chess-dede7.firebasestorage.app",
+  messagingSenderId: "1002758569165",
+  appId: "1:1002758569165:web:5af6a95b24f5de03913d84",
+  measurementId: "G-ZSNFPJ63B8"
+  };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // variables
+        var msgTxt = document.getElementById('msgTxt');
+        var sender = chatname;
+        // if(sessionStorage.getItem('sender')){
+        //     sender = sessionStorage.getItem('sender');
+        // } else {
+        //     sender = prompt('PLEASE ENTER YOUR NAME');
+        //     sessionStorage.setItem('sender',sender);
+        // }
+
+        // TO SEND MESSAGES
+        module.sendMsg = function sendMsg(){
+            var msg = msgTxt.value;
+            var date = new Date();
+            var timestamp = new Date().getTime();
+            set(ref(db,"d5chat/"+timestamp),{
+                msg : msg,
+                sender : sender,
+                status:"active",
+                datetime:  moment().format('DD/MM/YYYY'),
+                time:moment().format("h:mm a"),
+            })
+
+            msgTxt.value="";
+        }
+
+        // TO RECEIVE MSG
+        onChildAdded(ref(db,"d5chat"), (data)=>{
+            if(data.val().sender == sender){
+                d5chat.innerHTML += "<div style=justify-content:end class=outer id="+data.key+"><div id=inner class=me>you : "+data.val().msg+ " "+data.val().time+ "<button id=dltMsg onclick=module.dltMsg("+data.key+")><i class='fa fa-trash-o'></i></button></div></div>";
+            } else {
+                d5chat.innerHTML += "<div class=outer id="+data.key+"><div id=inner class=notMe>"+data.val().sender+" : "+data.val().msg+ " "+data.val().time+ "</div></div>";
+            }
+          $('#d5chat').scrollTop($('#d5chat')[0].scrollHeight);
+        })
+
+        // TO DELETE MSG
+        module.dltMsg = function dltMsg(key){
+            remove(ref(db,"d5chat/"+key));
+        }
+
+        // WHEN MSG IS DELETED
+        onChildRemoved(ref(db,"d5chat"),(data)=>{
+            var msgBox = document.getElementById(data.key);
+            d5chat.removeChild(msgBox);
+        })
+     });
+    </script>
+</body>
+
+</html>

@@ -131,15 +131,25 @@ const notificationPage = async (req, res) => {
     return res.render("member/notification.ejs");
 }
 
-const chatPage = async (req, res) => {
-    return res.render("member/chat.ejs");
-}
-
 const wingochat = async (req, res) => {
     const [winGo1] = await connection.execute('SELECT * FROM `wingo` WHERE `game` = "wingo" ORDER BY `id` DESC LIMIT 1 ', []);
     const period = winGo1[0].period;
     const amount = winGo1[0].amount;
     return res.render("member/wingochat.ejs", { d_period: period, d_amount :amount });
+}
+
+const k3chat = async (req, res) => {
+    const [winGo1] = await connection.execute('SELECT * FROM `wingo` WHERE `game` = "wingo" ORDER BY `id` DESC LIMIT 1 ', []);
+    const period = winGo1[0].period;
+    const amount = winGo1[0].amount;
+    return res.render("member/k3chat.ejs", { d_period: period, d_amount :amount });
+}
+
+const d5chat = async (req, res) => {
+    const [winGo1] = await connection.execute('SELECT * FROM `wingo` WHERE `game` = "wingo" ORDER BY `id` DESC LIMIT 1 ', []);
+    const period = winGo1[0].period;
+    const amount = winGo1[0].amount;
+    return res.render("member/d5chat.ejs", { d_period: period, d_amount :amount });
 }
 
 const recordsalary = async (req, res) => {
@@ -204,11 +214,12 @@ const getSalaryRecord = async (req, res) => {
 }
 module.exports = {
     homePage,
-    chatPage,
     checkInPage,
+    d5chat,
     invibonusPage,
     rebatePage,
     jackpotPage,
+    k3chat,
     vipPage,
     activityPage,
     dailytaskPage,
