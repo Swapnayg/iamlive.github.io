@@ -431,11 +431,11 @@
               $('#timer').html('0' + ':' + seconds1 + seconds2);
               $("#period_id").text(p_details);
               $(".b_number").text(a_details);
-              if(a_details== 5 || a_details== 0)
+              if(parseInt(a_details)== 5 || parseInt(a_details)== 0)
               {
                   $(".num_color").css('background-color', '#eb43dd');
               }
-              else if (a_details % 2 == 0) {
+              else if (parseInt(a_details) % 2 == 0) {
                   $(".num_color").css('background-color', '#fb4e4e');
               }
               else{
@@ -449,12 +449,12 @@
             if (msg) {
               calltimer();
                 $("#period_id").text(msg.data[1].period);
-                $(".b_number").text(msg.data[1].amount);
-                if(msg.data[1].amount == 5 || msg.data[1].amount == 0)
+                $(".b_number").text(msg.data[1].result);
+                if(parseInt(msg.data[1].result) == 5 || parseInt(msg.data[1].result) == 0)
                 {
                     $(".num_color").css('background-color', '#eb43dd');
                 }
-                else if (msg.data[1].amount % 2 == 0) {
+                else if (parseInt(msg.data[1].result)  % 2 == 0) {
                     $(".num_color").css('background-color', '#fb4e4e');
                 }
                 else{

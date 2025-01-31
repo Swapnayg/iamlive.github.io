@@ -18,12 +18,14 @@ const cronJobGame1p = (io) => {
         const [k5D] = await connection.execute('SELECT * FROM d5 WHERE `game` = 1 ORDER BY `id` DESC LIMIT 2 ', []);
         const data2 = k5D; // Cầu mới chưa có kết quả
         io.emit('data-server-5d', { data: data2, 'game': '1' });
+        io.emit('data-server-chat5d', { data: data2, 'game': '1' });
 
         await k3Controller.addK3(1);
         await k3Controller.handlingK3(1);
         const [k3] = await connection.execute('SELECT * FROM k3 WHERE `game` = 1 ORDER BY `id` DESC LIMIT 2 ', []);
         const data3 = k3; // Cầu mới chưa có kết quả
         io.emit('data-server-k3', { data: data3, 'game': '1' });
+        io.emit('data-server-chatk3', { data: data3, 'game': '1' });
     });
 
     cron.schedule('*/3 * * * *', async() => {
