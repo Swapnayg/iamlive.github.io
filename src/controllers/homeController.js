@@ -142,8 +142,6 @@ const k3chat = async (req, res) => {
     const [k31] = await connection.execute('SELECT * FROM `k3` WHERE `game` = "1" ORDER BY `id` DESC LIMIT 2 ', []);
     const k_period = k31[1].period;
     const k_amount = k31[1].result;
-    console.log(k_amount);
-    console.log(k_period);
     return res.render("member/k3chat.ejs", { kd_period: k_period, kd_amount :k_amount });
 }
 
