@@ -73,6 +73,11 @@ const comhistoryPage = async (req, res) => {
     return res.render("promotion/comhistory.ejs");
 }
 
+const mybethistoryPage = async (req, res) => {
+    return res.render("promotion/mybethistory.ejs");
+}
+
+
 const tutorialPage = async (req, res) => {
     return res.render("promotion/tutorial.ejs");
 }
@@ -122,6 +127,31 @@ const mianPage = async (req, res) => {
     let cskh = settings[0].cskh;
     let level = user[0].level;
     return res.render("member/index.ejs", { level, cskh });
+}
+
+const d_get_betting = async (req, res) => {
+    let auth = req.cookies.auth;
+    const [user] = await connection.query('SELECT `phone` FROM users WHERE `token` = ? ', [auth]);
+    let phone = user[0].phone;
+    let gameJoin = req.body.gameJoin;
+    var betting_list = '';
+    if( gameJoin == "WinGo")
+    {
+        [betting_list] = await connection.query('SELECT * FROM minutes_1 WHERE `phone` = ?  ORDER BY `id` DESC ', [phone]);
+    }
+    else if(gameJoin == "5D")
+    {
+        [betting_list] = await connection.query('SELECT * FROM result_5d WHERE `phone` = ? ORDER BY `id` DESC ', [phone]);
+    }
+    else if(gameJoin == "K3")
+    {
+        [betting_list] = await connection.query('SELECT * FROM result_k3 WHERE `phone` = ? ORDER BY `id` DESC ', [phone]);     
+    }
+    return res.status(200).json({
+        message: 'Success',
+        status: true,
+        datas: betting_list,
+    });
 }
 const aboutPage = async (req, res) => {
     return res.render("member/about/index.ejs");
@@ -232,6 +262,7 @@ module.exports = {
     promotionmyTeamPage,
     promotionDesPage,
     comhistoryPage,
+    mybethistoryPage,
     tutorialPage,
     bonusRecordPage,
     rechargePage,
@@ -252,4 +283,5 @@ module.exports = {
     recordsalary,
     getSalaryRecord,
     transactionhistoryPage,
+    d_get_betting,
 }

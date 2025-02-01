@@ -44,6 +44,7 @@ const initWebRouter = (app) => {
     router.get('/promotion/myTeam', middlewareController, homeController.promotionmyTeamPage);
     router.get('/promotion/promotionDes', middlewareController, homeController.promotionDesPage);
     router.get('/promotion/comhistory', middlewareController, homeController.comhistoryPage);
+    router.get('/promotion/bethistory', middlewareController, homeController.mybethistoryPage);
     router.get('/promotion/tutorial', middlewareController, homeController.tutorialPage);
     router.get('/promotion/bonusrecord', middlewareController, homeController.bonusRecordPage);
 
@@ -80,7 +81,7 @@ const initWebRouter = (app) => {
     router.get('/newtutorial', homeController.newtutorial);
     router.get('/about/privacyPolicy', middlewareController, homeController.privacyPolicy);
     router.get('/about/riskAgreement', middlewareController, homeController.riskAgreement);
-
+    router.post('/api/betting/get_betting', middlewareController, homeController.d_get_betting);
     router.get('/myProfile', middlewareController, homeController.myProfilePage);
 
 
