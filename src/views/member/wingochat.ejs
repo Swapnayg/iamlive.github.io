@@ -416,10 +416,10 @@
         
         }
 
-
+        var interval_in;
         function cownDownTimer() {
           var countDownDate = new Date("2030-07-16T23:59:59.9999999+01:00").getTime();
-          setInterval(function () {
+          interval_in = setInterval(function () {
               var now = new Date().getTime();
               var distance = countDownDate - now;
               var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -447,6 +447,7 @@
         const socket = io();
         socket.on("data-server-chat", function (msg) {
             if (msg) {
+              clearInterval(interval_in);
               calltimer();
                 $("#period_id").text(msg.data[1].period);
                 $(".b_number").text(msg.data[1].amount);

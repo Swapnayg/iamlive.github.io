@@ -324,6 +324,27 @@
         margin-top: 0%;
     
     }
+
+  #result_div{
+      width: 225px;
+      position: relative;
+  }
+  #result_div .li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 20px !important;
+    height: 20px;
+    border: 1px solid #bbb;
+    border-radius: 16px;
+    margin-right: 4px;
+    color: #bbb;
+}
+#result_div .li .span_num
+{
+  font-size: 15px;
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"
@@ -362,14 +383,12 @@
 
         <div id="d5chat"></div>
                         <div data-v-106b99c8="" >
-                            <div class="bet_details">
-                                <span class="b_number">
-                                    
-                                </span>
-                                <span class="num_color">
-                                    
-                                </span>
-                            </div> 
+                          <div class="bet_details">
+                            <div class="c-row qiu c-row-middle-center" id="result_div">
+                            </div>
+                          <span class="sum_value">                                    
+                          </span>
+                      </div> 
                             
                             <div id="timer"></div>
                         </div>
@@ -415,11 +434,16 @@
         }, 1000);
         
         }
-
-
+        function split(n) {
+          if(n != null)
+          {
+            return n.toString().match(/.{1}(?=.)|.+/g);
+          }
+        }
+        var interval_in;
         function cownDownTimer() {
           var countDownDate = new Date("2030-07-16T23:59:59.9999999+01:00").getTime();
-          setInterval(function () {
+          interval_in = setInterval(function () {
               var now = new Date().getTime();
               var distance = countDownDate - now;
               var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -430,36 +454,30 @@
               const a_details = `<%=d5_amount%>`;
               $('#timer').html('0' + ':' + seconds1 + seconds2);
               $("#period_id").text(p_details);
-              $(".b_number").text(a_details);
-              if(parseInt(a_details)== 5 || parseInt(a_details)== 0)
-              {
-                  $(".num_color").css('background-color', '#eb43dd');
+              var a_result = split(a_details).toString().split(",");
+              var count=0;
+              for (var i=a_result.length; i--;) {
+                count+= parseInt(a_result[i]);
               }
-              else if (parseInt(a_details) % 2 == 0) {
-                  $(".num_color").css('background-color', '#fb4e4e');
-              }
-              else{
-                  $(".num_color").css('background-color', '#5cba47');
-              }
+              $("#result_div").html(`<div class="li circle-black c-row c-row-middle-center c-tc"><div class="span_num">`+a_result[0]+`</div></div><div class="li circle-black c-row c-row-middle-center c-tc"><div class="span_num">`+a_result[1]+`</div></div><div class="li circle-black c-row c-row-middle-center c-tc"><div class="span_num">`+a_result[2]+`</div></div><div class="li circle-black c-row c-row-middle-center c-tc"><div class="span_num">`+a_result[3]+`</div></div><div class="li circle-black c-row c-row-middle-center c-tc"><div class="span_num">`+a_result[4]+`</div></div>`);
+              $(".sum_value").text(count);
           }, 1000);
       }
       cownDownTimer();
         const socket = io();
-        socket.on("data-server-chat", function (msg) {
+        socket.on("data-server-chat5d", function (msg) {
             if (msg) {
+              clearInterval(interval_in);
               calltimer();
                 $("#period_id").text(msg.data[1].period);
-                $(".b_number").text(msg.data[1].result);
-                if(parseInt(msg.data[1].result) == 5 || parseInt(msg.data[1].result) == 0)
-                {
-                    $(".num_color").css('background-color', '#eb43dd');
+                var a_result1 = split(msg.data[1].result).toString().split(",");
+                var count1=0;
+                for (var i=a_result1.length; i--;) {
+                  count1+= parseInt(a_result1[i]);
                 }
-                else if (parseInt(msg.data[1].result)  % 2 == 0) {
-                    $(".num_color").css('background-color', '#fb4e4e');
-                }
-                else{
-                    $(".num_color").css('background-color', '#5cba47');
-                }
+                $("#dice_div").empty();
+                $("#result_div").html(`<div class="li circle-black c-row c-row-middle-center c-tc"><div class="span_num">`+a_result[0]+`</div></div><div class="li circle-black c-row c-row-middle-center c-tc"><div class="span_num">`+a_result[1]+`</div></div><div class="li circle-black c-row c-row-middle-center c-tc"><div class="span_num">`+a_result[2]+`</div></div><div class="li circle-black c-row c-row-middle-center c-tc"><div class="span_num">`+a_result[3]+`</div></div><div class="li circle-black c-row c-row-middle-center c-tc"><div class="span_num">`+a_result[4]+`</div></div>`);
+                $(".sum_value").text(count);
             }
         });
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";

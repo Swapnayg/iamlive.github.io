@@ -324,6 +324,49 @@
         margin-top: 0%;
     
     }
+.sum_value
+{
+  line-height: 15px;
+}
+.goItem
+{
+  float: left;
+  margin-left: 12%;
+}  
+.goItem .li.img1[data-v-03b808c2] {
+  background: url(/images/1.c33ac1e3.png) no-repeat 50%;
+  background-size: 100% 100%;
+  margin-left: 6%;
+}
+.goItem .li.img2[data-v-03b808c2] {
+  background: url(/images/2.a3dbd317.png) no-repeat 50%;
+  background-size: 100% 100%;
+  margin-left: 6%;
+}
+.goItem .li.img3[data-v-03b808c2] {
+  background: url(/images/3.6e9f4676.png) no-repeat 50%;
+  background-size: 100% 100%;
+  margin-left: 6%;
+}
+.goItem .li.img4[data-v-03b808c2] {
+  background: url(/images/4.49ad5147.png) no-repeat 50%;
+  background-size: 100% 100%;
+      margin-left: 6%;
+}
+.goItem .li.img5[data-v-03b808c2] {
+  background: url(/images/5.135b3ae6.png) no-repeat 50%;
+  background-size: 100% 100%;
+  margin-left: 6%;
+}
+.goItem .li.img6[data-v-03b808c2] {
+  background: url(/images/6.bbf99ab0.png) no-repeat 50%;
+  background-size: 100% 100%;
+  margin-left: 6%;
+}
+.goItem .li[data-v-03b808c2] {
+  width: .48888rem;
+  height: .48888rem;
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"
@@ -358,16 +401,12 @@
       </div>
       <!---------->
         <!---------->
-
-
         <div id="k3chat"></div>
                         <div data-v-106b99c8="" >
                             <div class="bet_details">
-                                <span class="b_number">
-                                    
-                                </span>
-                                <span class="num_color">
-                                    
+                                  <div data-v-03b808c2="" class="goItem c-row c-tc c-row-between c-row-middle" id="dice_div">
+                                    </div>
+                                <span class="sum_value">                                    
                                 </span>
                             </div> 
                             
@@ -416,10 +455,16 @@
         
         }
 
-
+        function split(n) {
+          if(n != null)
+          {
+            return n.toString().match(/.{1}(?=.)|.+/g);
+          }
+        }
+        var interval_in;
         function cownDownTimer() {
           var countDownDate = new Date("2030-07-16T23:59:59.9999999+01:00").getTime();
-          setInterval(function () {
+          interval_in = setInterval(function () {
               var now = new Date().getTime();
               var distance = countDownDate - now;
               var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -430,36 +475,30 @@
               const a_details = `<%=kd_amount%>`;
               $('#timer').html('0' + ':' + seconds1 + seconds2);
               $("#period_id").text(p_details);
-              $(".b_number").text(a_details);
-              if(parseInt(a_details)== 5 || parseInt(a_details)== 0)
-              {
-                  $(".num_color").css('background-color', '#eb43dd');
+              var a_result = split(a_details).toString().split(",");
+              var count=0;
+              for (var i=a_result.length; i--;) {
+                count+= parseInt(a_result[i]);
               }
-              else if (parseInt(a_details) % 2 == 0) {
-                  $(".num_color").css('background-color', '#fb4e4e');
-              }
-              else{
-                  $(".num_color").css('background-color', '#5cba47');
-              }
+              $("#dice_div").html(`<div data-v-03b808c2="" class="li img`+a_result[0]+`"></div><div data-v-03b808c2="" class="li img`+a_result[1]+`"></div><div data-v-03b808c2="" class="li img`+a_result[2]+`"></div>`);
+              $(".sum_value").text(count);
           }, 1000);
       }
       cownDownTimer();
         const socket = io();
-        socket.on("data-server-chat", function (msg) {
+        socket.on("data-server-chatk3", function (msg) {
             if (msg) {
+              clearInterval(interval_in);
               calltimer();
                 $("#period_id").text(msg.data[1].period);
-                $(".b_number").text(msg.data[1].result);
-                if(parseInt(msg.data[1].result) == 5 || parseInt(msg.data[1].result) == 0)
-                {
-                    $(".num_color").css('background-color', '#eb43dd');
+                var a_result1 = split(msg.data[1].result).toString().split(",");
+                var count1=0;
+                for (var i=a_result1.length; i--;) {
+                  count1+= parseInt(a_result1[i]);
                 }
-                else if (parseInt(msg.data[1].result) % 2 == 0) {
-                    $(".num_color").css('background-color', '#fb4e4e');
-                }
-                else{
-                    $(".num_color").css('background-color', '#5cba47');
-                }
+                $("#dice_div").empty();
+                $("#dice_div").html(`<div data-v-03b808c2="" class="li img`+a_result1[0]+`"></div><div data-v-03b808c2="" class="li img`+a_result1[1]+`"></div><div data-v-03b808c2="" class="li img`+a_result1[2]+`"></div>`);
+                $(".sum_value").text(count1);
             }
         });
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
