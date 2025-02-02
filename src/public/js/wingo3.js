@@ -826,7 +826,7 @@ $.ajax({
         $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-BS").text('S');
         $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-BS").css('background', '#6EA8F4');
       }
-      if(parseInt(el.amount) == 5 || parseInt(el.amount) == 5)
+      if(parseInt(el.amount) == 0 || parseInt(el.amount) == 5)
       {
         $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item:contains('"+(parseInt(el.amount))+"')").css('background', '#db5fd1');
       }

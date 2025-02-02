@@ -54,6 +54,111 @@ if (issetVolume == 'on') {
     localStorage.setItem('volume', 'on');
 }
 
+function showListOrder_t(list_orders, x) {
+    if (list_orders.length == 0) {
+        var sel_txt = "C";
+      return $(`.game-list .con-box:eq(${x}) .hb`).html(
+        `
+          <div data-v-a9660e98="" class="van-empty">
+            <div class="van-empty__image">
+              <img src="/images/empty-image-default.png" />
+            </div>
+            <p class="van-empty__description">No data</p>
+          </div>
+        `
+      );
+    }
+    var res_ind = 0;
+    if(sel_txt == 'A')
+    {
+        res_ind = 0;
+    }
+    else if(sel_txt == 'B')
+    {
+        res_ind = 1;
+    }
+    else if(sel_txt == 'C')
+    {
+        res_ind = 2;
+    }
+    else if(sel_txt == 'D')
+    {
+        res_ind = 3;
+    }
+    else if(sel_txt == 'E')
+    {
+        res_ind = 4;
+    }
+    var updated = false;
+    $(list_orders).each(function (index, el) {
+        var a_result1 = el.result.toString().split("")[parseInt(res_ind)];
+      $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-IssueNumber').text(el.period);
+      $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item").removeClass("action");
+      $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item").css('background', '');
+      $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item:contains('"+(parseInt(a_result1))+"')").addClass("action");
+      if(parseInt(a_result1) > 4)
+      {
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-BS").text('B');
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-BS").css('background', '#FEAA57');
+      }
+      else{
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-BS").text('S');
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-BS").css('background', '#6EA8F4');
+      }
+      if(parseInt(a_result1) % 2 === 0)
+      {
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-EO").text('E');
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-EO").css('background', '#22275b');
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-EO").css('border', '.01333rem solid #B6BCC8');
+      }
+      else{
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-EO").text('O');
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-EO").css('background', '#17B15E');
+      }
+      if(parseInt(a_result1) == 0 || parseInt(a_result1) == 5)
+      {
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item:contains('"+(parseInt(a_result1))+"')").css('background', '#db5fd1');
+      }
+      else if(parseInt(a_result1) % 2 === 0)
+      {
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item:contains('"+(parseInt(a_result1))+"')").css('background', '#fb4e4e');
+      }
+      else 
+      {
+        $(".Trend__C-body2").find('[rowid='+(index)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item:contains('"+(parseInt(a_result1))+"')").css('background', '#5cba47');
+      }
+      updated = true;
+    });
+    if(updated == true)
+    {
+      for(var i = 0; i < 10; i++)
+      {
+        var b3 = $(".Trend__C-body2").find('[rowid='+(i)+']').find('.Trend__C-body2-Num').find(".Trend__C-body2-Num-item")[0].getBoundingClientRect();
+        var b1 = $(".Trend__C-body2").find('[rowid='+(i)+']').find('.Trend__C-body2-Num').find(".action")[0].getBoundingClientRect();
+        var left_val = parseInt(b1.left) - parseInt(b3.left);
+        if( $(".Trend__C-body2").find('[rowid='+(i+1)+']').find('.Trend__C-body2-Num').find(".action")[0] != null)
+        { 
+          var b2 = $(".Trend__C-body2").find('[rowid='+(i+1)+']').find('.Trend__C-body2-Num').find(".action")[0].getBoundingClientRect();
+          $(".Trend__C-body2").find('[rowid='+(i)+']').find('.Trend__C-body2-Num') .find("#myCanvas"+(i)).css('left',(parseInt(left_val)+'px'));
+          var dx = (b1.left+(b1.right-b1.left)/2) - (b2.left+(b2.right-b2.left)/2);
+          var dy = (b1.top+(b1.bottom-b1.top)/2) - (b2.top+(b2.bottom-b2.top)/2);
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          var dx1 = b2.x - b1.x 
+          var dy1 = b2.y - b1.y
+          var angle = Math.atan2(dx1, dy1) * 180 / Math.PI;
+          var angle1 = Math.atan2(b2.y - b1.y, b2.x - b1.x) * 180 / Math.PI;
+          $(".Trend__C-body2").find('[rowid='+(i)+']').find('.Trend__C-body2-Num') .find("#myCanvas"+(i)).css('width',(parseInt(dist)+'px'));
+          $(".Trend__C-body2").find('[rowid='+(i)+']').find('.Trend__C-body2-Num') .find("#myCanvas"+(i)).css('transform',('rotate('+parseInt(angle1) + 'deg)'));
+        }
+		
+	    else{
+          $(".Trend__C-body2").find('[rowid='+(i)+']').find('.Trend__C-body2-Num') .find("#myCanvas"+(i)).css('left',(left_val+'px'));
+          $(".Trend__C-body2").find('[rowid='+(i)+']').find('.Trend__C-body2-Num') .find("#myCanvas"+(i)).css('width',('2px'));
+        }
+      } 
+    }
+    }
+
 function animationNewPar(data) {
     let arr = String(data).split('');
     $('.transform0, .transform1, .transform2, .transform3, .transform4, .transform5').addClass('slot-scroll');
@@ -997,11 +1102,106 @@ $('#GetMyTrends').click(function (e) {
     $("#trend_next").addClass("action");
     $("#trend_next .van-icon-arrow").css("color", "#fff");
     $(`#me`).css("display","none");
+    $.ajax({
+        type: "POST",
+        url: "/api/webapi/5d/GetNoaverageEmerdList",
+        data: {
+            gameJoin: $('html').attr('data-dpr'),
+            pageno: "0",
+            pageto: "10",
+        },
+        dataType: "json",
+        success: function (response) {
+            let list_orders = response.data.gameslist;
+            $("#trend_number_result").text("1/" + response.page);
+            showListOrder_t(list_orders, 2);
+        }
+    });
     $(`#all`).css("display","none");
     $(`#all`).css("display","none");
     $(`#general_nav`).css("display","none");
     $(`#tren_nav`).css("display","flex");
     $("#trend_list").css("display","block");
     $('.Loading').fadeOut(0);
-    
 });
+
+
+var pageno = 0;
+  var limit = 10;
+  var page = 1;
+  $('#trend_next').click(function (e) {
+    e.preventDefault();
+    pageno += 10;
+    let pageto = limit;
+    console.log($('html').attr('data-dpr'));
+    $.ajax({
+      type: "POST",
+      url: "/api/webapi/5d/GetNoaverageEmerdList",
+      data: {
+        gameJoin: $('html').attr('data-dpr'),
+        pageno: pageno,
+        pageto: pageto,
+      },
+      dataType: "json",
+      success: function (response) {
+        if (response.status === false) {
+          pageno -= 10;
+          $("#trend_next").addClass("block-click");
+          $("#trend_next").removeClass("action");
+          $("#trend_next .van-icon-arrow").css("color", "#7f7f7f");
+          alertMessJoin(response.msg);
+          return false;
+        }
+        $("#trend_previous").removeClass("block-click");
+        $("trend_previous").addClass("action");
+        $("#trend_previous .van-icon-arrow-left").css("color","#fff");
+        page += 1;
+        $("#trend_number_result").text(
+          page + "/" + response.page
+        );
+        let list_orders = response.data.gameslist;
+        $(".time-box .info .number").text(response.period);
+        showListOrder_t(list_orders, 2);
+      },
+    });
+  });
+  $('#trend_previous').click(function (e) {
+    e.preventDefault();
+    pageno -= 10;
+    let pageto = limit;
+    $("#trend_next").removeClass("block-click");
+    $("#trend_next").addClass("action");
+    $("#trend_next .van-icon-arrow").css("color", "#fff");
+    $.ajax({
+      type: "POST",
+      url: "/api/webapi/5d/GetNoaverageEmerdList",
+      data: {
+        gameJoin: $('html').attr('data-dpr'),
+        pageno: pageno,
+        pageto: pageto,
+      },
+      dataType: "json",
+      success: function (response) {
+        if (page - 1 <= 1) {
+            $("#trend_previous").removeClass("block-click");
+            $("trend_previous").addClass("action");
+            $("#trend_previous .van-icon-arrow-left").css("color","#7f7f7f");
+        }
+        if (response.status === false) {
+          pageno = 0;
+          $("#trend_previous").addClass("block-click");
+          $("#trend_previous").removeClass("action");
+          $("#trend_previous .van-icon-arrow-left").css("color", "#7f7f7f");
+          alertMessJoin(response.msg);
+          return false;
+        }
+        page -= 1;
+        $("#trend_number_result").text(
+          page + "/" + response.page
+        );
+        let list_orders = response.data.gameslist;
+        $(".time-box .info .number").text(response.period);
+        showListOrder_t(list_orders, 2);
+      },
+    });
+  });
