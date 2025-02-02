@@ -190,24 +190,18 @@ function callListOrder() {
                 
                 let color;
                 let type;
-        
+                var count1=0;
+                var a_result1 = list_orders[0].result.toString().split("");
+                for (var i=a_result1.length; i--;) {
+                  count1+= parseInt(a_result1[i]);
+                  $("#lottery_results_box").find(".r_num:eq("+i+")").html(parseInt(a_result1[i]));
+                }
                 if (firstGame.result >= 0 && firstGame.result <= 4) {
                     type = "Small";
                 } else if (firstGame.result >= 5 && firstGame.result <= 9) {
                     type = "Big";
                 }
-        
-                if (firstGame.result == 0) {
-                    color = "Red + Violet";
-                } else if (firstGame.result == 5) {
-                    color = "Green + Violet";
-                } else if (firstGame.result % 2 == 0) {
-                    color = "Red";
-                } else {
-                    color = "Green";
-                }
-        
-                lottery_result.innerHTML = "Lottery Result:<span class='btn-boox'>" + color + "</span><span class='btn-boox'>" + firstGame.result + "</span><span class='btn-boox'>" + type + "</span>";
+                $("#sum_num").html(count1);
             }
             $('.Loading').fadeOut(0);
         },

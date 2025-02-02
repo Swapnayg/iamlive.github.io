@@ -491,11 +491,12 @@
               clearInterval(interval_in);
               calltimer();
                 $("#period_id").text(msg.data[1].period);
-                var a_result1 = msg.data[1].result.toString().split(",");
+                var a_result1 = msg.data[1].result.toString().split("");
                 var count1=0;
                 for (var i=a_result1.length; i--;) {
                   count1+= parseInt(a_result1[i]);
                 }
+
                 $("#dice_div").empty();
                 $("#dice_div").html(`<div data-v-03b808c2="" class="li img`+a_result1[0]+`"></div><div data-v-03b808c2="" class="li img`+a_result1[1]+`"></div><div data-v-03b808c2="" class="li img`+a_result1[2]+`"></div>`);
                 $(".sum_value").text(count1);
