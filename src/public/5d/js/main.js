@@ -187,19 +187,11 @@ function callListOrder() {
                     myModal_result.innerHTML = "WIN :" + firstGame.get;
                 }
                 myModal_result_Period.innerHTML = "Period :5D "+$('html').attr('data-dpr')+"min "  + firstGame.stage;
-                
-                let color;
-                let type;
                 var count1=0;
                 var a_result1 = list_orders[0].result.toString().split("");
                 for (var i=a_result1.length; i--;) {
                   count1+= parseInt(a_result1[i]);
                   $("#lottery_results_box").find(".r_num:eq("+i+")").html(parseInt(a_result1[i]));
-                }
-                if (firstGame.result >= 0 && firstGame.result <= 4) {
-                    type = "Small";
-                } else if (firstGame.result >= 5 && firstGame.result <= 9) {
-                    type = "Big";
                 }
                 $("#sum_num").html(count1);
             }
