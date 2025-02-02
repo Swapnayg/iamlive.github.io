@@ -4,6 +4,99 @@
 .game-list .li .c-row{
   outline: none;
 }
+.Trend__C-body2-Num-item[data-v-d485a39d] {
+  border: .01333rem solid #B6BCC8;
+  color: #B6BCC8;
+  margin-right: .10667rem;
+}
+.Trend__C-body2[data-v-d485a39d] {
+  font-size: .32rem;
+  background-color: var(#FFF, #1E2637);
+}
+.Trend__C-body2>div[data-v-d485a39d]
+{
+  height:1.33333rem;
+  padding:.45333rem .13333rem;
+  border-top:.01333rem solid #B6BCC8
+}
+.van-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.van-col--9 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 37.5%;
+  flex: 0 0 37.5%;
+  max-width: 37.5%;
+}
+
+.van-col {
+  display: block;
+  box-sizing: border-box;
+  min-height: .01333rem;
+}
+
+.Trend__C-body2-IssueNumber[data-v-d485a39d] {
+color: whitesmoke;
+text-align: left;
+}
+.van-col--15 {
+-webkit-box-flex: 0;
+-webkit-flex: 0 0 62.5%;
+flex: 0 0 62.5%;
+max-width: 62.5%;
+}
+
+.Trend__C-body2-Num[data-v-d485a39d] {
+display: -webkit-box;
+display: -webkit-flex;
+display: flex;
+position: relative;
+height: .42667rem;
+}
+
+.Trend__C-body2-Num>div[data-v-d485a39d] {
+width: .4rem;
+height: .4rem;
+line-height: .4rem;
+text-align: center;
+border-radius: 50%;
+}
+
+
+.Trend__C-body2-Num-item.action1[data-v-d485a39d], .Trend__C-body2-Num-item.action3[data-v-d485a39d], .Trend__C-body2-Num-item.action7[data-v-d485a39d], .Trend__C-body2-Num-item.action9[data-v-d485a39d] {
+border: none;
+color: #fff;
+background-color: #18B660;
+position: relative;
+z-index: 10;
+}
+
+.Trend__C-body2-Num>div[data-v-d485a39d] {
+width: .4rem;
+height: .4rem;
+line-height: .4rem;
+text-align: center;
+border-radius: 50%;
+}
+
+.line-canvas {
+height: 3px;
+transform-origin: left center;
+position: absolute;
+  top: 50%;
+  height: auto;
+  z-index: 9;
+  width: 0px;
+  content: "";
+  border-top: 2px solid #FB5B5B;
+  transform-origin: 4% 0%;
+}
+
+
 </style>
 
 <div data-v-42f27458="" class="game-list">
@@ -14,8 +107,11 @@
       <div data-v-42f27458="" class="li c-row c-row-center" id="GetMyEmerdList">
         <span data-v-42f27458="" class="txt"> My Bets </span>
       </div>
+      <div data-v-42f27458="" class="li c-row c-row-center" id="GetMyTrends">
+        <span data-v-42f27458="" class="txt"> Trend </span>
+      </div>
     </div>
-    <div data-v-42f27458="" class="con-boxp-b-20" style="
+    <div data-v-42f27458="" class="con-box p-b-20" style="
     width: calc(100% - 0.69333rem);
     margin: 0.48rem auto 0;
     text-align: center;
@@ -44,7 +140,7 @@
         </div>
         <div data-v-42f27458="" class="list-fooder"></div>
       </div>
-      <div data-v-42f27458="" class="page-nav c-row c-row-center c-tc">
+      <div data-v-42f27458="" class="page-nav c-row c-row-center c-tc" id="general_nav">
         <div data-v-42f27458="" class="arr c-row c-row-middle-center block-click" id="previous"><i data-v-42f27458=""
             class="van-icon van-icon-arrow-left icon" style="font-size: 20px;">
             <!---->
@@ -53,6 +149,399 @@
           <!---->
         </div>
         <div data-v-42f27458="" class="arr c-row c-row-middle-center action" id="next"><i data-v-42f27458=""
+            class="van-icon van-icon-arrow icon action" style="font-size: 20px;">
+            <!---->
+          </i></div>
+      </div>
+    </div>
+    <div data-v-a9660e98="" class="con-box p-b-20" style="display: none" id="trend_list">
+      <div data-v-a9660e98="" class="list m-t-10">
+    <style>
+      .stat-table {
+        background: #333; /* Fallback for browsers that do not support gradients */
+        background: -webkit-linear-gradient(to right, #444, #555); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #444, #555); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        max-width: 600px;
+      }
+      .stat-table th, .stat-table td {
+        padding: 8px 0px;
+        text-align: center;
+        font-size: xx-small;
+      }
+      .stat-table th {
+        background: #555;
+        border-bottom: 1px solid #666;
+      }
+      .stat-table th:first-child {
+        border-radius: 5px 0 0 0;
+      }
+      .stat-table th:last-child {
+        border-radius: 0 5px 0 0;
+      }
+      .stat-row {
+        background: #444; /* Fallback for browsers that do not support gradients */
+        background: -webkit-linear-gradient(to right, #555, #666); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #555, #666); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        margin-bottom: 4px;
+        border-radius: 4px;
+      }
+      .number-cell {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        border-radius: 50%;
+        background: #666;
+        border: 1px solid #777; /* Slight border for definition */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+      }
+      .stat-header {
+        font-weight: bold;
+        text-align: left;
+        padding-left: 12px;
+      }
+      #app {
+        color: #ffffff;
+    }
+
+    
+    </style>
+    <table class="stat-table">
+      <thead>
+        <tr>
+          <th>Period</th>
+          <th>Statistic (last 100 Periods)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="stat-row">
+          <td class="stat-header">Total Number</td>
+          <td>
+            <div class="number-cell">0</div>
+            <div class="number-cell">1</div>
+            <div class="number-cell">2</div>
+            <div class="number-cell">3</div>
+            <div class="number-cell">4</div>
+            <div class="number-cell">5</div>
+            <div class="number-cell">6</div>
+            <div class="number-cell">7</div>
+            <div class="number-cell">8</div>
+            <div class="number-cell">9</div>
+          </td>
+        </tr>
+        <tr class="stat-row">
+          <td class="stat-header">Winning </td>
+          <td>
+            <div id="Winning_0" class="number-cell">0</div>
+            <div id="Winning_1" class="number-cell">1</div>
+            <div id="Winning_2" class="number-cell">2</div>
+            <div id="Winning_3" class="number-cell">3</div>
+            <div id="Winning_4" class="number-cell">4</div>
+            <div id="Winning_5" class="number-cell">5</div>
+            <div id="Winning_6" class="number-cell">6</div>
+            <div id="Winning_7" class="number-cell">7</div>
+            <div id="Winning_8" class="number-cell">8</div>
+            <div id="Winning_9" class="number-cell">9</div>
+          </td>
+        </tr>
+        <tr class="stat-row">
+          <td class="stat-header">Average Missing</td>
+          <td>
+            <span class="number-cell">0</span>
+            <span class="number-cell">1</span>
+            <span class="number-cell">2</span>
+            <span class="number-cell">3</span>
+            <span class="number-cell">4</span>
+            <span class="number-cell">5</span>
+            <span class="number-cell">6</span>
+            <span class="number-cell">7</span>
+            <span class="number-cell">8</span>
+            <span class="number-cell">9</span>
+          </td>
+        </tr>
+        <tr class="stat-row">
+          <td class="stat-header">Frequency</td>
+          <td>
+            <span class="number-cell">0</span>
+            <span class="number-cell">1</span>
+            <span class="number-cell">2</span>
+            <span class="number-cell">3</span>
+            <span class="number-cell">4</span>
+            <span class="number-cell">5</span>
+            <span class="number-cell">6</span>
+            <span class="number-cell">7</span>
+            <span class="number-cell">8</span>
+            <span class="number-cell">9</span>
+          </td>
+        </tr>
+        <tr class="stat-row">
+          <td class="stat-header">Max consecutive</td>
+          <td>
+            <span class="number-cell">0</span>
+            <span class="number-cell">1</span>
+            <span class="number-cell">2</span>
+            <span class="number-cell">3</span>
+            <span class="number-cell">4</span>
+            <span class="number-cell">5</span>
+            <span class="number-cell">6</span>
+            <span class="number-cell">7</span>
+            <span class="number-cell">8</span>
+            <span class="number-cell">9</span>
+          </td>
+        </tr>
+        <!-- ... More rows for Winning number, Missing, etc. ... -->
+      </tbody>
+    </table>
+        <div data-v-a9660e98="">
+          <div data-v-d485a39d="" class="Trend__C-body2">
+            <div data-v-d485a39d="" issuenumber="20250128100030085" number="1" colour="green" rowid="0">
+               <div data-v-d485a39d="" class="van-row">
+                  <div data-v-d485a39d="" class="van-col van-col--9">
+                     <div data-v-d485a39d="" class="Trend__C-body2-IssueNumber">20250128100030085</div>
+                  </div>
+                  <div data-v-d485a39d="" class="van-col van-col--15">
+                     <div data-v-d485a39d="" class="Trend__C-body2-Num">
+                      <canvas data-v-d485a39d="" canvas="" id="myCanvas0" class="line-canvas"></canvas>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">0</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">1</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">2</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">3</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">4</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">5</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">6</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">7</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">8</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">9</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-BS">S</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div data-v-d485a39d="" issuenumber="20250128100030084" number="9" colour="green" rowid="1">
+               <div data-v-d485a39d="" class="van-row">
+                  <div data-v-d485a39d="" class="van-col van-col--9">
+                     <div data-v-d485a39d="" class="Trend__C-body2-IssueNumber">20250128100030084</div>
+                  </div>
+                  <div data-v-d485a39d="" class="van-col van-col--15">
+                     <div data-v-d485a39d="" class="Trend__C-body2-Num">
+                        <canvas data-v-d485a39d="" canvas="" id="myCanvas1" class="line-canvas"></canvas>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">0</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">1</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">2</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">3</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">4</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">5</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">6</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">7</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">8</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">9</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-BS isB">B</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div data-v-d485a39d="" issuenumber="20250128100030083" number="0" colour="red,violet" rowid="2">
+               <div data-v-d485a39d="" class="van-row">
+                  <div data-v-d485a39d="" class="van-col van-col--9">
+                     <div data-v-d485a39d="" class="Trend__C-body2-IssueNumber">20250128100030083</div>
+                  </div>
+                  <div data-v-d485a39d="" class="van-col van-col--15">
+                     <div data-v-d485a39d="" class="Trend__C-body2-Num">
+                        <canvas data-v-d485a39d="" canvas="" id="myCanvas2" class="line-canvas"></canvas>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">0</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">1</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">2</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">3</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">4</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">5</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">6</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">7</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">8</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">9</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-BS">S</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div data-v-d485a39d="" issuenumber="20250128100030082" number="5" colour="green,violet" rowid="3">
+               <div data-v-d485a39d="" class="van-row">
+                  <div data-v-d485a39d="" class="van-col van-col--9">
+                     <div data-v-d485a39d="" class="Trend__C-body2-IssueNumber">20250128100030082</div>
+                  </div>
+                  <div data-v-d485a39d="" class="van-col van-col--15">
+                     <div data-v-d485a39d="" class="Trend__C-body2-Num">
+                        <canvas data-v-d485a39d="" canvas="" id="myCanvas3" class="line-canvas"></canvas>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">0</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">1</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">2</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">3</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">4</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">5</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">6</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">7</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">8</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">9</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-BS isB">B</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div data-v-d485a39d="" issuenumber="20250128100030081" number="2" colour="red" rowid="4">
+               <div data-v-d485a39d="" class="van-row">
+                  <div data-v-d485a39d="" class="van-col van-col--9">
+                     <div data-v-d485a39d="" class="Trend__C-body2-IssueNumber">20250128100030081</div>
+                  </div>
+                  <div data-v-d485a39d="" class="van-col van-col--15">
+                     <div data-v-d485a39d="" class="Trend__C-body2-Num">
+                        <canvas data-v-d485a39d="" canvas="" id="myCanvas4" class="line-canvas"></canvas>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">0</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">1</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">2</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">3</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">4</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">5</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">6</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">7</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">8</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">9</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-BS">S</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div data-v-d485a39d="" issuenumber="20250128100030080" number="5" colour="green,violet" rowid="5">
+               <div data-v-d485a39d="" class="van-row">
+                  <div data-v-d485a39d="" class="van-col van-col--9">
+                     <div data-v-d485a39d="" class="Trend__C-body2-IssueNumber">20250128100030080</div>
+                  </div>
+                  <div data-v-d485a39d="" class="van-col van-col--15">
+                     <div data-v-d485a39d="" class="Trend__C-body2-Num">
+                        <canvas data-v-d485a39d="" canvas="" id="myCanvas5" class="line-canvas"></canvas>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">0</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">1</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">2</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">3</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">4</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">5</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">6</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">7</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">8</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">9</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-BS isB">B</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div data-v-d485a39d="" issuenumber="20250128100030079" number="0" colour="red,violet" rowid="6">
+               <div data-v-d485a39d="" class="van-row">
+                  <div data-v-d485a39d="" class="van-col van-col--9">
+                     <div data-v-d485a39d="" class="Trend__C-body2-IssueNumber">20250128100030079</div>
+                  </div>
+                  <div data-v-d485a39d="" class="van-col van-col--15">
+                     <div data-v-d485a39d="" class="Trend__C-body2-Num">
+                        <canvas data-v-d485a39d="" canvas="" id="myCanvas6" class="line-canvas"></canvas>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">0</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">1</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">2</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">3</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">4</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">5</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">6</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">7</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">8</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">9</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-BS">S</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div data-v-d485a39d="" issuenumber="20250128100030078" number="1" colour="green" rowid="7">
+               <div data-v-d485a39d="" class="van-row">
+                  <div data-v-d485a39d="" class="van-col van-col--9">
+                     <div data-v-d485a39d="" class="Trend__C-body2-IssueNumber">20250128100030078</div>
+                  </div>
+                  <div data-v-d485a39d="" class="van-col van-col--15">
+                     <div data-v-d485a39d="" class="Trend__C-body2-Num">
+                        <canvas data-v-d485a39d="" canvas="" id="myCanvas7" class="line-canvas"></canvas>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">0</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">1</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">2</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">3</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">4</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">5</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">6</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">7</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">8</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">9</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-BS">S</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div data-v-d485a39d="" issuenumber="20250128100030077" number="8" colour="red" rowid="8">
+               <div data-v-d485a39d="" class="van-row">
+                  <div data-v-d485a39d="" class="van-col van-col--9">
+                     <div data-v-d485a39d="" class="Trend__C-body2-IssueNumber">20250128100030077</div>
+                  </div>
+                  <div data-v-d485a39d="" class="van-col van-col--15">
+                     <div data-v-d485a39d="" class="Trend__C-body2-Num">
+                        <canvas data-v-d485a39d="" canvas="" id="myCanvas8" class="line-canvas"></canvas>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">0</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">1</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">2</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">3</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">4</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">5</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">6</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">7</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">8</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">9</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-BS isB">B</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div data-v-d485a39d="" issuenumber="20250128100030076" number="9" colour="green" rowid="9">
+               <div data-v-d485a39d="" class="van-row">
+                  <div data-v-d485a39d="" class="van-col van-col--9">
+                     <div data-v-d485a39d="" class="Trend__C-body2-IssueNumber">20250128100030076</div>
+                  </div>
+                  <div data-v-d485a39d="" class="van-col van-col--15">
+                     <div data-v-d485a39d="" class="Trend__C-body2-Num">
+                        <canvas data-v-d485a39d="" canvas="" id="myCanvas9" class="line-canvas"></canvas>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">0</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">1</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">2</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">3</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">4</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">5</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">6</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">7</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">8</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-item">9</div>
+                        <div data-v-d485a39d="" class="Trend__C-body2-Num-BS isB">B</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+    
+    
+        </div>
+        <div data-v-a9660e98="" class="list-fooder"></div>
+      </div>
+      <div data-v-42f27458="" class="page-nav c-row c-row-center c-tc" id="trend_nav">
+        <div data-v-42f27458="" class="arr c-row c-row-middle-center block-click" id="trend_previous"><i data-v-42f27458=""
+            class="van-icon van-icon-arrow-left icon" style="font-size: 20px;">
+            <!---->
+          </i></div>
+        <div data-v-42f27458="" class="number" id="trend_number_result" data-select="all">
+          <!---->
+        </div>
+        <div data-v-42f27458="" class="arr c-row c-row-middle-center action" id="trend_next"><i data-v-42f27458=""
             class="van-icon van-icon-arrow icon action" style="font-size: 20px;">
             <!---->
           </i></div>

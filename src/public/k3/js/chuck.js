@@ -2,9 +2,9 @@
 var firstGame = null;
 
 $(document).ready(function(){
-    callAjaxMeJoin();
     var modal = document.getElementById("myModal_k3");
     modal.style.display = "none";
+    callAjaxMeJoin();
   });
 socket.on("data-server-k3", function (msg) {
     if (msg) {
@@ -16,6 +16,7 @@ socket.on("data-server-k3", function (msg) {
             let notResult = msg.data[0];
             let Result = msg.data[1];
             let check = $('#number_result').attr('data-select');
+            console.log(check);
             if (check == 'all') {
                 reload_money();
                 callListOrder();
@@ -285,28 +286,32 @@ function callListOrder() {
                     myModalheader.innerHTML = "congratulations";
                     myModal_result.innerHTML = "WIN :" + firstGame.get;
                 }
-                myModal_result_Period.innerHTML = "Period : 1min " + firstGame.stage;
-                
+                myModal_result_Period.innerHTML = "Period :K "+$('html').attr('data-dpr')+"min " + firstGame.stage;
+                var count1=0;
+                var a_result1 = list_orders[0].result.toString().split("");
+                var dice_txt = '';
+                for (var i=a_result1.length; i--;) {
+                  count1+= parseInt(a_result1[i]);
+                  dice_txt += '<div data-v-2d418cc5="" class="n'+(i+1)+'"></div>,'
+                }
+                $("#modal_dice").html(dice_txt.slice(0,-1));
                 let color;
                 let type;
         
-                if (firstGame.result >= 0 && firstGame.result <= 4) {
-                    type = "Small";
-                } else if (firstGame.result >= 5 && firstGame.result <= 9) {
-                    type = "Big";
+                if (count1 >= 0 && count1 <= 4) {
+                    type = "S";
+                } else if (count1 >= 5 && count1 <= 9) {
+                    type = "B";
                 }
-        
-                if (firstGame.result == 0) {
-                    color = "Red + Violet";
-                } else if (firstGame.result == 5) {
-                    color = "Green + Violet";
-                } else if (firstGame.result % 2 == 0) {
-                    color = "Red";
+                if (count1 % 2 == 0) {
+                    color = "Even";
                 } else {
-                    color = "Green";
+                    color = "Odd";
                 }
-        
-                lottery_result.innerHTML = "Lottery Result:<span class='btn-boox'>" + color + "</span><span class='btn-boox'>" + firstGame.result + "</span><span class='btn-boox'>" + type + "</span>";
+                $("#modal_sum").html(count1);
+                $("#modal_bsmll").html(type);
+                $("#modal_oddev").html(color);
+                //lottery_result.innerHTML = "Lottery Result:<span class='btn-boox'>" + color + "</span><span class='btn-boox'>" + firstGame.result + "</span><span class='btn-boox'>" + type + "</span>";
             }
             ShowListOrder(list_orders);
             $('.Loading').fadeOut(0);

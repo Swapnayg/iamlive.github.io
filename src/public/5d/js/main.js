@@ -186,7 +186,7 @@ function callListOrder() {
                     myModalheader.innerHTML = "congratulations";
                     myModal_result.innerHTML = "WIN :" + firstGame.get;
                 }
-                myModal_result_Period.innerHTML = "Period : 1min " + firstGame.stage;
+                myModal_result_Period.innerHTML = "Period :5D "+$('html').attr('data-dpr')+"min "  + firstGame.stage;
                 
                 let color;
                 let type;
@@ -224,6 +224,8 @@ $('#GetNoaverageEmerdList').click(function (e) {
     $('.Loading').fadeIn(0);
     $('#GetMyEmerdList').removeClass('block-click');
     $('#GetMyEmerdList').find('.txt').removeClass('action');
+    $('#GetMyTrends').removeClass('block-click');
+    $('#GetMyTrends').find('.txt').removeClass('action');
     $(this).addClass('block-click');
     $(this).find('.txt').addClass('action');
     $("#all").fadeIn(0);
@@ -236,6 +238,9 @@ $('#GetNoaverageEmerdList').click(function (e) {
     $("#next").removeClass("block-click");
     $("#next").addClass("action");
     $("#next .van-icon-arrow").css("color", "#fff");
+    $("#trend_list").css("display","none");
+    $(`#general_nav`).css("display","flex");
+    $(`#tren_nav`).css("display","none");
 });
 
 $('.van-notice-bar__wrap .van-notice-bar__content').css({
@@ -808,6 +813,8 @@ $('#GetMyEmerdList').click(function (e) {
     $('.Loading').fadeIn(0);
     $('#GetNoaverageEmerdList').removeClass('block-click');
     $('#GetNoaverageEmerdList').find('.txt').removeClass('action');
+    $('#GetMyTrends').removeClass('block-click');
+    $('#GetMyTrends').find('.txt').removeClass('action');
     $(this).addClass('block-click');
     $(this).find('.txt').addClass('action');
     $("#all").fadeOut(0);
@@ -820,6 +827,9 @@ $('#GetMyEmerdList').click(function (e) {
     $("#next").removeClass("block-click");
     $("#next").addClass("action");
     $("#next .van-icon-arrow").css("color", "#fff");
+    $("#trend_list").css("display","none");
+    $(`#general_nav`).css("display","flex");
+    $(`#tren_nav`).css("display","none");
 });
 
 
@@ -981,3 +991,31 @@ $('#game-join .item').click(async function (e) {
     $(this).find('.img .van-image:eq(1)').fadeOut(0);
 });
 
+
+$('#GetMyTrends').click(function (e) {
+    e.preventDefault();
+    pageno = 0;
+    limit = 10;
+    page = 1;
+    $('.Loading').fadeIn(0);
+    $('#GetMyEmerdList').removeClass('block-click');
+    $('#GetMyEmerdList').find('.txt').removeClass('action');
+    $('#GetNoaverageEmerdList').removeClass('block-click');
+    $('#GetNoaverageEmerdList').find('.txt').removeClass('action');
+    $(this).addClass('block-click');
+    $(this).find('.txt').addClass('action');
+    $("#trend_previous").addClass("block-click");
+    $("#trend_previous").removeClass("action");
+    $("#trend_previous .van-icon-arrow").css("color", "#7f7f7f");
+    $("#trend_next").removeClass("block-click");
+    $("#trend_next").addClass("action");
+    $("#trend_next .van-icon-arrow").css("color", "#fff");
+    $(`#me`).css("display","none");
+    $(`#all`).css("display","none");
+    $(`#all`).css("display","none");
+    $(`#general_nav`).css("display","none");
+    $(`#tren_nav`).css("display","flex");
+    $("#trend_list").css("display","block");
+    $('.Loading').fadeOut(0);
+    
+});

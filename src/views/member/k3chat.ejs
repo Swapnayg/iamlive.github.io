@@ -491,7 +491,7 @@
               clearInterval(interval_in);
               calltimer();
                 $("#period_id").text(msg.data[1].period);
-                var a_result1 = split(msg.data[1].result).toString().split(",");
+                var a_result1 = msg.data[1].result.toString().split(",");
                 var count1=0;
                 for (var i=a_result1.length; i--;) {
                   count1+= parseInt(a_result1[i]);
