@@ -34,6 +34,15 @@
             padding: 0;
             margin: 0;
         }
+        #vip_lev_img
+        {
+            width: 1.33333rem;
+            height: .58667rem;
+            margin: 0 .13333rem;
+            background-image: url(/assets/png/vip_img1.png);
+            background-size: 1.33333rem .58667rem;
+            float: right;
+        }
 
         .block-click {
             pointer-events: none;
@@ -364,7 +373,7 @@
                                 <img data-v-8cd483ca="" src="/images/avatar.svg" class="img">
                             </div>
                             <div data-v-8cd483ca="" class="p-l-10 infoName">
-                                <div data-v-8cd483ca="" class="name mb3 c-row c-row-middle"> </div>
+                                <div data-v-8cd483ca="" class="name mb3 c-row c-row-middle"> </div> <div data-v-92d3d2e1="" class="vip-header-wrapper-name-vip n0" id="vip_lev_img"></div>
                                 <div data-v-8cd483ca="" class="id tag-read mb3" data-clipboard-text="42472"></div>
                                 <div data-v-8cd483ca="" class="number mb3"> </div>
                             </div>
@@ -884,6 +893,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/js/client.js"></script>
     <script>
+        $.ajax({
+            type: "GET",
+            url: "/api/webapi/xpgain_value",
+            data: {
+            },
+            dataType: "json",
+            success: function (response) {
+                var xp_Score = parseInt(response.xp_value);
+                var vip_array = [3000,30000,200000,2000000,20000000,50000000,100000000,1000000000,5000000000];
+                var img_ind = 0;
+                $(vip_array).each(function(index,el){
+                    var xp_perc = xp_Score / el;
+                    if(xp_perc.toString().indexOf('e-') != -1) 
+                    {
+                        var xp_perc1 = 0;
+                    }
+                    else{
+                        var xp_perc1 = parseInt(xp_perc * 100).toFixed(0);
+                    }
+                    if(parseInt(xp_perc1)>= 100 )
+                    {
+                        img_ind = index +1;
+                    }
+                });
+                $("#vip_lev_img").css('background-image', 'url(/assets/png/vip_img'+img_ind+'.png)');
+                }
+                });
         fetch('/api/webapi/GetUserInfo')
             .then(response => response.json())
             .then(data => {

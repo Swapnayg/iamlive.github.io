@@ -20,6 +20,15 @@
             padding: 0;
             margin: 0;
         }
+        #vip_lev_img
+        {
+            width: 1.33333rem;
+            height: .58667rem;
+            margin: 0 .13333rem;
+            background-image: url(/assets/png/vip_img1.png);
+            background-size: 1.33333rem .58667rem;
+            float: right;
+        }
 
         .mian[data-v-9f3a9836] {
             background-color: #fbfcfd
@@ -131,6 +140,10 @@
                     <div data-v-9f3a9836="" class="lab">Mobile Number</div>
                     <div data-v-9f3a9836="" class="number"> </div>
                 </div>
+                <div data-v-9f3a9836="" class="item c-row c-row-between">
+                    <div data-v-9f3a9836="" class="lab">VIP Level</div>
+                    <div data-v-92d3d2e1="" class="vip-header-wrapper-name-vip n0" id="vip_lev_img"></div>
+                </div>
             </div>
             <!---->
             <div class="van-overlay" style="z-index: 2001;display: none;"></div>
@@ -177,6 +190,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/js/client.js"></script>
     <script>
+        $.ajax({
+            type: "GET",
+            url: "/api/webapi/xpgain_value",
+            data: {
+    
+            },
+            dataType: "json",
+            success: function (response) {
+                var xp_Score = parseInt(response.xp_value);
+                var vip_array = [3000,30000,200000,2000000,20000000,50000000,100000000,1000000000,5000000000];
+                var img_ind = 0;
+                $(vip_array).each(function(index,el){
+                    var xp_perc = xp_Score / el;
+                    if(xp_perc.toString().indexOf('e-') != -1) 
+                    {
+                        var xp_perc1 = 0;
+                    }
+                    else{
+                        var xp_perc1 = parseInt(xp_perc * 100).toFixed(0);
+                    }
+                    if(parseInt(xp_perc1)>= 100 )
+                    {
+                        img_ind = index +1;
+                    }
+                });
+                $("#vip_lev_img").css('background-image', 'url(/assets/png/vip_img'+img_ind+'.png)');
+                }
+                });
         function setCookie(cname, cvalue, exdays) {
             const d = new Date();
             d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));

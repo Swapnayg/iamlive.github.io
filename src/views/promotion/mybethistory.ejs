@@ -25,6 +25,55 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="/js/client.js"></script>
       <style id="pull-to-refresh-js-style">
+
+         .k3_bet .img1 {
+            background: url(/images/1.c33ac1e3.png) no-repeat 50%;
+            background-size: 100% 100%;
+            height: 25px;
+            width: 25px;
+            line-height: 25px;
+          }
+          .k3_bet .img2 {
+            background: url(/images/2.a3dbd317.png) no-repeat 50%;
+            background-size: 100% 100%;
+            height: 25px;
+            width: 25px;
+            line-height: 25px;
+          }
+          .k3_bet .img3{
+            background: url(/images/3.6e9f4676.png) no-repeat 50%;
+            background-size: 100% 100%;
+            height: 25px;
+            width: 25px;
+            line-height: 25px;
+          }
+          .k3_bet .img4 {
+            background: url(/images/4.49ad5147.png) no-repeat 50%;
+            background-size: 100% 100%;
+            height: 25px;
+            width: 25px;
+            line-height: 25px;
+          }
+          .k3_bet .img5 {
+            background: url(/images/5.135b3ae6.png) no-repeat 50%;
+            background-size: 100% 100%;
+            height: 25px;
+            width: 25px;
+            line-height: 25px;
+          }
+          .k3_bet .img6 {
+            background: url(/images/6.bbf99ab0.png) no-repeat 50%;
+            background-size: 100% 100%;
+            height: 25px;
+            width: 25px;
+            line-height: 25px;
+          }
+         .d5_bet div h2 p[data-v-1d8fbc24]
+         {
+            width: .56667rem;
+            height: .56667rem;
+            line-height: .56667rem;
+         }
          .ptr--ptr {
          box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.12);
          pointer-events: none;
@@ -4405,7 +4454,7 @@
                         <img data-v-0a298b45="" class="img"
                            data-origin="https://ossimg.Big-Mumadmin888.com/bigmumbai/lotterycategory/lotterycategory_20230828120518e7ml.png"
                            src="https://ossimg.Big-Mumadmin888.com/bigmumbai/lotterycategory/lotterycategory_20230828120518e7ml.png" />
-                        Win Go
+                        WinGo
                      </div>
                   </div>
                   <div data-v-0a298b45="" class="item">
@@ -4499,6 +4548,14 @@ function timerJoin1(params = '') {
                                     var win_Min = (element.game.match(/\d+/) == null) ? "1" : element.game.match(/\d+/);
                                     var col_txt = '';
                                     var col_val = '';
+                                    var sb_txt = '';
+                                    if(parseInt(element.amount) <= 4)
+                                    {
+                                       sb_txt = "Small";
+                                    }
+                                    else{
+                                       sb_txt = "Big";
+                                    }
                                     if(parseInt(element.amount) == 5 || parseInt(element.amount) == 0)
                                     {
                                         col_txt = "Violet";
@@ -4551,7 +4608,168 @@ function timerJoin1(params = '') {
                                     <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
                                     <use xlink:href="#icon-round"></use></svg>Lottery results</h1><h2 data-v-1d8fbc24="">
                                     <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
-                                    <p data-v-1d8fbc24="">`+element.result+`</p><span data-v-1d8fbc24="" class="small">Small</span>
+                                    <p data-v-1d8fbc24="">`+element.result+`</p><span data-v-1d8fbc24="" class="small">`+sb_txt+`</span>
+                                    <span data-v-1d8fbc24="" style="background-color:`+col_val+`">`+col_txt+`</span></h2></div></div>
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-note-box"><div data-v-1d8fbc24="">
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+act_amt+`</h3>
+                                    <span data-v-1d8fbc24="">Actual amount</span></div></div><div data-v-1d8fbc24="">
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+win_amt+`</h3>
+                                    <span data-v-1d8fbc24="">Winnings</span></div></div><div data-v-1d8fbc24="">
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+per_amt+`</h3>
+                                    <span data-v-1d8fbc24="">Handling fee</span></div></div><div data-v-1d8fbc24="">
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h4 data-v-1d8fbc24="" style="color:`+pl_color+`">`+prof_loss+`</h4>
+                                    <span data-v-1d8fbc24="">Profit/loss</span></div></div></div></div></div>`);
+                                }
+
+                                else if($("#game_selector_btn .ar-searchbar__selector-default").text().trim() == "5D")
+                                {
+                                    var win_loss = (element.status == "1") ? "WON" : "LOSS";
+                                    var win_Min = element.game;
+                                    var col_txt = '';
+                                    var col_val = '';
+                                    var sb_txt = '';
+                                    var selval = element.join_bet.toUpperCase() + " "+ element.bet.split('');
+                                    var result_txt = '';
+                                    var t_res_sum = 0;
+                                    String(element.result).split('').forEach((e) => {
+                                       result_txt += '<p data-v-1d8fbc24="">'+e+'</p>';
+                                       t_res_sum = t_res_sum + parseInt(e);
+                                    });
+                                    if(parseInt(t_res_sum) <= 4)
+                                    {
+                                       sb_txt = "Small";
+                                    }
+                                    else{
+                                       sb_txt = "Big";
+                                    }
+                                    if (parseInt(t_res_sum) % 2 == 0) {
+                                        col_txt = "Even";
+                                        col_val = "#fb4e4e";
+                                    }
+                                    else{
+                                        col_txt = "Odd";
+                                        col_val = "#5cba47";
+                                    }
+                                    var act_amt = 0;
+                                    var win_amt = 0;
+                                    var prof_loss = 0;
+                                    var pl_color = '';
+                                    var per_amt = parseFloat((parseInt(element.money) / parseInt(element.amount)) * 0.02).toFixed(2);
+                                    act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                                    if (element.status == "1") {
+                                        win_amt = act_amt * 2;
+                                        prof_loss = "+₹" + act_amt;
+                                        pl_color = 'green';
+                                    }
+                                    else{
+                                        win_amt = 0;
+                                        prof_loss = "-₹" + act_amt;
+                                        pl_color = 'red';
+                                    }
+                                    $("#betting_details").append(`<div data-v-1d8fbc24="" class="bet-container-lottery-items">
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-card">
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-card-header ar-1px-b"><h1 data-v-1d8fbc24="">
+                                    <h2 data-v-1d8fbc24="">5D</h2><span data-v-1d8fbc24="" class="colorE98613">`+win_loss+`</span></h1>
+                                    <p data-v-1d8fbc24="">`+timerJoin1(element.time).trim()+`</p></div><div data-v-1d8fbc24="" class="bet-container-lottery-card-info">
+                                    <ul data-v-1d8fbc24=""><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" 
+                                    class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Type</h2></span>
+                                    <span data-v-1d8fbc24="">5D `+win_Min+`Min</span></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                    <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                    <h2 data-v-1d8fbc24="">Period</h2></span><span data-v-1d8fbc24="">`+element.stage+`</span></li>
+                                    <li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                    <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Order number</h2></span>
+                                    <span data-v-1d8fbc24="">`+element.id_product+`</span></li><li data-v-1d8fbc24="">
+                                    <span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                    <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span>
+                                    <p data-v-1d8fbc24="">`+selval+`</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                    <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                    <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(element.money).toFixed(2)+`</span></li></ul>
+                                    </div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" />
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="d5_bet bet-container-lottery-note-result">
+                                    <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                    <use xlink:href="#icon-round"></use></svg>Lottery results</h1><h2 data-v-1d8fbc24="">
+                                    <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                    `+result_txt+` <span data-v-1d8fbc24="" style="background-color:#eb43dd">`+t_res_sum+`</span> <span data-v-1d8fbc24="" class="small">`+sb_txt+`</span>
+                                    <span data-v-1d8fbc24="" style="background-color:`+col_val+`">`+col_txt+`</span></h2></div></div>
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-note-box"><div data-v-1d8fbc24="">
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+act_amt+`</h3>
+                                    <span data-v-1d8fbc24="">Actual amount</span></div></div><div data-v-1d8fbc24="">
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+win_amt+`</h3>
+                                    <span data-v-1d8fbc24="">Winnings</span></div></div><div data-v-1d8fbc24="">
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+per_amt+`</h3>
+                                    <span data-v-1d8fbc24="">Handling fee</span></div></div><div data-v-1d8fbc24="">
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h4 data-v-1d8fbc24="" style="color:`+pl_color+`">`+prof_loss+`</h4>
+                                    <span data-v-1d8fbc24="">Profit/loss</span></div></div></div></div></div>`);
+                                }
+                                else if($("#game_selector_btn .ar-searchbar__selector-default").text().trim() == "K3")
+                                {
+                                    var win_loss = (element.status == "1") ? "WON" : "LOSS";
+                                    var win_Min = element.game;
+                                    var col_txt = '';
+                                    var col_val = '';
+                                    var sb_txt = '';
+                                    var selval = element.join_bet.toUpperCase() + " "+ element.bet.replace('y', '').replace('@', '');
+                                    var result_txt = '';
+                                    var t_res_sum = 0;
+                                    String(element.result).split('').forEach((e) => {
+                                       result_txt += '<div data-v-03b808c2="" class="img'+e+'"></div>';
+                                       t_res_sum = t_res_sum + parseInt(e);
+                                    });
+                                    if(parseInt(t_res_sum) <= 4)
+                                    {
+                                       sb_txt = "Small";
+                                    }
+                                    else{
+                                       sb_txt = "Big";
+                                    }
+                                    if (parseInt(t_res_sum) % 2 == 0) {
+                                        col_txt = "Even";
+                                        col_val = "#fb4e4e";
+                                    }
+                                    else{
+                                        col_txt = "Odd";
+                                        col_val = "#5cba47";
+                                    }
+                                    var act_amt = 0;
+                                    var win_amt = 0;
+                                    var prof_loss = 0;
+                                    var pl_color = '';
+                                    var per_amt = parseFloat((parseInt(element.money) / parseInt(element.amount)) * 0.02).toFixed(2);
+                                    act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                                    if (element.status == "1") {
+                                        win_amt = act_amt * 2;
+                                        prof_loss = "+₹" + act_amt;
+                                        pl_color = 'green';
+                                    }
+                                    else{
+                                        win_amt = 0;
+                                        prof_loss = "-₹" + act_amt;
+                                        pl_color = 'red';
+                                    }
+                                    $("#betting_details").append(`<div data-v-1d8fbc24="" class="bet-container-lottery-items">
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-card">
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-card-header ar-1px-b"><h1 data-v-1d8fbc24="">
+                                    <h2 data-v-1d8fbc24="">K3</h2><span data-v-1d8fbc24="" class="colorE98613">`+win_loss+`</span></h1>
+                                    <p data-v-1d8fbc24="">`+timerJoin1(element.time).trim()+`</p></div><div data-v-1d8fbc24="" class="bet-container-lottery-card-info">
+                                    <ul data-v-1d8fbc24=""><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" 
+                                    class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Type</h2></span>
+                                    <span data-v-1d8fbc24="">5D `+win_Min+`Min</span></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                    <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                    <h2 data-v-1d8fbc24="">Period</h2></span><span data-v-1d8fbc24="">`+element.stage+`</span></li>
+                                    <li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                    <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Order number</h2></span>
+                                    <span data-v-1d8fbc24="">`+element.id_product+`</span></li><li data-v-1d8fbc24="">
+                                    <span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                    <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span>
+                                    <p data-v-1d8fbc24="">`+selval+`</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                    <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                    <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(element.money).toFixed(2)+`</span></li></ul>
+                                    </div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" />
+                                    <div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="k3_bet bet-container-lottery-note-result">
+                                    <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                    <use xlink:href="#icon-round"></use></svg>Lottery results</h1><h2 data-v-1d8fbc24="">
+                                    <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                    `+result_txt+` <span data-v-1d8fbc24="" style="background-color:#eb43dd">`+t_res_sum+`</span> <span data-v-1d8fbc24="" class="small">`+sb_txt+`</span>
                                     <span data-v-1d8fbc24="" style="background-color:`+col_val+`">`+col_txt+`</span></h2></div></div>
                                     <div data-v-1d8fbc24="" class="bet-container-lottery-note-box"><div data-v-1d8fbc24="">
                                     <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+act_amt+`</h3>
@@ -4583,7 +4801,245 @@ function timerJoin1(params = '') {
                 $(response.datas).each(function(index, element){
                     if($("#datepickertxt").val().trim() == timerJoin(element.time).trim())
                     {
-                        $("#betting_details").html(`<div data-v-1d8fbc24="" class="bet-container-lottery-items"><div data-v-1d8fbc24="" class="bet-container-lottery-card"><div data-v-1d8fbc24="" class="bet-container-lottery-card-header ar-1px-b"><h1 data-v-1d8fbc24=""><h2 data-v-1d8fbc24="">Trx Win Go</h2><span data-v-1d8fbc24="" class="colorE98613">Lose</span></h1><p data-v-1d8fbc24="">2024-05-23 13:15:12</p></div><div data-v-1d8fbc24="" class="bet-container-lottery-card-info"><ul data-v-1d8fbc24=""><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Type</h2></span><span data-v-1d8fbc24="">Trx Win Go 1Min</span></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Period</h2></span><span data-v-1d8fbc24="">20240523130796</span></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Order number</h2></span><span data-v-1d8fbc24="">TWG2024052313151267524429b</span></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span><p data-v-1d8fbc24="">7</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹1.00</span></li></ul></div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" /><div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="bet-container-lottery-note-result"><div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>Lottery results</h1><h2 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><p data-v-1d8fbc24="">1</p><span data-v-1d8fbc24="" class="small">Small</span><span data-v-1d8fbc24="" class="green">Green</span></h2></div></div><div data-v-1d8fbc24="" class="bet-container-lottery-note-box"><div data-v-1d8fbc24=""><div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹0.98</h3><span data-v-1d8fbc24="">Actual amount</span></div></div><div data-v-1d8fbc24=""><div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹0.00</h3><span data-v-1d8fbc24="">Winnings</span></div></div><div data-v-1d8fbc24=""><div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹0.02</h3><span data-v-1d8fbc24="">Handling fee</span></div></div><div data-v-1d8fbc24=""><div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h4 data-v-1d8fbc24="" class="h4_red">-₹1.00</h4><span data-v-1d8fbc24="">Profit/loss</span></div></div></div></div></div>`);
+                         if($("#game_selector_btn .ar-searchbar__selector-default").text().trim() == "WinGo")
+                         {
+                             var win_loss = (element.status == "1") ? "WON" : "LOSS";
+                             var win_Min = (element.game.match(/\d+/) == null) ? "1" : element.game.match(/\d+/);
+                             var col_txt = '';
+                             var col_val = '';
+                             var sb_txt = '';
+                             if(parseInt(element.amount) <= 4)
+                             {
+                                sb_txt = "Small";
+                             }
+                             else{
+                                sb_txt = "Big";
+                             }
+                             if(parseInt(element.amount) == 5 || parseInt(element.amount) == 0)
+                             {
+                                 col_txt = "Violet";
+                                 col_val = "#eb43dd";
+                             }
+                             else if (parseInt(element.amount) % 2 == 0) {
+                                 col_txt = "Red";
+                                 col_val = "#fb4e4e";
+                             }
+                             else{
+                                 col_txt = "Green";
+                                 col_val = "#5cba47";
+                             }
+                             var act_amt = 0;
+                             var win_amt = 0;
+                             var prof_loss = 0;
+                             var pl_color = '';
+                             var per_amt = parseFloat((parseInt(element.money) / parseInt(element.amount)) * 0.02).toFixed(2);
+                             act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                             if (element.status == "1") {
+                                 win_amt = act_amt * 2;
+                                 prof_loss = "+₹" + act_amt;
+                                 pl_color = 'green';
+                             }
+                             else{
+                                 win_amt = 0;
+                                 prof_loss = "-₹" + act_amt;
+                                 pl_color = 'red';
+                             }
+                             $("#betting_details").append(`<div data-v-1d8fbc24="" class="bet-container-lottery-items">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-card">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-card-header ar-1px-b"><h1 data-v-1d8fbc24="">
+                             <h2 data-v-1d8fbc24="">Win Go</h2><span data-v-1d8fbc24="" class="colorE98613">`+win_loss+`</span></h1>
+                             <p data-v-1d8fbc24="">`+timerJoin1(element.time).trim()+`</p></div><div data-v-1d8fbc24="" class="bet-container-lottery-card-info">
+                             <ul data-v-1d8fbc24=""><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" 
+                             class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Type</h2></span>
+                             <span data-v-1d8fbc24="">Win Go `+win_Min+`Min</span></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                             <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                             <h2 data-v-1d8fbc24="">Period</h2></span><span data-v-1d8fbc24="">`+element.stage+`</span></li>
+                             <li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                             <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Order number</h2></span>
+                             <span data-v-1d8fbc24="">`+element.id_product+`</span></li><li data-v-1d8fbc24="">
+                             <span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                             <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span>
+                             <p data-v-1d8fbc24="">`+element.amount+`</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                             <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                             <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(element.money).toFixed(2)+`</span></li></ul>
+                             </div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" />
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="bet-container-lottery-note-result">
+                             <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                             <use xlink:href="#icon-round"></use></svg>Lottery results</h1><h2 data-v-1d8fbc24="">
+                             <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                             <p data-v-1d8fbc24="">`+element.result+`</p><span data-v-1d8fbc24="" class="small">`+sb_txt+`</span>
+                             <span data-v-1d8fbc24="" style="background-color:`+col_val+`">`+col_txt+`</span></h2></div></div>
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box"><div data-v-1d8fbc24="">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+act_amt+`</h3>
+                             <span data-v-1d8fbc24="">Actual amount</span></div></div><div data-v-1d8fbc24="">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+win_amt+`</h3>
+                             <span data-v-1d8fbc24="">Winnings</span></div></div><div data-v-1d8fbc24="">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+per_amt+`</h3>
+                             <span data-v-1d8fbc24="">Handling fee</span></div></div><div data-v-1d8fbc24="">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h4 data-v-1d8fbc24="" style="color:`+pl_color+`">`+prof_loss+`</h4>
+                             <span data-v-1d8fbc24="">Profit/loss</span></div></div></div></div></div>`);
+                         }
+
+                         else if($("#game_selector_btn .ar-searchbar__selector-default").text().trim() == "5D")
+                         {
+                             var win_loss = (element.status == "1") ? "WON" : "LOSS";
+                             var win_Min = element.game;
+                             var col_txt = '';
+                             var col_val = '';
+                             var sb_txt = '';
+                             var selval = element.join_bet.toUpperCase() + " "+ element.bet.split('');
+                             var result_txt = '';
+                             var t_res_sum = 0;
+                             String(element.result).split('').forEach((e) => {
+                                result_txt += '<p data-v-1d8fbc24="">'+e+'</p>';
+                                t_res_sum = t_res_sum + parseInt(e);
+                             });
+                             if(parseInt(t_res_sum) <= 4)
+                             {
+                                sb_txt = "Small";
+                             }
+                             else{
+                                sb_txt = "Big";
+                             }
+                             if (parseInt(t_res_sum) % 2 == 0) {
+                                 col_txt = "Even";
+                                 col_val = "#fb4e4e";
+                             }
+                             else{
+                                 col_txt = "Odd";
+                                 col_val = "#5cba47";
+                             }
+                             var act_amt = 0;
+                             var win_amt = 0;
+                             var prof_loss = 0;
+                             var pl_color = '';
+                             var per_amt = parseFloat((parseInt(element.money) / parseInt(element.amount)) * 0.02).toFixed(2);
+                             act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                             if (element.status == "1") {
+                                 win_amt = act_amt * 2;
+                                 prof_loss = "+₹" + act_amt;
+                                 pl_color = 'green';
+                             }
+                             else{
+                                 win_amt = 0;
+                                 prof_loss = "-₹" + act_amt;
+                                 pl_color = 'red';
+                             }
+                             $("#betting_details").append(`<div data-v-1d8fbc24="" class="bet-container-lottery-items">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-card">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-card-header ar-1px-b"><h1 data-v-1d8fbc24="">
+                             <h2 data-v-1d8fbc24="">5D</h2><span data-v-1d8fbc24="" class="colorE98613">`+win_loss+`</span></h1>
+                             <p data-v-1d8fbc24="">`+timerJoin1(element.time).trim()+`</p></div><div data-v-1d8fbc24="" class="bet-container-lottery-card-info">
+                             <ul data-v-1d8fbc24=""><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" 
+                             class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Type</h2></span>
+                             <span data-v-1d8fbc24="">5D `+win_Min+`Min</span></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                             <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                             <h2 data-v-1d8fbc24="">Period</h2></span><span data-v-1d8fbc24="">`+element.stage+`</span></li>
+                             <li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                             <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Order number</h2></span>
+                             <span data-v-1d8fbc24="">`+element.id_product+`</span></li><li data-v-1d8fbc24="">
+                             <span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                             <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span>
+                             <p data-v-1d8fbc24="">`+selval+`</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                             <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                             <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(element.money).toFixed(2)+`</span></li></ul>
+                             </div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" />
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="d5_bet bet-container-lottery-note-result">
+                             <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                             <use xlink:href="#icon-round"></use></svg>Lottery results</h1><h2 data-v-1d8fbc24="">
+                             <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                             `+result_txt+` <span data-v-1d8fbc24="" style="background-color:#eb43dd">`+t_res_sum+`</span> <span data-v-1d8fbc24="" class="small">`+sb_txt+`</span>
+                             <span data-v-1d8fbc24="" style="background-color:`+col_val+`">`+col_txt+`</span></h2></div></div>
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box"><div data-v-1d8fbc24="">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+act_amt+`</h3>
+                             <span data-v-1d8fbc24="">Actual amount</span></div></div><div data-v-1d8fbc24="">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+win_amt+`</h3>
+                             <span data-v-1d8fbc24="">Winnings</span></div></div><div data-v-1d8fbc24="">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+per_amt+`</h3>
+                             <span data-v-1d8fbc24="">Handling fee</span></div></div><div data-v-1d8fbc24="">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h4 data-v-1d8fbc24="" style="color:`+pl_color+`">`+prof_loss+`</h4>
+                             <span data-v-1d8fbc24="">Profit/loss</span></div></div></div></div></div>`);
+                         }
+                         else if($("#game_selector_btn .ar-searchbar__selector-default").text().trim() == "K3")
+                         {
+                             var win_loss = (element.status == "1") ? "WON" : "LOSS";
+                             var win_Min = element.game;
+                             var col_txt = '';
+                             var col_val = '';
+                             var sb_txt = '';
+                             var selval = element.join_bet.toUpperCase() + " "+ element.bet.replace('y', '').replace('@', '');
+                             var result_txt = '';
+                             var t_res_sum = 0;
+                             String(element.result).split('').forEach((e) => {
+                                result_txt += '<div data-v-03b808c2="" class="img'+e+'"></div>';
+                                t_res_sum = t_res_sum + parseInt(e);
+                             });
+                             if(parseInt(t_res_sum) <= 4)
+                             {
+                                sb_txt = "Small";
+                             }
+                             else{
+                                sb_txt = "Big";
+                             }
+                             if (parseInt(t_res_sum) % 2 == 0) {
+                                 col_txt = "Even";
+                                 col_val = "#fb4e4e";
+                             }
+                             else{
+                                 col_txt = "Odd";
+                                 col_val = "#5cba47";
+                             }
+                             var act_amt = 0;
+                             var win_amt = 0;
+                             var prof_loss = 0;
+                             var pl_color = '';
+                             var per_amt = parseFloat((parseInt(element.money) / parseInt(element.amount)) * 0.02).toFixed(2);
+                             act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                             if (element.status == "1") {
+                                 win_amt = act_amt * 2;
+                                 prof_loss = "+₹" + act_amt;
+                                 pl_color = 'green';
+                             }
+                             else{
+                                 win_amt = 0;
+                                 prof_loss = "-₹" + act_amt;
+                                 pl_color = 'red';
+                             }
+                             $("#betting_details").append(`<div data-v-1d8fbc24="" class="bet-container-lottery-items">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-card">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-card-header ar-1px-b"><h1 data-v-1d8fbc24="">
+                             <h2 data-v-1d8fbc24="">K3</h2><span data-v-1d8fbc24="" class="colorE98613">`+win_loss+`</span></h1>
+                             <p data-v-1d8fbc24="">`+timerJoin1(element.time).trim()+`</p></div><div data-v-1d8fbc24="" class="bet-container-lottery-card-info">
+                             <ul data-v-1d8fbc24=""><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" 
+                             class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Type</h2></span>
+                             <span data-v-1d8fbc24="">5D `+win_Min+`Min</span></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                             <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                             <h2 data-v-1d8fbc24="">Period</h2></span><span data-v-1d8fbc24="">`+element.stage+`</span></li>
+                             <li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                             <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Order number</h2></span>
+                             <span data-v-1d8fbc24="">`+element.id_product+`</span></li><li data-v-1d8fbc24="">
+                             <span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                             <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span>
+                             <p data-v-1d8fbc24="">`+selval+`</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                             <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                             <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(element.money).toFixed(2)+`</span></li></ul>
+                             </div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" />
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="k3_bet bet-container-lottery-note-result">
+                             <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                             <use xlink:href="#icon-round"></use></svg>Lottery results</h1><h2 data-v-1d8fbc24="">
+                             <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                             `+result_txt+` <span data-v-1d8fbc24="" style="background-color:#eb43dd">`+t_res_sum+`</span> <span data-v-1d8fbc24="" class="small">`+sb_txt+`</span>
+                             <span data-v-1d8fbc24="" style="background-color:`+col_val+`">`+col_txt+`</span></h2></div></div>
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box"><div data-v-1d8fbc24="">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+act_amt+`</h3>
+                             <span data-v-1d8fbc24="">Actual amount</span></div></div><div data-v-1d8fbc24="">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+win_amt+`</h3>
+                             <span data-v-1d8fbc24="">Winnings</span></div></div><div data-v-1d8fbc24="">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+per_amt+`</h3>
+                             <span data-v-1d8fbc24="">Handling fee</span></div></div><div data-v-1d8fbc24="">
+                             <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h4 data-v-1d8fbc24="" style="color:`+pl_color+`">`+prof_loss+`</h4>
+                             <span data-v-1d8fbc24="">Profit/loss</span></div></div></div></div></div>`);
+                         }
                     }
                 });
             }
@@ -4650,10 +5106,249 @@ function timerJoin1(params = '') {
                     gameJoin: game,
                 },
                 success: function (response) {
+                  $("#betting_details").empty();
                     $(response.datas).each(function(index, element){
                         if(sel_date == timerJoin(element.time).trim())
                         {
-                            console.log("same");
+                               if($("#game_selector_btn .ar-searchbar__selector-default").text().trim() == "WinGo")
+                               {
+                                   var win_loss = (element.status == "1") ? "WON" : "LOSS";
+                                   var win_Min = (element.game.match(/\d+/) == null) ? "1" : element.game.match(/\d+/);
+                                   var col_txt = '';
+                                   var col_val = '';
+                                   var sb_txt = '';
+                                   if(parseInt(element.amount) <= 4)
+                                   {
+                                      sb_txt = "Small";
+                                   }
+                                   else{
+                                      sb_txt = "Big";
+                                   }
+                                   if(parseInt(element.amount) == 5 || parseInt(element.amount) == 0)
+                                   {
+                                       col_txt = "Violet";
+                                       col_val = "#eb43dd";
+                                   }
+                                   else if (parseInt(element.amount) % 2 == 0) {
+                                       col_txt = "Red";
+                                       col_val = "#fb4e4e";
+                                   }
+                                   else{
+                                       col_txt = "Green";
+                                       col_val = "#5cba47";
+                                   }
+                                   var act_amt = 0;
+                                   var win_amt = 0;
+                                   var prof_loss = 0;
+                                   var pl_color = '';
+                                   var per_amt = parseFloat((parseInt(element.money) / parseInt(element.amount)) * 0.02).toFixed(2);
+                                   act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                                   if (element.status == "1") {
+                                       win_amt = act_amt * 2;
+                                       prof_loss = "+₹" + act_amt;
+                                       pl_color = 'green';
+                                   }
+                                   else{
+                                       win_amt = 0;
+                                       prof_loss = "-₹" + act_amt;
+                                       pl_color = 'red';
+                                   }
+                                   $("#betting_details").append(`<div data-v-1d8fbc24="" class="bet-container-lottery-items">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-card">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-card-header ar-1px-b"><h1 data-v-1d8fbc24="">
+                                   <h2 data-v-1d8fbc24="">Win Go</h2><span data-v-1d8fbc24="" class="colorE98613">`+win_loss+`</span></h1>
+                                   <p data-v-1d8fbc24="">`+timerJoin1(element.time).trim()+`</p></div><div data-v-1d8fbc24="" class="bet-container-lottery-card-info">
+                                   <ul data-v-1d8fbc24=""><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" 
+                                   class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Type</h2></span>
+                                   <span data-v-1d8fbc24="">Win Go `+win_Min+`Min</span></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <h2 data-v-1d8fbc24="">Period</h2></span><span data-v-1d8fbc24="">`+element.stage+`</span></li>
+                                   <li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Order number</h2></span>
+                                   <span data-v-1d8fbc24="">`+element.id_product+`</span></li><li data-v-1d8fbc24="">
+                                   <span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span>
+                                   <p data-v-1d8fbc24="">`+element.amount+`</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(element.money).toFixed(2)+`</span></li></ul>
+                                   </div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" />
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="bet-container-lottery-note-result">
+                                   <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg>Lottery results</h1><h2 data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <p data-v-1d8fbc24="">`+element.result+`</p><span data-v-1d8fbc24="" class="small">`+sb_txt+`</span>
+                                   <span data-v-1d8fbc24="" style="background-color:`+col_val+`">`+col_txt+`</span></h2></div></div>
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box"><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+act_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Actual amount</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+win_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Winnings</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+per_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Handling fee</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h4 data-v-1d8fbc24="" style="color:`+pl_color+`">`+prof_loss+`</h4>
+                                   <span data-v-1d8fbc24="">Profit/loss</span></div></div></div></div></div>`);
+                               }
+
+                               else if($("#game_selector_btn .ar-searchbar__selector-default").text().trim() == "5D")
+                               {
+                                   var win_loss = (element.status == "1") ? "WON" : "LOSS";
+                                   var win_Min = element.game;
+                                   var col_txt = '';
+                                   var col_val = '';
+                                   var sb_txt = '';
+                                   var selval = element.join_bet.toUpperCase() + " "+ element.bet.split('');
+                                   var result_txt = '';
+                                   var t_res_sum = 0;
+                                   String(element.result).split('').forEach((e) => {
+                                      result_txt += '<p data-v-1d8fbc24="">'+e+'</p>';
+                                      t_res_sum = t_res_sum + parseInt(e);
+                                   });
+                                   if(parseInt(t_res_sum) <= 4)
+                                   {
+                                      sb_txt = "Small";
+                                   }
+                                   else{
+                                      sb_txt = "Big";
+                                   }
+                                   if (parseInt(t_res_sum) % 2 == 0) {
+                                       col_txt = "Even";
+                                       col_val = "#fb4e4e";
+                                   }
+                                   else{
+                                       col_txt = "Odd";
+                                       col_val = "#5cba47";
+                                   }
+                                   var act_amt = 0;
+                                   var win_amt = 0;
+                                   var prof_loss = 0;
+                                   var pl_color = '';
+                                   var per_amt = parseFloat((parseInt(element.money) / parseInt(element.amount)) * 0.02).toFixed(2);
+                                   act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                                   if (element.status == "1") {
+                                       win_amt = act_amt * 2;
+                                       prof_loss = "+₹" + act_amt;
+                                       pl_color = 'green';
+                                   }
+                                   else{
+                                       win_amt = 0;
+                                       prof_loss = "-₹" + act_amt;
+                                       pl_color = 'red';
+                                   }
+                                   $("#betting_details").append(`<div data-v-1d8fbc24="" class="bet-container-lottery-items">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-card">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-card-header ar-1px-b"><h1 data-v-1d8fbc24="">
+                                   <h2 data-v-1d8fbc24="">5D</h2><span data-v-1d8fbc24="" class="colorE98613">`+win_loss+`</span></h1>
+                                   <p data-v-1d8fbc24="">`+timerJoin1(element.time).trim()+`</p></div><div data-v-1d8fbc24="" class="bet-container-lottery-card-info">
+                                   <ul data-v-1d8fbc24=""><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" 
+                                   class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Type</h2></span>
+                                   <span data-v-1d8fbc24="">5D `+win_Min+`Min</span></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <h2 data-v-1d8fbc24="">Period</h2></span><span data-v-1d8fbc24="">`+element.stage+`</span></li>
+                                   <li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Order number</h2></span>
+                                   <span data-v-1d8fbc24="">`+element.id_product+`</span></li><li data-v-1d8fbc24="">
+                                   <span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span>
+                                   <p data-v-1d8fbc24="">`+selval+`</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(element.money).toFixed(2)+`</span></li></ul>
+                                   </div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" />
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="d5_bet bet-container-lottery-note-result">
+                                   <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg>Lottery results</h1><h2 data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   `+result_txt+` <span data-v-1d8fbc24="" style="background-color:#eb43dd">`+t_res_sum+`</span> <span data-v-1d8fbc24="" class="small">`+sb_txt+`</span>
+                                   <span data-v-1d8fbc24="" style="background-color:`+col_val+`">`+col_txt+`</span></h2></div></div>
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box"><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+act_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Actual amount</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+win_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Winnings</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+per_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Handling fee</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h4 data-v-1d8fbc24="" style="color:`+pl_color+`">`+prof_loss+`</h4>
+                                   <span data-v-1d8fbc24="">Profit/loss</span></div></div></div></div></div>`);
+                               }
+                               else if($("#game_selector_btn .ar-searchbar__selector-default").text().trim() == "K3")
+                               {
+                                   var win_loss = (element.status == "1") ? "WON" : "LOSS";
+                                   var win_Min = element.game;
+                                   var col_txt = '';
+                                   var col_val = '';
+                                   var sb_txt = '';
+                                   var selval = element.join_bet.toUpperCase() + " "+ element.bet.replace('y', '').replace('@', '');
+                                   var result_txt = '';
+                                   var t_res_sum = 0;
+                                   String(element.result).split('').forEach((e) => {
+                                      result_txt += '<div data-v-03b808c2="" class="img'+e+'"></div>';
+                                      t_res_sum = t_res_sum + parseInt(e);
+                                   });
+                                   if(parseInt(t_res_sum) <= 4)
+                                   {
+                                      sb_txt = "Small";
+                                   }
+                                   else{
+                                      sb_txt = "Big";
+                                   }
+                                   if (parseInt(t_res_sum) % 2 == 0) {
+                                       col_txt = "Even";
+                                       col_val = "#fb4e4e";
+                                   }
+                                   else{
+                                       col_txt = "Odd";
+                                       col_val = "#5cba47";
+                                   }
+                                   var act_amt = 0;
+                                   var win_amt = 0;
+                                   var prof_loss = 0;
+                                   var pl_color = '';
+                                   var per_amt = parseFloat((parseInt(element.money) / parseInt(element.amount)) * 0.02).toFixed(2);
+                                   act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                                   if (element.status == "1") {
+                                       win_amt = act_amt * 2;
+                                       prof_loss = "+₹" + act_amt;
+                                       pl_color = 'green';
+                                   }
+                                   else{
+                                       win_amt = 0;
+                                       prof_loss = "-₹" + act_amt;
+                                       pl_color = 'red';
+                                   }
+                                   $("#betting_details").append(`<div data-v-1d8fbc24="" class="bet-container-lottery-items">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-card">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-card-header ar-1px-b"><h1 data-v-1d8fbc24="">
+                                   <h2 data-v-1d8fbc24="">K3</h2><span data-v-1d8fbc24="" class="colorE98613">`+win_loss+`</span></h1>
+                                   <p data-v-1d8fbc24="">`+timerJoin1(element.time).trim()+`</p></div><div data-v-1d8fbc24="" class="bet-container-lottery-card-info">
+                                   <ul data-v-1d8fbc24=""><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" 
+                                   class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Type</h2></span>
+                                   <span data-v-1d8fbc24="">5D `+win_Min+`Min</span></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <h2 data-v-1d8fbc24="">Period</h2></span><span data-v-1d8fbc24="">`+element.stage+`</span></li>
+                                   <li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Order number</h2></span>
+                                   <span data-v-1d8fbc24="">`+element.id_product+`</span></li><li data-v-1d8fbc24="">
+                                   <span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span>
+                                   <p data-v-1d8fbc24="">`+selval+`</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(element.money).toFixed(2)+`</span></li></ul>
+                                   </div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" />
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="k3_bet bet-container-lottery-note-result">
+                                   <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg>Lottery results</h1><h2 data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   `+result_txt+` <span data-v-1d8fbc24="" style="background-color:#eb43dd">`+t_res_sum+`</span> <span data-v-1d8fbc24="" class="small">`+sb_txt+`</span>
+                                   <span data-v-1d8fbc24="" style="background-color:`+col_val+`">`+col_txt+`</span></h2></div></div>
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box"><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+act_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Actual amount</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+win_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Winnings</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+per_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Handling fee</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h4 data-v-1d8fbc24="" style="color:`+pl_color+`">`+prof_loss+`</h4>
+                                   <span data-v-1d8fbc24="">Profit/loss</span></div></div></div></div></div>`);
+                               }
                         }
                     });
                 }

@@ -5917,6 +5917,23 @@
         success: function (response) {
             var xp_Score = parseInt(response.xp_value);
             $("#xp_gain").text(xp_Score);
+            var vip_array = [3000,30000,200000,2000000,20000000,50000000,100000000,1000000000,5000000000];
+            var img_ind = 0;
+            $(vip_array).each(function(index,el){
+                var xp_perc = xp_Score / el;
+                if(xp_perc.toString().indexOf('e-') != -1) 
+                {
+                    var xp_perc1 = 0;
+                }
+                else{
+                    var xp_perc1 = parseInt(xp_perc * 100).toFixed(0);
+                }
+                if(parseInt(xp_perc1)>= 100 )
+                {
+                    img_ind = index +1;
+                }
+            });
+            $("#vip_lev_img").css('background-image', 'url(/assets/png/vip_img'+img_ind+'.png)');
             $(".swiper-slide").each(function(index){
                 var infodiv = parseInt($(this).find("#pro_div_span"+(index+1)).find("span").attr("data-max")); 
                 var percetage1 = xp_Score / infodiv;
@@ -5927,8 +5944,6 @@
                 else{
                     var percetage = parseInt(percetage1 * 100).toFixed(0);
                 }
-                //document.getElementById('vip_lev_img').style.backgroundImage = 'url(/assets/png/levl-img'+ (index+1) +'.png);';
-                //$("#vip_lev_img").css('background-image', 'url(/assets/png/levl-img'+ (index+1) +'.png)');
                 $(this).find("#pro_div_span"+(index+1)).find("span").text(parseInt(xp_Score) +"/"+infodiv)
                 if(parseInt(percetage) <= 0)
                 {

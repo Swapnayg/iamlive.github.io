@@ -42,3 +42,13 @@ added two web api for one to store balance_tarnsfer setting another to get balan
     "ALTER TABLE `withdraw` ADD `with_type` VARCHAR(200) NULL DEFAULT NULL AFTER `type`;"
     
 
+2 chat page logic for displaying data in proper formats along with timer checks -- half day
+adding bet history page with logics of data representation -- 1 day
+5d Chart making -- 1 day
+Accountant --
+
+VIP image logic for user profile and the vip page
+
+wingo, k3, 5d popup logic
+
+vip table schema within phpmyadmin
