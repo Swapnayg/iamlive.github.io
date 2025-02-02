@@ -298,9 +298,9 @@ function callListOrder() {
                 let color;
                 let type;
         
-                if (count1 >= 0 && count1 <= 4) {
+                if (count1 >= 2 && count1 <= 10) {
                     type = "S";
-                } else if (count1 >= 5 && count1 <= 9) {
+                } else if (count1 >= 11 && count1 <= 20) {
                     type = "B";
                 }
                 if (count1 % 2 == 0) {
