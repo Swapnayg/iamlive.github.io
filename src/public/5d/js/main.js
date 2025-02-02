@@ -2,6 +2,14 @@ let socket = io();
 var pageno = 0;
 var limit = 10;
 var page = 1;
+var firstGame = null;
+
+$(document).ready(function(){
+    var modal = document.getElementById("myModal_5d");
+    modal.style.display = "none";
+    callAjaxMeJoin();
+  });
+  
 socket.on("data-server-5d", function (msg) {
     console.log(msg.chane);
     if (msg) {
@@ -163,6 +171,43 @@ function callListOrder() {
             ShowListOrder(list_orders);
             if (list_orders.length != 0) {
                 showResultNow(list_orders[0].result);
+            }
+            if (firstGame && firstGame.stage === list_orders[0].period) {
+                var modal = document.getElementById("myModal_5d");
+                modal.style.display = "block";
+                var myModalheader = document.getElementById("myModal_header");
+                var myModal_result = document.getElementById("myModal_result");
+                var lottery_result = document.getElementById("lottery_result");
+                var myModal_result_Period = document.getElementById("myModal_result_Period");
+                if (firstGame.get == 0) {
+                    myModalheader.innerHTML = "Try Again";
+                    myModal_result.innerHTML = "LOSS :" + firstGame.money;
+                } else {
+                    myModalheader.innerHTML = "congratulations";
+                    myModal_result.innerHTML = "WIN :" + firstGame.get;
+                }
+                myModal_result_Period.innerHTML = "Period : 1min " + firstGame.stage;
+                
+                let color;
+                let type;
+        
+                if (firstGame.result >= 0 && firstGame.result <= 4) {
+                    type = "Small";
+                } else if (firstGame.result >= 5 && firstGame.result <= 9) {
+                    type = "Big";
+                }
+        
+                if (firstGame.result == 0) {
+                    color = "Red + Violet";
+                } else if (firstGame.result == 5) {
+                    color = "Green + Violet";
+                } else if (firstGame.result % 2 == 0) {
+                    color = "Red";
+                } else {
+                    color = "Green";
+                }
+        
+                lottery_result.innerHTML = "Lottery Result:<span class='btn-boox'>" + color + "</span><span class='btn-boox'>" + firstGame.result + "</span><span class='btn-boox'>" + type + "</span>";
             }
             $('.Loading').fadeOut(0);
         },
@@ -726,7 +771,9 @@ function callAjaxMeJoin() {
         success: function (response) {
             let data = response.data.gameslist;
             $("#number_result").text("1/" + response.page);
-            //console.log("123");
+            // Set the value of firstGame to the first game in the gameslist
+            firstGame = data[0];
+            console.log(firstGame);
             GetMyEmerdList(data);
             $('.Loading').fadeOut(0);
         },

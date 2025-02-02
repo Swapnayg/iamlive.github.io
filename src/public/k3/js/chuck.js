@@ -1,3 +1,11 @@
+
+var firstGame = null;
+
+$(document).ready(function(){
+    callAjaxMeJoin();
+    var modal = document.getElementById("myModal_k3");
+    modal.style.display = "none";
+  });
 socket.on("data-server-k3", function (msg) {
     if (msg) {
         let checkData = $('html').attr('data-dpr');
@@ -263,6 +271,43 @@ function callListOrder() {
             let list_orders = response.data.gameslist;
             $("#period").text(response.period);
             $("#number_result").text("1/" + response.page);
+            if (firstGame && firstGame.stage == list_orders[0].period) {
+                var modal = document.getElementById("myModal_k3");
+                modal.style.display = "block";
+                var myModalheader = document.getElementById("myModal_header");
+                var myModal_result = document.getElementById("myModal_result");
+                var lottery_result = document.getElementById("lottery_result");
+                var myModal_result_Period = document.getElementById("myModal_result_Period");
+                if (firstGame.get == 0) {
+                    myModalheader.innerHTML = "Try Again";
+                    myModal_result.innerHTML = "LOSS :" + firstGame.money;
+                } else {
+                    myModalheader.innerHTML = "congratulations";
+                    myModal_result.innerHTML = "WIN :" + firstGame.get;
+                }
+                myModal_result_Period.innerHTML = "Period : 1min " + firstGame.stage;
+                
+                let color;
+                let type;
+        
+                if (firstGame.result >= 0 && firstGame.result <= 4) {
+                    type = "Small";
+                } else if (firstGame.result >= 5 && firstGame.result <= 9) {
+                    type = "Big";
+                }
+        
+                if (firstGame.result == 0) {
+                    color = "Red + Violet";
+                } else if (firstGame.result == 5) {
+                    color = "Green + Violet";
+                } else if (firstGame.result % 2 == 0) {
+                    color = "Red";
+                } else {
+                    color = "Green";
+                }
+        
+                lottery_result.innerHTML = "Lottery Result:<span class='btn-boox'>" + color + "</span><span class='btn-boox'>" + firstGame.result + "</span><span class='btn-boox'>" + type + "</span>";
+            }
             ShowListOrder(list_orders);
             $('.Loading').fadeOut(0);
             let result = String(list_orders[0].result).split('');
@@ -288,6 +333,9 @@ function callAjaxMeJoin() {
         success: function (response) {
             let data = response.data.gameslist;
             $("#number_result").text("1/" + response.page);
+            // Set the value of firstGame to the first game in the gameslist
+            firstGame = data[0];
+            console.log(firstGame);
             GetMyEmerdList(data);
             $('.Loading').fadeOut(0);
         },

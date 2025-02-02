@@ -30,6 +30,87 @@
     .d-none {
       display: none !important;
     }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 20001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+  }
+  .modal-content {
+    text-align: -webkit-center;
+    position: relative;
+    top: 20%;
+}
+.modal-content img {
+  width: 280px;
+  height: auto;
+  display: block;
+}
+.text-over-image {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+.text-over-image-l {
+  position: absolute;
+  top: 48%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+.text-over-image-2 {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ff850f;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+.text-over-image-3 {
+  position: absolute;
+  top: 72%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #8c4500;
+  font-size: 12px;
+  font-weight: none;
+  text-align: center;
+}
+.close-btn {
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.close-x {
+  font-size: 35px;
+  font-family: none;
+  line-height: 1;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+}
   </style>
 </head>
 
@@ -66,6 +147,34 @@
             <%- include('element/popupJoin.ejs') -%>
               <%- include('element/quytac.ejs') -%>
     </div>
+    <div id="myModal_k3" class="modal" style="display: none">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+  
+        <img src="/missningBg-9deda6ac.png" alt="Popup Image">
+        <div class="text-over-image">
+          <!-- Your text here -->
+          <div id="myModal_header">Congratulations</div><br>
+        </div>
+        <div class="text-over-image-l">
+          <!-- Your text here -->
+          <div id="lottery_result">Lottery Result: <span class="btn-boox">Green</span><span class="btn-boox">7</span><span
+              class="btn-boox">Big</span></div><br>
+        </div>
+        <div class="text-over-image-2">
+          <!-- Your text here -->
+          <div id="myModal_result">Win: 50</div><br>
+        </div>
+        <div class="text-over-image-3">
+          <!-- Your text here -->
+          <div id="myModal_result_Period">Period: 1 Minute 1234567890 </div><br>
+        </div>
+        <div class="close-btn">
+          <span class="close-x">&times;</span>
+        </div>
+      </div>
+    </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"
@@ -73,6 +182,30 @@
     crossorigin="anonymous"></script>
   <script src="/k3/js/main.js"></script>
   <script src="/k3/js/chuck.js"></script>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal_k3");
+
+    // Get the element that closes the modal
+    var closeBtn = document.querySelector(".close-btn");
+
+
+
+    // When the user clicks on the close button, close the modal
+    closeBtn.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, also close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+
+  </script>
 </body>
 
 </html>
