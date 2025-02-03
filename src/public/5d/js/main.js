@@ -3,10 +3,9 @@ var pageno = 0;
 var limit = 10;
 var page = 1;
 var firstGame = null;
+var socket_call = "";
 
 $(document).ready(function(){
-    var modal = document.getElementById("myModal_5d");
-    modal.style.display = "none";
     callAjaxMeJoin();
   });
   
@@ -20,6 +19,7 @@ socket.on("data-server-5d", function (msg) {
             page = 1;
             let notResult = msg.data[0];
             let Result = msg.data[1];
+            socket_call = "called";
             let check = $('#number_result').attr('data-select');
             if (check == 'all') {
                 reload_money();
@@ -278,6 +278,7 @@ function callListOrder() {
                 showResultNow(list_orders[0].result);
             }
             if (firstGame && firstGame.stage === list_orders[0].period) {
+                if(socket_call == "called"){
                 var modal = document.getElementById("myModal_5d");
                 modal.style.display = "block";
                 var myModalheader = document.getElementById("myModal_header");
@@ -299,6 +300,7 @@ function callListOrder() {
                   $("#lottery_results_box").find(".r_num:eq("+i+")").html(parseInt(a_result1[i]));
                 }
                 $("#sum_num").html(count1);
+            }
             }
             $('.Loading').fadeOut(0);
         },
@@ -867,6 +869,8 @@ function callAjaxMeJoin() {
         success: function (response) {
             let data = response.data.gameslist;
             $("#number_result").text("1/" + response.page);
+            var modal = document.getElementById("myModal_5d");
+            modal.style.display = "none";
             // Set the value of firstGame to the first game in the gameslist
             firstGame = data[0];
             console.log(firstGame);

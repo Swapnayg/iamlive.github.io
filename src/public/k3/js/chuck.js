@@ -1,9 +1,9 @@
 
 var firstGame = null;
+var socket_call = "";
+
 
 $(document).ready(function(){
-    var modal = document.getElementById("myModal_k3");
-    modal.style.display = "none";
     callAjaxMeJoin();
   });
 socket.on("data-server-k3", function (msg) {
@@ -15,6 +15,7 @@ socket.on("data-server-k3", function (msg) {
             page = 1;
             let notResult = msg.data[0];
             let Result = msg.data[1];
+            socket_call = "called";
             let check = $('#number_result').attr('data-select');
             console.log(check);
             if (check == 'all') {
@@ -273,6 +274,7 @@ function callListOrder() {
             $("#period").text(response.period);
             $("#number_result").text("1/" + response.page);
             if (firstGame && firstGame.stage == list_orders[0].period) {
+                if(socket_call == "called"){
                 var modal = document.getElementById("myModal_k3");
                 modal.style.display = "block";
                 var myModalheader = document.getElementById("myModal_header");
@@ -311,7 +313,7 @@ function callListOrder() {
                 $("#modal_sum").html(count1);
                 $("#modal_bsmll").html(type);
                 $("#modal_oddev").html(color);
-                //lottery_result.innerHTML = "Lottery Result:<span class='btn-boox'>" + color + "</span><span class='btn-boox'>" + firstGame.result + "</span><span class='btn-boox'>" + type + "</span>";
+            }
             }
             ShowListOrder(list_orders);
             $('.Loading').fadeOut(0);
@@ -338,6 +340,8 @@ function callAjaxMeJoin() {
         success: function (response) {
             let data = response.data.gameslist;
             $("#number_result").text("1/" + response.page);
+            var modal = document.getElementById("myModal_k3");
+            modal.style.display = "none";
             // Set the value of firstGame to the first game in the gameslist
             firstGame = data[0];
             console.log(firstGame);
