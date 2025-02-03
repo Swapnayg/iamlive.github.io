@@ -205,9 +205,185 @@ position: absolute;
       }
       #app {
         color: #ffffff;
-    } 
+      } 
+    .Trend__C-body1[data-v-9d93d892] {
+      background-color:#1e234d;
+      margin-bottom: .50667rem;
+      height: 5.33333rem;
+      box-shadow: var(--boxShadowColor-35);
+      border-radius: .26667rem;
+      padding: .32rem;
+  }
+  .Trend__C-nav[data-v-9d93d892] {
+   display: -webkit-box;
+   display: -webkit-flex;
+   display: flex;
+   border-bottom: .01333rem solid #6F6F6F;
+   overflow: hidden;
+}
+
+.Trend__C-nav>div[data-v-9d93d892] {
+   width: 1.06667rem;
+   height: 1.06667rem;
+   line-height: 1.06667rem;
+   background: #6F6F6F;
+   font-size: .48rem;
+   font-weight: 700;
+   color: white;
+   border-radius: .25333rem .25333rem 0 0;
+   position: relative;
+   margin-right: .26667rem;
+   text-align: center;
+   border-radius: 19px 19px 0 0;
+}
+.Trend__C-nav>div.active[data-v-9d93d892] {
+   background-color: white;
+   color: black;
+}
+.Trend__C-nav>div.active[data-v-9d93d892]:before {
+   content: "";
+   width: .26667rem;
+   height: .26667rem;
+   position: absolute;
+   bottom: 0;
+   left: -.26667rem;
+   z-index: 9;
+}
+.Trend__C-nav>div.active[data-v-9d93d892]:after {
+   background: -webkit-radial-gradient(100% 0, circle, var(--bg_color_L2) .26667rem, var(--main-color) .26667rem);
+   background: radial-gradient(circle at 100% 0, var(--bg_color_L2) .26667rem, var(--main-color) .26667rem);
+}
+
+.Trend__C-nav>div[data-v-9d93d892]:after {
+   content: "";
+   width: .26667rem;
+   height: .26667rem;
+   position: absolute;
+   bottom: 0;
+   right: -.26667rem;
+   z-index: 9;
+   background: var(--linerGradient-70);
+}
+
+.Trend__C-nav>div[data-v-9d93d892]:after {
+   content: "";
+   width: .26667rem;
+   height: .26667rem;
+   position: absolute;
+   bottom: 0;
+   right: -.26667rem;
+   z-index: 9;
+   background: var(--linerGradient-70);
+}
+.Trend__C-body1-line[data-v-9d93d892] {
+   display: -webkit-box;
+   display: -webkit-flex;
+   display: flex;
+   font-size: .34667rem;
+   color: var(--text_color_L1);
+   height: .41333rem;
+}
+.Trend__C-body1-line+.Trend__C-body1-line[data-v-9d93d892] {
+   margin-top: .26667rem;
+}
+
+.Trend__C-body1-line>div[data-v-9d93d892]:first-child {
+   width: 3.70667rem;
+   padding-left: .26667rem;
+   text-align: left;
+}
+.Trend__C-body1-line-num[data-v-9d93d892] {
+   display: -webkit-box;
+   display: -webkit-flex;
+   display: flex;
+   -webkit-box-pack: justify;
+   -webkit-justify-content: space-between;
+   justify-content: space-between;
+   -webkit-box-flex: 1;
+   -webkit-flex: 1;
+   flex: 1;
+   padding-right: .2rem;
+}
+.Trend__C-body1-line-num>div[data-v-9d93d892] {
+   width: .48rem;
+   height: .48rem;
+   line-height: .48rem;
+   font-size: .34667rem;
+   color: var(--text_color_L2);
+   text-align: center;
+}
     </style>
         <div data-v-a9660e98="">
+         <div data-v-9d93d892="" class="Trend__C-body1">
+            <div data-v-9d93d892="" class="Trend__C-nav" id="chain_numbers">
+                <div data-v-9d93d892="" class="li active" onclick="div_click('A')">A</div>
+                <div data-v-9d93d892="" class="li"  onclick="div_click('B')">B</div>
+                <div data-v-9d93d892="" class="li" onclick="div_click('C')">C</div>
+                <div data-v-9d93d892="" class="li" onclick="div_click('D')">D</div>
+                <div data-v-9d93d892="" class="li" onclick="div_click('E')">E</div>
+            </div>
+            <div data-v-9d93d892="" class="Trend__C-body1-line">Statistic (last 100 Periods)</div>
+            <div data-v-9d93d892="" class="Trend__C-body1-line">
+                <div data-v-9d93d892="">Missing</div>
+                <div data-v-9d93d892="" class="Trend__C-body1-line-num" id="miss_num">
+                    <div data-v-9d93d892="">1</div>
+                    <div data-v-9d93d892="">6</div>
+                    <div data-v-9d93d892="">2</div>
+                    <div data-v-9d93d892="">16</div>
+                    <div data-v-9d93d892="">4</div>
+                    <div data-v-9d93d892="">0</div>
+                    <div data-v-9d93d892="">5</div>
+                    <div data-v-9d93d892="">3</div>
+                    <div data-v-9d93d892="">11</div>
+                    <div data-v-9d93d892="">8</div>
+                </div>
+            </div>
+            <div data-v-9d93d892="" class="Trend__C-body1-line">
+                <div data-v-9d93d892="">Avg missing</div>
+                <div data-v-9d93d892="" class="Trend__C-body1-line-num" id="avg_num">
+                    <div data-v-9d93d892="">10</div>
+                    <div data-v-9d93d892="">9</div>
+                    <div data-v-9d93d892="">9</div>
+                    <div data-v-9d93d892="">11</div>
+                    <div data-v-9d93d892="">7</div>
+                    <div data-v-9d93d892="">7</div>
+                    <div data-v-9d93d892="">19</div>
+                    <div data-v-9d93d892="">4</div>
+                    <div data-v-9d93d892="">13</div>
+                    <div data-v-9d93d892="">9</div>
+                </div>
+            </div>
+            <div data-v-9d93d892="" class="Trend__C-body1-line">
+                <div data-v-9d93d892="">Frequency</div>
+                <div data-v-9d93d892="" class="Trend__C-body1-line-num" id="freq_num">
+                    <div data-v-9d93d892="">8</div>
+                    <div data-v-9d93d892="">10</div>
+                    <div data-v-9d93d892="">10</div>
+                    <div data-v-9d93d892="">7</div>
+                    <div data-v-9d93d892="">11</div>
+                    <div data-v-9d93d892="">13</div>
+                    <div data-v-9d93d892="">4</div>
+                    <div data-v-9d93d892="">20</div>
+                    <div data-v-9d93d892="">7</div>
+                    <div data-v-9d93d892="">10</div>
+                </div>
+            </div>
+            <div data-v-9d93d892="" class="Trend__C-body1-line">
+                <div data-v-9d93d892="">Max consecutive</div>
+                <div data-v-9d93d892="" class="Trend__C-body1-line-num" id="max_consq">
+                    <div data-v-9d93d892="">1</div>
+                    <div data-v-9d93d892="">2</div>
+                    <div data-v-9d93d892="">2</div>
+                    <div data-v-9d93d892="">1</div>
+                    <div data-v-9d93d892="">1</div>
+                    <div data-v-9d93d892="">2</div>
+                    <div data-v-9d93d892="">1</div>
+                    <div data-v-9d93d892="">3</div>
+                    <div data-v-9d93d892="">2</div>
+                    <div data-v-9d93d892="">1</div>
+                </div>
+            </div>
+        </div>
           <div data-v-d485a39d="" class="Trend__C-body2">
             <div data-v-d485a39d="" issuenumber="20250128100030085" number="1" colour="green" rowid="0">
                <div data-v-d485a39d="" class="van-row">

@@ -55,8 +55,9 @@ if (issetVolume == 'on') {
 }
 
 function showListOrder_t(list_orders, x) {
+    var sel_txt = $("#chain_numbers").find('div.active').html().toString().trim();
+    console.log(sel_txt);
     if (list_orders.length == 0) {
-        var sel_txt = "C";
       return $(`.game-list .con-box:eq(${x}) .hb`).html(
         `
           <div data-v-a9660e98="" class="van-empty">
@@ -89,6 +90,7 @@ function showListOrder_t(list_orders, x) {
     {
         res_ind = 4;
     }
+    console.log(res_ind);
     var updated = false;
     $(list_orders).each(function (index, el) {
         var a_result1 = el.result.toString().split("")[parseInt(res_ind)];
@@ -1118,7 +1120,7 @@ $('#GetMyTrends').click(function (e) {
         success: function (response) {
             let list_orders = response.data.gameslist;
             $("#trend_number_result").text("1/" + response.page);
-            showListOrder_t(list_orders, 2);
+            $("#chain_numbers").find(".li:eq(0)").click();
         }
     });
     $(`#all`).css("display","none");
@@ -1137,7 +1139,6 @@ var pageno = 0;
     e.preventDefault();
     pageno += 10;
     let pageto = limit;
-    console.log($('html').attr('data-dpr'));
     $.ajax({
       type: "POST",
       url: "/api/webapi/5d/GetNoaverageEmerdList",
@@ -1152,13 +1153,13 @@ var pageno = 0;
           pageno -= 10;
           $("#trend_next").addClass("block-click");
           $("#trend_next").removeClass("action");
-          $("#trend_next .van-icon-arrow").css("color", "#7f7f7f");
+          $("#trend_nav .van-icon-arrow").css("color", "#7f7f7f");
           alertMessJoin(response.msg);
           return false;
         }
         $("#trend_previous").removeClass("block-click");
         $("trend_previous").addClass("action");
-        $("#trend_previous .van-icon-arrow-left").css("color","#fff");
+        $("#trend_nav .van-icon-arrow-left").css("color","#fff");
         page += 1;
         $("#trend_number_result").text(
           page + "/" + response.page
@@ -1175,7 +1176,7 @@ var pageno = 0;
     let pageto = limit;
     $("#trend_next").removeClass("block-click");
     $("#trend_next").addClass("action");
-    $("#trend_next .van-icon-arrow").css("color", "#fff");
+    $("#trend_nav .van-icon-arrow").css("color", "#fff");
     $.ajax({
       type: "POST",
       url: "/api/webapi/5d/GetNoaverageEmerdList",
@@ -1189,13 +1190,13 @@ var pageno = 0;
         if (page - 1 <= 1) {
             $("#trend_previous").removeClass("block-click");
             $("trend_previous").addClass("action");
-            $("#trend_previous .van-icon-arrow-left").css("color","#7f7f7f");
+            $("#trend_nav .van-icon-arrow-left").css("color","#7f7f7f");
         }
         if (response.status === false) {
           pageno = 0;
           $("#trend_previous").addClass("block-click");
           $("#trend_previous").removeClass("action");
-          $("#trend_previous .van-icon-arrow-left").css("color", "#7f7f7f");
+          $("#trend_nav .van-icon-arrow-left").css("color", "#7f7f7f");
           alertMessJoin(response.msg);
           return false;
         }
@@ -1209,3 +1210,303 @@ var pageno = 0;
       },
     });
   });
+
+function div_click(e)
+{
+
+    const GAME_CHART_STATISTICS_HTML = {
+        A: {
+          MISSING: `
+            <div data-v-9d93d892="">13</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">14</div>
+            <div data-v-9d93d892="">41</div>
+            <div data-v-9d93d892="">3</div>
+            <div data-v-9d93d892="">6</div>
+            <div data-v-9d93d892="">0</div>
+            <div data-v-9d93d892="">12</div>
+            <div data-v-9d93d892="">9</div>`,
+          AVG_MISSING: `
+            <div data-v-9d93d892="">9</div>
+            <div data-v-9d93d892="">6</div>
+            <div data-v-9d93d892="">5</div>
+            <div data-v-9d93d892="">6</div>
+            <div data-v-9d93d892="">15</div>
+            <div data-v-9d93d892="">11</div>
+            <div data-v-9d93d892="">8</div>
+            <div data-v-9d93d892="">15</div>
+            <div data-v-9d93d892="">8</div>
+            <div data-v-9d93d892="">13</div>`,
+          FREQUENCY: `
+            <div data-v-9d93d892="">11</div>
+            <div data-v-9d93d892="">13</div>
+            <div data-v-9d93d892="">17</div>
+            <div data-v-9d93d892="">12</div>
+            <div data-v-9d93d892="">6</div>
+            <div data-v-9d93d892="">7</div>
+            <div data-v-9d93d892="">10</div>
+            <div data-v-9d93d892="">7</div>
+            <div data-v-9d93d892="">10</div>
+            <div data-v-9d93d892="">7</div>
+            `,
+          MAX_CONSECUTIVE: `
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">2</div>
+            `,
+        },
+        B: {
+          MISSING: `
+            <div data-v-9d93d892="">4</div>
+            <div data-v-9d93d892="">19</div>
+            <div data-v-9d93d892="">6</div>
+            <div data-v-9d93d892="">7</div>
+            <div data-v-9d93d892="">8</div>
+            <div data-v-9d93d892="">10</div>
+            <div data-v-9d93d892="">0</div>
+            <div data-v-9d93d892="">11</div>
+            <div data-v-9d93d892="">3</div>
+            <div data-v-9d93d892="">1</div>`,
+          AVG_MISSING: `
+            <div data-v-9d93d892="">7</div>
+            <div data-v-9d93d892="">5</div>
+            <div data-v-9d93d892="">9</div>
+            <div data-v-9d93d892="">9</div>
+            <div data-v-9d93d892="">10</div>
+            <div data-v-9d93d892="">11</div>
+            <div data-v-9d93d892="">15</div>
+            <div data-v-9d93d892="">11</div>
+            <div data-v-9d93d892="">13</div>
+            <div data-v-9d93d892="">7</div>`,
+          FREQUENCY: `
+            <div data-v-9d93d892="">11</div>
+            <div data-v-9d93d892="">14</div>
+            <div data-v-9d93d892="">9</div>
+            <div data-v-9d93d892="">9</div>
+            <div data-v-9d93d892="">10</div>
+            <div data-v-9d93d892="">11</div>
+            <div data-v-9d93d892="">8</div>
+            <div data-v-9d93d892="">9</div>
+            <div data-v-9d93d892="">6</div>
+            <div data-v-9d93d892="">13</div>
+            `,
+          MAX_CONSECUTIVE: `
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">4</div>
+            <div data-v-9d93d892="">3</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">2</div>
+            `,
+        },
+        C: {
+          MISSING: `
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">8</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">17</div>
+            <div data-v-9d93d892="">7</div>
+            <div data-v-9d93d892="">3</div>
+            <div data-v-9d93d892="">4</div>
+            <div data-v-9d93d892="">33</div>
+            <div data-v-9d93d892="">0</div>
+            <div data-v-9d93d892="">12</div>`,
+          AVG_MISSING: `
+            <div data-v-9d93d892="">49</div>
+            <div data-v-9d93d892="">5</div>
+            <div data-v-9d93d892="">11</div>
+            <div data-v-9d93d892="">9</div>
+            <div data-v-9d93d892="">8</div>
+            <div data-v-9d93d892="">7</div>
+            <div data-v-9d93d892="">9</div>
+            <div data-v-9d93d892="">13</div>
+            <div data-v-9d93d892="">10</div>
+            <div data-v-9d93d892="">7</div>`,
+          FREQUENCY: `
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">15</div>
+            <div data-v-9d93d892="">10</div>
+            <div data-v-9d93d892="">13</div>
+            <div data-v-9d93d892="">11</div>
+            <div data-v-9d93d892="">12</div>
+            <div data-v-9d93d892="">10</div>
+            <div data-v-9d93d892="">6</div>
+            <div data-v-9d93d892="">9</div>
+            <div data-v-9d93d892="">13</div>
+            `,
+          MAX_CONSECUTIVE: `
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">4</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">2</div>
+            `,
+        },
+        D: {
+          MISSING: `
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">15</div>
+            <div data-v-9d93d892="">11</div>
+            <div data-v-9d93d892="">4</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">7</div>
+            <div data-v-9d93d892="">31</div>
+            <div data-v-9d93d892="">12</div>
+            <div data-v-9d93d892="">6</div>
+            <div data-v-9d93d892="">0</div>`,
+          AVG_MISSING: `
+            <div data-v-9d93d892="">8</div>
+            <div data-v-9d93d892="">13</div>
+            <div data-v-9d93d892="">9</div>
+            <div data-v-9d93d892="">8</div>
+            <div data-v-9d93d892="">9</div>
+            <div data-v-9d93d892="">10</div>
+            <div data-v-9d93d892="">13</div>
+            <div data-v-9d93d892="">9</div>
+            <div data-v-9d93d892="">8</div>
+            <div data-v-9d93d892="">7</div>`,
+          FREQUENCY: `
+            <div data-v-9d93d892="">12</div>
+            <div data-v-9d93d892="">7</div>
+            <div data-v-9d93d892="">10</div>
+            <div data-v-9d93d892="">10</div>
+            <div data-v-9d93d892="">10</div>
+            <div data-v-9d93d892="">9</div>
+            <div data-v-9d93d892="">7</div>
+            <div data-v-9d93d892="">10</div>
+            <div data-v-9d93d892="">12</div>
+            <div data-v-9d93d892="">13</div>
+            `,
+          MAX_CONSECUTIVE: `
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">2</div>
+            `,
+        },
+        E: {
+          MISSING: `
+            <div data-v-9d93d892="">22</div>
+            <div data-v-9d93d892="">25</div>
+            <div data-v-9d93d892="">4</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">13</div>
+            <div data-v-9d93d892="">21</div>
+            <div data-v-9d93d892="">7</div>
+            <div data-v-9d93d892="">12</div>
+            <div data-v-9d93d892="">0</div>`,
+          AVG_MISSING: `
+            <div data-v-9d93d892="">11</div>
+            <div data-v-9d93d892="">8</div>
+            <div data-v-9d93d892="">6</div>
+            <div data-v-9d93d892="">9</div>
+            <div data-v-9d93d892="">6</div>
+            <div data-v-9d93d892="">6</div>
+            <div data-v-9d93d892="">13</div>
+            <div data-v-9d93d892="">19</div>
+            <div data-v-9d93d892="">13</div>
+            <div data-v-9d93d892="">7</div>`,
+          FREQUENCY: `
+            <div data-v-9d93d892="">8</div>
+            <div data-v-9d93d892="">11</div>
+            <div data-v-9d93d892="">13</div>
+            <div data-v-9d93d892="">10</div>
+            <div data-v-9d93d892="">14</div>
+            <div data-v-9d93d892="">14</div>
+            <div data-v-9d93d892="">7</div>
+            <div data-v-9d93d892="">5</div>
+            <div data-v-9d93d892="">6</div>
+            <div data-v-9d93d892="">12</div>
+            `,
+          MAX_CONSECUTIVE: `
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">3</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">2</div>
+            <div data-v-9d93d892="">1</div>
+            <div data-v-9d93d892="">1</div>
+            `,
+        },
+      };
+      
+      
+    $("#chain_numbers").find('div').removeClass('active');
+    $("#chain_numbers").find('div:contains("'+e+'")').addClass('active');
+    $.ajax({
+        type: "POST",
+        url: "/api/webapi/5d/GetNoaverageEmerdList",
+        data: {
+            gameJoin: $('html').attr('data-dpr'),
+            pageno: "0",
+            pageto: "10",
+        },
+        dataType: "json",
+        success: function (response) {
+            let list_orders = response.data.gameslist;
+            if(e == "A")
+            {
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(0) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["A"].MISSING);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(1) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["A"].AVG_MISSING);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(2) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["A"].FREQUENCY);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(3) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["A"].MAX_CONSECUTIVE);
+            }    
+            else if(e == "B")
+            {
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(0) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["B"].MISSING);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(1) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["B"].AVG_MISSING);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(2) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["B"].FREQUENCY);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(3) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["B"].MAX_CONSECUTIVE);                  
+            }
+            else if(e == "C")
+            {
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(0) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["C"].MISSING);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(1) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["C"].AVG_MISSING);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(2) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["C"].FREQUENCY);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(3) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["C"].MAX_CONSECUTIVE);
+            }
+            else if(e == "D")
+            {
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(0) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["D"].MISSING);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(1) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["D"].AVG_MISSING);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(2) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["D"].FREQUENCY);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(3) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["D"].MAX_CONSECUTIVE);              
+            }
+            else if(e == "E")
+            {
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(0) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["E"].MISSING);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(1) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["E"].AVG_MISSING);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(2) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["E"].FREQUENCY);
+                $(".Trend__C-body1 .Trend__C-body1-line:eq(3) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["E"].MAX_CONSECUTIVE);   
+            }
+			showListOrder_t(list_orders, 2);
+		}
+	});
+}

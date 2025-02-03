@@ -55,42 +55,32 @@ function timerJoin(params = '', addHours = 0) {
     }
 
 const rosesPlus = async (auth, money) => {
-    console.log("roses");
     const [level] = await connection.query('SELECT * FROM level ');
     let level0 = level[0];
 
     const [user] = await connection.query('SELECT `phone`, `code`, `invite` FROM users WHERE token = ? AND veri = 1  LIMIT 1 ', [auth]);
     let userInfo = user[0];
     const [f1] = await connection.query('SELECT `phone`, `code`, `invite`, `rank` FROM users WHERE code = ? AND veri = 1  LIMIT 1 ', [userInfo.invite]);
-    console.log(money);
     if (money >= 10000) {
-        console.log("1234");
         if (f1.length > 0) {
-            console.log(f1.length);
             let infoF1 = f1[0];
             let rosesF1 = (money / 100) * level0.f1;
-            console.log(rosesF1)
             await connection.query('UPDATE users SET money = money + ?, roses_f1 = roses_f1 + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF1, rosesF1, rosesF1, rosesF1, infoF1.phone]);
             const [f2] = await connection.query('SELECT `phone`, `code`, `invite`, `rank` FROM users WHERE code = ? AND veri = 1  LIMIT 1 ', [infoF1.invite]);
-            console.log(infoF1.phone);
-            console.log(f2.length);
             if (f2.length > 0) {
                 let infoF2 = f2[0];
                 let rosesF2 = (money / 100) * level0.f2;
                 await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF2, rosesF2, rosesF2, infoF2.phone]);
-                console.log(infoF2.phone);
                 const [f3] = await connection.query('SELECT `phone`, `code`, `invite`, `rank` FROM users WHERE code = ? AND veri = 1  LIMIT 1 ', [infoF2.invite]);
                 if (f3.length > 0) {
                     let infoF3 = f3[0];
                     let rosesF3 = (money / 100) * level0.f3;
                     await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF3, rosesF3, rosesF3, infoF3.phone]);
-                    console.log(infoF3.phone);
                     const [f4] = await connection.query('SELECT `phone`, `code`, `invite`, `rank` FROM users WHERE code = ? AND veri = 1  LIMIT 1 ', [infoF3.invite]);
                     if (f4.length > 0) {
                         let infoF4 = f4[0];
                         let rosesF4 = (money / 100) * level0.f4;
                         await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF4, rosesF4, rosesF4, infoF4.phone]);
-                        console.log(infoF4.phone);
                     }
                 }
             }
@@ -172,7 +162,6 @@ const betK5D = async (req, res) => {
         let check = userInfo.money - total;
         console.log(check);
         if (check >= 0) {
-            console.log("inside");
             let timeNow = Date.now();
             const sql = `INSERT INTO result_5d SET id_product = ?,phone = ?,code = ?,invite = ?,stage = ?,level = ?,money = ?,price = ?,amount = ?,fee = ?,game = ?,join_bet = ?,bet = ?,status = ?,time = ?`;
             await connection.execute(sql, [id_product, userInfo.phone, userInfo.code, userInfo.invite, period.period, userInfo.level, total, price, x, fee, game, join, list_join, 0, timeNow]);
@@ -584,7 +573,6 @@ const handling5D = async(typeid) => {
             let fee = total * 0.02;
             let price = total - fee;
             nhan_duoc += price * 9;
-            console.log(nhan_duoc);
         } else {
             nhan_duoc += orders.price * 2;
         }
