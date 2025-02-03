@@ -352,7 +352,7 @@
 </div>
 
 <!-- Popup content -->
-<div id="welcomePopup" class="popup">
+<div id="welcomePopup" class="popup" style="display: none;">
 
   
   <div role="dialog" tabindex="0" class="van-popup van-popup--center van-dialog prompt-dialog"
@@ -3257,9 +3257,9 @@ style="z-index: 2001;">
   <script>
     const closeButton = document.getElementById('closeButton');
     const popUp = document.getElementById('containerWrapper');
-    closeButton.addEventListener('click', function () {
-      popUp.style.display = 'none'; // Hide the pop-up when close button is clicked
-    });
+    // closeButton.addEventListener('click', function () {
+      //popUp.style.display = 'none'; // Hide the pop-up when close button is clicked
+    //}); 
   </script>
   <script>
     $(document).ready(function () {
@@ -3356,10 +3356,8 @@ style="z-index: 2001;">
 
 <script>
   // Function to display the popup
-  function showPopup() {
-      var popup = document.getElementById("welcomePopup");
-      popup.style.display = "block";
-  }
+
+
 
   // Function to close the popup
   function closePopup() {
@@ -3370,11 +3368,12 @@ style="z-index: 2001;">
   // Check if the welcome message has been shown before (using local storage)
   // If not, display the welcome message
   window.onload = function() {
-      var visited = localStorage.getItem("visited");
-      if (!visited) {
-          showPopup();
-          localStorage.setItem("visited", "true");
+      var referrer =  document.referrer;
+        if(referrer.indexOf('/login') != -1){
+          var popup = document.getElementById("welcomePopup");
+          popup.style.display = "block";
       }
+      
   };
 </script>
 
