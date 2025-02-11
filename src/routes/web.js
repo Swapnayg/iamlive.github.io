@@ -9,6 +9,7 @@ import dailyController from '../controllers/dailyController';
 import k5Controller from '../controllers/k5Controller';
 import k3Controller from '../controllers/k3Controller';
 import paymentController from '../controllers/paymentController';
+import trxWingoController from "../controllers/trxWingoController.js";
 
 let router = express.Router();
 
@@ -260,6 +261,38 @@ const initWebRouter = (app) => {
 
 
     router.get('/api/webapi/xpgain_value', middlewareController, userController.xpgain_value);
+
+    router.get(
+        "/trx_wingo",
+        middlewareController,
+        trxWingoController.trxWingoPage,
+      );
+      // router.get("/trx_wingo/3", middlewareController, trxWingoController.trxWingoPage3)
+      // router.get("/trx_wingo/5", middlewareController, trxWingoController.trxWingoPage3)
+      // router.get("/trx_wingo/10", middlewareController, trxWingoController.trxWingoPage10)
+
+      router.get(
+        "/trx_block",
+        middlewareController,
+        trxWingoController.trxWingoBlockPage,
+      );
+
+        // bet TRX wingo
+  router.post(
+    "/api/webapi/trx_wingo/action/join",
+    middlewareController,
+    trxWingoController.betTrxWingo,
+  ); // register
+  router.post(
+    "/api/webapi/trx_wingo/GetNoaverageEmerdList",
+    middlewareController,
+    trxWingoController.listOrderOld,
+  ); // register
+  router.post(
+    "/api/webapi/trx_wingo/GetMyEmerdList",
+    middlewareController,
+    trxWingoController.GetMyEmerdList,
+  ); // register
 
     return app.use('/', router);
 }

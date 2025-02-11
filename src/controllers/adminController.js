@@ -1,7 +1,7 @@
 import connection from "../config/connectDB";
 import jwt from 'jsonwebtoken'
 import md5 from "md5";
-require('dotenv').config();
+import "dotenv/config";
 
 let timeNow = Date.now();
 
@@ -43,15 +43,40 @@ const membersPage = async (req, res) => {
 }
 
 const adminChatPage = async (req, res) => {
-    return res.render("manage/aChat.ejs");
+   var f_api= process.env.Firebase_Apikey;
+   var f_authdomain= process.env.Firebase_AuthDomain;
+   var f_dburl= process.env.Firebase_Dburl;
+   var f_projid= process.env.Firebase_ProjId;
+   var f_stobck= process.env.Firebase_StorageBucket;
+   var f_messId= process.env.Firebase_MessageSenId;
+   var f_appid= process.env.Firebase_AppId;
+   var f_mesuareId= process.env.Firebase_MeasurementId;
+return res.render("manage/aChat.ejs",{d_f_api: f_api, d_f_authdomain :f_authdomain,d_f_dburl:f_dburl,d_f_projid:f_projid,d_f_stobck:f_stobck,d_f_messId:f_messId,d_f_appid:f_appid,d_f_mesuareId:f_mesuareId });
 }
 
 const k3chatPage = async (req, res) => {
-    return res.render("manage/ChatK3.ejs");
+    var f_api= process.env.Firebase_Apikey;
+    var f_authdomain= process.env.Firebase_AuthDomain;
+    var f_dburl= process.env.Firebase_Dburl;
+    var f_projid= process.env.Firebase_ProjId;
+    var f_stobck= process.env.Firebase_StorageBucket;
+    var f_messId= process.env.Firebase_MessageSenId;
+    var f_appid= process.env.Firebase_AppId;
+    var f_mesuareId= process.env.Firebase_MeasurementId;
+    return res.render("manage/ChatK3.ejs",{d_f_api: f_api, d_f_authdomain :f_authdomain,d_f_dburl:f_dburl,d_f_projid:f_projid,d_f_stobck:f_stobck,d_f_messId:f_messId,d_f_appid:f_appid,d_f_mesuareId:f_mesuareId}
+    );
 }
 
 const d5chatPage = async (req, res) => {
-    return res.render("manage/Chat5d.ejs");
+    var f_api= process.env.Firebase_Apikey;
+    var f_authdomain= process.env.Firebase_AuthDomain;
+    var f_dburl= process.env.Firebase_Dburl;
+    var f_projid= process.env.Firebase_ProjId;
+    var f_stobck= process.env.Firebase_StorageBucket;
+    var f_messId= process.env.Firebase_MessageSenId;
+    var f_appid= process.env.Firebase_AppId;
+    var f_mesuareId= process.env.Firebase_MeasurementId;
+    return res.render("manage/Chat5d.ejs",  {d_f_api: f_api, d_f_authdomain :f_authdomain,d_f_dburl:f_dburl,d_f_projid:f_projid,d_f_stobck:f_stobck,d_f_messId:f_messId,d_f_appid:f_appid,d_f_mesuareId:f_mesuareId});
 }
 
 const ctvPage = async (req, res) => {

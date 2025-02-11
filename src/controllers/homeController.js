@@ -165,21 +165,45 @@ const wingochat = async (req, res) => {
     const [winGo1] = await connection.execute('SELECT * FROM `wingo` WHERE `game` = "wingo" ORDER BY `id` DESC LIMIT 2 ', []);
     const period = winGo1[1].period;
     const amount = winGo1[1].amount;
-    return res.render("member/wingochat.ejs", { d_period: period, d_amount :amount });
+    var f_api= process.env.Firebase_Apikey;
+    var f_authdomain= process.env.Firebase_AuthDomain;
+    var f_dburl= process.env.Firebase_Dburl;
+    var f_projid= process.env.Firebase_ProjId;
+    var f_stobck= process.env.Firebase_StorageBucket;
+    var f_messId= process.env.Firebase_MessageSenId;
+    var f_appid= process.env.Firebase_AppId;
+    var f_mesuareId= process.env.Firebase_MeasurementId;
+    return res.render("member/wingochat.ejs", { d_period: period, d_amount :amount,d_f_api: f_api, d_f_authdomain :f_authdomain,d_f_dburl:f_dburl,d_f_projid:f_projid,d_f_stobck:f_stobck,d_f_messId:f_messId,d_f_appid:f_appid,d_f_mesuareId:f_mesuareId});
 }
 
 const k3chat = async (req, res) => {
     const [k31] = await connection.execute('SELECT * FROM `k3` WHERE `game` = "1" ORDER BY `id` DESC LIMIT 2 ', []);
     const k_period = k31[1].period;
     const k_amount = k31[1].result;
-    return res.render("member/k3chat.ejs", { kd_period: k_period, kd_amount :k_amount });
+    var f_api= process.env.Firebase_Apikey;
+    var f_authdomain= process.env.Firebase_AuthDomain;
+    var f_dburl= process.env.Firebase_Dburl;
+    var f_projid= process.env.Firebase_ProjId;
+    var f_stobck= process.env.Firebase_StorageBucket;
+    var f_messId= process.env.Firebase_MessageSenId;
+    var f_appid= process.env.Firebase_AppId;
+    var f_mesuareId= process.env.Firebase_MeasurementId;
+    return res.render("member/k3chat.ejs", { kd_period: k_period, kd_amount :k_amount,d_f_api: f_api, d_f_authdomain :f_authdomain,d_f_dburl:f_dburl,d_f_projid:f_projid,d_f_stobck:f_stobck,d_f_messId:f_messId,d_f_appid:f_appid,d_f_mesuareId:f_mesuareId});
 }
 
 const d5chat = async (req, res) => {
     const [d51] = await connection.execute('SELECT * FROM `d5` WHERE `game` = "1" ORDER BY `id` DESC LIMIT 2 ', []);
     const d5_period = d51[1].period;
     const d5_amount = d51[1].result;
-    return res.render("member/d5chat.ejs", { d5_period: d5_period, d5_amount :d5_amount });
+    var f_api= process.env.Firebase_Apikey;
+    var f_authdomain= process.env.Firebase_AuthDomain;
+    var f_dburl= process.env.Firebase_Dburl;
+    var f_projid= process.env.Firebase_ProjId;
+    var f_stobck= process.env.Firebase_StorageBucket;
+    var f_messId= process.env.Firebase_MessageSenId;
+    var f_appid= process.env.Firebase_AppId;
+    var f_mesuareId= process.env.Firebase_MeasurementId;
+    return res.render("member/d5chat.ejs", { d5_period: d5_period, d5_amount :d5_amount , d_f_api: f_api, d_f_authdomain :f_authdomain,d_f_dburl:f_dburl,d_f_projid:f_projid,d_f_stobck:f_stobck,d_f_messId:f_messId,d_f_appid:f_appid,d_f_mesuareId:f_mesuareId});
 }
 
 const recordsalary = async (req, res) => {

@@ -2574,7 +2574,7 @@ html:lang(ar) .lotteryGamesList__container-item__time[data-v-22e2ba37] {
     justify-content: flex-end;
     height: 4rem;
     border-radius: .16rem;
-    background: url(/assets/png/LotteryBanner-2edb1124.png), lightgray 0 -.11107rem/100% 99.782% no-repeat
+    background: url(/images/LotteryBanner-2edb1124.png), lightgray 0 -.11107rem/100% 99.782% no-repeat
 }
 
 .lotteryBanner .banner .insideBanner[data-v-b8ad632c] {
@@ -6067,7 +6067,7 @@ html:lang(ar) .Wallet__C[data-v-7dd1adab]:before {
 .Wallet__C-balance[data-v-7dd1adab] {
     min-height: 3.57333rem;
     background-color: var(--bg_color_L3);
-    background-image: url(/assets/png/walletbg-5eabb579.png);
+    background-image: url(/images/walletbg-5eabb579.png);
     background-repeat: no-repeat;
     background-size: contain;
     border-radius: .53333rem;
@@ -6103,7 +6103,7 @@ html:lang(ar) .Wallet__C[data-v-7dd1adab]:before {
     top: 0;
     width: .48rem;
     height: .48rem;
-    background-image: url(/assets/png/refireshIcon-2bc1b49f.png);
+    background-image: url(/images/refireshIcon-2bc1b49f.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: .48rem;
@@ -6918,7 +6918,7 @@ html:lang(ar) .FDB__C-nav>div[data-v-baf77bdf]:after {
 
 .Betting__Popup-agree[data-v-7181abf7] {
     padding-left: .8rem;
-    background-image: url(/assets/png/agree-b-47b8f86d.png);
+    background-image: url(/images/agree-b-47b8f86d.png);
     background-repeat: no-repeat;
     background-position: left center;
     background-size: .64rem;
@@ -6931,7 +6931,7 @@ html:lang(ar) .Betting__Popup-agree[data-v-7181abf7] {
 }
 
 .Betting__Popup-agree.active[data-v-7181abf7] {
-    background-image: url(/assets/png/agree-a-6a68f3ca.png)
+    background-image: url(/images/agree-a-6a68f3ca.png)
 }
 
 .Betting__Popup-preSaleShow[data-v-7181abf7] {
@@ -7199,27 +7199,27 @@ html:lang(ar) .FDB__C-mark[data-v-28e57f6a] {
 }
 
 .GameRecord__C-body-premium .n1[data-v-9215aba8] {
-    background-image: url(/assets/png/n1-4d914772.png)
+    background-image: url(/images/n1-4d914772.png)
 }
 
 .GameRecord__C-body-premium .n2[data-v-9215aba8] {
-    background-image: url(/assets/png/n2-a7189ae3.png)
+    background-image: url(/images/n2-a7189ae3.png)
 }
 
 .GameRecord__C-body-premium .n3[data-v-9215aba8] {
-    background-image: url(/assets/png/n3-162f6063.png)
+    background-image: url(/images/n3-162f6063.png)
 }
 
 .GameRecord__C-body-premium .n4[data-v-9215aba8] {
-    background-image: url(/assets/png/n4-ae5fe4f6.png)
+    background-image: url(/images/n4-ae5fe4f6.png)
 }
 
 .GameRecord__C-body-premium .n5[data-v-9215aba8] {
-    background-image: url(/assets/png/n5-562557ff.png)
+    background-image: url(/images/n5-562557ff.png)
 }
 
 .GameRecord__C-body-premium .n6[data-v-9215aba8] {
-    background-image: url(/assets/png/n6-4fb0d7da.png)
+    background-image: url(/images/n6-4fb0d7da.png)
 }
 
 .GameRecord__C-body .numList[data-v-9215aba8] {
@@ -7913,27 +7913,27 @@ html:lang(ar) .Trend__C-nav>div[data-v-9d93d892]:after {
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n1[data-v-8bb41fd5] {
-    background-image: url(/assets/png/n1-4d914772.png)
+    background-image: url(/images/n1-4d914772.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n2[data-v-8bb41fd5] {
-    background-image: url(/assets/png/n2-a7189ae3.png)
+    background-image: url(/images/n2-a7189ae3.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n3[data-v-8bb41fd5] {
-    background-image: url(/assets/png/n3-162f6063.png)
+    background-image: url(/images/n3-162f6063.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n4[data-v-8bb41fd5] {
-    background-image: url(/assets/png/n4-ae5fe4f6.png)
+    background-image: url(/images/n4-ae5fe4f6.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n5[data-v-8bb41fd5] {
-    background-image: url(/assets/png/n5-562557ff.png)
+    background-image: url(/images/n5-562557ff.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n6[data-v-8bb41fd5] {
-    background-image: url(/assets/png/n6-4fb0d7da.png)
+    background-image: url(/images/n6-4fb0d7da.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div+div[data-v-8bb41fd5] {
@@ -8301,7 +8301,7 @@ html:lang(ar) .WinningTip__C[data-v-e05c7c66] {
     position: absolute;
     width: 7.73333rem;
     height: 10.93333rem;
-    background-image: url(/assets/png/missningBg-c1f02bcd.png);
+    background-image: url(/images/missningBg-c1f02bcd.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -8313,7 +8313,7 @@ html:lang(ar) .WinningTip__C[data-v-e05c7c66] {
 }
 
 .WinningTip__C-body.isL[data-v-e05c7c66] {
-    background-image: url(/assets/png/missningLBg-ca049a47.png)
+    background-image: url(/images/missningLBg-ca049a47.png)
 }
 
 .WinningTip__C-body.isL .WinningTip__C-body-l1[data-v-e05c7c66],
@@ -8508,7 +8508,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
     height: .24rem;
     width: .32rem;
     display: block;
-    background-image: url(/assets/png/vector-dc489162.png);
+    background-image: url(/images/vector-dc489162.png);
     background-repeat: no-repeat;
     background-size: .32rem .24rem;
     background-position: center
@@ -8517,7 +8517,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
 .WinningTip__C .closeBtn[data-v-e05c7c66] {
     width: .8rem;
     height: .8rem;
-    background-image: url(/assets/png/close-84ce5e6a.png);
+    background-image: url(/images/close-84ce5e6a.png);
     background-repeat: no-repeat;
     background-size: .8rem;
     background-position: center;
@@ -8610,7 +8610,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
     position: absolute;
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/bcakIcon-b7c1d288.png);
+    background-image: url(/images/bcakIcon-b7c1d288.png);
     background-size: .64rem;
     left: .34667rem;
     top: 50%;
@@ -8619,7 +8619,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
 }
 
 .FD__C-head-logo[data-v-4f526022] {
-    background: url(/assets/png/headlogo-56515a97.png);
+    background: url(/images/headlogo-56515a97.png);
     background-size: 2.98667rem 1.12rem;
     height: 1.12rem;
     width: 2.98667rem;
@@ -8649,16 +8649,16 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
 .FD__C-head-more>div[data-v-4f526022] {
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/kefu-b361c42f.png);
+    background-image: url(/images/kefu-b361c42f.png);
     background-size: .64rem
 }
 
 .FD__C-head-more>div[data-v-4f526022]:last-child {
-    background-image: url(/assets/png/voice-62dbf38c.png)
+    background-image: url(/images/voice-62dbf38c.png)
 }
 
 .FD__C-head-more>div:last-child.disableVoice[data-v-4f526022] {
-    background-image: url(/assets/png/voice-off-633f5ccc.png)
+    background-image: url(/images/voice-off-633f5ccc.png)
 }
 
 .FD__C[data-v-4f526022] .noticeBar__container {
@@ -8707,7 +8707,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
     position: absolute;
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/bcakIcon-b7c1d288.png);
+    background-image: url(/images/bcakIcon-b7c1d288.png);
     background-size: .64rem;
     left: .34667rem;
     top: 50%;
@@ -9067,27 +9067,27 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n1[data-v-a5ef3154] {
-    background-image: url(/assets/png/n1-4d914772.png)
+    background-image: url(/images/n1-4d914772.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n2[data-v-a5ef3154] {
-    background-image: url(/assets/png/n2-a7189ae3.png)
+    background-image: url(/images/n2-a7189ae3.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n3[data-v-a5ef3154] {
-    background-image: url(/assets/png/n3-162f6063.png)
+    background-image: url(/images/n3-162f6063.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n4[data-v-a5ef3154] {
-    background-image: url(/assets/png/n4-ae5fe4f6.png)
+    background-image: url(/images/n4-ae5fe4f6.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n5[data-v-a5ef3154] {
-    background-image: url(/assets/png/n5-562557ff.png)
+    background-image: url(/images/n5-562557ff.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n6[data-v-a5ef3154] {
-    background-image: url(/assets/png/n6-4fb0d7da.png)
+    background-image: url(/images/n6-4fb0d7da.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div+div[data-v-a5ef3154] {
@@ -9166,27 +9166,27 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
 }
 
 .MyGameRecordList__C-detail-line .numList>div.n1[data-v-a5ef3154] {
-    background-image: url(/assets/png/n1-4d914772.png)
+    background-image: url(/images/n1-4d914772.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div.n2[data-v-a5ef3154] {
-    background-image: url(/assets/png/n2-a7189ae3.png)
+    background-image: url(/images/n2-a7189ae3.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div.n3[data-v-a5ef3154] {
-    background-image: url(/assets/png/n3-162f6063.png)
+    background-image: url(/images/n3-162f6063.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div.n4[data-v-a5ef3154] {
-    background-image: url(/assets/png/n4-ae5fe4f6.png)
+    background-image: url(/images/n4-ae5fe4f6.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div.n5[data-v-a5ef3154] {
-    background-image: url(/assets/png/n5-562557ff.png)
+    background-image: url(/images/n5-562557ff.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div.n6[data-v-a5ef3154] {
-    background-image: url(/assets/png/n6-4fb0d7da.png)
+    background-image: url(/images/n6-4fb0d7da.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div+div[data-v-a5ef3154] {
@@ -9278,7 +9278,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
     position: absolute;
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/bcakIcon-b7c1d288.png);
+    background-image: url(/images/bcakIcon-b7c1d288.png);
     background-size: .64rem;
     left: .34667rem;
     top: 50%;
@@ -9654,27 +9654,27 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n1[data-v-2faec5cb] {
-    background-image: url(/assets/png/n1-4d914772.png)
+    background-image: url(/images/n1-4d914772.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n2[data-v-2faec5cb] {
-    background-image: url(/assets/png/n2-a7189ae3.png)
+    background-image: url(/images/n2-a7189ae3.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n3[data-v-2faec5cb] {
-    background-image: url(/assets/png/n3-162f6063.png)
+    background-image: url(/images/n3-162f6063.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n4[data-v-2faec5cb] {
-    background-image: url(/assets/png/n4-ae5fe4f6.png)
+    background-image: url(/images/n4-ae5fe4f6.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n5[data-v-2faec5cb] {
-    background-image: url(/assets/png/n5-562557ff.png)
+    background-image: url(/images/n5-562557ff.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div.n6[data-v-2faec5cb] {
-    background-image: url(/assets/png/n6-4fb0d7da.png)
+    background-image: url(/images/n6-4fb0d7da.png)
 }
 
 .MyGameRecordList__C-detail-line .numList>div>div+div[data-v-2faec5cb] {
@@ -9770,7 +9770,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
     position: absolute;
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/bcakIcon-b7c1d288.png);
+    background-image: url(/images/bcakIcon-b7c1d288.png);
     background-size: .64rem;
     left: .34667rem;
     top: 50%;
@@ -9904,7 +9904,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
     position: absolute;
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/bcakIcon-b7c1d288.png);
+    background-image: url(/images/bcakIcon-b7c1d288.png);
     background-size: .64rem;
     left: .34667rem;
     top: 50%;
@@ -10100,7 +10100,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
 .binguo_info .binguo_award .award_time[data-v-5ba4aae3] {
     width: 2.45333rem;
     height: 1.25333rem;
-    background: url(/assets/png/binguo_time-92498640.png) no-repeat;
+    background: url(/images/binguo_time-92498640.png) no-repeat;
     background-size: 100% 100%;
     font-family: digitalDreamFat, sans-serif;
     vertical-align: bottom;
@@ -10233,7 +10233,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
 .binguo_info .trend .trend_img[data-v-5ba4aae3] {
     width: .64rem;
     height: .64rem;
-    background: url(/assets/png/count_icon-841b89c6.png) no-repeat center center;
+    background: url(/images/count_icon-841b89c6.png) no-repeat center center;
     background-size: 100% 100%
 }
 
@@ -10363,7 +10363,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
     top: -.08rem;
     width: .42667rem;
     height: .42667rem;
-    background: url(/assets/png/rule_tip-5d3f81b0.png) no-repeat center center;
+    background: url(/images/rule_tip-5d3f81b0.png) no-repeat center center;
     background-size: .42667rem .42667rem;
     pointer-events: auto
 }
@@ -10391,7 +10391,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
     bottom: 0;
     width: .48rem;
     height: .48rem;
-    background: url(/assets/png/hot_top-db35cb37.png) no-repeat right bottom;
+    background: url(/images/hot_top-db35cb37.png) no-repeat right bottom;
     background-size: .48rem .48rem
 }
 
@@ -10493,7 +10493,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
     top: 0;
     width: .48rem;
     height: .48rem;
-    background: url(/assets/png/hot_top-db35cb37.png) no-repeat right top;
+    background: url(/images/hot_top-db35cb37.png) no-repeat right top;
     background-size: .48rem .48rem
 }
 
@@ -10503,7 +10503,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
     top: -.18667rem;
     width: .48rem;
     height: .48rem;
-    background: url(/assets/png/hot_top-db35cb37.png) no-repeat right top;
+    background: url(/images/hot_top-db35cb37.png) no-repeat right top;
     background-size: .48rem .48rem
 }
 
@@ -10709,7 +10709,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
     width: 58%;
     height: 46%;
     margin-left: -29%;
-    background: url(/assets/png/hot_bg-52030c8d.png) no-repeat center top;
+    background: url(/images/hot_bg-52030c8d.png) no-repeat center top;
     background-size: 100% auto;
     position: absolute;
     z-index: 1
@@ -11234,7 +11234,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e05c7c66] {
 .container .details-container-one .details-container-items[data-v-a175919f] {
     width: 100%;
     height: .53333rem;
-    background: url(/assets/png/rule_bg-50b5b9c0.png) no-repeat center center;
+    background: url(/images/rule_bg-50b5b9c0.png) no-repeat center center;
     background-size: 100% .53333rem;
     text-align: center;
     color: var(--LotteryBingoTextColor);
@@ -11368,19 +11368,19 @@ html:lang(ar) .container .details-container-one .paragraph-inside-container .par
 }
 
 .binguo_container .nav_right .binguo_explain[data-v-278561a4] {
-    background: url(/assets/png/icon-0d01ace2.png) no-repeat center center
+    background: url(/images/icon-0d01ace2.png) no-repeat center center
 }
 
 .binguo_container .nav_right .binguo_money_look[data-v-278561a4] {
-    background: url(/assets/png/lock_money-47931447.png) no-repeat center center
+    background: url(/images/lock_money-47931447.png) no-repeat center center
 }
 
 .binguo_container .nav_right .binguo_money_hidden[data-v-278561a4] {
-    background: url(/assets/png/hidden_money-4d2f0151.png) no-repeat center center
+    background: url(/images/hidden_money-4d2f0151.png) no-repeat center center
 }
 
 .binguo_container .nav_right .binguo_count1[data-v-278561a4] {
-    background: url(/assets/png/record-5001454f.png) no-repeat center center
+    background: url(/images/record-5001454f.png) no-repeat center center
 }
 
 .binguo_container .nav_right .binguo_money[data-v-278561a4],
@@ -12244,7 +12244,7 @@ table[data-v-ca8cfc1e] {
     z-index: 3;
     width: 100%;
     height: 2.93333rem;
-    background: url(/assets/png/trend3-2a1b1d6f.png) no-repeat center;
+    background: url(/images/trend3-2a1b1d6f.png) no-repeat center;
     background-size: auto 2.90667rem;
     font-size: .42667rem;
     color: #fff;
@@ -12272,7 +12272,7 @@ table[data-v-ca8cfc1e] {
     width: 1.92rem;
     height: 2rem;
     margin-top: -1rem;
-    background: url(/assets/png/trend_go-7405456e.png) no-repeat center;
+    background: url(/images/trend_go-7405456e.png) no-repeat center;
     background-size: 1.92rem 2rem;
     display: -webkit-box;
     display: -webkit-flex;
@@ -12302,15 +12302,15 @@ table[data-v-ca8cfc1e] {
 }
 
 .rankID_column.top_1[data-v-ec5b8d89] {
-    background-image: url(/assets/png/top_1-4e868024.png)
+    background-image: url(/images/top_1-4e868024.png)
 }
 
 .rankID_column.top_2[data-v-ec5b8d89] {
-    background-image: url(/assets/png/top_2-7d8a7364.png)
+    background-image: url(/images/top_2-7d8a7364.png)
 }
 
 .rankID_column.top_3[data-v-ec5b8d89] {
-    background-image: url(/assets/png/top_3-d324faac.png)
+    background-image: url(/images/top_3-d324faac.png)
 }
 
 .rankID_column.rank_text[data-v-ec5b8d89] {
@@ -12672,7 +12672,7 @@ table[data-v-ca8cfc1e] {
     font-style: normal;
     font-weight: 400;
     line-height: .37333rem;
-    background: url(/assets/png/record_icon-fca8b0d0.png) no-repeat left center;
+    background: url(/images/record_icon-fca8b0d0.png) no-repeat left center;
     background-size: .26667rem .26667rem;
     padding-left: .61333rem;
     position: relative
@@ -13037,7 +13037,7 @@ html:lang(ar) .Betting__Popup-head[data-v-6c7a1db6]:before {
 
 .Betting__Popup-agree[data-v-6c7a1db6] {
     padding-left: .8rem;
-    background-image: url(/assets/png/agree-b-47b8f86d.png);
+    background-image: url(/images/agree-b-47b8f86d.png);
     background-repeat: no-repeat;
     background-position: left center;
     background-size: .64rem;
@@ -13050,7 +13050,7 @@ html:lang(ar) .Betting__Popup-agree[data-v-6c7a1db6] {
 }
 
 .Betting__Popup-agree.active[data-v-6c7a1db6] {
-    background-image: url(/assets/png/agree-a-6a68f3ca.png)
+    background-image: url(/images/agree-a-6a68f3ca.png)
 }
 
 .Betting__Popup-preSaleShow[data-v-6c7a1db6] {
@@ -13191,15 +13191,15 @@ html:lang(ar) .changLong__C-bet-l .titel[data-v-91d808d9] {
 }
 
 .changLong__C-bet-l .titel.k3[data-v-91d808d9] {
-    background-image: url(/assets/png/icon-k3-dabf0a83.png)
+    background-image: url(/images/icon-k3-dabf0a83.png)
 }
 
 .changLong__C-bet-l .titel.Fd[data-v-91d808d9] {
-    background-image: url(/assets/png/icon-5d-dadd282e.png)
+    background-image: url(/images/icon-5d-dadd282e.png)
 }
 
 .changLong__C-bet-l .titel.winGo[data-v-91d808d9] {
-    background-image: url(/assets/png/icon-wg-b65da4c5.png)
+    background-image: url(/images/icon-wg-b65da4c5.png)
 }
 
 .changLong__C-bet-l .num[data-v-91d808d9] {
@@ -13875,27 +13875,27 @@ html:lang(ar) .changLong__C-bet-l .titel[data-v-91d808d9] {
 }
 
 .K3TL__C-l3 .num1[data-v-75b35bf5] {
-    background-image: url(/assets/png/num1-b63b7d81.png)
+    background-image: url(/images/num1-b63b7d81.png)
 }
 
 .K3TL__C-l3 .num2[data-v-75b35bf5] {
-    background-image: url(/assets/png/num2-468984fc.png)
+    background-image: url(/images/num2-468984fc.png)
 }
 
 .K3TL__C-l3 .num3[data-v-75b35bf5] {
-    background-image: url(/assets/png/num3-41be7d5b.png)
+    background-image: url(/images/num3-41be7d5b.png)
 }
 
 .K3TL__C-l3 .num4[data-v-75b35bf5] {
-    background-image: url(/assets/png/num4-d260bb2b.png)
+    background-image: url(/images/num4-d260bb2b.png)
 }
 
 .K3TL__C-l3 .num5[data-v-75b35bf5] {
-    background-image: url(/assets/png/num5-3b350eff.png)
+    background-image: url(/images/num5-3b350eff.png)
 }
 
 .K3TL__C-l3 .num6[data-v-75b35bf5] {
-    background-image: url(/assets/png/num6-9f5038bf.png)
+    background-image: url(/images/num6-9f5038bf.png)
 }
 
 .K3TL__C-l3>div[data-v-75b35bf5],
@@ -14015,7 +14015,7 @@ html:lang(ar) .K3TL__C-time[data-v-75b35bf5] {
 }
 
 .K3B__C-bettingList>div .ball.rball[data-v-ed0c8e79] {
-    background: url(/assets/png/redBall-fd34b99e.png) no-repeat center center;
+    background: url(/images/redBall-fd34b99e.png) no-repeat center center;
     background-size: cover
 }
 
@@ -14028,7 +14028,7 @@ html:lang(ar) .K3TL__C-time[data-v-75b35bf5] {
 }
 
 .K3B__C-bettingList>div .ball.gball[data-v-ed0c8e79] {
-    background: url(/assets/png/greenBall-b7685130.png) no-repeat center center;
+    background: url(/images/greenBall-b7685130.png) no-repeat center center;
     background-size: cover
 }
 
@@ -14734,7 +14734,7 @@ html:lang(ar) .K3TL__C-time[data-v-75b35bf5] {
 
 .Betting__Popup-agree[data-v-5f002ad4] {
     padding-left: .8rem;
-    background-image: url(/assets/png/agree-b-47b8f86d.png);
+    background-image: url(/images/agree-b-47b8f86d.png);
     background-repeat: no-repeat;
     background-position: left center;
     background-size: .64rem;
@@ -14747,7 +14747,7 @@ html:lang(ar) .Betting__Popup-agree[data-v-5f002ad4] {
 }
 
 .Betting__Popup-agree.active[data-v-5f002ad4] {
-    background-image: url(/assets/png/agree-a-6a68f3ca.png)
+    background-image: url(/images/agree-a-6a68f3ca.png)
 }
 
 .Betting__Popup-preSaleShow[data-v-5f002ad4] {
@@ -14949,37 +14949,37 @@ html:lang(ar) .K3B__C-mark[data-v-8a4509d7] {
 }
 
 .qpopup-box-list .num.num1[data-v-8a4509d7] {
-    background: url(/assets/png/n1-584b8878.png) no-repeat center center;
+    background: url(/images/n1-584b8878.png) no-repeat center center;
     background-size: cover
 }
 
 .qpopup-box-list .num.num2[data-v-8a4509d7] {
-    background: url(/assets/png/n2-447499dc.png) no-repeat center center;
+    background: url(/images/n2-447499dc.png) no-repeat center center;
     background-size: cover
 }
 
 .qpopup-box-list .num.num3[data-v-8a4509d7] {
-    background: url(/assets/png/n3-1432a6bd.png) no-repeat center center;
+    background: url(/images/n3-1432a6bd.png) no-repeat center center;
     background-size: cover
 }
 
 .qpopup-box-list .num.num4[data-v-8a4509d7] {
-    background: url(/assets/png/n4-9d453819.png) no-repeat center center;
+    background: url(/images/n4-9d453819.png) no-repeat center center;
     background-size: cover
 }
 
 .qpopup-box-list .num.num5[data-v-8a4509d7] {
-    background: url(/assets/png/n5-09b70e91.png) no-repeat center center;
+    background: url(/images/n5-09b70e91.png) no-repeat center center;
     background-size: cover
 }
 
 .qpopup-box-list .num.num6[data-v-8a4509d7] {
-    background: url(/assets/png/n6-b68c6bb6.png) no-repeat center center;
+    background: url(/images/n6-b68c6bb6.png) no-repeat center center;
     background-size: cover
 }
 
 .qpopup-box-list .num.num7[data-v-8a4509d7] {
-    background: url(/assets/png/n7-039e2d7d.png) no-repeat center center;
+    background: url(/images/n7-039e2d7d.png) no-repeat center center;
     background-size: cover
 }
 
@@ -15070,27 +15070,27 @@ html:lang(ar) .K3B__C-mark[data-v-8a4509d7] {
 }
 
 .GameRecord__C-body-premium .n1[data-v-4e09079f] {
-    background-image: url(/assets/png/n1-4d914772.png)
+    background-image: url(/images/n1-4d914772.png)
 }
 
 .GameRecord__C-body-premium .n2[data-v-4e09079f] {
-    background-image: url(/assets/png/n2-a7189ae3.png)
+    background-image: url(/images/n2-a7189ae3.png)
 }
 
 .GameRecord__C-body-premium .n3[data-v-4e09079f] {
-    background-image: url(/assets/png/n3-162f6063.png)
+    background-image: url(/images/n3-162f6063.png)
 }
 
 .GameRecord__C-body-premium .n4[data-v-4e09079f] {
-    background-image: url(/assets/png/n4-ae5fe4f6.png)
+    background-image: url(/images/n4-ae5fe4f6.png)
 }
 
 .GameRecord__C-body-premium .n5[data-v-4e09079f] {
-    background-image: url(/assets/png/n5-562557ff.png)
+    background-image: url(/images/n5-562557ff.png)
 }
 
 .GameRecord__C-body-premium .n6[data-v-4e09079f] {
-    background-image: url(/assets/png/n6-4fb0d7da.png)
+    background-image: url(/images/n6-4fb0d7da.png)
 }
 
 .GameRecord__C-foot[data-v-4e09079f] {
@@ -15223,27 +15223,27 @@ html:lang(ar) .K3B__C-mark[data-v-8a4509d7] {
 }
 
 .Trend__C-body-premium .n1[data-v-4159c83a] {
-    background-image: url(/assets/png/n1-4d914772.png)
+    background-image: url(/images/n1-4d914772.png)
 }
 
 .Trend__C-body-premium .n2[data-v-4159c83a] {
-    background-image: url(/assets/png/n2-a7189ae3.png)
+    background-image: url(/images/n2-a7189ae3.png)
 }
 
 .Trend__C-body-premium .n3[data-v-4159c83a] {
-    background-image: url(/assets/png/n3-162f6063.png)
+    background-image: url(/images/n3-162f6063.png)
 }
 
 .Trend__C-body-premium .n4[data-v-4159c83a] {
-    background-image: url(/assets/png/n4-ae5fe4f6.png)
+    background-image: url(/images/n4-ae5fe4f6.png)
 }
 
 .Trend__C-body-premium .n5[data-v-4159c83a] {
-    background-image: url(/assets/png/n5-562557ff.png)
+    background-image: url(/images/n5-562557ff.png)
 }
 
 .Trend__C-body-premium .n6[data-v-4159c83a] {
-    background-image: url(/assets/png/n6-4fb0d7da.png)
+    background-image: url(/images/n6-4fb0d7da.png)
 }
 
 .Trend__C-body-gameText[data-v-4159c83a] {
@@ -15354,7 +15354,7 @@ html:lang(ar) .WinningTip__C[data-v-2d418cc5] {
     position: absolute;
     width: 7.73333rem;
     height: 10.93333rem;
-    background-image: url(/assets/png/missningBg-c1f02bcd.png);
+    background-image: url(/images/missningBg-c1f02bcd.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -15366,7 +15366,7 @@ html:lang(ar) .WinningTip__C[data-v-2d418cc5] {
 }
 
 .WinningTip__C-body.isL[data-v-2d418cc5] {
-    background-image: url(/assets/png/missningLBg-ca049a47.png)
+    background-image: url(/images/missningLBg-ca049a47.png)
 }
 
 .WinningTip__C-body.isL .WinningTip__C-body-l1[data-v-2d418cc5],
@@ -15421,27 +15421,27 @@ html:lang(ar) .WinningTip__C[data-v-2d418cc5] {
 }
 
 .WinningTip__C-body-l2 .line1 .n1[data-v-2d418cc5] {
-    background-image: url(/assets/png/n1-4d914772.png)
+    background-image: url(/images/n1-4d914772.png)
 }
 
 .WinningTip__C-body-l2 .line1 .n2[data-v-2d418cc5] {
-    background-image: url(/assets/png/n2-a7189ae3.png)
+    background-image: url(/images/n2-a7189ae3.png)
 }
 
 .WinningTip__C-body-l2 .line1 .n3[data-v-2d418cc5] {
-    background-image: url(/assets/png/n3-162f6063.png)
+    background-image: url(/images/n3-162f6063.png)
 }
 
 .WinningTip__C-body-l2 .line1 .n4[data-v-2d418cc5] {
-    background-image: url(/assets/png/n4-ae5fe4f6.png)
+    background-image: url(/images/n4-ae5fe4f6.png)
 }
 
 .WinningTip__C-body-l2 .line1 .n5[data-v-2d418cc5] {
-    background-image: url(/assets/png/n5-562557ff.png)
+    background-image: url(/images/n5-562557ff.png)
 }
 
 .WinningTip__C-body-l2 .line1 .n6[data-v-2d418cc5] {
-    background-image: url(/assets/png/n6-4fb0d7da.png)
+    background-image: url(/images/n6-4fb0d7da.png)
 }
 
 .WinningTip__C-body-l2 .line2[data-v-2d418cc5] {
@@ -15560,7 +15560,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-2d418cc5] {
     height: .24rem;
     width: .32rem;
     display: block;
-    background-image: url(/assets/png/vector-dc489162.png);
+    background-image: url(/images/vector-dc489162.png);
     background-repeat: no-repeat;
     background-size: .32rem .24rem;
     background-position: center
@@ -15569,7 +15569,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-2d418cc5] {
 .WinningTip__C .closeBtn[data-v-2d418cc5] {
     width: .8rem;
     height: .8rem;
-    background-image: url(/assets/png/close-84ce5e6a.png);
+    background-image: url(/images/close-84ce5e6a.png);
     background-repeat: no-repeat;
     background-size: .8rem;
     background-position: center;
@@ -15624,7 +15624,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-2d418cc5] {
     position: absolute;
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/bcakIcon-b7c1d288.png);
+    background-image: url(/images/bcakIcon-b7c1d288.png);
     background-size: .64rem;
     left: .34667rem;
     top: 50%;
@@ -15633,7 +15633,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-2d418cc5] {
 }
 
 .K3__C-head-logo[data-v-d024c659] {
-    background: url(/assets/png/headlogo-56515a97.png);
+    background: url(/images/headlogo-56515a97.png);
     background-size: 2.98667rem 1.12rem;
     height: 1.12rem;
     width: 2.98667rem;
@@ -15663,16 +15663,16 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-2d418cc5] {
 .K3__C-head-more>div[data-v-d024c659] {
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/kefu-b361c42f.png);
+    background-image: url(/images/kefu-b361c42f.png);
     background-size: .64rem
 }
 
 .K3__C-head-more>div[data-v-d024c659]:last-child {
-    background-image: url(/assets/png/voice-62dbf38c.png)
+    background-image: url(/images/voice-62dbf38c.png)
 }
 
 .K3__C-head-more>div:last-child.disableVoice[data-v-d024c659] {
-    background-image: url(/assets/png/voice-off-633f5ccc.png)
+    background-image: url(/images/voice-off-633f5ccc.png)
 }
 
 .K3__C[data-v-d024c659] .noticeBar__container {
@@ -15880,7 +15880,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-2d418cc5] {
 .TimeLeft__C .box .info .playillustrate .illustratebg[data-v-35613996] {
     width: .56rem;
     height: .56rem;
-    background: url(/assets/png/warning2-aec7aab2.png);
+    background: url(/images/warning2-aec7aab2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -15911,7 +15911,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-2d418cc5] {
 .TimeLeft__C .box .info .issue .issuebg[data-v-35613996] {
     width: .56rem;
     height: .56rem;
-    background-image: url(/assets/png/ticketstar-d8019820.png);
+    background-image: url(/images/ticketstar-d8019820.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center
@@ -16227,7 +16227,7 @@ html:lang(ar) .TimeLeft__C .box .info .closure .closurtimes .redsqure[data-v-356
 .TimeLeft__C .box .info .playillustrate .illustratebg[data-v-9adf5430] {
     width: .56rem;
     height: .56rem;
-    background: url(/assets/png/warning2-aec7aab2.png);
+    background: url(/images/warning2-aec7aab2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -16258,7 +16258,7 @@ html:lang(ar) .TimeLeft__C .box .info .closure .closurtimes .redsqure[data-v-356
 .TimeLeft__C .box .info .issue .issuebg[data-v-9adf5430] {
     width: .56rem;
     height: .56rem;
-    background-image: url(/assets/png/ticketstar-d8019820.png);
+    background-image: url(/images/ticketstar-d8019820.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center
@@ -17206,7 +17206,7 @@ html:lang(ar) .NumberSelectContainer-mark[data-v-cca50955] {
     position: absolute;
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/bcakIcon-b7c1d288.png);
+    background-image: url(/images/bcakIcon-b7c1d288.png);
     background-size: .64rem;
     left: .34667rem;
     top: 50%;
@@ -17254,16 +17254,16 @@ html:lang(ar) .NewVietnam__C-head-more[data-v-b37345b8] {
 .NewVietnam__C-head-more>div[data-v-b37345b8] {
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/kefu-b361c42f.png);
+    background-image: url(/images/kefu-b361c42f.png);
     background-size: .64rem
 }
 
 .NewVietnam__C-head-more>div[data-v-b37345b8]:last-child {
-    background-image: url(/assets/png/voice-62dbf38c.png)
+    background-image: url(/images/voice-62dbf38c.png)
 }
 
 .NewVietnam__C-head-more>div:last-child.disableVoice[data-v-b37345b8] {
-    background-image: url(/assets/png/voice-off-633f5ccc.png)
+    background-image: url(/images/voice-off-633f5ccc.png)
 }
 
 .NewVietnam__C[data-v-b37345b8] .driver-close-btn,
@@ -17510,7 +17510,7 @@ html:lang(ar) .NewVietnam__C-head-more[data-v-b37345b8] {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: left center;
-    background-image: url(/assets/png/wingoPreSaleBg-1a69469d.png)
+    background-image: url(/images/wingoPreSaleBg-1a69469d.png)
 }
 
 .PreSaleRule .body[data-v-b37345b8] {
@@ -18943,7 +18943,7 @@ html:lang(ar) .list .hb .qiu .line-canvas[data-v-b37345b8] {
 .bottombg[data-v-b37345b8] {
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/arrowbottom-4eb91cbc.png);
+    background-image: url(/images/arrowbottom-4eb91cbc.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center
@@ -19374,7 +19374,7 @@ html:lang(ar) .compound .item .numcontainer .num .dele[data-v-b37345b8] {
     position: absolute;
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/bcakIcon-b7c1d288.png);
+    background-image: url(/images/bcakIcon-b7c1d288.png);
     background-size: .64rem;
     left: .34667rem;
     top: 50%;
@@ -19422,16 +19422,16 @@ html:lang(ar) .NewVietnam__C-head-more[data-v-fdfc55f4] {
 .NewVietnam__C-head-more>div[data-v-fdfc55f4] {
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/kefu-b361c42f.png);
+    background-image: url(/images/kefu-b361c42f.png);
     background-size: .64rem
 }
 
 .NewVietnam__C-head-more>div[data-v-fdfc55f4]:last-child {
-    background-image: url(/assets/png/voice-62dbf38c.png)
+    background-image: url(/images/voice-62dbf38c.png)
 }
 
 .NewVietnam__C-head-more>div:last-child.disableVoice[data-v-fdfc55f4] {
-    background-image: url(/assets/png/voice-off-633f5ccc.png)
+    background-image: url(/images/voice-off-633f5ccc.png)
 }
 
 .NewVietnam__C[data-v-fdfc55f4] .driver-close-btn,
@@ -19678,7 +19678,7 @@ html:lang(ar) .NewVietnam__C-head-more[data-v-fdfc55f4] {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: left center;
-    background-image: url(/assets/png/wingoPreSaleBg-1a69469d.png)
+    background-image: url(/images/wingoPreSaleBg-1a69469d.png)
 }
 
 .PreSaleRule .body[data-v-fdfc55f4] {
@@ -21111,7 +21111,7 @@ html:lang(ar) .list .hb .qiu .line-canvas[data-v-fdfc55f4] {
 .bottombg[data-v-fdfc55f4] {
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/arrowbottom-4eb91cbc.png);
+    background-image: url(/images/arrowbottom-4eb91cbc.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center
@@ -21542,7 +21542,7 @@ html:lang(ar) .compound .item .numcontainer .num .dele[data-v-fdfc55f4] {
     position: absolute;
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/bcakIcon-b7c1d288.png);
+    background-image: url(/images/bcakIcon-b7c1d288.png);
     background-size: .64rem;
     left: .34667rem;
     top: 50%;
@@ -21590,16 +21590,16 @@ html:lang(ar) .NewVietnam__C-head-more[data-v-68c3df62] {
 .NewVietnam__C-head-more>div[data-v-68c3df62] {
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/kefu-b361c42f.png);
+    background-image: url(/images/kefu-b361c42f.png);
     background-size: .64rem
 }
 
 .NewVietnam__C-head-more>div[data-v-68c3df62]:last-child {
-    background-image: url(/assets/png/voice-62dbf38c.png)
+    background-image: url(/images/voice-62dbf38c.png)
 }
 
 .NewVietnam__C-head-more>div:last-child.disableVoice[data-v-68c3df62] {
-    background-image: url(/assets/png/voice-off-633f5ccc.png)
+    background-image: url(/images/voice-off-633f5ccc.png)
 }
 
 .NewVietnam__C[data-v-68c3df62] .driver-close-btn,
@@ -21846,7 +21846,7 @@ html:lang(ar) .NewVietnam__C-head-more[data-v-68c3df62] {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: left center;
-    background-image: url(/assets/png/wingoPreSaleBg-1a69469d.png)
+    background-image: url(/images/wingoPreSaleBg-1a69469d.png)
 }
 
 .PreSaleRule .body[data-v-68c3df62] {
@@ -23279,7 +23279,7 @@ html:lang(ar) .list .hb .qiu .line-canvas[data-v-68c3df62] {
 .bottombg[data-v-68c3df62] {
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/arrowbottom-4eb91cbc.png);
+    background-image: url(/images/arrowbottom-4eb91cbc.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center
@@ -23877,7 +23877,7 @@ html:lang(ar) .compound .item .numcontainer .num .dele[data-v-68c3df62] {
 .MyGameRecordList__C .item .info .bet .li .lab[data-v-56cdb7a2]:after {
     content: "";
     display: block;
-    background: url(/assets/png/before_cire-c0feda12.png) no-repeat center center;
+    background: url(/images/before_cire-c0feda12.png) no-repeat center center;
     background-size: cover;
     height: .26667rem;
     width: .26667rem;
@@ -24114,7 +24114,7 @@ html:lang(ar) .MyGameRecordList__C .item .info .result-item.jusb .num[data-v-56c
     position: absolute;
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/bcakIcon-b7c1d288.png);
+    background-image: url(/images/bcakIcon-b7c1d288.png);
     background-size: .64rem;
     left: .34667rem;
     top: 50%;
@@ -24162,16 +24162,16 @@ html:lang(ar) .NewVietnam__C-head-more[data-v-44e97c4d] {
 .NewVietnam__C-head-more>div[data-v-44e97c4d] {
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/kefu-b361c42f.png);
+    background-image: url(/images/kefu-b361c42f.png);
     background-size: .64rem
 }
 
 .NewVietnam__C-head-more>div[data-v-44e97c4d]:last-child {
-    background-image: url(/assets/png/voice-62dbf38c.png)
+    background-image: url(/images/voice-62dbf38c.png)
 }
 
 .NewVietnam__C-head-more>div:last-child.disableVoice[data-v-44e97c4d] {
-    background-image: url(/assets/png/voice-off-633f5ccc.png)
+    background-image: url(/images/voice-off-633f5ccc.png)
 }
 
 .NewVietnam__C[data-v-44e97c4d] .driver-close-btn,
@@ -24418,7 +24418,7 @@ html:lang(ar) .NewVietnam__C-head-more[data-v-44e97c4d] {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: left center;
-    background-image: url(/assets/png/wingoPreSaleBg-1a69469d.png)
+    background-image: url(/images/wingoPreSaleBg-1a69469d.png)
 }
 
 .PreSaleRule .body[data-v-44e97c4d] {
@@ -25851,7 +25851,7 @@ html:lang(ar) .list .hb .qiu .line-canvas[data-v-44e97c4d] {
 .bottombg[data-v-44e97c4d] {
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/arrowbottom-4eb91cbc.png);
+    background-image: url(/images/arrowbottom-4eb91cbc.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center
@@ -26279,7 +26279,7 @@ html:lang(ar) .WinningTip__C[data-v-eb0f5940] {
     position: absolute;
     width: 7.73333rem;
     height: 11.73333rem;
-    background-image: url(/assets/png/newmissingviebg-0d3c6b98.png);
+    background-image: url(/images/newmissingviebg-0d3c6b98.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -26291,7 +26291,7 @@ html:lang(ar) .WinningTip__C[data-v-eb0f5940] {
 }
 
 .WinningTip__C-body.isL[data-v-eb0f5940] {
-    background-image: url(/assets/png/newmissingbg-b08ac203.png)
+    background-image: url(/images/newmissingbg-b08ac203.png)
 }
 
 .WinningTip__C-body img[data-v-eb0f5940] {
@@ -26304,7 +26304,7 @@ html:lang(ar) .WinningTip__C[data-v-eb0f5940] {
 .WinningTip__C-body .notwinning[data-v-eb0f5940] {
     width: 1.6rem;
     height: 1.6rem;
-    background: url(/assets/png/notwinning-7e54c381.png);
+    background: url(/images/notwinning-7e54c381.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -26515,7 +26515,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-eb0f5940] {
     height: .24rem;
     width: .32rem;
     display: block;
-    background-image: url(/assets/png/vector-dc489162.png);
+    background-image: url(/images/vector-dc489162.png);
     background-repeat: no-repeat;
     background-size: .32rem .24rem;
     background-position: center
@@ -26524,7 +26524,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-eb0f5940] {
 .WinningTip__C .closeBtn[data-v-eb0f5940] {
     width: .8rem;
     height: .8rem;
-    background-image: url(/assets/png/close-84ce5e6a.png);
+    background-image: url(/images/close-84ce5e6a.png);
     background-repeat: no-repeat;
     background-size: .8rem;
     background-position: center;
@@ -26580,7 +26580,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-eb0f5940] {
     position: absolute;
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/bcakIcon-b7c1d288.png);
+    background-image: url(/images/bcakIcon-b7c1d288.png);
     background-size: .64rem;
     left: .34667rem;
     top: 50%;
@@ -26628,16 +26628,16 @@ html:lang(ar) .NewVietnam__C-head-more[data-v-b1e14027] {
 .NewVietnam__C-head-more>div[data-v-b1e14027] {
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/kefu-b361c42f.png);
+    background-image: url(/images/kefu-b361c42f.png);
     background-size: .64rem
 }
 
 .NewVietnam__C-head-more>div[data-v-b1e14027]:last-child {
-    background-image: url(/assets/png/voice-62dbf38c.png)
+    background-image: url(/images/voice-62dbf38c.png)
 }
 
 .NewVietnam__C-head-more>div:last-child.disableVoice[data-v-b1e14027] {
-    background-image: url(/assets/png/voice-off-633f5ccc.png)
+    background-image: url(/images/voice-off-633f5ccc.png)
 }
 
 .NewVietnam__C[data-v-b1e14027] .driver-close-btn,
@@ -26884,7 +26884,7 @@ html:lang(ar) .NewVietnam__C-head-more[data-v-b1e14027] {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: left center;
-    background-image: url(/assets/png/wingoPreSaleBg-1a69469d.png)
+    background-image: url(/images/wingoPreSaleBg-1a69469d.png)
 }
 
 .PreSaleRule .body[data-v-b1e14027] {
@@ -28317,7 +28317,7 @@ html:lang(ar) .list .hb .qiu .line-canvas[data-v-b1e14027] {
 .bottombg[data-v-b1e14027] {
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/arrowbottom-4eb91cbc.png);
+    background-image: url(/images/arrowbottom-4eb91cbc.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center
@@ -28772,7 +28772,7 @@ html:lang(ar) .compound .item .numcontainer .num .dele[data-v-b1e14027] {
     width: 9.36rem;
     height: .8rem;
     line-height: .8rem;
-    background: url(/assets/png/palybg-03c9c575.png) no-repeat center;
+    background: url(/images/palybg-03c9c575.png) no-repeat center;
     background-size: auto 100%;
     background-color: #fff;
     display: -webkit-box;
@@ -29287,7 +29287,7 @@ html:lang(ar) .NorthRule__C-Content .borderTopStyle span[data-v-33026085]:last-o
     width: 9.36rem;
     height: .8rem;
     line-height: .8rem;
-    background: url(/assets/png/palybg-03c9c575.png) no-repeat center;
+    background: url(/images/palybg-03c9c575.png) no-repeat center;
     background-size: auto 100%;
     background-color: #fff;
     display: -webkit-box;
@@ -29937,43 +29937,43 @@ html:lang(ar) .TimeLeft__C-num[data-v-3e4c6499] {
 }
 
 .TimeLeft__C-num>div.n0[data-v-3e4c6499] {
-    background-image: url(/assets/png/n0-30bd92d1.png)
+    background-image: url(/images/n0-30bd92d1.png)
 }
 
 .TimeLeft__C-num>div.n1[data-v-3e4c6499] {
-    background-image: url(/assets/png/n1-dfccbff5.png)
+    background-image: url(/images/n1-dfccbff5.png)
 }
 
 .TimeLeft__C-num>div.n2[data-v-3e4c6499] {
-    background-image: url(/assets/png/n2-c2913607.png)
+    background-image: url(/images/n2-c2913607.png)
 }
 
 .TimeLeft__C-num>div.n3[data-v-3e4c6499] {
-    background-image: url(/assets/png/n3-f92c313f.png)
+    background-image: url(/images/n3-f92c313f.png)
 }
 
 .TimeLeft__C-num>div.n4[data-v-3e4c6499] {
-    background-image: url(/assets/png/n4-cb84933b.png)
+    background-image: url(/images/n4-cb84933b.png)
 }
 
 .TimeLeft__C-num>div.n5[data-v-3e4c6499] {
-    background-image: url(/assets/png/n5-49d0e9c5.png)
+    background-image: url(/images/n5-49d0e9c5.png)
 }
 
 .TimeLeft__C-num>div.n6[data-v-3e4c6499] {
-    background-image: url(/assets/png/n6-a56e0b9a.png)
+    background-image: url(/images/n6-a56e0b9a.png)
 }
 
 .TimeLeft__C-num>div.n7[data-v-3e4c6499] {
-    background-image: url(/assets/png/n7-5961a17f.png)
+    background-image: url(/images/n7-5961a17f.png)
 }
 
 .TimeLeft__C-num>div.n8[data-v-3e4c6499] {
-    background-image: url(/assets/png/n8-d4d951a4.png)
+    background-image: url(/images/n8-d4d951a4.png)
 }
 
 .TimeLeft__C-num>div.n9[data-v-3e4c6499] {
-    background-image: url(/assets/png/n9-a20f6f42.png)
+    background-image: url(/images/n9-a20f6f42.png)
 }
 
 .TimeLeft__C-id[data-v-3e4c6499] {
@@ -30294,7 +30294,7 @@ html:lang(ar) .TimeLeft__C-num[data-v-3e4c6499] {
 
 .Betting__Popup-agree[data-v-7f36fe93] {
     padding-left: .8rem;
-    background-image: url(/assets/png/agree-b-47b8f86d.png);
+    background-image: url(/images/agree-b-47b8f86d.png);
     background-repeat: no-repeat;
     background-position: left center;
     background-size: .64rem;
@@ -30307,7 +30307,7 @@ html:lang(ar) .Betting__Popup-agree[data-v-7f36fe93] {
 }
 
 .Betting__Popup-agree.active[data-v-7f36fe93] {
-    background-image: url(/assets/png/agree-a-6a68f3ca.png)
+    background-image: url(/images/agree-a-6a68f3ca.png)
 }
 
 .Betting__Popup-preSaleShow[data-v-7f36fe93] {
@@ -30517,43 +30517,43 @@ html:lang(ar) .Betting__C-mark[data-v-4aca9bd1] {
 }
 
 .Betting__C-numC>div.Betting__C-numC-item0[data-v-4aca9bd1] {
-    background-image: url(/assets/png/n0-30bd92d1.png)
+    background-image: url(/images/n0-30bd92d1.png)
 }
 
 .Betting__C-numC>div.Betting__C-numC-item1[data-v-4aca9bd1] {
-    background-image: url(/assets/png/n1-dfccbff5.png)
+    background-image: url(/images/n1-dfccbff5.png)
 }
 
 .Betting__C-numC>div.Betting__C-numC-item2[data-v-4aca9bd1] {
-    background-image: url(/assets/png/n2-c2913607.png)
+    background-image: url(/images/n2-c2913607.png)
 }
 
 .Betting__C-numC>div.Betting__C-numC-item3[data-v-4aca9bd1] {
-    background-image: url(/assets/png/n3-f92c313f.png)
+    background-image: url(/images/n3-f92c313f.png)
 }
 
 .Betting__C-numC>div.Betting__C-numC-item4[data-v-4aca9bd1] {
-    background-image: url(/assets/png/n4-cb84933b.png)
+    background-image: url(/images/n4-cb84933b.png)
 }
 
 .Betting__C-numC>div.Betting__C-numC-item5[data-v-4aca9bd1] {
-    background-image: url(/assets/png/n5-49d0e9c5.png)
+    background-image: url(/images/n5-49d0e9c5.png)
 }
 
 .Betting__C-numC>div.Betting__C-numC-item6[data-v-4aca9bd1] {
-    background-image: url(/assets/png/n6-a56e0b9a.png)
+    background-image: url(/images/n6-a56e0b9a.png)
 }
 
 .Betting__C-numC>div.Betting__C-numC-item7[data-v-4aca9bd1] {
-    background-image: url(/assets/png/n7-5961a17f.png)
+    background-image: url(/images/n7-5961a17f.png)
 }
 
 .Betting__C-numC>div.Betting__C-numC-item8[data-v-4aca9bd1] {
-    background-image: url(/assets/png/n8-d4d951a4.png)
+    background-image: url(/images/n8-d4d951a4.png)
 }
 
 .Betting__C-numC>div.Betting__C-numC-item9[data-v-4aca9bd1] {
-    background-image: url(/assets/png/n9-a20f6f42.png)
+    background-image: url(/images/n9-a20f6f42.png)
 }
 
 .Betting__C-multiple[data-v-4aca9bd1] {
@@ -31433,7 +31433,7 @@ html:lang(ar) .WinningTip__C[data-v-e44179e3] {
     position: absolute;
     width: 8.73333rem;
     height: 11.8rem;
-    background-image: url(/assets/png/missningBg-c1f02bcd.png);
+    background-image: url(/images/missningBg-c1f02bcd.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -31445,7 +31445,7 @@ html:lang(ar) .WinningTip__C[data-v-e44179e3] {
 }
 
 .WinningTip__C-body.isL[data-v-e44179e3] {
-    background-image: url(/assets/png/missningLBg-ca049a47.png)
+    background-image: url(/images/missningLBg-ca049a47.png)
 }
 
 .WinningTip__C-body.isL .WinningTip__C-body-l1[data-v-e44179e3],
@@ -31614,7 +31614,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e44179e3] {
     height: .24rem;
     width: .32rem;
     display: block;
-    background-image: url(/assets/png/vector-dc489162.png);
+    background-image: url(/images/vector-dc489162.png);
     background-repeat: no-repeat;
     background-size: .32rem .24rem;
     background-position: center
@@ -31623,7 +31623,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e44179e3] {
 .WinningTip__C .closeBtn[data-v-e44179e3] {
     width: .8rem;
     height: .8rem;
-    background-image: url(/assets/png/close-84ce5e6a.png);
+    background-image: url(/images/close-84ce5e6a.png);
     background-repeat: no-repeat;
     background-size: .8rem;
     background-position: center;
@@ -31678,7 +31678,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e44179e3] {
     position: absolute;
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/bcakIcon-b7c1d288.png);
+    background-image: url(/images/bcakIcon-b7c1d288.png);
     background-size: .64rem;
     left: .34667rem;
     top: 50%;
@@ -31721,16 +31721,16 @@ html:lang(ar) .WinGo__C-head-more[data-v-5d71c3fd] {
 .WinGo__C-head-more>div[data-v-5d71c3fd] {
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/kefu-b361c42f.png);
+    background-image: url(/images/kefu-b361c42f.png);
     background-size: .64rem
 }
 
 .WinGo__C-head-more>div[data-v-5d71c3fd]:last-child {
-    background-image: url(/assets/png/voice-62dbf38c.png)
+    background-image: url(/images/voice-62dbf38c.png)
 }
 
 .WinGo__C-head-more>div:last-child.disableVoice[data-v-5d71c3fd] {
-    background-image: url(/assets/png/voice-off-633f5ccc.png)
+    background-image: url(/images/voice-off-633f5ccc.png)
 }
 
 .WinGo__C[data-v-5d71c3fd] .noticeBar__container {
@@ -31857,131 +31857,131 @@ html:lang(ar) .WinGo__C-head-more[data-v-5d71c3fd] {
 }
 
 .TimeLeft__C-l3 .num0[data-v-3c1bee29] {
-    background-image: url(/assets/png/num0-d3a30585.png)
+    background-image: url(/images/num0-d3a30585.png)
 }
 
 .TimeLeft__C-l3 .num0.prize0[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prize0-96a81e16.png)
+    background-image: url(/images/prize0-96a81e16.png)
 }
 
 .TimeLeft__C-l3 .num1[data-v-3c1bee29] {
-    background-image: url(/assets/png/num1-fdab1e12.png)
+    background-image: url(/images/num1-fdab1e12.png)
 }
 
 .TimeLeft__C-l3 .num1.prize1[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prize1-fe15d69b.png)
+    background-image: url(/images/prize1-fe15d69b.png)
 }
 
 .TimeLeft__C-l3 .num2[data-v-3c1bee29] {
-    background-image: url(/assets/png/num2-b18f079a.png)
+    background-image: url(/images/num2-b18f079a.png)
 }
 
 .TimeLeft__C-l3 .num2.prize2[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prize2-28af3286.png)
+    background-image: url(/images/prize2-28af3286.png)
 }
 
 .TimeLeft__C-l3 .num3[data-v-3c1bee29] {
-    background-image: url(/assets/png/num3-8254ed13.png)
+    background-image: url(/images/num3-8254ed13.png)
 }
 
 .TimeLeft__C-l3 .num3.prize3[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prize3-6700769f.png)
+    background-image: url(/images/prize3-6700769f.png)
 }
 
 .TimeLeft__C-l3 .num4[data-v-3c1bee29] {
-    background-image: url(/assets/png/num4-5f2d81c5.png)
+    background-image: url(/images/num4-5f2d81c5.png)
 }
 
 .TimeLeft__C-l3 .num4.prize4[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prize4-5a5999aa.png)
+    background-image: url(/images/prize4-5a5999aa.png)
 }
 
 .TimeLeft__C-l3 .num5[data-v-3c1bee29] {
-    background-image: url(/assets/png/num5-fd2837e8.png)
+    background-image: url(/images/num5-fd2837e8.png)
 }
 
 .TimeLeft__C-l3 .num5.prize5[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prize5-82f7fa61.png)
+    background-image: url(/images/prize5-82f7fa61.png)
 }
 
 .TimeLeft__C-l3 .num6[data-v-3c1bee29] {
-    background-image: url(/assets/png/num6-0cbd3b10.png)
+    background-image: url(/images/num6-0cbd3b10.png)
 }
 
 .TimeLeft__C-l3 .num6.prize6[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prize6-57181440.png)
+    background-image: url(/images/prize6-57181440.png)
 }
 
 .TimeLeft__C-l3 .num7[data-v-3c1bee29] {
-    background-image: url(/assets/png/num7-05973970.png)
+    background-image: url(/images/num7-05973970.png)
 }
 
 .TimeLeft__C-l3 .num7.prize7[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prize7-ca1d24be.png)
+    background-image: url(/images/prize7-ca1d24be.png)
 }
 
 .TimeLeft__C-l3 .num8[data-v-3c1bee29] {
-    background-image: url(/assets/png/num8-41b2260f.png)
+    background-image: url(/images/num8-41b2260f.png)
 }
 
 .TimeLeft__C-l3 .num8.prize8[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prize8-3ffac79f.png)
+    background-image: url(/images/prize8-3ffac79f.png)
 }
 
 .TimeLeft__C-l3 .num9[data-v-3c1bee29] {
-    background-image: url(/assets/png/num9-310d63e2.png)
+    background-image: url(/images/num9-310d63e2.png)
 }
 
 .TimeLeft__C-l3 .num9.prize9[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prize9-63d3f3f8.png)
+    background-image: url(/images/prize9-63d3f3f8.png)
 }
 
 .TimeLeft__C-l3 .numA[data-v-3c1bee29] {
-    background-image: url(/assets/png/numA-594afa89.png)
+    background-image: url(/images/numA-594afa89.png)
 }
 
 .TimeLeft__C-l3 .numA.prizeA[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prizeA-7217212f.png)
+    background-image: url(/images/prizeA-7217212f.png)
 }
 
 .TimeLeft__C-l3 .numB[data-v-3c1bee29] {
-    background-image: url(/assets/png/numB-cad56304.png)
+    background-image: url(/images/numB-cad56304.png)
 }
 
 .TimeLeft__C-l3 .numB.prizeB[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prizeB-6c3c2497.png)
+    background-image: url(/images/prizeB-6c3c2497.png)
 }
 
 .TimeLeft__C-l3 .numC[data-v-3c1bee29] {
-    background-image: url(/assets/png/numC-8d88d857.png)
+    background-image: url(/images/numC-8d88d857.png)
 }
 
 .TimeLeft__C-l3 .numC.prizeC[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prizeC-bbf8b83c.png)
+    background-image: url(/images/prizeC-bbf8b83c.png)
 }
 
 .TimeLeft__C-l3 .numD[data-v-3c1bee29] {
-    background-image: url(/assets/png/numD-06e782e9.png)
+    background-image: url(/images/numD-06e782e9.png)
 }
 
 .TimeLeft__C-l3 .numD.prizeD[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prizeD-46a95e2f.png)
+    background-image: url(/images/prizeD-46a95e2f.png)
 }
 
 .TimeLeft__C-l3 .numE[data-v-3c1bee29] {
-    background-image: url(/assets/png/numE-f70da99f.png)
+    background-image: url(/images/numE-f70da99f.png)
 }
 
 .TimeLeft__C-l3 .numE.prizeE[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prizeE-90087f02.png)
+    background-image: url(/images/prizeE-90087f02.png)
 }
 
 .TimeLeft__C-l3 .numF[data-v-3c1bee29] {
-    background-image: url(/assets/png/numF-956f8923.png)
+    background-image: url(/images/numF-956f8923.png)
 }
 
 .TimeLeft__C-l3 .numF.prizeF[data-v-3c1bee29]:last-of-type {
-    background-image: url(/assets/png/prizeF-46aeece0.png)
+    background-image: url(/images/prizeF-46aeece0.png)
 }
 
 .TimeLeft__C-l3>div[data-v-3c1bee29],
@@ -32177,7 +32177,7 @@ html:lang(ar) .WinGo__C-head-more[data-v-5d71c3fd] {
 .GameRecord__C-body .Binquire[data-v-7a795a91] {
     width: .42667rem;
     height: .42667rem;
-    background-image: url(/assets/png/icon-question-de9a9185.png);
+    background-image: url(/images/icon-question-de9a9185.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -32318,7 +32318,7 @@ html:lang(ar) .WinGo__C-head-more[data-v-5d71c3fd] {
     position: absolute;
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/bcakIcon-b7c1d288.png);
+    background-image: url(/images/bcakIcon-b7c1d288.png);
     background-size: .64rem;
     left: .34667rem;
     top: 50%;
@@ -32327,7 +32327,7 @@ html:lang(ar) .WinGo__C-head-more[data-v-5d71c3fd] {
 }
 
 .WinTrx__C-head-logo[data-v-ac90c264] {
-    background: url(/assets/png/headlogo-56515a97.png);
+    background: url(/images/headlogo-56515a97.png);
     background-size: 2.98667rem 1.12rem;
     height: 1.12rem;
     width: 2.98667rem;
@@ -32362,16 +32362,16 @@ html:lang(ar) .WinTrx__C-head-more[data-v-ac90c264] {
 .WinTrx__C-head-more>div[data-v-ac90c264] {
     width: .64rem;
     height: .64rem;
-    background-image: url(/assets/png/kefu-b361c42f.png);
+    background-image: url(/images/kefu-b361c42f.png);
     background-size: .64rem
 }
 
 .WinTrx__C-head-more>div[data-v-ac90c264]:last-child {
-    background-image: url(/assets/png/voice-62dbf38c.png)
+    background-image: url(/images/voice-62dbf38c.png)
 }
 
 .WinTrx__C-head-more>div:last-child.disableVoice[data-v-ac90c264] {
-    background-image: url(/assets/png/voice-off-633f5ccc.png)
+    background-image: url(/images/voice-off-633f5ccc.png)
 }
 
 .WinTrx__C[data-v-ac90c264] .noticeBar__container {
@@ -33612,7 +33612,7 @@ html:lang(ar) .point-flicker[data-v-c10b67fb]:after {
     width: 100%;
     height: 3.33333rem;
     z-index: 1;
-    background: url(/assets/png/DailyProfitRankStage-ce00a6d6.png) no-repeat center center/100% 100%
+    background: url(/images/DailyProfitRankStage-ce00a6d6.png) no-repeat center center/100% 100%
 }
 
 .dailyProfitRank__content-topThree__item[data-v-84514e8e] {
@@ -34373,7 +34373,7 @@ html:lang(ar) .point-flicker[data-v-c10b67fb]:after {
     display: -webkit-flex;
     display: flex;
     min-height: 2.66667rem;
-    background: url(/assets/png/bj-530fd113.png) no-repeat center/100%;
+    background: url(/images/bj-530fd113.png) no-repeat center/100%;
     padding: .21333rem 0 0 .13333rem;
     margin-bottom: .26667rem
 }
@@ -34459,7 +34459,7 @@ html:lang(ar) .point-flicker[data-v-c10b67fb]:after {
     width: 4.53333rem;
     height: 5.06667rem;
     border-radius: .26667rem;
-    background: url(/assets/png/daman-lottery_background-dddb4357.png) no-repeat center center
+    background: url(/images/daman-lottery_background-dddb4357.png) no-repeat center center
 }
 
 .daman-lottery .daman_img img[data-v-36646609] {
@@ -34698,16 +34698,16 @@ html:lang(ar) .point-flicker[data-v-c10b67fb]:after {
 
 .daman-lottery-list .daman-hot-item[data-v-1cac95cc]:first-child {
     grid-column: 1/2;
-    background: url(/assets/png/1-f975f0c5.png) no-repeat center top/106%
+    background: url(/images/1-f975f0c5.png) no-repeat center top/106%
 }
 
 .daman-lottery-list .daman-hot-item[data-v-1cac95cc]:nth-child(2) {
     grid-column: 1/2;
-    background: url(/assets/png/2-b292939f.png) no-repeat center top/106%
+    background: url(/images/2-b292939f.png) no-repeat center top/106%
 }
 
 .daman-lottery-list .daman-hot-item[data-v-1cac95cc]:last-child {
-    background: url(/assets/png/3-7b17f949.png) no-repeat center top/106%;
+    background: url(/images/3-7b17f949.png) no-repeat center top/106%;
     grid-row: 1/3
 }
 
@@ -35355,7 +35355,7 @@ html:lang(ar) .point-flicker[data-v-c10b67fb]:after {
     border-radius: 50%;
     z-index: 100;
     touch-action: none;
-    background: url(/assets/png/turntable_icon-04916ea0.png) no-repeat center/cover
+    background: url(/images/turntable_icon-04916ea0.png) no-repeat center/cover
 }
 
 .turntable-lottery {
@@ -35367,7 +35367,7 @@ html:lang(ar) .point-flicker[data-v-c10b67fb]:after {
     border-radius: 50%;
     z-index: 100;
     touch-action: none;
-    background: url(/assets/png/turntable-b345db9e.png) no-repeat center/cover
+    background: url(/images/turntable-b345db9e.png) no-repeat center/cover
 }
 
 .turntable-lottery.lottery-bottom {
