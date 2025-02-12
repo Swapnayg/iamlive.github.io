@@ -4547,7 +4547,6 @@ function timerJoin1(params = '') {
                     },
                     success: function (response) {
                         $("#betting_details").empty();
-                        console.log($("#game_selector_btn .ar-searchbar__selector-default").text().trim());
                         $(response.datas).each(function(index, element){
                             if($("#datepickertxt").val().trim() == timerJoin(element.time).trim())
                             {
@@ -4578,12 +4577,13 @@ function timerJoin1(params = '') {
                                         col_txt = "Green";
                                         col_val = "#5cba47";
                                     }
-                                    var act_amt = 0;
-                                    var win_amt = 0;
-                                    var prof_loss = 0;
-                                    var pl_color = '';
-                                    var per_amt = parseFloat(parseInt(element.money) *0.02).toFixed(2);
-                                    act_amt = parseFloat(parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
+                                    var total_amount = element.fee + element.money;
+                                   var act_amt = 0;
+                                   var win_amt = 0;
+                                   var prof_loss = 0;
+                                   var pl_color = '';
+                                   var per_amt = parseFloat(parseInt(total_amount) *0.02).toFixed(2);
+                                   act_amt =parseFloat (parseFloat(total_amount).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
                                     if (element.status == "1") {
                                         win_amt = act_amt * 2;
                                         prof_loss = "+₹" + act_amt;
@@ -4611,7 +4611,7 @@ function timerJoin1(params = '') {
                                     <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span>
                                     <p data-v-1d8fbc24="">`+element.amount+`</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
                                     <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
-                                    <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(element.money).toFixed(2)+`</span></li></ul>
+                                    <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(total_amount).toFixed(2)+`</span></li></ul>
                                     </div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" />
                                     <div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="bet-container-lottery-note-result">
                                     <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
@@ -4917,12 +4917,13 @@ function timerJoin1(params = '') {
                                  col_txt = "Green";
                                  col_val = "#5cba47";
                              }
-                             var act_amt = 0;
-                             var win_amt = 0;
-                             var prof_loss = 0;
-                             var pl_color = '';
-                             var per_amt = parseFloat(parseInt(element.money) *0.02).toFixed(2);
-                             act_amt = parseFloat(parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
+                             var total_amount = element.fee + element.money;
+                                   var act_amt = 0;
+                                   var win_amt = 0;
+                                   var prof_loss = 0;
+                                   var pl_color = '';
+                                   var per_amt = parseFloat(parseInt(total_amount) *0.02).toFixed(2);
+                                   act_amt =parseFloat (parseFloat(total_amount).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
                              if (element.status == "1") {
                                  win_amt = act_amt * 2;
                                  prof_loss = "+₹" + act_amt;
@@ -4950,7 +4951,7 @@ function timerJoin1(params = '') {
                              <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span>
                              <p data-v-1d8fbc24="">`+element.amount+`</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
                              <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
-                             <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(element.money).toFixed(2)+`</span></li></ul>
+                             <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(total_amount).toFixed(2)+`</span></li></ul>
                              </div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" />
                              <div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="bet-container-lottery-note-result">
                              <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
@@ -5384,12 +5385,13 @@ function timerJoin1(params = '') {
                                        col_txt = "Green";
                                        col_val = "#5cba47";
                                    }
+                                   var total_amount = element.fee + element.money;
                                    var act_amt = 0;
                                    var win_amt = 0;
                                    var prof_loss = 0;
                                    var pl_color = '';
-                                   var per_amt = parseFloat(parseInt(element.money) *0.02).toFixed(2);
-                                   act_amt = parseFloat(parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
+                                   var per_amt = parseFloat(parseInt(total_amount) *0.02).toFixed(2);
+                                   act_amt =parseFloat (parseFloat(total_amount).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
                                    if (element.status == "1") {
                                        win_amt = act_amt * 2;
                                        prof_loss = "+₹" + act_amt;
@@ -5417,7 +5419,7 @@ function timerJoin1(params = '') {
                                    <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span>
                                    <p data-v-1d8fbc24="">`+element.amount+`</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
                                    <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
-                                   <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(element.money).toFixed(2)+`</span></li></ul>
+                                   <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(total_amount).toFixed(2)+`</span></li></ul>
                                    </div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" />
                                    <div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="bet-container-lottery-note-result">
                                    <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">

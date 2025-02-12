@@ -137,19 +137,19 @@ const d_get_betting = async (req, res) => {
     var betting_list = '';
     if( gameJoin == "WinGo")
     {
-        [betting_list] = await connection.query('SELECT * FROM minutes_1 WHERE `phone` = ?  ORDER BY `id` DESC ', [phone]);
+        [betting_list] = await connection.query('SELECT * FROM minutes_1 WHERE `phone` = ? AND status NOT IN ( 0 )  ORDER BY `id` DESC', [phone]);
     }
     else if(gameJoin == "5D")
     {
-        [betting_list] = await connection.query('SELECT * FROM result_5d WHERE `phone` = ? ORDER BY `id` DESC ', [phone]);
+        [betting_list] = await connection.query('SELECT * FROM result_5d WHERE `phone` = ? AND status NOT IN ( 0 )  ORDER BY `id` DESC ', [phone]);
     }
     else if(gameJoin == "K3")
     {
-        [betting_list] = await connection.query('SELECT * FROM result_k3 WHERE `phone` = ? ORDER BY `id` DESC ', [phone]);     
+        [betting_list] = await connection.query('SELECT * FROM result_k3 WHERE `phone` = ? AND status NOT IN ( 0 )  ORDER BY `id` DESC ', [phone]);     
     }
     else if(gameJoin == "Trx Wingo")
         {
-            [betting_list] = await connection.query('SELECT * FROM trx_wingo_bets WHERE `phone` = ? ORDER BY `id` DESC ', [phone]);     
+            [betting_list] = await connection.query('SELECT * FROM trx_wingo_bets WHERE `phone` = ? AND status NOT IN ( 0 )  ORDER BY `id` DESC ', [phone]);     
         }
     return res.status(200).json({
         message: 'Success',

@@ -1,7 +1,9 @@
-import e from "express";
-import connection from "../config/connectDB";
-require('dotenv').config();
-
+import moment from "moment";
+import connection from "../config/connectDB.js";
+import axios from "axios";
+import _ from "lodash";
+import GameRepresentationIds from "../constants/game_representation_id.js";
+import { generatePeriod } from "../helpers/games.js";
 
 const K5DPage = async (req, res) => {
     return res.render("bet/5d/5d.ejs"); 
@@ -328,6 +330,9 @@ const add5D = async(game) => {
         const [setting] = await connection.query('SELECT * FROM `admin` ');
         let period = k5D[0].period;
 
+        let gameRepresentationId = GameRepresentationIds.TRXWINGO[game];
+        let NewGamePeriod = generatePeriod(gameRepresentationId);
+
         let nextResult = '';
         if (game == 1) nextResult = setting[0].k5d;
         if (game == 3) nextResult = setting[0].k5d3;
@@ -354,7 +359,7 @@ const add5D = async(game) => {
             await connection.execute(`UPDATE d5 SET result = ?,status = ? WHERE period = ? AND game = ${game}`, [result, 1, period]);
         }
         const sql = `INSERT INTO d5 SET period = ?, result = ?, game = ?, status = ?, time = ?`;
-        await connection.execute(sql, [Number(period) + 1, 0, game, 0, timeNow]);
+        await connection.execute(sql, [NewGamePeriod, 0, game, 0, timeNow]);
 
         if (game == 1) join = 'k5d';
         if (game == 3) join = 'k5d3';

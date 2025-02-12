@@ -709,7 +709,7 @@ const addTrxWingo = async (game) => {
             "TRON-PRO-API-KEY": process.env.TRON_API_KEY,
           },
         });
-        console.log(response.data.data);
+       // console.log(response.data.data);
         const NextBlock = response.data.data
           .map((item) => {
             return {
