@@ -4547,6 +4547,7 @@ function timerJoin1(params = '') {
                     },
                     success: function (response) {
                         $("#betting_details").empty();
+                        console.log($("#game_selector_btn .ar-searchbar__selector-default").text().trim());
                         $(response.datas).each(function(index, element){
                             if($("#datepickertxt").val().trim() == timerJoin(element.time).trim())
                             {
@@ -4557,19 +4558,19 @@ function timerJoin1(params = '') {
                                     var col_txt = '';
                                     var col_val = '';
                                     var sb_txt = '';
-                                    if(parseInt(element.amount) <= 4)
+                                    if(parseInt(element.result) <= 4)
                                     {
                                        sb_txt = "Small";
                                     }
                                     else{
                                        sb_txt = "Big";
                                     }
-                                    if(parseInt(element.amount) == 5 || parseInt(element.amount) == 0)
+                                    if(parseInt(element.result) == 5 || parseInt(element.result) == 0)
                                     {
                                         col_txt = "Violet";
                                         col_val = "#eb43dd";
                                     }
-                                    else if (parseInt(element.amount) % 2 == 0) {
+                                    else if (parseInt(element.result) % 2 == 0) {
                                         col_txt = "Red";
                                         col_val = "#fb4e4e";
                                     }
@@ -4582,7 +4583,7 @@ function timerJoin1(params = '') {
                                     var prof_loss = 0;
                                     var pl_color = '';
                                     var per_amt = parseFloat(parseInt(element.money) *0.02).toFixed(2);
-                                    act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                                    act_amt = parseFloat(parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
                                     if (element.status == "1") {
                                         win_amt = act_amt * 2;
                                         prof_loss = "+₹" + act_amt;
@@ -4663,7 +4664,7 @@ function timerJoin1(params = '') {
                                     var prof_loss = 0;
                                     var pl_color = '';
                                     var per_amt = parseFloat(parseInt(element.money) *0.02).toFixed(2);
-                                    act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                                    act_amt = parseFloat(parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
                                     if (element.status == "1") {
                                         win_amt = act_amt * 2;
                                         prof_loss = "+₹" + act_amt;
@@ -4743,7 +4744,7 @@ function timerJoin1(params = '') {
                                     var prof_loss = 0;
                                     var pl_color = '';
                                     var per_amt = parseFloat(parseInt(element.money) *0.02).toFixed(2);
-                                    act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                                    act_amt = parseFloat(parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
                                     if (element.status == "1") {
                                         win_amt = act_amt * 2;
                                         prof_loss = "+₹" + act_amt;
@@ -4791,7 +4792,81 @@ function timerJoin1(params = '') {
                                 }
                                  else if($("#game_selector_btn .ar-searchbar__selector-default").text().trim() == "Trx Wingo")
                                  {
-                                    console.log("this is trx");
+                                    var win_loss = (element.status == "1") ? "WON" : "LOSS";
+                                   var win_Min = (element.game.match(/\d+/) == null) ? "1" : element.game.match(/\d+/);
+                                   var col_txt = '';
+                                   var col_val = '';
+                                   var sb_txt = '';
+                                   if(parseInt(element.result) <= 4)
+                                   {
+                                      sb_txt = "Small";
+                                   }
+                                   else{
+                                      sb_txt = "Big";
+                                   }
+                                   if(parseInt(element.result) == 5 || parseInt(element.result) == 0)
+                                   {
+                                       col_txt = "Violet";
+                                       col_val = "#eb43dd";
+                                   }
+                                   else if (parseInt(element.result) % 2 == 0) {
+                                       col_txt = "Red";
+                                       col_val = "#fb4e4e";
+                                   }
+                                   else{
+                                       col_txt = "Green";
+                                       col_val = "#5cba47";
+                                   }
+                                   var act_amt = 0;
+                                   var win_amt = 0;
+                                   var prof_loss = 0;
+                                   var pl_color = '';
+                                   var per_amt = parseFloat(parseInt(element.amount) *0.02).toFixed(2);
+                                   act_amt =parseFloat (parseFloat(element.amount).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
+                                   if (element.status == "1") {
+                                       win_amt = act_amt * 2;
+                                       prof_loss = "+₹" + act_amt;
+                                       pl_color = 'green';
+                                   }
+                                   else{
+                                       win_amt = 0;
+                                       prof_loss = "-₹" + act_amt;
+                                       pl_color = 'red';
+                                   }
+                                   $("#betting_details").append(`<div data-v-1d8fbc24="" class="bet-container-lottery-items">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-card">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-card-header ar-1px-b"><h1 data-v-1d8fbc24="">
+                                   <h2 data-v-1d8fbc24="">Trx Wingo</h2><span data-v-1d8fbc24="" class="colorE98613">`+win_loss+`</span></h1>
+                                   <p data-v-1d8fbc24="">`+timerJoin1(element.time).trim()+`</p></div><div data-v-1d8fbc24="" class="bet-container-lottery-card-info">
+                                   <ul data-v-1d8fbc24=""><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" 
+                                   class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Type</h2></span>
+                                   <span data-v-1d8fbc24="">Win Go `+win_Min+`Min</span></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <h2 data-v-1d8fbc24="">Period</h2></span><span data-v-1d8fbc24="">`+element.stage+`</span></li>
+                                   <li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Order number</h2></span>
+                                   <span data-v-1d8fbc24="">`+element.id_product+`</span></li><li data-v-1d8fbc24="">
+                                   <span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span>
+                                   <p data-v-1d8fbc24="">`+element.amount+`</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(element.money).toFixed(2)+`</span></li></ul>
+                                   </div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" />
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="bet-container-lottery-note-result">
+                                   <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg>Lottery results</h1><h2 data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <p data-v-1d8fbc24="">`+element.result+`</p><span data-v-1d8fbc24="" class="small">`+sb_txt+`</span>
+                                   <span data-v-1d8fbc24="" style="background-color:`+col_val+`">`+col_txt+`</span></h2></div></div>
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box"><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+act_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Actual amount</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+win_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Winnings</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+per_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Handling fee</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h4 data-v-1d8fbc24="" style="color:`+pl_color+`">`+prof_loss+`</h4>
+                                   <span data-v-1d8fbc24="">Profit/loss</span></div></div></div></div></div>`);
                                  }
                             }
                           });
@@ -4810,6 +4885,7 @@ function timerJoin1(params = '') {
             },
             success: function (response) {
                 $("#betting_details").empty();
+                console.log($("#game_selector_btn .ar-searchbar__selector-default").text().trim());
                 $(response.datas).each(function(index, element){
                     if($("#datepickertxt").val().trim() == timerJoin(element.time).trim())
                     {
@@ -4820,19 +4896,19 @@ function timerJoin1(params = '') {
                              var col_txt = '';
                              var col_val = '';
                              var sb_txt = '';
-                             if(parseInt(element.amount) <= 4)
+                             if(parseInt(element.result) <= 4)
                              {
                                 sb_txt = "Small";
                              }
                              else{
                                 sb_txt = "Big";
                              }
-                             if(parseInt(element.amount) == 5 || parseInt(element.amount) == 0)
+                             if(parseInt(element.result) == 5 || parseInt(element.result) == 0)
                              {
                                  col_txt = "Violet";
                                  col_val = "#eb43dd";
                              }
-                             else if (parseInt(element.amount) % 2 == 0) {
+                             else if (parseInt(element.result) % 2 == 0) {
                                  col_txt = "Red";
                                  col_val = "#fb4e4e";
                              }
@@ -4845,7 +4921,7 @@ function timerJoin1(params = '') {
                              var prof_loss = 0;
                              var pl_color = '';
                              var per_amt = parseFloat(parseInt(element.money) *0.02).toFixed(2);
-                             act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                             act_amt = parseFloat(parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
                              if (element.status == "1") {
                                  win_amt = act_amt * 2;
                                  prof_loss = "+₹" + act_amt;
@@ -4926,7 +5002,7 @@ function timerJoin1(params = '') {
                              var prof_loss = 0;
                              var pl_color = '';
                              var per_amt = parseFloat(parseInt(element.money) *0.02).toFixed(2);
-                             act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                             act_amt = parseFloat(parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
                              if (element.status == "1") {
                                  win_amt = act_amt * 2;
                                  prof_loss = "+₹" + act_amt;
@@ -5006,7 +5082,7 @@ function timerJoin1(params = '') {
                              var prof_loss = 0;
                              var pl_color = '';
                              var per_amt = parseFloat(parseInt(element.money) *0.02).toFixed(2);
-                             act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                             act_amt = parseFloat(parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
                              if (element.status == "1") {
                                  win_amt = act_amt * 2;
                                  prof_loss = "+₹" + act_amt;
@@ -5054,7 +5130,81 @@ function timerJoin1(params = '') {
                          }
                          else if($("#game_selector_btn .ar-searchbar__selector-default").text().trim() == "Trx Wingo")
                          {
-                            console.log("this is trx");
+                           var win_loss = (element.status == "1") ? "WON" : "LOSS";
+                                   var win_Min = (element.game.match(/\d+/) == null) ? "1" : element.game.match(/\d+/);
+                                   var col_txt = '';
+                                   var col_val = '';
+                                   var sb_txt = '';
+                                   if(parseInt(element.result) <= 4)
+                                   {
+                                      sb_txt = "Small";
+                                   }
+                                   else{
+                                      sb_txt = "Big";
+                                   }
+                                   if(parseInt(element.result) == 5 || parseInt(element.result) == 0)
+                                   {
+                                       col_txt = "Violet";
+                                       col_val = "#eb43dd";
+                                   }
+                                   else if (parseInt(element.result) % 2 == 0) {
+                                       col_txt = "Red";
+                                       col_val = "#fb4e4e";
+                                   }
+                                   else{
+                                       col_txt = "Green";
+                                       col_val = "#5cba47";
+                                   }
+                                   var act_amt = 0;
+                                   var win_amt = 0;
+                                   var prof_loss = 0;
+                                   var pl_color = '';
+                                   var per_amt = parseFloat(parseInt(element.amount) *0.02).toFixed(2);
+                                   act_amt =parseFloat (parseFloat(element.amount).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
+                                   if (element.status == "1") {
+                                       win_amt = act_amt * 2;
+                                       prof_loss = "+₹" + act_amt;
+                                       pl_color = 'green';
+                                   }
+                                   else{
+                                       win_amt = 0;
+                                       prof_loss = "-₹" + act_amt;
+                                       pl_color = 'red';
+                                   }
+                                   $("#betting_details").append(`<div data-v-1d8fbc24="" class="bet-container-lottery-items">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-card">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-card-header ar-1px-b"><h1 data-v-1d8fbc24="">
+                                   <h2 data-v-1d8fbc24="">Trx Wingo</h2><span data-v-1d8fbc24="" class="colorE98613">`+win_loss+`</span></h1>
+                                   <p data-v-1d8fbc24="">`+timerJoin1(element.time).trim()+`</p></div><div data-v-1d8fbc24="" class="bet-container-lottery-card-info">
+                                   <ul data-v-1d8fbc24=""><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" 
+                                   class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Type</h2></span>
+                                   <span data-v-1d8fbc24="">Win Go `+win_Min+`Min</span></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <h2 data-v-1d8fbc24="">Period</h2></span><span data-v-1d8fbc24="">`+element.stage+`</span></li>
+                                   <li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Order number</h2></span>
+                                   <span data-v-1d8fbc24="">`+element.id_product+`</span></li><li data-v-1d8fbc24="">
+                                   <span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span>
+                                   <p data-v-1d8fbc24="">`+element.amount+`</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(element.money).toFixed(2)+`</span></li></ul>
+                                   </div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" />
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="bet-container-lottery-note-result">
+                                   <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg>Lottery results</h1><h2 data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <p data-v-1d8fbc24="">`+element.result+`</p><span data-v-1d8fbc24="" class="small">`+sb_txt+`</span>
+                                   <span data-v-1d8fbc24="" style="background-color:`+col_val+`">`+col_txt+`</span></h2></div></div>
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box"><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+act_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Actual amount</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+win_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Winnings</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+per_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Handling fee</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h4 data-v-1d8fbc24="" style="color:`+pl_color+`">`+prof_loss+`</h4>
+                                   <span data-v-1d8fbc24="">Profit/loss</span></div></div></div></div></div>`);
                          }
                     }
                 });
@@ -5126,26 +5276,104 @@ function timerJoin1(params = '') {
                     $(response.datas).each(function(index, element){
                         if($("#datepickertxt").val().trim() == timerJoin(element.time).trim())
                         {
-                               if($("#game_selector_btn .ar-searchbar__selector-default").text().trim() == "WinGo")
-                               {
-                                   var win_loss = (element.status == "1") ? "WON" : "LOSS";
+                            if($("#game_selector_btn .ar-searchbar__selector-default").text().trim() == "Trx Wingo")
+                           {
+                              var win_loss = (element.status == "1") ? "WON" : "LOSS";
                                    var win_Min = (element.game.match(/\d+/) == null) ? "1" : element.game.match(/\d+/);
                                    var col_txt = '';
                                    var col_val = '';
                                    var sb_txt = '';
-                                   if(parseInt(element.amount) <= 4)
+                                   if(parseInt(element.result) <= 4)
                                    {
                                       sb_txt = "Small";
                                    }
                                    else{
                                       sb_txt = "Big";
                                    }
-                                   if(parseInt(element.amount) == 5 || parseInt(element.amount) == 0)
+                                   if(parseInt(element.result) == 5 || parseInt(element.result) == 0)
                                    {
                                        col_txt = "Violet";
                                        col_val = "#eb43dd";
                                    }
-                                   else if (parseInt(element.amount) % 2 == 0) {
+                                   else if (parseInt(element.result) % 2 == 0) {
+                                       col_txt = "Red";
+                                       col_val = "#fb4e4e";
+                                   }
+                                   else{
+                                       col_txt = "Green";
+                                       col_val = "#5cba47";
+                                   }
+                                   var act_amt = 0;
+                                   var win_amt = 0;
+                                   var prof_loss = 0;
+                                   var pl_color = '';
+                                   var per_amt = parseFloat(parseInt(element.amount) *0.02).toFixed(2);
+                                   act_amt =parseFloat (parseFloat(element.amount).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
+                                   if (element.status == "1") {
+                                       win_amt = act_amt * 2;
+                                       prof_loss = "+₹" + act_amt;
+                                       pl_color = 'green';
+                                   }
+                                   else{
+                                       win_amt = 0;
+                                       prof_loss = "-₹" + act_amt;
+                                       pl_color = 'red';
+                                   }
+                                   $("#betting_details").append(`<div data-v-1d8fbc24="" class="bet-container-lottery-items">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-card">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-card-header ar-1px-b"><h1 data-v-1d8fbc24="">
+                                   <h2 data-v-1d8fbc24="">Trx Wingo</h2><span data-v-1d8fbc24="" class="colorE98613">`+win_loss+`</span></h1>
+                                   <p data-v-1d8fbc24="">`+timerJoin1(element.time).trim()+`</p></div><div data-v-1d8fbc24="" class="bet-container-lottery-card-info">
+                                   <ul data-v-1d8fbc24=""><li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" 
+                                   class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Type</h2></span>
+                                   <span data-v-1d8fbc24="">Win Go `+win_Min+`Min</span></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <h2 data-v-1d8fbc24="">Period</h2></span><span data-v-1d8fbc24="">`+element.stage+`</span></li>
+                                   <li data-v-1d8fbc24=""><span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Order number</h2></span>
+                                   <span data-v-1d8fbc24="">`+element.id_product+`</span></li><li data-v-1d8fbc24="">
+                                   <span data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg><h2 data-v-1d8fbc24="">Select</h2></span>
+                                   <p data-v-1d8fbc24="">`+element.amount+`</p></li><li data-v-1d8fbc24=""><span data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <h2 data-v-1d8fbc24="">Total bet</h2></span><span data-v-1d8fbc24="">₹`+parseFloat(element.money).toFixed(2)+`</span></li></ul>
+                                   </div></div><img data-v-1d8fbc24="" src="/assets/png/moonBar-f80ac733.png" />
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note"><div data-v-1d8fbc24="" class="bet-container-lottery-note-result">
+                                   <div data-v-1d8fbc24=""><h1 data-v-1d8fbc24=""><svg data-v-1d8fbc24="" class="svg-icon icon-round">
+                                   <use xlink:href="#icon-round"></use></svg>Lottery results</h1><h2 data-v-1d8fbc24="">
+                                   <svg data-v-1d8fbc24="" class="svg-icon icon-round"><use xlink:href="#icon-round"></use></svg>
+                                   <p data-v-1d8fbc24="">`+element.result+`</p><span data-v-1d8fbc24="" class="small">`+sb_txt+`</span>
+                                   <span data-v-1d8fbc24="" style="background-color:`+col_val+`">`+col_txt+`</span></h2></div></div>
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box"><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+act_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Actual amount</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+win_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Winnings</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h3 data-v-1d8fbc24="">₹`+per_amt+`</h3>
+                                   <span data-v-1d8fbc24="">Handling fee</span></div></div><div data-v-1d8fbc24="">
+                                   <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h4 data-v-1d8fbc24="" style="color:`+pl_color+`">`+prof_loss+`</h4>
+                                   <span data-v-1d8fbc24="">Profit/loss</span></div></div></div></div></div>`);
+                           }
+                               else if($("#game_selector_btn .ar-searchbar__selector-default").text().trim() == "WinGo")
+                               {
+                                   var win_loss = (element.status == "1") ? "WON" : "LOSS";
+                                   var win_Min = (element.game.match(/\d+/) == null) ? "1" : element.game.match(/\d+/);
+                                   var col_txt = '';
+                                   var col_val = '';
+                                   var sb_txt = '';
+                                   if(parseInt(element.result) <= 4)
+                                   {
+                                      sb_txt = "Small";
+                                   }
+                                   else{
+                                      sb_txt = "Big";
+                                   }
+                                   if(parseInt(element.result) == 5 || parseInt(element.result) == 0)
+                                   {
+                                       col_txt = "Violet";
+                                       col_val = "#eb43dd";
+                                   }
+                                   else if (parseInt(element.result) % 2 == 0) {
                                        col_txt = "Red";
                                        col_val = "#fb4e4e";
                                    }
@@ -5158,7 +5386,7 @@ function timerJoin1(params = '') {
                                    var prof_loss = 0;
                                    var pl_color = '';
                                    var per_amt = parseFloat(parseInt(element.money) *0.02).toFixed(2);
-                                   act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                                   act_amt = parseFloat(parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
                                    if (element.status == "1") {
                                        win_amt = act_amt * 2;
                                        prof_loss = "+₹" + act_amt;
@@ -5238,7 +5466,7 @@ function timerJoin1(params = '') {
                                  var prof_loss = 0;
                                  var pl_color = '';
                                  var per_amt = parseFloat(parseInt(element.money) *0.02).toFixed(2);
-                                 act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                                 act_amt = parseFloat(parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
                                  if (element.status == "1") {
                                      win_amt = act_amt * 2;
                                      prof_loss = "+₹" + act_amt;
@@ -5318,7 +5546,7 @@ function timerJoin1(params = '') {
                                  var prof_loss = 0;
                                  var pl_color = '';
                                  var per_amt = parseFloat(parseInt(element.money) *0.02).toFixed(2);
-                                 act_amt = (parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2));
+                                 act_amt = parseFloat(parseFloat(element.money).toFixed(2) - parseFloat(per_amt).toFixed(2)).toFixed(2);
                                  if (element.status == "1") {
                                      win_amt = act_amt * 2;
                                      prof_loss = "+₹" + act_amt;
@@ -5363,11 +5591,7 @@ function timerJoin1(params = '') {
                                  <span data-v-1d8fbc24="">Handling fee</span></div></div><div data-v-1d8fbc24="">
                                  <div data-v-1d8fbc24="" class="bet-container-lottery-note-box-para"><h4 data-v-1d8fbc24="" style="color:`+pl_color+`">`+prof_loss+`</h4>
                                  <span data-v-1d8fbc24="">Profit/loss</span></div></div></div></div></div>`);
-                               }
-                               else if($("#game_selector_btn .ar-searchbar__selector-default").text().trim() == "Trx Wingo")
-                               {
-                                  console.log("this is trx");
-                               }
+                               }  
                         }
                     });
                 }

@@ -147,6 +147,10 @@ const d_get_betting = async (req, res) => {
     {
         [betting_list] = await connection.query('SELECT * FROM result_k3 WHERE `phone` = ? ORDER BY `id` DESC ', [phone]);     
     }
+    else if(gameJoin == "Trx Wingo")
+        {
+            [betting_list] = await connection.query('SELECT * FROM trx_wingo_bets WHERE `phone` = ? ORDER BY `id` DESC ', [phone]);     
+        }
     return res.status(200).json({
         message: 'Success',
         status: true,
