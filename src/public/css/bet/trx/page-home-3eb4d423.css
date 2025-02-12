@@ -5541,7 +5541,7 @@ html:lang(ar) .gameBox .items .info .order .line1[data-v-aec2245d]:before {
   display: block;
   width: 100%;
   height: 7.66667rem;
-  background: var(--light-main_gradient-color, var(--bg_color_L2));
+  background: linear-gradient(153.24deg, #2b3270 5.33%, #2b3270 93.42%)
   border-radius: 0 0 1.53333rem 1.53333rem;
   position: absolute;
   z-index: 0;
@@ -5554,8 +5554,7 @@ html:lang(ar) .Wallet__C[data-v-7dd1adab]:before {
 }
 .Wallet__C-balance[data-v-7dd1adab] {
   min-height: 3.57333rem;
-  background-color: var(--bg_color_L3);
-  background-image: url(/images/walletbg-f5c62a26.png);
+  background-color: #1e234d;
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 0.53333rem;
@@ -5569,7 +5568,7 @@ html:lang(ar) .Wallet__C[data-v-7dd1adab]:before {
   text-align: center;
   font-weight: 700;
   font-size: 0.48rem;
-  color: var(--darkTextW, var(--text_color_L1));
+  color: white;
   overflow: hidden;
 }
 .Wallet__C-balance-l1 > div[data-v-7dd1adab] {
@@ -5612,6 +5611,7 @@ html:lang(ar) .Wallet__C[data-v-7dd1adab]:before {
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: 0.53333rem;
+  color:white;
 }
 .Wallet__C-balance-l3[data-v-7dd1adab] {
   display: -webkit-box;
@@ -5634,7 +5634,14 @@ html:lang(ar) .Wallet__C[data-v-7dd1adab]:before {
   text-align: center;
 }
 .Wallet__C-balance-l3 > div + div[data-v-7dd1adab] {
-  background: var(--norm_green-color);
+  background: transparent;
+  border: 2px solid white;
+  border-radius: inherit;
+}
+.recharge
+{
+  background: white !important;
+  color: #2b3270 !important;
 }
 .van-toast[data-v-17d56002] {
   word-break: break-word !important;
@@ -5658,7 +5665,7 @@ html:lang(ar) .Wallet__C[data-v-7dd1adab]:before {
 .GameList__C[data-v-17d56002] {
   height: 2.4rem;
   width: calc(100% - 0.69333rem);
-  background: var(--bg_color_L3);
+  background: #1e234d;
   border-radius: 0.26667rem;
   position: relative;
   margin: 0.34667rem auto 0;
@@ -5678,7 +5685,7 @@ html:lang(ar) .Wallet__C[data-v-7dd1adab]:before {
   line-height: 0.4rem;
   font-size: 0.32rem;
   margin: auto;
-  color: var(--text_color_L2);
+  color: white;
   padding-top: 1.44rem;
   background-image: url(/images/icon_clock-gerrn.svg);
   background-size: 1.17333rem;
@@ -5686,8 +5693,10 @@ html:lang(ar) .Wallet__C[data-v-7dd1adab]:before {
   background-repeat: no-repeat;
 }
 .GameList__C-item.active[data-v-17d56002] {
-  background: var(--main_gradient-color2);
-  border-radius: 0.26667rem;
+  background: -webkit-linear-gradient(297deg, #374992 5.33%, #4675D2 93.42%) !important;
+  background: linear-gradient(153deg, #374992 5.33%, #4675D2 93.42%) !important;
+  box-shadow: 0 -.05333rem .16rem #92a7ff inset !important;
+  border-radius: .26667rem;
 }
 .GameList__C-item.active > div[data-v-17d56002] {
   color: var(--text_color_L4);
@@ -27783,7 +27792,7 @@ html:lang(ar) .Betting__Popup-agree[data-v-7f36fe93] {
   height: 7.61333rem;
   width: calc(100% - 0.69333rem);
   margin: 0.29333rem auto 0;
-  background: var(--darkBg, var(--bg_color_L2));
+  background: #1e234d;
   box-shadow: var(--boxShadowColor-35);
   border-radius: 0.26667rem;
   padding: 0.18667rem 0.26667rem 0.25333rem 0.18667rem;
@@ -27797,7 +27806,7 @@ html:lang(ar) .Betting__Popup-agree[data-v-7f36fe93] {
   z-index: 99;
   top: 0;
   left: 0;
-  color: var(--main-color);
+  color: #2b3270;
   border-radius: 0.26667rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -27861,7 +27870,7 @@ html:lang(ar) .Betting__C-mark[data-v-4aca9bd1] {
 .Betting__C-numC[data-v-4aca9bd1] {
   height: 3.46667rem;
   margin-top: 0.34667rem;
-  background: var(--bg_color_L1);
+  background: #1e234d;
   border-radius: 0.26667rem;
   padding: 0.17333rem 0.26667rem;
   display: -webkit-box;

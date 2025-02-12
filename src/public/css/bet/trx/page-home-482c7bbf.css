@@ -7627,7 +7627,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e2a7b350] {
 }
 
 .MyGameRecordList__C[data-v-373b3197] {
-  background-color: #fff;
+  background-color: #1e234d;
 }
 
 .MyGameRecordList__C-empty[data-v-373b3197] {
@@ -7730,7 +7730,7 @@ html:lang(ar) .WinningTip__C-body-l4[data-v-e2a7b350] {
   height: 0.45333rem;
   line-height: 0.45333rem;
   font-size: 0.37333rem;
-  color: #414141;
+  color: white;
   margin-bottom: 0.24rem;
 }
 
@@ -11894,7 +11894,7 @@ html:lang(ar) .MyGameRecord__C-head-moreB[data-v-3c1f9720]:after {
 }
 
 .MyGameRecord__C-body[data-v-3c1f9720] {
-  background-color: #fff;
+  background-color: #1e234d;
   padding: 0 0.32rem;
 }
 
@@ -11904,7 +11904,8 @@ html:lang(ar) .MyGameRecord__C-head-moreB[data-v-3c1f9720]:after {
 
 .MyGameRecord__C-foot[data-v-3c1f9720] {
   height: 1.86667rem;
-  background: #ffffff;
+  background: #1e234d;
+  color:white;
   padding: 0.46667rem 2.37333rem;
   margin-top: 0.48rem;
   display: -webkit-box;
@@ -11941,13 +11942,13 @@ html:lang(ar) .MyGameRecord__C-head-moreB[data-v-3c1f9720]:after {
 
 .MyGameRecord__C-foot-previous.disabled[data-v-3c1f9720],
 .MyGameRecord__C-foot-next.disabled[data-v-3c1f9720] {
-  background: #d8d8d8;
+  background: #949494;
   pointer-events: none;
 }
 
 .MyGameRecord__C-foot-previous.disabled .MyGameRecord__C-icon[data-v-3c1f9720],
 .MyGameRecord__C-foot-next.disabled .MyGameRecord__C-icon[data-v-3c1f9720] {
-  color: #7f7f7f;
+  color: white;
 }
 
 .MyGameRecord__C-foot-previous .MyGameRecord__C-icon[data-v-3c1f9720],
@@ -31124,7 +31125,8 @@ html:lang(ar) .Betting__C-popup-head[data-v-4431c0ec]:before {
 
 .GameRecord__C-foot[data-v-c52f94a7] {
   height: 1.86667rem;
-  background: #ffffff;
+  background: #1e234d;
+  color:white;
   padding: 0.46667rem 2.37333rem;
   margin-top: 0.48rem;
   display: -webkit-box;
@@ -31143,7 +31145,7 @@ html:lang(ar) .Betting__C-popup-head[data-v-4431c0ec]:before {
   width: 0.93333rem;
   height: 0.93333rem;
   border-radius: 0.13333rem;
-  background: #b1835a;
+  background: #949494;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -31217,8 +31219,9 @@ html:lang(ar) .Betting__C-popup-head[data-v-4431c0ec]:before {
 }
 
 .Trend__C-body1[data-v-54016b1c] {
-  background-color: #fff;
+  background-color: #555;
   padding-bottom: 0.37333rem;
+  border-bottom: 1px solid #666;
 }
 
 .Trend__C-body1-line[data-v-54016b1c] {
@@ -31228,6 +31231,7 @@ html:lang(ar) .Betting__C-popup-head[data-v-4431c0ec]:before {
   font-size: 0.34667rem;
   color: #3d3d3d;
   height: 0.41333rem;
+  border-bottom: 1px solid #666;
 }
 
 .Trend__C-body1-line > div[data-v-54016b1c]:first-child {
@@ -31235,6 +31239,7 @@ html:lang(ar) .Betting__C-popup-head[data-v-4431c0ec]:before {
   -webkit-padding-start: 0.26667rem;
   padding-inline-start: 0.26667rem;
   text-align: start;
+  color:#9da7b3;
 }
 
 .Trend__C-body1-line-num[data-v-54016b1c] {
@@ -31262,8 +31267,8 @@ html:lang(ar) .Betting__C-popup-head[data-v-4431c0ec]:before {
 
 .Trend__C-body1-line.lottery .Trend__C-body1-line-num > div[data-v-54016b1c] {
   border-radius: 50%;
-  border: 0.01333rem solid #b1835a;
-  color: #b1835a;
+  border: 0.01333rem solid #9da7b3;
+  color: #9da7b3;
 }
 
 .Trend__C-body1-line + .Trend__C-body1-line[data-v-54016b1c] {
@@ -31275,6 +31280,8 @@ html:lang(ar) .Betting__C-popup-head[data-v-4431c0ec]:before {
   height: 0.76rem;
   -webkit-padding-start: 0.26667rem;
   padding-inline-start: 0.26667rem;
+  border-bottom: 1px solid #666;
+  color:#9da7b3;
 }
 
 .Trend__C-body1-line-lottery[data-v-54016b1c] {
@@ -31283,7 +31290,11 @@ html:lang(ar) .Betting__C-popup-head[data-v-4431c0ec]:before {
 
 .Trend__C-body2[data-v-54016b1c] {
   font-size: 0.32rem;
-  background-color: #fff;
+  background-color: #1e234d;
+  border-top: .01333rem solid #B6BCC8;
+}
+.Trend__C-body2[data-v-54016b1c] .van-row{
+  background: transparent;
 }
 
 .Trend__C-body2 > div[data-v-54016b1c] {
@@ -31297,7 +31308,7 @@ html:lang(ar) .Betting__C-popup-head[data-v-4431c0ec]:before {
 }
 
 .Trend__C-body2-IssueNumber[data-v-54016b1c] {
-  color: #3d3d3d;
+  color: white;
   text-align: start;
 }
 
@@ -31453,7 +31464,8 @@ html:lang(ar) .Trend__C-body2 .line-canvas[data-v-54016b1c] {
 
 .Trend__C-foot[data-v-54016b1c] {
   height: 1.86667rem;
-  background: #ffffff;
+  background: #1e234d;
+  color:white;
   padding: 0.46667rem 2.37333rem;
   margin-top: 0.48rem;
   display: -webkit-box;
@@ -31472,7 +31484,7 @@ html:lang(ar) .Trend__C-body2 .line-canvas[data-v-54016b1c] {
   width: 0.93333rem;
   height: 0.93333rem;
   border-radius: 0.13333rem;
-  background: #d9ad82;
+  background: #949494 ;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -32180,7 +32192,7 @@ html:lang(ar) .WinGo__C-head-more[data-v-40958d9a] {
 .GameRecord__C-head[data-v-a9b34bec] {
   height: 1.06667rem;
   line-height: 1.06667rem;
-  background: #b1835a;
+  background: #6F6F6F;
   border-radius: 0.13333rem 0.13333rem 0 0;
   font-weight: 700;
   font-size: 0.34667rem;
@@ -32210,7 +32222,9 @@ html:lang(ar) .WinGo__C-head-more[data-v-40958d9a] {
 }
 
 .GameRecord__C-body > div[data-v-a9b34bec] {
-  background: #ffffff;
+  background-color: #1e234d;
+    border-bottom: .02667rem solid #171b3f;
+    color: white;
 }
 
 .GameRecord__C-body > div + div[data-v-a9b34bec] {

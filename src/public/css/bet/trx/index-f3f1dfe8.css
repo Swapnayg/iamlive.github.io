@@ -11,7 +11,7 @@ body {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  background-color: #9195a3;
+  background-color: black;
 }
 #app {
   width: 10rem;
@@ -1130,7 +1130,7 @@ textarea {
   font-family: bahnschrift;
 }
 #app {
-  background: var(--bg_color_L1);
+  background: linear-gradient(153.24deg, #2b3270 5.33%, #2b3270 93.42%);
 }
 .popup {
   position: fixed;
@@ -1247,6 +1247,7 @@ textarea {
   margin-right: 0.22667rem;
 }
 .noticeBar__container button {
+  background: #2b3270 !important;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -1381,7 +1382,8 @@ textarea {
   background: -webkit-linear-gradient(353deg, #f2d5b2 9.64%, #d9b38c 84.03%);
   background: linear-gradient(97deg, #f2d5b2 9.64%, #d9b38c 84.03%);
   box-shadow: unset;
-  color: #171717;
+  color: white;
+  background-color: #2b3270;
 }
 #app .content {
   background-color: #fff !important;

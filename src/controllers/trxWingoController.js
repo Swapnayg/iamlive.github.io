@@ -1,12 +1,9 @@
 import moment from "moment";
+import connection from "../config/connectDB.js";
 import axios from "axios";
 import _ from "lodash";
 import GameRepresentationIds from "../constants/game_representation_id.js";
 import { generatePeriod } from "../helpers/games.js";
-
-import e from "express";
-import connection from "../config/connectDB";
-require('dotenv').config();
 
 export const TRX_WINGO_GAME_STATUS_MAP = {
   PENDING: 0,
@@ -680,7 +677,6 @@ function getNthMinuteSinceDayStart() {
 }
 
 const addTrxWingo = async (game) => {
-  console.log("called");
   try {
     let join = "";
     if (game == 1) join = TRX_WINGO_GAME_TYPE_MAP.MIN_1;
