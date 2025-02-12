@@ -1327,7 +1327,7 @@ socket.on("data-server-trx-wingo", async function (msg) {
 });
 
 
-function tdOnclick(e) {
+function tdOnclick_trx(e) {
   if($(e).find('input[type=checkbox]').is(':checked') == false)
   {
    $(e).find('input[type=checkbox]').prop('checked', true);
