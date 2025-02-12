@@ -90,6 +90,109 @@
 
 </div> -->
 
+
+<style>
+    #trx_win .p-r-15
+  {
+      padding-right: 0.2rem !important;
+  }  
+#trx_win .van-checkbox__label
+{
+    line-height: 0;
+}
+.txt
+{
+    font-size: 14px;
+    font-weight: 600;
+}
+#trx_win .p-r-15
+  {
+      padding-right: 0.2rem !important;
+  }
+  #trx_win .van-checkbox__label
+  {
+      line-height: 10px;
+  }
+
+  #trx_win .container1 {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: .37333rem;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* Hide the browser's default checkbox */
+    #trx_win .container1 input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    
+    #trx_win .agree
+    {
+      padding-top: 11px;
+    }
+
+    /* Create a custom checkbox */
+    #trx_win .checkmark1 {
+      position: absolute;
+      top: 6px;
+      left: 0;
+      height: 22px;
+      width: 22px;
+      background-color: #171b3f;
+      border: 4px solid #26bd2f;
+      text-align: center;
+      padding-top: 2%;
+      color: white;
+    }
+    
+    /* On mouse-over, add a grey background color */
+    #trx_win .van-checkbox__label .checkmark1:hover  {
+      background-color: #171b3f;
+      border: 4px solid #26bd2f;
+    }
+    
+    /* When the checkbox is checked, add a blue background */
+    #trx_win .container1 input:checked ~ .checkmark1 {
+      background-color: #2196F3;
+    }
+    
+    /* Create the checkmark/indicator (hidden when not checked) */
+    #trx_win .checkmark1:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+    
+    /* Show the checkmark when checked */
+    #trx_win .container1 input:checked ~ .checkmark1:after {
+      display: block;
+    }
+    
+    /* Style the checkmark/indicator */
+    #trx_win .container1 .checkmark1:after {
+      left: 9px;
+      top: 5px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    
+</style>
+
 <div data-v-4aca9bd1="" data-v-40958d9a="" class="Betting__C" voicetype="1" typeid="1">
     <div data-v-4aca9bd1="" class="Betting__C-mark" style="display: none;">
         <div data-v-4aca9bd1="">2</div>
@@ -182,14 +285,24 @@
                             class="Betting__Popup-body-line-item Betting__Popup-body-x-btn"> X100</div>
                     </div>
                 </div>
-                <div data-v-e49b49d6="" class="Betting__Popup-body-line"><span data-v-e49b49d6=""
-                        class="Betting__Popup-agree active">I agree</span><span data-v-e49b49d6=""
-                        class="Betting__Popup-preSaleShow">《Pre-sale rules》</span></div>
+                <div data-v-e49b49d6="" class="Betting__Popup-body-line" id="trx_win">  
+                    <span class="van-checkbox__label">
+                    <label class="container1" id="trx_check" onclick="tdOnclick(this)"> 
+                        <span class="checkmark1"></span>
+                        <input type="checkbox">
+                        <div data-v-42f27458="" class="agree p-r-15">I agree to</div>
+                     </label>
+                    
+                </span>
+                <span data-v-a9660e98="" class="txt" onclick="show_rule();">Pre-selling rules</span></div>
             </div>
             <div data-v-e49b49d6="" class="Betting__Popup-foot">
                 <div data-v-e49b49d6="" class="Betting__Popup-foot-c" id="cancel_bet_btn">Cancel</div>
-                <div data-v-e49b49d6="" id="join_bet_btn" class="Betting__Popup-foot-s bgcolor">Total amount ₹<span
-                        id="popup_total_bet_money">0.00</span></div>
+                <div data-v-e49b49d6="" id="join_bet_btn" class="Betting__Popup-foot-s bgcolor">
+                    <div id="trxwin_submit">
+                    Total amount ₹<span
+                        id="popup_total_bet_money">0.00</span>
+                    </div></div>
             </div>
         </div>
     </div>

@@ -22,6 +22,24 @@
       .block-click {
          pointer-events: none;
       }
+   .rule-box .title[data-v-a9660e98] {
+         width: 100%;
+         height: 1.33333rem;
+         line-height: 1.33333rem;
+         padding: 0 .53333rem;
+         color: #171b3f;
+         font-size: .42667rem;
+         background: white no-repeat 0 0;
+         background-size: 100% 100%;
+         text-transform: uppercase;
+         letter-spacing: 1px;
+         font-weight: 600;
+     }
+     .rule-box .info[data-v-a9660e98] {
+      padding: .4rem;
+      font-size: .37333rem;
+      line-height: 1.06667rem;
+  }
    </style>
 
    <link rel="stylesheet" href="/css/bet/trx/modules-8b01ca49.css" />
@@ -4159,7 +4177,12 @@
                     </audio> -->
                   </div>
                   <div data-v-a9660e98="" class="popup-qt van-popup van-popup--center"
-                     style="width: 80%; border-radius: 10px; max-width: 340px; z-index: 2040; display: none">
+                     style="width: 80%;
+    border-radius: 10px;
+    max-width: 340px;
+    z-index: 2040;
+    border: 0.5px solid white;display:none;background: #2b3270;
+    color: white;" id="trx_rule_pop">
                      <div data-v-a9660e98="" class="rule-box">
                         <div data-v-a9660e98="" class="title c-row c-row-middle-center">Pre-Selling Rules</div>
                         <div data-v-a9660e98="" class="info">
@@ -4185,7 +4208,7 @@
                            <div data-v-a9660e98="" class="rule-btn c-row m-t-20 c-row-center">
                               <button data-v-a9660e98=""
                                  class="btn van-button van-button--default van-button--normal van-button--block van-button--round"
-                                 style="color: rgb(255, 255, 255); background: rgb(242, 65, 59); border-color: rgb(242, 65, 59)">
+                                 style="color: rgb(255, 255, 255); background: rgb(242, 65, 59); border-color: rgb(242, 65, 59)" id="btn_rule_ok" onclick="btn_rule_ok();">
                                  <div data-v-a9660e98="" class="van-button__content">
                                     <span data-v-a9660e98="" class="van-button__text">
                                        <span data-v-a9660e98="">I know</span>

@@ -662,46 +662,52 @@ function initGameLogics({
 
   $("#join_bet_btn").off("click.join_btn");
   $("#join_bet_btn").on("click.join_btn", function (event) {
-    event.preventDefault();
-    let join = $(this).attr("data-join");
-    const currentX = parseInt($("#van-field-1-input").val().trim());
-    let money = $(".Betting__Popup-body-money-main").attr("data-current-money");
 
-    if (!join || !currentX || !money) {
-      return;
-    }
-
-    $(this).addClass("block-click");
-    $.ajax({
-      type: "POST",
-      url: "/api/webapi/trx_wingo/action/join",
-      data: {
-        typeid: GAME_TYPE_ID,
-        join: join,
-        x: currentX,
-        money: money,
-      },
-      dataType: "json",
-      success: function (response) {
-        alertMessage(response.message);
-        if (response.status === false) return;
-        $("#balance_amount").text("₹ " + response.money + ".00");
-        socket.emit("data-server_2", {
-          money: currentX * money,
-          join,
-          time: Date.now(),
-          change: response.change,
-        });
-
-        initMyBets();
-      },
-    });
-
-    setTimeout(() => {
-      $(".van-overlay").fadeOut();
-      $(".popup-join").fadeOut();
-      $("#join_bet_btn").removeClass("block-click");
-    }, 500);
+    if($("#trx_check").find('input[type=checkbox]').is(':checked') == true)
+    {
+      event.preventDefault();
+      let join = $(this).attr("data-join");
+      const currentX = parseInt($("#van-field-1-input").val().trim());
+      let money = $(".Betting__Popup-body-money-main").attr("data-current-money");
+  
+      if (!join || !currentX || !money) {
+        return;
+      }
+  
+      $(this).addClass("block-click");
+      $.ajax({
+        type: "POST",
+        url: "/api/webapi/trx_wingo/action/join",
+        data: {
+          typeid: GAME_TYPE_ID,
+          join: join,
+          x: currentX,
+          money: money,
+        },
+        dataType: "json",
+        success: function (response) {
+          alertMessage(response.message);
+          if (response.status === false) return;
+          $("#balance_amount").text("₹ " + response.money + ".00");
+          socket.emit("data-server_2", {
+            money: currentX * money,
+            join,
+            time: Date.now(),
+            change: response.change,
+          });
+  
+          initMyBets();
+        },
+      });
+  
+      setTimeout(() => {
+        $(".van-overlay").fadeOut();
+        $(".popup-join").fadeOut();
+        $("#join_bet_btn").removeClass("block-click");
+      }, 500);
+  }
+  else{
+  }
   });
 
   $("#cancel_bet_btn").off("click.cancel_btn");
@@ -1319,3 +1325,29 @@ socket.on("data-server-trx-wingo", async function (msg) {
     console.log(error);
   }
 });
+
+
+function tdOnclick(e) {
+  if($(e).find('input[type=checkbox]').is(':checked') == false)
+  {
+   $(e).find('input[type=checkbox]').prop('checked', true);
+   $(e).find('.checkmark1').html('&#10004;');
+  }
+  else{
+
+   $(e).find('input[type=checkbox]').prop('checked', false);
+   $(e).find('.checkmark1').html('');
+  }
+}
+
+function show_rule()
+{
+  $('#trx_rule_pop').fadeIn(100);
+  $('#trx_rule_pop').css("display","block");
+}
+
+function btn_rule_ok()
+{
+  $('#trx_rule_pop').fadeOut(100);
+  $('#trx_rule_pop').css("display","none");
+}
