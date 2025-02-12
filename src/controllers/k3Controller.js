@@ -281,7 +281,7 @@ const addK3 = async (game) => {
         const [setting] = await connection.query('SELECT * FROM `admin` ');
         let period = k5D[0].period;
 
-        let gameRepresentationId = GameRepresentationIds.TRXWINGO[game];
+        let gameRepresentationId = GameRepresentationIds.K3[game];
         let NewGamePeriod = generatePeriod(gameRepresentationId);
 
         let nextResult = '';
