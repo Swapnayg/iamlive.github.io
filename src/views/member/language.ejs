@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html translate="no" data-dpr="1" style="font-size: 44.64px">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport" />
+  <title>Tiranga</title>
+
+  <link rel="stylesheet" href="/css/bet/wingo/main.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c0.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c1.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c2.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c3.css" />
+  <link rel="stylesheet" href="/css/bet/wingo/chunk-4e7d3985.25c9d2c4.css" />
+  <link rel="shortcut icon" href="/images/bitbug_favicon.ico" type="image/x-icon">
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      background-color: #090909;
+      padding: 0;
+      margin: 0;
+    }
+
+    .list[data-v-29e221c4] {
+        padding: 0 .4rem;
+    }
+
+    .list .item[data-v-29e221c4] {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex
+    ;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        padding: .26667rem .4rem;
+        font-size: .4rem;
+        margin: .53333rem 0;
+    }
+    .ar-1px-t, .ar-1px-b, .ar-1px-tb, .ar-1px-rb, .ar-1px-l, .ar-1px-r {
+        position: relative;
+    }
+    .list .item-title[data-v-29e221c4] {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex
+    ;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        justify-content: flex-start;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .list .item img[data-v-29e221c4] {
+        width: .90667rem;
+        padding-right: .18667rem;
+    }
+    .list .item span[data-v-29e221c4] {
+        font-size: .4rem;
+        color: var(--text_color_L1);
+    }
+
+    .list .checked[data-v-29e221c4] {
+        background: var(--bg_color_L2);
+        border-radius: .26667rem;
+    }
+    .van-radio {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex
+    ;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        overflow: hidden;
+        cursor: pointer;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    .van-radio__icon {
+        -webkit-box-flex: 0;
+        -webkit-flex: none;
+        flex: none;
+        height: 1em;
+        font-size: var(--van-radio-size);
+        line-height: 1em;
+        cursor: pointer;
+    }
+    .van-badge__wrapper {
+        position: relative;
+        display: inline-block;
+    }
+    .van-icon {
+        position: relative;
+        display: inline-block;
+        font: .18667rem / 1 vant-icon;
+        font: normal normal normal .18667rem / 1 var(--van-icon-font-family, "vant-icon");
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+
+.van-radio__icon .van-icon {
+    display: block;
+    box-sizing: border-box;
+    width: 1.25em;
+    height: 1.25em;
+    color: transparent;
+    font-size: .8em;
+    line-height: 1.25;
+    text-align: center;
+    border: .01333rem solid var(--van-radio-border-color);
+    -webkit-transition-duration: var(--van-radio-duration);
+    transition-duration: var(--van-radio-duration);
+    -webkit-transition-property: color, border-color, background-color;
+    transition-property: color, border-color, background-color;
+}
+.van-radio__icon--round .van-icon {
+    border-radius: 100%;
+}
+
+.settingPanel__container[data-v-0341cbde] {
+    padding: 0 .26667rem .13333rem;
+    border-radius: .26667rem;
+}
+
+.settingPanel__container.panel-default[data-v-0341cbde] {
+    background: #2B3270;
+}
+.settingPanel__container.panel-default[data-v-0341cbde] {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+.settingPanel__container-items[data-v-0341cbde] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    color: #fff;
+}
+
+.settingPanel__container-items__item[data-v-0341cbde] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: .37333rem;
+    padding: .33333rem 0;
+}
+.settingPanel__container-items__title[data-v-0341cbde] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.settingPanel__container-items-right[data-v-0341cbde] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.settingPanel__container-items__item[data-v-0341cbde] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: .37333rem;
+    padding: .33333rem 0;
+}
+
+.ar-1px-b:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: .01333rem;
+    border-bottom: .01333rem solid #374992;
+    color: #374992;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+
+.settingPanel__container-items__item img[data-v-0341cbde] {
+    width: .66667rem;
+    height: auto;
+    margin: 0 .24rem 0 0;
+}
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .container .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+  }
+  </style>
+
+
+</head>
+
+<body style="font-size: 12px">
+  <div id="app" style="position: relative;">
+    <div data-v-a9660e98="" class="mian game">
+      <div data-v-106b99c8="" data-v-a9660e98="" class="navbar">
+        <div data-v-106b99c8="" class="navbar-left" onclick="location.href='/home'">
+          <div data-v-a9660e98="" data-v-106b99c8="" class="c-row c-row-middle-center">
+            <img data-v-a9660e98="" data-v-106b99c8="" src="/images/back.c3244ab0.png" class="navbar-back" />
+          </div>
+        </div>
+        <div data-v-106b99c8="" class="navbar-title">
+          <div data-v-a9660e98="" data-v-106b99c8="" class="c-row c-row-middle-center">
+            <img data-v-a9660e98="" data-v-106b99c8="" src="/index_files/h5setting_202401100608011fs2.png" class="logo"
+              style="width: 2.98667rem;height: 1.12rem;background-repeat: no-repeat;background-size: 2.98667rem 1.12rem;background-position: center;">
+          </div>
+        </div>
+        <div data-v-106b99c8="" class="navbar-right">
+            
+           
+        </div>
+      </div>
+
+        <div data-v-0341cbde="" data-v-5768d7f3="" class="settingPanel__container panel-default">
+            <div data-v-0341cbde="" class="settingPanel__container-items">
+                <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                  <div data-v-0341cbde="" class="settingPanel__container-items__title">
+                    <img data-v-0341cbde="" src="/images/united-states.png">
+                    <span data-v-0341cbde="">
+                      English
+                    </span>
+                  </div>
+                  <div data-v-0341cbde="" class="settingPanel__container-items-right">
+                    <label class="container">
+                        <input type="radio" checked="checked" name="radio" data-lang="en" onclick="checkboxCheck('en');">
+                        <span class="checkmark"></span>
+                      </label>
+                  </div>
+                </div>
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b" style="display: none;">
+                        
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items">
+                <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                  <div data-v-0341cbde="" class="settingPanel__container-items__title">
+                    <img data-v-0341cbde="" src="/images/india.png">
+                    <span data-v-0341cbde="">
+                        Hindi
+                    </span>
+                  </div>
+                  <div data-v-0341cbde="" class="settingPanel__container-items-right">
+                    <label class="container">
+                        <input type="radio" checked="checked" name="radio" data-lang="hd"  onclick="checkboxCheck('hd');">
+                        <span class="checkmark"></span>
+                      </label>
+                  </div>
+                </div>
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items">
+                <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                  <div data-v-0341cbde="" class="settingPanel__container-items__title">
+                    <img data-v-0341cbde="" src="/images/pakistan.png">
+                    <span data-v-0341cbde="">
+                        Urdu
+                    </span>
+                  </div>
+                  <div data-v-0341cbde="" class="settingPanel__container-items-right">
+                    <label class="container">
+                        <input type="radio" checked="checked" name="radio" data-lang="pak"  onclick="checkboxCheck('pak');">
+                        <span class="checkmark"></span>
+                      </label>
+                  </div>
+                </div>
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items">
+                <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                  <div data-v-0341cbde="" class="settingPanel__container-items__title">
+                    <img data-v-0341cbde="" src="/images/malasia.png">
+                    <span data-v-0341cbde="">
+                        Malay
+                    </span>
+                  </div>
+                  <div data-v-0341cbde="" class="settingPanel__container-items-right">
+                    <label class="container">
+                        <input type="radio" checked="checked" name="radio" data-lang="my"  onclick="checkboxCheck('my');">
+                        <span class="checkmark"></span>
+                      </label>
+                  </div>
+                </div>
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items">
+                <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                  <div data-v-0341cbde="" class="settingPanel__container-items__title">
+                    <img data-v-0341cbde="" src="/images/thailand.png">
+                    <span data-v-0341cbde="">
+                        Thai
+                    </span>
+                  </div>
+                  <div data-v-0341cbde="" class="settingPanel__container-items-right">
+                    <label class="container">
+                        <input type="radio" checked="checked" name="radio" data-lang="tha"  onclick="checkboxCheck('tha');">
+                        <span class="checkmark"></span>
+                      </label>
+                  </div>
+                </div>
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items">
+                <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                  <div data-v-0341cbde="" class="settingPanel__container-items__title">
+                    <img data-v-0341cbde="" src="/images/bangladesh.png">
+                    <span data-v-0341cbde="">
+                        Bangla
+                    </span>
+                  </div>
+                  <div data-v-0341cbde="" class="settingPanel__container-items-right">
+                    <label class="container">
+                        <input type="radio" checked="checked" name="radio" data-lang="bdt"  onclick="checkboxCheck('bdt');">
+                        <span class="checkmark"></span>
+                      </label>
+                  </div>
+                </div>
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items">
+                <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                  <div data-v-0341cbde="" class="settingPanel__container-items__title">
+                    <img data-v-0341cbde="" src="/images/arabic.png">
+                    <span data-v-0341cbde="">
+                    Arabic
+                    </span>
+                  </div>
+                  <div data-v-0341cbde="" class="settingPanel__container-items-right">
+                    <label class="container">
+                        <input type="radio" checked="checked" name="radio" data-lang="ar"  onclick="checkboxCheck('ar');">
+                        <span class="checkmark"></span>
+                      </label>
+                  </div>
+                </div>
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items">
+                <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                  <div data-v-0341cbde="" class="settingPanel__container-items__title">
+                    <img data-v-0341cbde="" src="/images/portuguese.png">
+                    <span data-v-0341cbde="">
+                        Portuguese
+                    </span>
+                  </div>
+                  <div data-v-0341cbde="" class="settingPanel__container-items-right">
+                    <label class="container">
+                        <input type="radio" checked="checked" name="radio" data-lang="bra"  onclick="checkboxCheck('bra');">
+                        <span class="checkmark"></span>
+                      </label>
+                  </div>
+                </div>
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items">
+                <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                  <div data-v-0341cbde="" class="settingPanel__container-items__title">
+                    <img data-v-0341cbde="" src="/images/china.png">
+                    <span data-v-0341cbde="">
+                        Chineese
+                    </span>
+                  </div>
+                  <div data-v-0341cbde="" class="settingPanel__container-items-right">
+                    <label class="container">
+                        <input type="radio" checked="checked" name="radio" data-lang="zh"  onclick="checkboxCheck('zh');">
+                        <span class="checkmark"></span>
+                      </label>
+                  </div>
+                </div>
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items">
+                <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                  <div data-v-0341cbde="" class="settingPanel__container-items__title">
+                    <img data-v-0341cbde="" src="/images/indonesia.png">
+                    <span data-v-0341cbde="">
+                        Indonesian
+                    </span>
+                  </div>
+                  <div data-v-0341cbde="" class="settingPanel__container-items-right">
+                    <label class="container">
+                        <input type="radio" checked="checked" name="radio" data-lang="id"  onclick="checkboxCheck('id');">
+                        <span class="checkmark"></span>
+                      </label>
+                  </div>
+                </div>
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items">
+                <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                  <div data-v-0341cbde="" class="settingPanel__container-items__title">
+                    <img data-v-0341cbde="" src="/images/myanmar.png">
+                    <span data-v-0341cbde="">
+                        Burmisa
+                    </span>
+                  </div>
+                  <div data-v-0341cbde="" class="settingPanel__container-items-right">
+                    <label class="container">
+                        <input type="radio" checked="checked" name="radio" data-lang="md"  onclick="checkboxCheck('md');">
+                        <span class="checkmark"></span>
+                      </label>
+                  </div>
+                </div>
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b" style="display: none;">
+                        
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items">
+                <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                  <div data-v-0341cbde="" class="settingPanel__container-items__title">
+                    <img data-v-0341cbde="" src="/images/vietnam.png">
+                    <span data-v-0341cbde="">
+                        Vietname
+                    </span>
+                  </div>
+                  <div data-v-0341cbde="" class="settingPanel__container-items-right">
+                    <label class="container">
+                        <input type="radio" checked="checked" name="radio" data-lang="vi"  onclick="checkboxCheck('vi');">
+                        <span class="checkmark"></span>
+                      </label>
+                  </div>
+                </div>
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b" style="display: none;">
+                        
+              </div>
+              <div data-v-0341cbde="" class="settingPanel__container-items">
+                <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                  <div data-v-0341cbde="" class="settingPanel__container-items__title">
+                    <img data-v-0341cbde="" src="/images/russia.png">
+                    <span data-v-0341cbde="">
+                      Russian
+                    </span>
+                  </div>
+                  <div data-v-0341cbde="" class="settingPanel__container-items-right">
+                    <label class="container">
+                        <input type="radio" checked="checked" name="radio" data-lang="rus" onclick="checkboxCheck('rus');">
+                        <span class="checkmark"></span>
+                      </label>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    // A $( document ).ready() block.
+$( document ).ready(function() {
+   var sel_lang = '<%=lang%>';
+$("input[type='radio'][data-lang='"+sel_lang+"']").prop("checked", true);
+});
+function checkboxCheck(e)
+{
+    setCookie('lang', e, 1);
+}
+</script>
+</body>
+
+</html>

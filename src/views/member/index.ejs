@@ -695,7 +695,7 @@
                           </i>
                         </div>
                       </div>
-                      <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b">
+                      <div data-v-0341cbde="" class="settingPanel__container-items__item ar-1px-b" onclick="window.location.href='/mian/Language'">
                         <div data-v-0341cbde="" class="settingPanel__container-items__title">
                           <img data-v-0341cbde="" src="/assets/png/languageIcon-1de5d51f.png">
                           <span data-v-0341cbde="">
@@ -988,6 +988,7 @@
         function unsetCookie() {
             setCookie('token', '', 0);
             setCookie('auth', '', 0);
+            setCookie('lang', '', 0);
             var checkToken = getCookie('token');
             var checkAuth = getCookie('auth');
             if (!checkToken && !checkAuth) {
@@ -995,6 +996,7 @@
             } else {
                 setCookie('token', '', 0);
                 setCookie('auth', '', 0);
+                setCookie('lang', '', 0);
                 location.href = "/login";
             }
         }

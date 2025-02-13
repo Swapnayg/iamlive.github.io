@@ -69,6 +69,7 @@ const initWebRouter = (app) => {
     router.get('/wallet/verify/upi', middlewareController, paymentController.verifyUPIPayment);
 
     router.get('/mian', middlewareController, homeController.mianPage);
+    router.get('/mian/Language', middlewareController, homeController.languegePage);
 
     router.get('/recordsalary', middlewareController, homeController.recordsalary);
     router.get('/getrecord', middlewareController, homeController.getSalaryRecord);

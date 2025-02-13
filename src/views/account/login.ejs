@@ -509,7 +509,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        function setCookie(cname, cvalue, exdays) {
+        function (cname, cvalue, exdays) {
             const d = new Date();
             d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
             let expires = "expires=" + d.toUTCString();
@@ -618,6 +618,7 @@
                             $('.Loading').fadeIn(10);
                             setCookie('token', response.token, 1);
                             setCookie('auth', response.value, 1);
+                            setCookie('lang', "en", 1);
                             // alertMess(response.message);
                             setTimeout(() => {
                                 location.href = '/home';

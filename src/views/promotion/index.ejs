@@ -359,6 +359,7 @@
         function unsetCookie() {
             setCookie('token', '', 0);
             setCookie('auth', '', 0);
+            setCookie('lang', '', 0);
             var checkToken = getCookie('token');
             var checkAuth = getCookie('auth');
             if (!checkToken && !checkAuth) {
@@ -366,6 +367,7 @@
             } else {
                 setCookie('token', '', 0);
                 setCookie('auth', '', 0);
+                setCookie('lang', '', 0);
                 location.href = "/login";
             }
         }

@@ -6,8 +6,12 @@ import md5 from "md5";
 const homePage = async (req, res) => {
     const [settings] = await connection.query('SELECT `app` FROM admin');
     let app = settings[0].app;
-    return res.render("home/index.ejs", { app });
+    let auth = req.cookies.lang;
+    console.log(auth);
+    return res.render("home/index.ejs", { app  });
 }
+
+
 
 const activityPage = async (req, res) => {
     return res.render("checkIn/activity.ejs");
@@ -126,7 +130,14 @@ const mianPage = async (req, res) => {
     const [settings] = await connection.query('SELECT `cskh` FROM admin');
     let cskh = settings[0].cskh;
     let level = user[0].level;
+    console.log(req.cookies.lang);
     return res.render("member/index.ejs", { level, cskh });
+}
+
+const languegePage = async (req, res) => {
+    let lang = req.cookies.lang;
+    console.log(lang);
+    return res.render("member/language.ejs",{lang});
 }
 
 const d_get_betting = async (req, res) => {
@@ -271,6 +282,7 @@ const getSalaryRecord = async (req, res) => {
     })
 }
 module.exports = {
+    languegePage,
     homePage,
     checkInPage,
     d5chat,
