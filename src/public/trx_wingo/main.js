@@ -139,11 +139,83 @@ function countDownTimer({ GAME_TYPE_ID }) {
 window.onload = function () {
   countDownTimer({ GAME_TYPE_ID });
 };
+const setActiveTab = (selectedTabName) => {
+  $("#game_history_tab").removeClass("active");
+  $("#trend_tab").removeClass("active");
+  $("#my_bets_tab").removeClass("active");
+
+  $("#game_history_tab_button .tab_nav_button_inner").removeClass("action");
+  $("#trend_tab_button .tab_nav_button_inner").removeClass("action");
+  $("#my_bets_tab_button .tab_nav_button_inner").removeClass("action");
+  if (TAB_NAME_MAP.GAME_HISTORY === selectedTabName) {
+    $("#game_history_tab").addClass("active");
+    $("#game_history_tab_button .tab_nav_button_inner").addClass("action");
+  }
+  if (TAB_NAME_MAP.TREND === selectedTabName) {
+    $("#trend_tab").addClass("active");
+    $("#trend_tab_button .tab_nav_button_inner").addClass("action");
+  }
+  if (TAB_NAME_MAP.MY_BETS === selectedTabName) {
+    $("#my_bets_tab").addClass("active");
+    $("#my_bets_tab_button .tab_nav_button_inner").addClass("action");
+  }
+};
+
+const TAB_NAME_MAP = {
+  GAME_HISTORY: "GAME_HISTORY",
+  TREND: "TREND",
+  MY_BETS: "MY_BETS",
+};
+
+
+const initGameHistoryTab = (page = 1) => {
+  let size = 10;
+  let offset = page === 1 ? 0 : (page - 1) * size;
+  let limit = page * size;
+
+  $.ajax({
+    type: "POST",
+    url: "/api/webapi/trx_wingo/GetNoaverageEmerdList",
+    data: {
+      typeid: GAME_TYPE_ID,
+      pageno: offset,
+      pageto: 10,
+      language: "vi",
+    },
+    dataType: "json",
+    success: function (response) {
+      Game_History_Pages = response.page;
+      let list_orders = response.data.gameslist;
+
+      $("#period").text(response.period);
+
+      const hash = response.data.gameslist?.[0]?.hash;
+      $(".TimeLeft__C-l3").html(getGameResultNumbers(hash));
+
+      $("#number_result__gameHistory").text(`${page}/${response.page}`);
+
+      if (page == 1)
+        $("#game_history__bottom_nav .previous_page").addClass("disabled");
+      else
+        $("#game_history__bottom_nav .previous_page").removeClass("disabled");
+
+      if (page == response.data.page)
+        $("#game_history__bottom_nav .next_page").addClass("disabled");
+      else $("#game_history__bottom_nav .next_page").removeClass("disabled");
+
+      $(".Loading").fadeOut(0);
+
+      showGameHistoryData(list_orders);
+    },
+  });
+};
 
 const selectActiveClockByGameType = (GAME_TYPE_ID) => {
   GAME_TYPE_ID = `${GAME_TYPE_ID}`;
   GAME_NAME = GAME_TYPE_ID === "1" ? "trx_wingo" : `trx_wingo${GAME_TYPE_ID}`;
   window.history.pushState({}, "", `/trx_wingo/?game_type=${GAME_TYPE_ID}`);
+  setActiveTab(TAB_NAME_MAP.GAME_HISTORY);
+  initGameHistoryTab();
   initGameLogics({
     GAME_TYPE_ID,
     GAME_NAME,
@@ -806,48 +878,126 @@ function initGameLogics({
 
   // -------------------------- game pagination -----------------------
 
-  const initGameHistoryTab = (page = 1) => {
-    let size = 10;
-    let offset = page === 1 ? 0 : (page - 1) * size;
-    let limit = page * size;
-
-    $.ajax({
-      type: "POST",
-      url: "/api/webapi/trx_wingo/GetNoaverageEmerdList",
-      data: {
-        typeid: GAME_TYPE_ID,
-        pageno: offset,
-        pageto: 10,
-        language: "vi",
-      },
-      dataType: "json",
-      success: function (response) {
-        Game_History_Pages = response.page;
-        let list_orders = response.data.gameslist;
-
-        $("#period").text(response.period);
-
-        const hash = response.data.gameslist?.[0]?.hash;
-        $(".TimeLeft__C-l3").html(getGameResultNumbers(hash));
-
-        $("#number_result__gameHistory").text(`${page}/${response.page}`);
-
-        if (page == 1)
-          $("#game_history__bottom_nav .previous_page").addClass("disabled");
-        else
-          $("#game_history__bottom_nav .previous_page").removeClass("disabled");
-
-        if (page == response.data.page)
-          $("#game_history__bottom_nav .next_page").addClass("disabled");
-        else $("#game_history__bottom_nav .next_page").removeClass("disabled");
-
-        $(".Loading").fadeOut(0);
-
-        showGameHistoryData(list_orders);
-      },
-    });
-  };
+  
   initGameHistoryTab();
+
+  function show_statistics(list_orders, x) {
+    if (list_orders.length != 0) {
+      const counts = {};
+      const csq_counts = {};
+      const miss_counts = {};
+      for (const num of list_orders) {
+        counts[num.result] = counts[num.result] ? counts[num.result] + 1 : 1;
+      }
+      var fq0= counts[0]; var fq1= counts[1]; var fq2= counts[2]; var fq3= counts[3]; var fq4= counts[4]; var fq5= counts[5];var fq6= counts[6];var fq7= counts[7];var fq8= counts[8];var fq9= counts[9];
+      var a_m_indx = {};
+      for(var i= 0; i< 10; i++)
+      { 
+        var c = 0, max = 0; 
+        list_orders.forEach(function(e,index) {
+          parseInt(e.result) == i ? c++ : c = 0; 
+          if (c > max) max = c;
+        });
+        csq_counts[i] = max;
+      }
+  
+      for(var k= 0; k< 10; k++)
+        { 
+          index_val = ''; 
+          list_orders.forEach(function(e,index) {
+            if(parseInt(e.result) == k)
+              {
+                index_val =  index_val + ","+ index;
+              } 
+          });
+          a_m_indx[k] = index_val;
+        }
+        sumCount = {}
+        for(var m= 0; m< 10; m++)
+        { 
+          var indexs = a_m_indx[m].split(',');
+          min_num = '';
+          max_num = '';
+          sumvalue = 0;
+          indexs.forEach(function(e1,index) {
+            if(e1.length != 0)
+            {
+              if(indexs[index +1] != null)
+              {
+                min_num = indexs[index];
+                max_num = indexs[index +1];
+                no_reach = 0;
+                for(var n= min_num; n< max_num-1; n++)
+                {
+                  no_reach ++;
+                }
+                sumvalue = sumvalue +  no_reach;
+              }
+            }
+          });
+          var average_number = sumvalue / (indexs.length - 1);
+          sumCount[m] = parseInt(average_number);
+        }
+        var ams0= sumCount[0]; var ams1= sumCount[1]; var ams2= sumCount[2]; var ams3= sumCount[3]; var ams4= sumCount[4]; var ams5= sumCount[5];var ams6= sumCount[6];var ams7= sumCount[7];var ams8= sumCount[8];var ams9= sumCount[9];
+      var csq0= csq_counts[0]; var csq1= csq_counts[1]; var csq2= csq_counts[2]; var csq3= csq_counts[3]; var csq4= csq_counts[4]; var csq5= csq_counts[5];var csq6= csq_counts[6];var csq7= csq_counts[7];var csq8= csq_counts[8];var csq9= csq_counts[9];
+      for(var j= 0; j< 10; j++)
+      { 
+        let index = list_orders.findIndex(obj => obj.result === j);
+        miss_counts[j] = index;
+      }
+      var ms0= miss_counts[0]; var ms1= miss_counts[1]; var ms2= miss_counts[2]; var ms3= miss_counts[3]; var ms4= miss_counts[4]; var ms5= miss_counts[5];var ms6= miss_counts[6];var ms7= miss_counts[7];var ms8= miss_counts[8];var ms9= miss_counts[9];
+      MISSING = `
+              <span  class="number-cell">`+ms0+`</span>
+              <span  class="number-cell">`+ms1+`</span>
+              <span  class="number-cell">`+ms2+`</span>
+              <span  class="number-cell">`+ms3+`</span>
+              <span  class="number-cell">`+ms4+`</span>
+              <span  class="number-cell">`+ms5+`</span>
+              <span  class="number-cell">`+ms6+`</span>
+              <span  class="number-cell">`+ms7+`</span>
+              <span  class="number-cell">`+ms8+`</span>
+              <span  class="number-cell">`+ms9+`</span>`;
+            AVG_MISSING = `
+              <span  class="number-cell">`+ams0+`</span>
+              <span  class="number-cell">`+ams1+`</span>
+              <span  class="number-cell">`+ams2+`</span>
+              <span  class="number-cell">`+ams3+`</span>
+              <span  class="number-cell">`+ams4+`</span>
+              <span  class="number-cell">`+ams5+`</span>
+              <span  class="number-cell">`+ams6+`</span>
+              <span  class="number-cell">`+ams7+`</span>
+              <span  class="number-cell">`+ams8+`</span>
+              <span  class="number-cell">`+ams9+`</span>`;
+            FREQUENCY = `
+              <span  class="number-cell">`+fq0+`</span>
+              <span  class="number-cell">`+fq1+`</span>
+              <span  class="number-cell">`+fq2+`</span>
+              <span  class="number-cell">`+fq3+`</span>
+              <span  class="number-cell">`+fq4+`</span>
+              <span  class="number-cell">`+fq5+`</span>
+              <span  class="number-cell">`+fq6+`</span>
+              <span  class="number-cell">`+fq7+`</span>
+              <span  class="number-cell">`+fq8+`</span>
+              <span  class="number-cell">`+fq9+`</span>`;
+              
+            MAX_CONSECUTIVE = `
+              <span  class="number-cell">`+csq0+`</span>
+              <span  class="number-cell">`+csq1+`</span>
+              <span  class="number-cell">`+csq2+`</span>
+              <span  class="number-cell">`+csq3+`</span>
+              <span  class="number-cell">`+csq4+`</span>
+              <span  class="number-cell">`+csq5+`</span>
+              <span  class="number-cell">`+csq6+`</span>
+              <span  class="number-cell">`+csq7+`</span>
+              <span  class="number-cell">`+csq8+`</span>
+              <span  class="number-cell">`+csq9+`</span>`;
+              $("#td_m").html(MISSING);
+              $("#td_am").html(AVG_MISSING);
+              $("#td_frq").html(FREQUENCY);
+              $("#td_csq").html(MAX_CONSECUTIVE);
+    };
+  };
+  
 
   const initChartTab = (page = 1) => {
     let size = 10;
@@ -1085,33 +1235,8 @@ function initGameLogics({
 
   // ------------------ Tab handling Logic -------------------
 
-  const TAB_NAME_MAP = {
-    GAME_HISTORY: "GAME_HISTORY",
-    TREND: "TREND",
-    MY_BETS: "MY_BETS",
-  };
-
-  const setActiveTab = (selectedTabName) => {
-    $("#game_history_tab").removeClass("active");
-    $("#trend_tab").removeClass("active");
-    $("#my_bets_tab").removeClass("active");
-
-    $("#game_history_tab_button .tab_nav_button_inner").removeClass("action");
-    $("#trend_tab_button .tab_nav_button_inner").removeClass("action");
-    $("#my_bets_tab_button .tab_nav_button_inner").removeClass("action");
-    if (TAB_NAME_MAP.GAME_HISTORY === selectedTabName) {
-      $("#game_history_tab").addClass("active");
-      $("#game_history_tab_button .tab_nav_button_inner").addClass("action");
-    }
-    if (TAB_NAME_MAP.TREND === selectedTabName) {
-      $("#trend_tab").addClass("active");
-      $("#trend_tab_button .tab_nav_button_inner").addClass("action");
-    }
-    if (TAB_NAME_MAP.MY_BETS === selectedTabName) {
-      $("#my_bets_tab").addClass("active");
-      $("#my_bets_tab_button .tab_nav_button_inner").addClass("action");
-    }
-  };
+ 
+  
 
   $("#game_history_tab_button").off("click.game_history_tab_button");
   $("#game_history_tab_button").on(
@@ -1128,10 +1253,24 @@ function initGameLogics({
   $("#trend_tab_button").off("click.trend_tab_button");
   $("#trend_tab_button").on("click.trend_tab_button", function (e) {
     e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "/api/webapi/trx_wingo/GetNoaverageEmerdList_Statistics",
+      data: {
+          typeid: GAME_TYPE_ID,
+          pageno: "0",
+          pageto: "100",
+          language: "vi",
+      },
+      dataType: "json",
+      success: function(response1) {
+        let sta_list_orders = response1.data.gameslist;
+        show_statistics(sta_list_orders,2);
+        setActiveTab(TAB_NAME_MAP.TREND);
 
-    setActiveTab(TAB_NAME_MAP.TREND);
-
-    initChartTab();
+        initChartTab();
+      }
+      });
   });
 
   $("#my_bets_tab_button").off("click.my_bets_tab_button");

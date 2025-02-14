@@ -823,16 +823,69 @@ function showListOrder(list_orders, x) {
 
 function show_statistics(list_orders, x) {
   if (list_orders.length != 0) {
-    var ms0= 0; var ms1= 1; var ms2= 2; var ms3= 3; var ms4= 4; var ms5= 5;var ms6= 6;var ms7= 7;var ms8= 8;var ms9= 9;
-    var ams0= "000"; var ams1= 1; var ams2= 2; var ams3= 3; var ams4= 4; var ams5= 5;var ams6= 6;var ams7= 7;var ams8= 8;var ams9= 9;
-    
-    var csq0= "00000"; var csq1= 1; var csq2= 2; var csq3= 3; var csq4= 4; var csq5= 5;var csq6= 6;var csq7= 7;var csq8= 8;var csq9= 9;
     const counts = {};
+    const csq_counts = {};
+    const miss_counts = {};
     for (const num of list_orders) {
       counts[num.amount] = counts[num.amount] ? counts[num.amount] + 1 : 1;
     }
     var fq0= counts[0]; var fq1= counts[1]; var fq2= counts[2]; var fq3= counts[3]; var fq4= counts[4]; var fq5= counts[5];var fq6= counts[6];var fq7= counts[7];var fq8= counts[8];var fq9= counts[9];
-    
+    var a_m_indx = {};
+    for(var i= 0; i< 10; i++)
+    { 
+      var c = 0, max = 0; 
+      list_orders.forEach(function(e,index) {
+        parseInt(e.amount) == i ? c++ : c = 0; 
+        if (c > max) max = c;
+      });
+      csq_counts[i] = max;
+    }
+
+    for(var k= 0; k< 10; k++)
+      { 
+        index_val = ''; 
+        list_orders.forEach(function(e,index) {
+          if(parseInt(e.amount) == k)
+            {
+              index_val =  index_val + ","+ index;
+            } 
+        });
+        a_m_indx[k] = index_val;
+      }
+      sumCount = {}
+      for(var m= 0; m< 10; m++)
+      { 
+        var indexs = a_m_indx[m].split(',');
+        min_num = '';
+        max_num = '';
+        sumvalue = 0;
+        indexs.forEach(function(e1,index) {
+          if(e1.length != 0)
+          {
+            if(indexs[index +1] != null)
+            {
+              min_num = indexs[index];
+              max_num = indexs[index +1];
+              no_reach = 0;
+              for(var n= min_num; n< max_num-1; n++)
+              {
+                no_reach ++;
+              }
+              sumvalue = sumvalue +  no_reach;
+            }
+          }
+        });
+        var average_number = sumvalue / (indexs.length - 1);
+        sumCount[m] = parseInt(average_number);
+      }
+      var ams0= sumCount[0]; var ams1= sumCount[1]; var ams2= sumCount[2]; var ams3= sumCount[3]; var ams4= sumCount[4]; var ams5= sumCount[5];var ams6= sumCount[6];var ams7= sumCount[7];var ams8= sumCount[8];var ams9= sumCount[9];
+    var csq0= csq_counts[0]; var csq1= csq_counts[1]; var csq2= csq_counts[2]; var csq3= csq_counts[3]; var csq4= csq_counts[4]; var csq5= csq_counts[5];var csq6= csq_counts[6];var csq7= csq_counts[7];var csq8= csq_counts[8];var csq9= csq_counts[9];
+    for(var j= 0; j< 10; j++)
+    { 
+      let index = list_orders.findIndex(obj => obj.amount === j);
+      miss_counts[j] = index;
+    }
+    var ms0= miss_counts[0]; var ms1= miss_counts[1]; var ms2= miss_counts[2]; var ms3= miss_counts[3]; var ms4= miss_counts[4]; var ms5= miss_counts[5];var ms6= miss_counts[6];var ms7= miss_counts[7];var ms8= miss_counts[8];var ms9= miss_counts[9];
     MISSING = `
             <span  class="number-cell">`+ms0+`</span>
             <span  class="number-cell">`+ms1+`</span>

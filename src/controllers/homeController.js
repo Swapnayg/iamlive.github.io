@@ -21,7 +21,61 @@ const homePage = async (req, res) => {
     let app = settings[0].app;
     let auth = req.cookies.lang;
     console.log(auth);
-    return res.render("home/index.ejs", { app  });
+    var lang_data = {};
+    let lang = req.cookies.lang;
+if(lang== "en")
+{
+    lang_data = en_file;
+}
+else if(lang== "hd")
+{
+    lang_data = hd_file;
+}
+else if(lang== "pak")
+{
+    lang_data = pak_file;     
+}
+else if(lang== "my")
+{
+    lang_data = my_file;        
+}
+else if(lang== "tha")
+{
+    lang_data = tha_file;         
+}
+else if(lang== "bdt")
+{
+    lang_data = bdt_file;               
+}
+else if(lang== "ar")
+{
+    lang_data = ar_file;                     
+}
+else if(lang== "bra")
+{
+    lang_data = bra_file;                         
+}
+else if(lang== "zh")
+{
+    lang_data = zh_file;                             
+}
+else if(lang== "id")
+{
+    lang_data = id_file;                                 
+}
+else if(lang== "md")
+{
+    lang_data = md_file;                                     
+}
+else if(lang== "vi")
+{
+    lang_data = vi_file;                                         
+}
+else if(lang== "rus")
+{
+    lang_data = rus_file;                                             
+}
+    return res.render("home/index.ejs", { app  ,lang_data});
 }
 
 
@@ -159,7 +213,6 @@ const mianPage = async (req, res) => {
     const [settings] = await connection.query('SELECT `cskh` FROM admin');
     let cskh = settings[0].cskh;
     let level = user[0].level;
-    var lang_data = '';
 let lang = req.cookies.lang;
 if(lang== "en")
 {

@@ -54,9 +54,125 @@ if (issetVolume == 'on') {
     localStorage.setItem('volume', 'on');
 }
 
+function show_statistics(list_orders, x) {
+    if (list_orders.length != 0) {
+      const counts = {};
+      const csq_counts = {};
+      const miss_counts = {};
+      for (const num of list_orders) {
+        counts[num.amount] = counts[num.amount] ? counts[num.amount] + 1 : 1;
+      }
+      var fq0= counts[0]; var fq1= counts[1]; var fq2= counts[2]; var fq3= counts[3]; var fq4= counts[4]; var fq5= counts[5];var fq6= counts[6];var fq7= counts[7];var fq8= counts[8];var fq9= counts[9];
+      var a_m_indx = {};
+      for(var i= 0; i< 10; i++)
+      { 
+        var c = 0, max = 0; 
+        list_orders.forEach(function(e,index) {
+          parseInt(e.amount) == i ? c++ : c = 0; 
+          if (c > max) max = c;
+        });
+        csq_counts[i] = max;
+      }
+  
+      for(var k= 0; k< 10; k++)
+        { 
+          index_val = ''; 
+          list_orders.forEach(function(e,index) {
+            if(parseInt(e.amount) == k)
+              {
+                index_val =  index_val + ","+ index;
+              } 
+          });
+          a_m_indx[k] = index_val;
+        }
+        sumCount = {}
+        for(var m= 0; m< 10; m++)
+        { 
+          var indexs = a_m_indx[m].split(',');
+          min_num = '';
+          max_num = '';
+          sumvalue = 0;
+          indexs.forEach(function(e1,index) {
+            if(e1.length != 0)
+            {
+              if(indexs[index +1] != null)
+              {
+                min_num = indexs[index];
+                max_num = indexs[index +1];
+                no_reach = 0;
+                for(var n= min_num; n< max_num-1; n++)
+                {
+                  no_reach ++;
+                }
+                sumvalue = sumvalue +  no_reach;
+              }
+            }
+          });
+          var average_number = sumvalue / (indexs.length - 1);
+          sumCount[m] = parseInt(average_number);
+        }
+        var ams0= sumCount[0]; var ams1= sumCount[1]; var ams2= sumCount[2]; var ams3= sumCount[3]; var ams4= sumCount[4]; var ams5= sumCount[5];var ams6= sumCount[6];var ams7= sumCount[7];var ams8= sumCount[8];var ams9= sumCount[9];
+      var csq0= csq_counts[0]; var csq1= csq_counts[1]; var csq2= csq_counts[2]; var csq3= csq_counts[3]; var csq4= csq_counts[4]; var csq5= csq_counts[5];var csq6= csq_counts[6];var csq7= csq_counts[7];var csq8= csq_counts[8];var csq9= csq_counts[9];
+      for(var j= 0; j< 10; j++)
+      { 
+        let index = list_orders.findIndex(obj => obj.amount === j);
+        miss_counts[j] = index;
+      }
+      var ms0= miss_counts[0]; var ms1= miss_counts[1]; var ms2= miss_counts[2]; var ms3= miss_counts[3]; var ms4= miss_counts[4]; var ms5= miss_counts[5];var ms6= miss_counts[6];var ms7= miss_counts[7];var ms8= miss_counts[8];var ms9= miss_counts[9];
+      MISSING = `
+              <span  class="number-cell">`+ms0+`</span>
+              <span  class="number-cell">`+ms1+`</span>
+              <span  class="number-cell">`+ms2+`</span>
+              <span  class="number-cell">`+ms3+`</span>
+              <span  class="number-cell">`+ms4+`</span>
+              <span  class="number-cell">`+ms5+`</span>
+              <span  class="number-cell">`+ms6+`</span>
+              <span  class="number-cell">`+ms7+`</span>
+              <span  class="number-cell">`+ms8+`</span>
+              <span  class="number-cell">`+ms9+`</span>`;
+            AVG_MISSING = `
+              <span  class="number-cell">`+ams0+`</span>
+              <span  class="number-cell">`+ams1+`</span>
+              <span  class="number-cell">`+ams2+`</span>
+              <span  class="number-cell">`+ams3+`</span>
+              <span  class="number-cell">`+ams4+`</span>
+              <span  class="number-cell">`+ams5+`</span>
+              <span  class="number-cell">`+ams6+`</span>
+              <span  class="number-cell">`+ams7+`</span>
+              <span  class="number-cell">`+ams8+`</span>
+              <span  class="number-cell">`+ams9+`</span>`;
+            FREQUENCY = `
+              <span  class="number-cell">`+fq0+`</span>
+              <span  class="number-cell">`+fq1+`</span>
+              <span  class="number-cell">`+fq2+`</span>
+              <span  class="number-cell">`+fq3+`</span>
+              <span  class="number-cell">`+fq4+`</span>
+              <span  class="number-cell">`+fq5+`</span>
+              <span  class="number-cell">`+fq6+`</span>
+              <span  class="number-cell">`+fq7+`</span>
+              <span  class="number-cell">`+fq8+`</span>
+              <span  class="number-cell">`+fq9+`</span>`;
+              
+            MAX_CONSECUTIVE = `
+              <span  class="number-cell">`+csq0+`</span>
+              <span  class="number-cell">`+csq1+`</span>
+              <span  class="number-cell">`+csq2+`</span>
+              <span  class="number-cell">`+csq3+`</span>
+              <span  class="number-cell">`+csq4+`</span>
+              <span  class="number-cell">`+csq5+`</span>
+              <span  class="number-cell">`+csq6+`</span>
+              <span  class="number-cell">`+csq7+`</span>
+              <span  class="number-cell">`+csq8+`</span>
+              <span  class="number-cell">`+csq9+`</span>`;
+              $(".Trend__C-body1 .Trend__C-body1-line:eq(0) .Trend__C-body1-line-num").html(MISSING);
+              $(".Trend__C-body1 .Trend__C-body1-line:eq(1) .Trend__C-body1-line-num").html(AVG_MISSING);
+              $(".Trend__C-body1 .Trend__C-body1-line:eq(2) .Trend__C-body1-line-num").html(FREQUENCY);
+              $(".Trend__C-body1 .Trend__C-body1-line:eq(3) .Trend__C-body1-line-num").html(MAX_CONSECUTIVE);
+    };
+  };
+
 function showListOrder_t(list_orders, x) {
     var sel_txt = $("#chain_numbers").find('div.active').html().toString().trim();
-    console.log(sel_txt);
     if (list_orders.length == 0) {
       return $(`.game-list .con-box:eq(${x}) .hb`).html(
         `
@@ -90,7 +206,6 @@ function showListOrder_t(list_orders, x) {
     {
         res_ind = 4;
     }
-    console.log(res_ind);
     var updated = false;
     $(list_orders).each(function (index, el) {
         var a_result1 = el.result.toString().split("")[parseInt(res_ind)];
@@ -1213,253 +1328,17 @@ var pageno = 0;
 
 function div_click(e)
 {
-
-    const GAME_CHART_STATISTICS_HTML = {
-        A: {
-          MISSING: `
-            <div data-v-9d93d892="">13</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">14</div>
-            <div data-v-9d93d892="">41</div>
-            <div data-v-9d93d892="">3</div>
-            <div data-v-9d93d892="">6</div>
-            <div data-v-9d93d892="">0</div>
-            <div data-v-9d93d892="">12</div>
-            <div data-v-9d93d892="">9</div>`,
-          AVG_MISSING: `
-            <div data-v-9d93d892="">9</div>
-            <div data-v-9d93d892="">6</div>
-            <div data-v-9d93d892="">5</div>
-            <div data-v-9d93d892="">6</div>
-            <div data-v-9d93d892="">15</div>
-            <div data-v-9d93d892="">11</div>
-            <div data-v-9d93d892="">8</div>
-            <div data-v-9d93d892="">15</div>
-            <div data-v-9d93d892="">8</div>
-            <div data-v-9d93d892="">13</div>`,
-          FREQUENCY: `
-            <div data-v-9d93d892="">11</div>
-            <div data-v-9d93d892="">13</div>
-            <div data-v-9d93d892="">17</div>
-            <div data-v-9d93d892="">12</div>
-            <div data-v-9d93d892="">6</div>
-            <div data-v-9d93d892="">7</div>
-            <div data-v-9d93d892="">10</div>
-            <div data-v-9d93d892="">7</div>
-            <div data-v-9d93d892="">10</div>
-            <div data-v-9d93d892="">7</div>
-            `,
-          MAX_CONSECUTIVE: `
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">2</div>
-            `,
+    $.ajax({
+        type: "POST",
+        url: "/api/webapi/5d/GetNoaverageEmerdList_Statistics",
+        data: {
+            gameJoin: $('html').attr('data-dpr'),
+            pageno: "0",
+            pageto: "100",
+            language: "vi",
         },
-        B: {
-          MISSING: `
-            <div data-v-9d93d892="">4</div>
-            <div data-v-9d93d892="">19</div>
-            <div data-v-9d93d892="">6</div>
-            <div data-v-9d93d892="">7</div>
-            <div data-v-9d93d892="">8</div>
-            <div data-v-9d93d892="">10</div>
-            <div data-v-9d93d892="">0</div>
-            <div data-v-9d93d892="">11</div>
-            <div data-v-9d93d892="">3</div>
-            <div data-v-9d93d892="">1</div>`,
-          AVG_MISSING: `
-            <div data-v-9d93d892="">7</div>
-            <div data-v-9d93d892="">5</div>
-            <div data-v-9d93d892="">9</div>
-            <div data-v-9d93d892="">9</div>
-            <div data-v-9d93d892="">10</div>
-            <div data-v-9d93d892="">11</div>
-            <div data-v-9d93d892="">15</div>
-            <div data-v-9d93d892="">11</div>
-            <div data-v-9d93d892="">13</div>
-            <div data-v-9d93d892="">7</div>`,
-          FREQUENCY: `
-            <div data-v-9d93d892="">11</div>
-            <div data-v-9d93d892="">14</div>
-            <div data-v-9d93d892="">9</div>
-            <div data-v-9d93d892="">9</div>
-            <div data-v-9d93d892="">10</div>
-            <div data-v-9d93d892="">11</div>
-            <div data-v-9d93d892="">8</div>
-            <div data-v-9d93d892="">9</div>
-            <div data-v-9d93d892="">6</div>
-            <div data-v-9d93d892="">13</div>
-            `,
-          MAX_CONSECUTIVE: `
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">4</div>
-            <div data-v-9d93d892="">3</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">2</div>
-            `,
-        },
-        C: {
-          MISSING: `
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">8</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">17</div>
-            <div data-v-9d93d892="">7</div>
-            <div data-v-9d93d892="">3</div>
-            <div data-v-9d93d892="">4</div>
-            <div data-v-9d93d892="">33</div>
-            <div data-v-9d93d892="">0</div>
-            <div data-v-9d93d892="">12</div>`,
-          AVG_MISSING: `
-            <div data-v-9d93d892="">49</div>
-            <div data-v-9d93d892="">5</div>
-            <div data-v-9d93d892="">11</div>
-            <div data-v-9d93d892="">9</div>
-            <div data-v-9d93d892="">8</div>
-            <div data-v-9d93d892="">7</div>
-            <div data-v-9d93d892="">9</div>
-            <div data-v-9d93d892="">13</div>
-            <div data-v-9d93d892="">10</div>
-            <div data-v-9d93d892="">7</div>`,
-          FREQUENCY: `
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">15</div>
-            <div data-v-9d93d892="">10</div>
-            <div data-v-9d93d892="">13</div>
-            <div data-v-9d93d892="">11</div>
-            <div data-v-9d93d892="">12</div>
-            <div data-v-9d93d892="">10</div>
-            <div data-v-9d93d892="">6</div>
-            <div data-v-9d93d892="">9</div>
-            <div data-v-9d93d892="">13</div>
-            `,
-          MAX_CONSECUTIVE: `
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">4</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">2</div>
-            `,
-        },
-        D: {
-          MISSING: `
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">15</div>
-            <div data-v-9d93d892="">11</div>
-            <div data-v-9d93d892="">4</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">7</div>
-            <div data-v-9d93d892="">31</div>
-            <div data-v-9d93d892="">12</div>
-            <div data-v-9d93d892="">6</div>
-            <div data-v-9d93d892="">0</div>`,
-          AVG_MISSING: `
-            <div data-v-9d93d892="">8</div>
-            <div data-v-9d93d892="">13</div>
-            <div data-v-9d93d892="">9</div>
-            <div data-v-9d93d892="">8</div>
-            <div data-v-9d93d892="">9</div>
-            <div data-v-9d93d892="">10</div>
-            <div data-v-9d93d892="">13</div>
-            <div data-v-9d93d892="">9</div>
-            <div data-v-9d93d892="">8</div>
-            <div data-v-9d93d892="">7</div>`,
-          FREQUENCY: `
-            <div data-v-9d93d892="">12</div>
-            <div data-v-9d93d892="">7</div>
-            <div data-v-9d93d892="">10</div>
-            <div data-v-9d93d892="">10</div>
-            <div data-v-9d93d892="">10</div>
-            <div data-v-9d93d892="">9</div>
-            <div data-v-9d93d892="">7</div>
-            <div data-v-9d93d892="">10</div>
-            <div data-v-9d93d892="">12</div>
-            <div data-v-9d93d892="">13</div>
-            `,
-          MAX_CONSECUTIVE: `
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">2</div>
-            `,
-        },
-        E: {
-          MISSING: `
-            <div data-v-9d93d892="">22</div>
-            <div data-v-9d93d892="">25</div>
-            <div data-v-9d93d892="">4</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">13</div>
-            <div data-v-9d93d892="">21</div>
-            <div data-v-9d93d892="">7</div>
-            <div data-v-9d93d892="">12</div>
-            <div data-v-9d93d892="">0</div>`,
-          AVG_MISSING: `
-            <div data-v-9d93d892="">11</div>
-            <div data-v-9d93d892="">8</div>
-            <div data-v-9d93d892="">6</div>
-            <div data-v-9d93d892="">9</div>
-            <div data-v-9d93d892="">6</div>
-            <div data-v-9d93d892="">6</div>
-            <div data-v-9d93d892="">13</div>
-            <div data-v-9d93d892="">19</div>
-            <div data-v-9d93d892="">13</div>
-            <div data-v-9d93d892="">7</div>`,
-          FREQUENCY: `
-            <div data-v-9d93d892="">8</div>
-            <div data-v-9d93d892="">11</div>
-            <div data-v-9d93d892="">13</div>
-            <div data-v-9d93d892="">10</div>
-            <div data-v-9d93d892="">14</div>
-            <div data-v-9d93d892="">14</div>
-            <div data-v-9d93d892="">7</div>
-            <div data-v-9d93d892="">5</div>
-            <div data-v-9d93d892="">6</div>
-            <div data-v-9d93d892="">12</div>
-            `,
-          MAX_CONSECUTIVE: `
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">3</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">2</div>
-            <div data-v-9d93d892="">1</div>
-            <div data-v-9d93d892="">1</div>
-            `,
-        },
-      };
-      
-      
-    $("#chain_numbers").find('div').removeClass('active');
-    $("#chain_numbers").find('div:contains("'+e+'")').addClass('active');
+        dataType: "json",
+        success: function(response1) {
     $.ajax({
         type: "POST",
         url: "/api/webapi/5d/GetNoaverageEmerdList",
@@ -1470,43 +1349,67 @@ function div_click(e)
         },
         dataType: "json",
         success: function (response) {
-            let list_orders = response.data.gameslist;
+            let sta_list_orders = response1.data.gameslist;
+            var actual_list = '';
+            var box = {}; // my object
+            var boxes =  []; 
             if(e == "A")
             {
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(0) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["A"].MISSING);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(1) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["A"].AVG_MISSING);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(2) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["A"].FREQUENCY);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(3) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["A"].MAX_CONSECUTIVE);
-            }    
+                sta_list_orders.forEach(function(e,index) {
+                    inside_array = e.result.split('');
+                    box = {
+                        amount: inside_array[0]
+                    }
+                    boxes.push(box);
+                });
+            }
             else if(e == "B")
             {
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(0) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["B"].MISSING);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(1) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["B"].AVG_MISSING);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(2) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["B"].FREQUENCY);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(3) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["B"].MAX_CONSECUTIVE);                  
+                sta_list_orders.forEach(function(e,index) {
+                    inside_array = e.result.split('');
+                    box = {
+                        amount: inside_array[1]
+                    }
+                    boxes.push(box);
+                });
             }
             else if(e == "C")
             {
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(0) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["C"].MISSING);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(1) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["C"].AVG_MISSING);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(2) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["C"].FREQUENCY);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(3) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["C"].MAX_CONSECUTIVE);
+                sta_list_orders.forEach(function(e,index) {
+                    inside_array = e.result.split('');
+                    box = {
+                        amount: inside_array[2]
+                    }
+                    boxes.push(box);
+                });
             }
             else if(e == "D")
             {
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(0) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["D"].MISSING);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(1) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["D"].AVG_MISSING);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(2) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["D"].FREQUENCY);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(3) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["D"].MAX_CONSECUTIVE);              
+                sta_list_orders.forEach(function(e,index) {
+                    inside_array = e.result.split('');
+                    box = {
+                        amount: inside_array[3]
+                    }
+                    boxes.push(box);
+                });
             }
-            else if(e == "E")
+            else if(e == "D")
             {
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(0) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["E"].MISSING);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(1) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["E"].AVG_MISSING);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(2) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["E"].FREQUENCY);
-                $(".Trend__C-body1 .Trend__C-body1-line:eq(3) .Trend__C-body1-line-num",).html(GAME_CHART_STATISTICS_HTML["E"].MAX_CONSECUTIVE);   
+                sta_list_orders.forEach(function(e,index) {
+                    inside_array = e.result.split('');
+                    box = {
+                        amount: inside_array[4]
+                    }
+                    boxes.push(box);
+                });
             }
+            show_statistics(boxes,2);   
+            $("#chain_numbers").find('div').removeClass('active');
+            $("#chain_numbers").find('div:contains("'+e+'")').addClass('active');
+            let list_orders = response.data.gameslist;
 			showListOrder_t(list_orders, 2);
 		}
 	});
+}
+});
 }

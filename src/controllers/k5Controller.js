@@ -264,14 +264,9 @@ const listOrderOld = async (req, res) => {
 
 const Stat_listOrderOld = async (req, res) => {
     let { gameJoin, pageno, pageto } = req.body;
-    let auth = req.cookies.auth;
-
     let checkGame = ['1', '3', '5', '10'].includes(String(gameJoin));
-
     let game = Number(gameJoin);
-
-    const [k5d] = await connection.query(`SELECT * FROM d5 WHERE status != 0 AND game = '${game}' ORDER BY id DESC LIMIT ${pageno}, ${pageto} `);
-   
+    const [k5d] = await connection.query(`SELECT result FROM d5 WHERE status != 0 AND game = '${game}' ORDER BY id DESC LIMIT ${pageno}, ${pageto} `);
     if (k5d.length == 0) {
         return res.status(200).json({
             code: 0,

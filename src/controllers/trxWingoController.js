@@ -589,7 +589,7 @@ const Stat_listOrderOld = async (req, res) => {
   if (typeid == 10) game = TRX_WINGO_GAME_TYPE_MAP.MIN_10;
 
   const [trx_wingo] = await connection.query(
-    "SELECT * FROM trx_wingo_game WHERE status != 0 AND game = ? ORDER BY id DESC LIMIT ?, ?",
+    "SELECT result FROM trx_wingo_game WHERE status != 0 AND game = ? ORDER BY id DESC LIMIT ?, ?",
     [game, Number(pageno), Number(pageto)],
   );
 
