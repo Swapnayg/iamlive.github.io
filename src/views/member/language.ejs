@@ -550,6 +550,9 @@ $("input[type='radio'][data-lang='"+sel_lang+"']").prop("checked", true);
 function checkboxCheck(e)
 {
     setCookie('lang', e, 1);
+    redirect_link = '/mian';
+  
+  window.location.href = redirect_link;
 }
 </script>
 </body>

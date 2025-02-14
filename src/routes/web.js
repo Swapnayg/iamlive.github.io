@@ -97,6 +97,7 @@ const initWebRouter = (app) => {
     // BET K5D
     router.get('/5d', middlewareController, k5Controller.K5DPage);
     router.post('/api/webapi/action/5d/join', middlewareController, k5Controller.betK5D); // register
+    router.post('/api/webapi/5d/GetNoaverageEmerdList_Statistics', middlewareController, k5Controller.Stat_listOrderOld);
     router.post('/api/webapi/5d/GetNoaverageEmerdList', middlewareController, k5Controller.listOrderOld); // register
     router.post('/api/webapi/5d/GetMyEmerdList', middlewareController, k5Controller.GetMyEmerdList); // register
 
@@ -121,6 +122,7 @@ const initWebRouter = (app) => {
 
     // bet wingo
     router.post('/api/webapi/action/join', middlewareController, winGoController.betWinGo); // register
+    router.post('/api/webapi/GetNoaverageEmerdList_Statistics', middlewareController, winGoController.Stat_listOrderOld);
     router.post('/api/webapi/GetNoaverageEmerdList', middlewareController, winGoController.listOrderOld); // register
     router.post('/api/webapi/GetMyEmerdList', middlewareController, winGoController.GetMyEmerdList); // register
 
@@ -289,6 +291,11 @@ const initWebRouter = (app) => {
     middlewareController,
     trxWingoController.listOrderOld,
   ); // register
+  router.post(
+    "/api/webapi/trx_wingo/GetNoaverageEmerdList_Statistics",
+    middlewareController,
+    trxWingoController.Stat_listOrderOld,
+  ); 
   router.post(
     "/api/webapi/trx_wingo/GetMyEmerdList",
     middlewareController,

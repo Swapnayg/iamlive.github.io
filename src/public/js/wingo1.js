@@ -1,3 +1,6 @@
+
+
+
 function showListOrder3(list_orders, x) {
   if (list_orders.length == 0) {
     return $(`.game-list .con-box:eq(${x}) .hb`).html(
@@ -194,10 +197,10 @@ $.ajax({
     },
 });
 // Accessing the fifth element (index 4)
-var element_2 = document.getElementById("Winning_0");
+//var element_2 = document.getElementById("Winning_0");
 
 // Update its text content
-element_2.textContent = "4";
+//element_2.textContent = "4";
 
     fetch("/api/webapi/GetUserInfo")
       .then((response) => response.json())
@@ -651,6 +654,19 @@ $(".game-list .tab .li:eq(1)").click(function (e) {
 });
 $(".game-list .tab .li:eq(2)").click(function (e) {
   e.preventDefault();
+  $.ajax({
+    type: "POST",
+    url: "/api/webapi/GetNoaverageEmerdList_Statistics",
+    data: {
+        typeid: "1",
+        pageno: "0",
+        pageto: "100",
+        language: "vi",
+    },
+    dataType: "json",
+    success: function(response1) {
+      let sta_list_orders = response1.data.gameslist;
+      show_statistics(sta_list_orders,2);
   $(".game-list .con-box").css("display", "none");
   $(".game-list .li .txt").removeClass("action");
   $(".game-list .li .txt:eq(2)").addClass("action");
@@ -677,6 +693,8 @@ $(".game-list .tab .li:eq(2)").click(function (e) {
       showListOrder_t(list_orders, 2);
       
     },
+  });
+}
   });
 });
 
@@ -802,6 +820,71 @@ function showListOrder(list_orders, x) {
   });
   $(`.game-list .con-box:eq(${x}) .hb`).html(htmls);
 }
+
+function show_statistics(list_orders, x) {
+  if (list_orders.length != 0) {
+    var ms0= 0; var ms1= 1; var ms2= 2; var ms3= 3; var ms4= 4; var ms5= 5;var ms6= 6;var ms7= 7;var ms8= 8;var ms9= 9;
+    var ams0= "000"; var ams1= 1; var ams2= 2; var ams3= 3; var ams4= 4; var ams5= 5;var ams6= 6;var ams7= 7;var ams8= 8;var ams9= 9;
+    
+    var csq0= "00000"; var csq1= 1; var csq2= 2; var csq3= 3; var csq4= 4; var csq5= 5;var csq6= 6;var csq7= 7;var csq8= 8;var csq9= 9;
+    const counts = {};
+    for (const num of list_orders) {
+      counts[num.amount] = counts[num.amount] ? counts[num.amount] + 1 : 1;
+    }
+    var fq0= counts[0]; var fq1= counts[1]; var fq2= counts[2]; var fq3= counts[3]; var fq4= counts[4]; var fq5= counts[5];var fq6= counts[6];var fq7= counts[7];var fq8= counts[8];var fq9= counts[9];
+    
+    MISSING = `
+            <span  class="number-cell">`+ms0+`</span>
+            <span  class="number-cell">`+ms1+`</span>
+            <span  class="number-cell">`+ms2+`</span>
+            <span  class="number-cell">`+ms3+`</span>
+            <span  class="number-cell">`+ms4+`</span>
+            <span  class="number-cell">`+ms5+`</span>
+            <span  class="number-cell">`+ms6+`</span>
+            <span  class="number-cell">`+ms7+`</span>
+            <span  class="number-cell">`+ms8+`</span>
+            <span  class="number-cell">`+ms9+`</span>`;
+          AVG_MISSING = `
+            <span  class="number-cell">`+ams0+`</span>
+            <span  class="number-cell">`+ams1+`</span>
+            <span  class="number-cell">`+ams2+`</span>
+            <span  class="number-cell">`+ams3+`</span>
+            <span  class="number-cell">`+ams4+`</span>
+            <span  class="number-cell">`+ams5+`</span>
+            <span  class="number-cell">`+ams6+`</span>
+            <span  class="number-cell">`+ams7+`</span>
+            <span  class="number-cell">`+ams8+`</span>
+            <span  class="number-cell">`+ams9+`</span>`;
+          FREQUENCY = `
+            <span  class="number-cell">`+fq0+`</span>
+            <span  class="number-cell">`+fq1+`</span>
+            <span  class="number-cell">`+fq2+`</span>
+            <span  class="number-cell">`+fq3+`</span>
+            <span  class="number-cell">`+fq4+`</span>
+            <span  class="number-cell">`+fq5+`</span>
+            <span  class="number-cell">`+fq6+`</span>
+            <span  class="number-cell">`+fq7+`</span>
+            <span  class="number-cell">`+fq8+`</span>
+            <span  class="number-cell">`+fq9+`</span>`;
+            
+          MAX_CONSECUTIVE = `
+            <span  class="number-cell">`+csq0+`</span>
+            <span  class="number-cell">`+csq1+`</span>
+            <span  class="number-cell">`+csq2+`</span>
+            <span  class="number-cell">`+csq3+`</span>
+            <span  class="number-cell">`+csq4+`</span>
+            <span  class="number-cell">`+csq5+`</span>
+            <span  class="number-cell">`+csq6+`</span>
+            <span  class="number-cell">`+csq7+`</span>
+            <span  class="number-cell">`+csq8+`</span>
+            <span  class="number-cell">`+csq9+`</span>`;
+            $(".td_m").html(MISSING);
+            $(".td_am").html(AVG_MISSING);
+            $(".td_frq").html(FREQUENCY);
+            $(".td_csq").html(MAX_CONSECUTIVE);
+  };
+};
+
 
 function showListOrder_t(list_orders, x) {
   if (list_orders.length == 0) {

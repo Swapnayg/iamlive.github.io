@@ -1,4 +1,5 @@
 import connection from '../config/connectDB';
+
 require('dotenv').config();
 
 const sendMessageAdmin = (io) => {
