@@ -106,6 +106,7 @@ const userInfo = async (req, res) => {
             name_user: others.name_user,
             phone_user: others.phone,
             money_user: others.money,
+            user_avatar: others.avatar,
         },
         totalRecharge: totalRecharge,
         totalWithdraw: totalWithdraw,

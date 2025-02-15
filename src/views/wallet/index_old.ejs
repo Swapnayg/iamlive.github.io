@@ -42,7 +42,7 @@
                     <div data-v-7b283485="" class="c-row c-row-center img">
                         <div data-v-7b283485="" class="van-image" border-radius="60px"
                             style="width: 60px; height: 60px;">
-                            <img src="/images/avatar.svg" class="van-image__img">
+                            <img src="" class="van-image__img" id="prof_image">
                         </div>
                     </div>
                     <div data-v-7b283485="" class="name"></div>
@@ -144,6 +144,7 @@
                 dataType: "json",
                 success: function (response) {
                     let user = response.data;
+                    $("#prof_image").attr("src","/assets/png/"+ data.data.user_avatar);
                     $('.wallet-user .name').text(user.name_user);
                     $('.money').text("₹" + user.money_user + ".00");
                 }

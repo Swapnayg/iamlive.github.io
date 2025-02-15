@@ -52,7 +52,7 @@
                         onclick="location.href='/myProfile'">
                         <div data-v-8cd483ca="" class="c-row c-row-middle">
                             <div data-v-8cd483ca="" class="user-img">
-                                <img data-v-8cd483ca="" src="/images/avatar.svg" class="img">
+                                <img data-v-8cd483ca="" src="" class="img" id="prof_image">
                             </div>
                             <div data-v-8cd483ca="" class="p-l-10 infoName">
                                 <div data-v-8cd483ca="" class="name mb3 c-row c-row-middle"> </div>
@@ -297,6 +297,7 @@
                     unsetCookie();
                     return false;
                 };
+                $("#prof_image").attr("src","/assets/png/"+ data.data.user_avatar);
                 $('.infoName .name').text(data.data.name_user);
                 $('.infoName .id').text(`ID:${data.data.id_user}`);
                 $('.infoName .id').attr('data-clipboard-text', '');

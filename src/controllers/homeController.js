@@ -274,6 +274,11 @@ const languegePage = async (req, res) => {
     return res.render("member/language.ejs",{lang});
 }
 
+const avatarpage = async (req, res) => {
+    let lang = req.cookies.lang;
+    return res.render("member/avatar.ejs");
+}
+
 const d_get_betting = async (req, res) => {
     let auth = req.cookies.auth;
     const [user] = await connection.query('SELECT `phone` FROM users WHERE `token` = ? ', [auth]);
@@ -416,6 +421,7 @@ const getSalaryRecord = async (req, res) => {
     })
 }
 module.exports = {
+    avatarpage,
     languegePage,
     homePage,
     checkInPage,

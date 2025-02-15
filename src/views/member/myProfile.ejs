@@ -119,7 +119,7 @@
                 <div data-v-9f3a9836="" class="item c-row c-row-between c-row-middle-center">
                     <div data-v-9f3a9836="" class="lab">Avatar</div>
                     <div data-v-9f3a9836="" class="img">
-                        <img data-v-9f3a9836="" width="40px" height="40px" src="/images/avatar.svg" class="userImg">
+                        <img data-v-9f3a9836="" width="40px" height="40px" src="" class="userImg" id="prof_image" onclick="window.location.href='/mian/avatar'">
                     </div>
                 </div>
                 <div data-v-9f3a9836="" class="item c-row c-row-between">
@@ -252,6 +252,7 @@
                     unsetCookie();
                     return false;
                 };
+                $("#prof_image").attr("src","/assets/png/"+ data.data.user_avatar);
                 $('.profile .name').text(data.data.name_user);
                 $('.profile .id').text(data.data.id_user);
                 $('.profile .number').text("+91 " + data.data.phone_user);

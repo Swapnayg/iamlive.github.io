@@ -387,6 +387,35 @@ const keFuMenu = async(req, res) => {
 }
 
 
+const updateAvatarAPI = async (req, res) => {
+    try {
+      let auth = req.cookies.auth;
+      let avatar = req.body.avatar;
+      const [rows] = await connection.query(
+        "SELECT * FROM users WHERE token = ?",
+        [auth],
+      );
+      if (rows.length == 0) {
+        return res.status(400).json({
+          message: "Account does not exist",
+          status: false,
+        });
+      }
+      await connection.execute("UPDATE users SET avatar = ? WHERE token = ?", [
+        avatar,
+        auth,
+      ]);
+      return res.status(200).json({
+        message: "Change avatar successfully",
+        status: true,
+      });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Internal Server Error", status: false });
+    }
+  };
+
 module.exports = {
     login,
     register,
@@ -396,5 +425,6 @@ module.exports = {
     verifyCode,
     verifyCodePass,
     forGotPassword,
-    keFuMenu
+    keFuMenu,
+    updateAvatarAPI
 }

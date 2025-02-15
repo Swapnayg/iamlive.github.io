@@ -39,7 +39,7 @@
                             <div class="card card-primary card-outline">
                                 <div class="card-body box-profile">
                                     <div class="text-center">
-                                        <img class="profile-user-img img-fluid img-circle" src="/images/avatar.svg" alt="User profile picture">
+                                        <img class="profile-user-img img-fluid img-circle" src="" id="prof_image" alt="User profile picture">
                                     </div>
 
                                     <h3 class="profile-username text-center">Member...</h3>
@@ -216,6 +216,7 @@
                 let user = response.datas[0];
                 // user
                 $('.profile-username').text(user.name_user);
+                $("#prof_image").attr("src","/assets/png/"+ user.avatar);
                 if(response.telegram != null)
                 {
                     $('#telegram').text(response.telegram.telegram);
