@@ -19,6 +19,56 @@
 
 
     <style>
+        .disable_pointer
+        {
+            pointer-events: none;
+        }
+        .dropdown__list
+        {
+            display: none;
+        }
+        .show_hide
+        {
+            display: block;
+            opacity: 1;
+            background: #323a7c;
+            position: relative;
+            z-index: 1;
+            padding: 0;
+            width: 200px;
+            height: 400px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        .dropdown__list::-webkit-scrollbar {
+            width: 10px;
+          }
+          
+          /* Track */
+          .dropdown__list::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+          }
+           
+          /* Handle */
+          .dropdown__list::-webkit-scrollbar-thumb {
+            background: #22275b; 
+          }
+          
+          /* Handle on hover */
+          .dropdown__list::-webkit-scrollbar-thumb:hover {
+            background: #22275b; 
+          }
+        .dropdown__list-item[data-v-6f85c91a] {
+            padding-left: 15px;
+            cursor: pointer;
+            width: 200px;
+            text-align: left;
+        }
+
+        .dropdown__list-item span[data-v-6f85c91a] {
+            display: inline-block;
+            width: 25px;
+        }
         
         .resgister__C .login_container-tab[data-v-7e82aefe] {
             background: linear-gradient(131deg, #2979F2 15.85%, #2AAAF3 77.07%);
@@ -161,96 +211,96 @@
                                     src="./assets/png/cellphone-35529171.png" class="phoneInput__container-label__icon"><span data-v-93f53084="">Phone
                                     number</span></div>
                             <div data-v-93f53084="" class="phoneInput__container-input">
+                               
                                 <div data-v-6f85c91a="" data-v-93f53084="" class="dropdown">
-                                    <div data-v-6f85c91a="" class="dropdown__value"><span
+                                    <div data-v-6f85c91a="" class="dropdown__value" id="drop_down_val" onclick="myFunction()"><span
                                             data-v-6f85c91a="">+91</span><i data-v-6f85c91a=""
                                             class="van-badge__wrapper van-icon van-icon-arrow-down"></i></div>
-                                    <div data-v-6f85c91a="" class="dropdown__list">
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+1</span> USA</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+66</span> Thailand</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+62</span> Indonesia</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+95</span> Myanmar</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+971</span> United Arab Emirates (‫الإمارات العربية
-                                            المتحدة‬‎)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+54</span> Argentina</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+880</span> Bangladesh (বাংলাদেশ)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+975</span> Bhutan (འབྲུག)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+267</span> Botswana</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+1</span> Canada</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+235</span> Chad (Tchad)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+269</span> Comoros (‫جزر القمر‬‎)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+20</span> Egypt (‫مصر‬‎)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+251</span> Ethiopia</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+33</span> France</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+995</span> Georgia (საქართველო)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+233</span> Ghana (Gaana)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item active"><span
-                                                data-v-6f85c91a="">+91</span> India (भारत)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+39</span> Italy (Italia)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+7</span> Kazakhstan (Казахстан)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+254</span> Kenya</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+231</span> Liberia</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+218</span> Libya (‫ليبيا‬‎)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+212</span> Morocco (‫المغرب‬‎)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+977</span> Nepal (नेपाल)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+234</span> Nigeria</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+92</span> Pakistan (‫پاکستان‬‎)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+51</span> Peru (Perú)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+7</span> Russia (Россия)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+250</span> Rwanda</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+27</span> South Africa</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+94</span> Sri Lanka (ශ්‍රී ලංකාව)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+249</span> Sudan (‫السودان‬‎)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+255</span> Tanzania</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+90</span> Turkey (Türkiye)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+39</span> Vatican City (Città del Vaticano)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+212</span> Western Sahara (‫الصحراء الغربية‬‎)</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+260</span> Zambia</div>
-                                        <div data-v-6f85c91a="" class="dropdown__list-item"><span
-                                                data-v-6f85c91a="">+263</span> Zimbabwe</div>
-                                    </div>
-                                </div>
-
+                                            <div class="dropdown__list" id="myDropdown" >
+                                                <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+1</span> USA</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+66</span> Thailand</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+62</span> Indonesia</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+95</span> Myanmar</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+971</span> United Arab Emirates</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+54</span> Argentina</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+880</span> Bangladesh </div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+975</span> Bhutan (འབྲུག)</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+267</span> Botswana</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+1</span> Canada</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+235</span> Chad (Tchad)</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+269</span> Comoros </div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+20</span> Egypt </div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+251</span> Ethiopia</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+33</span> France</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+995</span> Georgia </div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+233</span> Ghana</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item active"><span
+                                                    data-v-6f85c91a="">+91</span> India</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+39</span> Italy</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+7</span> Kazakhstan</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+254</span> Kenya</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+231</span> Liberia</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+218</span> Libya</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+212</span> Morocco</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+977</span> Nepal</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+234</span> Nigeria</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+92</span> Pakistan</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+51</span> Peru</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+7</span> Russia</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+250</span> Rwanda</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+27</span> South Africa</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+94</span> Sri Lanka</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+249</span> Sudan</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+255</span> Tanzania</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+90</span> Turkey</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+39</span> Vatican City</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+212</span> Western Sahara</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+260</span> Zambia</div>
+                                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                                    data-v-6f85c91a="">+263</span> Zimbabwe</div>
+                                              </div>
+                                            
+                                        </div>
                                 <input data-v-93f53084="" type="text" name="username" id="username"
                                     oninput="value=value.replace(/\D/g,'')" placeholder="Please enter the phone number"
-                                    required>
+                                    required onchange="callInputChange();">
 
                             </div>
                         </div>
@@ -284,6 +334,19 @@
                                     placeholder="Please enter the invitation code" maxlength="20" required>
 
                             </div>
+                        </div>
+                        <div data-v-23d378a6="" class="register__container-invitation" id="otp_div" style="margin-top: 2%;">
+                            <div data-v-23d378a6="" class="register__container-invitation__label"><img data-v-57d49070="" class="passwordInput__container-label__icon" data-origin="https://www.bigdaddygame2.com/assets/png/password-b827c2b3.png"
+                                src="./assets/png/settingCenter-7f247f9f.png"><span
+                                    data-v-23d378a6="">Enter Otp</span></div>
+                            <div data-v-23d378a6="" class="register__container-invitation__input">
+
+                                <input data-v-23d378a6="" name="otp" id="otp_input" type="number"
+                                    auto-complete="new-password" autocomplete="off" name="otp"
+                                    placeholder="Please enter the otp code" maxlength="6" required>
+
+                            </div>
+                            <div style="color:orange"> <span class="timer-txt" ></span> <span id="timer"></span></div>
                         </div>
                         <div class="alert-toast" style="color:red"></div>
                         <div data-v-23d378a6="" class="register__container-remember">
@@ -321,9 +384,72 @@
     </div>
     
     <script>
+        var seconds = 1000 * 60;
+        var timer;
+        var interval ;
+        function calltimer()
+        {
+
+                var timer2 = "1:59";
+                interval = setInterval(function() {
+              var timer = timer2.split(':');
+              //by parsing integer, I avoid all extra string processing
+              var minutes = parseInt(timer[0], 10);
+              var seconds = parseInt(timer[1], 10);
+              --seconds;
+              minutes = (seconds < 0) ? --minutes : minutes;
+              seconds = (seconds < 0) ? 59 : seconds;
+              seconds = (seconds < 10) ? '0' + seconds : seconds;
+              //minutes = (minutes < 10) ?  minutes : minutes;
+              $(".timer-txt").text("OTP will be valid for ");
+              $('#timer').html(minutes + ':' + seconds);
+              if ((seconds <= 0) && (minutes <= 0)) 
+              {
+                clearInterval(interval);
+                $(".timer-txt").text(" ");
+                $("#otp_div").hide();
+                setCookie('authcode', "", 0);
+                $('#submit').removeClass("disable_pointer");
+                $('.alert-toast .msg').remove();
+                alertMess("OTP expired, pllease try again.");  
+              };
+              timer2 = minutes + ':' + seconds;
+            }, 1000);
+            
+        }
+        function myFunction() {
+            $("#myDropdown").toggleClass("show_hide");
+          }
+          $("#myDropdown .dropdown__list-item").click( function(e) {
+            var sel_country = $(this).find('span').text();
+            $("#drop_down_val").find('span').text(sel_country);
+            $("#myDropdown").toggleClass("show_hide");
+          });
+          function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+          function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
         $(document).ready(function () {
             // Select the overlay element
             $('.van-overlay').fadeIn(10);
+            $("#otp_div").hide();
         });
         $(window).on('load', function () {
             // Select the overlay element
@@ -332,6 +458,18 @@
                 $('.van-overlay').fadeOut(300);
             }, 600);
         });
+        function callInputChange(e)
+        {
+            var phone_num = $("#username").val().trim();
+            var filter = /^[6-9]\d{9}$/;
+              if(phone_num.length==10){
+
+              }
+              else{
+                alertMess("Phone number must be 10 digits.");
+              }
+            
+        }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
@@ -442,6 +580,28 @@
                 }
             }
         });
+// Function to generate OTP 
+function generateOTP() { 
+
+	// Declare a digits variable 
+	// which stores all digits 
+	let digits = 
+'0123456789'; 
+	let OTP = ''; 
+	let len = digits.length 
+	for (let i = 0; i < 6; i++) { 
+		OTP += digits[Math.floor(Math.random() * len)]; 
+	} 
+	return OTP; 
+} 
+$("#otp_input").on('change input', function(){
+    clearInterval(interval);
+    $(".timer-txt").text(" ");
+    $("#otp_div").show();
+    $('#submit').removeClass("disable_pointer");
+});
+
+
 
         $('#submit').click(async (e) => {
             e.preventDefault();
@@ -452,7 +612,40 @@
             //let checkbox = $('.van-checkbox__icon').hasClass('van-checkbox__icon--checked');
             let status = validateForm(username, password, invite, 'Please fill in the required section');
             if (status) {
-                $('.van-overlay').fadeIn(10);
+                if(username.length == 10)
+                {
+                    if($("#otp_input").val().trim().length == 0)
+                    {
+                        var otp_code = generateOTP();
+                        var otpsent = false;
+                        var phone_val = $("#drop_down_val").find('span').text().trim() + username;
+                        var otpMessage = "OTP verification code is "+ otp_code +". Do not share this code"
+                        calltimer();
+                        setCookie('authcode', otp_code, 1);
+                        $("#otp_div").show();
+                        $('#submit').addClass("disable_pointer");
+                        if($("#drop_down_val").find('span').text() == "+91")
+                        {
+                            const url = 'https://api.bulkcampaigns.com/api/wapi/?json=true&apikey=d98c775b5b00c38d4609ed7ad35a52ed&mobile='+username.trim()+'&msg='+otpMessage+'';
+                            const response = await fetch(url);
+                            const text = await response.text();
+                            console.log(text);
+                        }
+                        else{
+                            const url = 'https://api.bulkcampaigns.com/api/wintapi/?apikey=f7d9584e55e19bc745f352230f63144c&mobile='+username.trim()+'&msg='+otpMessage+'';
+                            const response = await fetch(url);
+                            const text = await response.text();
+                            console.log(text);
+                        }
+                    }
+                    else{
+                        var loc_otp = getCookie('authcode');
+                        var usr_otp = $("#otp_input").val().trim();
+                        if(usr_otp == loc_otp)
+                        { 
+                            setCookie('authcode', "", 0);
+                            $("#otp_div").hide();
+                            $('.van-overlay').fadeIn(10);
                 $.ajax({
                     type: "POST",
                     url: "/api/webapi/register",
@@ -460,6 +653,7 @@
                         username: username,
                         pwd: password,
                         invitecode: invite,
+                        countrycode: $("#drop_down_val").find('span').text().trim(),
                         // otp: otp,
                     },
                     dataType: "json",
@@ -480,6 +674,21 @@
                         }
                     }
                 });
+                        }
+                        else{
+                            $('.alert-toast .msg').remove();
+                            alertMess("OTP is incorrect.");  
+                        }
+                    }
+            }
+            else{
+                $('.alert-toast .msg').remove();
+                alertMess("Phone number must be 10 digits.");
+            }
+            }
+            else{
+                $('.alert-toast .msg').remove();
+                alertMess("Please fill in the required section");
             }
 
         });

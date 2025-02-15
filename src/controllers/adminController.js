@@ -1129,7 +1129,7 @@ const timeCreate = () => {
 
 
 const register = async (req, res) => {
-    let { username, password, invitecode } = req.body;
+    let { username, password, invitecode, countrycode } = req.body;
     let id_user = randomNumber(10000, 99999);
     let name_user = "Member" + randomNumber(10000, 99999);
     let code = randomString(5) + randomNumber(10000, 99999);
@@ -1162,6 +1162,7 @@ const register = async (req, res) => {
         } else {
             const sql = `INSERT INTO users SET 
             id_user = ?,
+            dial_code = ?,
             phone = ?,
             name_user = ?,
             password = ?,
