@@ -2,6 +2,7 @@ import connection from "../config/connectDB";
 import jwt from 'jsonwebtoken'
 import md5 from "md5";
 import request from 'request';
+import "dotenv/config";
 import e from "express";
 import en_file from "../languages/en.json";
 import hd_file from "../languages/hd.json";
@@ -64,7 +65,9 @@ const loginPage = async (req, res) => {
 }
 
 const registerPage = async (req, res) => {
-    return res.render("account/register.ejs");
+    var whatsapp1 = process.env.WHATSAPP_LOCAL_KEY;
+    var whatsapp2 = process.env.WHATSAPP_INTERNATIONAL_KEY;
+    return res.render("account/register.ejs", {whatsapp1, whatsapp2});
 }
 
 const forgotPage = async (req, res) => {
