@@ -72,7 +72,7 @@ const forgotPage = async (req, res) => {
 }
 
 const login = async (req, res) => {
-    let { username, pwd } = req.body;
+    let { username, pwd , countrycode} = req.body;
 
     if (!username || !pwd || !username) {//!isNumber(username)
         return res.status(200).json({
@@ -81,7 +81,7 @@ const login = async (req, res) => {
     }
 
     try {
-        const [rows] = await connection.query('SELECT * FROM users WHERE phone = ? AND password = ? ', [username, md5(pwd)]);
+        const [rows] = await connection.query('SELECT * FROM users WHERE phone = ? AND password = ? AND dial_code = ? ', [username, md5(pwd), countrycode]);
         if (rows.length == 1) {
             if (rows[0].status == 1) {
                 const { password, money, ip, veri, ip_address, status, time, ...others } = rows[0];

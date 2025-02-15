@@ -18,6 +18,53 @@
     	<link rel="stylesheet" href="./index_files/index-98687087.css">
     <style>
 
+      .dropdown__list
+      {
+          display: none;
+      }
+      .show_hide
+      {
+          display: block;
+          opacity: 1;
+          background: #323a7c;
+          position: relative;
+          z-index: 1;
+          padding: 0;
+          width: 200px;
+          height: 400px;
+          overflow-y: scroll;
+          overflow-x: hidden;
+      }
+      .dropdown__list::-webkit-scrollbar {
+          width: 10px;
+        }
+        
+        /* Track */
+        .dropdown__list::-webkit-scrollbar-track {
+          background: #f1f1f1; 
+        }
+         
+        /* Handle */
+        .dropdown__list::-webkit-scrollbar-thumb {
+          background: #22275b; 
+        }
+        
+        /* Handle on hover */
+        .dropdown__list::-webkit-scrollbar-thumb:hover {
+          background: #22275b; 
+        }
+      .dropdown__list-item[data-v-6f85c91a] {
+          padding-left: 15px;
+          cursor: pointer;
+          width: 200px;
+          text-align: left;
+      }
+
+      .dropdown__list-item span[data-v-6f85c91a] {
+          display: inline-block;
+          width: 25px;
+      }
+      
 .login__container .login_container-tab .tab .font30[data-v-8752c961] {
     font-size: .4rem;
     color: #fff;
@@ -281,15 +328,91 @@
                 </div>
                 <div data-v-93f53084="" class="phoneInput__container-input">
                   <div data-v-6f85c91a="" data-v-93f53084="" class="dropdown">
-                    <div data-v-6f85c91a="" class="dropdown__value">
-                      <span data-v-6f85c91a="">
-                        +91
-                      </span>
-                      <i data-v-6f85c91a="" class="van-badge__wrapper van-icon van-icon-arrow-down">
-                      </i>
-                    </div>
-                    
-                  </div>
+                    <div data-v-6f85c91a="" class="dropdown__value" id="drop_down_val" onclick="myFunction()"><span
+                            data-v-6f85c91a="">+91</span><i data-v-6f85c91a=""
+                            class="van-badge__wrapper van-icon van-icon-arrow-down"></i></div>
+                            <div class="dropdown__list" id="myDropdown" >
+                                <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+1</span> USA</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+66</span> Thailand</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+62</span> Indonesia</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+95</span> Myanmar</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+971</span> United Arab Emirates</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+54</span> Argentina</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+880</span> Bangladesh </div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+975</span> Bhutan (འབྲུག)</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+267</span> Botswana</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+1</span> Canada</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+235</span> Chad (Tchad)</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+269</span> Comoros </div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+20</span> Egypt </div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+251</span> Ethiopia</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+33</span> France</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+995</span> Georgia </div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+233</span> Ghana</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item active"><span
+                                    data-v-6f85c91a="">+91</span> India</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+39</span> Italy</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+7</span> Kazakhstan</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+254</span> Kenya</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+231</span> Liberia</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+218</span> Libya</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+212</span> Morocco</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+977</span> Nepal</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+234</span> Nigeria</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+92</span> Pakistan</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+51</span> Peru</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+7</span> Russia</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+250</span> Rwanda</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+27</span> South Africa</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+94</span> Sri Lanka</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+249</span> Sudan</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+255</span> Tanzania</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+90</span> Turkey</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+39</span> Vatican City</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+212</span> Western Sahara</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+260</span> Zambia</div>
+                            <div data-v-6f85c91a="" class="dropdown__list-item"><span
+                                    data-v-6f85c91a="">+263</span> Zimbabwe</div>
+                              </div>
+                            
+                        </div>
                   <input data-v-93f53084="" type="text" name="username" placeholder="Please enter the phone number" 
                   autocomplete="on" required>
                 </div>
@@ -495,6 +618,14 @@
     
 
     <script>
+      function myFunction() {
+        $("#myDropdown").toggleClass("show_hide");
+      }
+      $("#myDropdown .dropdown__list-item").click( function(e) {
+        var sel_country = $(this).find('span').text();
+        $("#drop_down_val").find('span').text(sel_country);
+        $("#myDropdown").toggleClass("show_hide");
+      });
         $(document).ready(function() {
       // Select the overlay element
       $('.van-overlay').fadeIn(10);
@@ -509,12 +640,12 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        function (cname, cvalue, exdays) {
-            const d = new Date();
-            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-            let expires = "expires=" + d.toUTCString();
-            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-        }
+      function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
         function getCookie(cname) {
             let name = cname + "=";
             let decodedCookie = decodeURIComponent(document.cookie);
@@ -610,6 +741,7 @@
                     data: {
                         username: username,
                         pwd: password,
+                        countrycode: $("#drop_down_val").find('span').text().trim(),
                     },
                     dataType: "json",
                     success: function (response) {
