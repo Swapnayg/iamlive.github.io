@@ -113,10 +113,10 @@ function show_statistics(list_orders, x) {
         }
         var ams0= sumCount[0]; var ams1= sumCount[1]; var ams2= sumCount[2]; var ams3= sumCount[3]; var ams4= sumCount[4]; var ams5= sumCount[5];var ams6= sumCount[6];var ams7= sumCount[7];var ams8= sumCount[8];var ams9= sumCount[9];
       var csq0= csq_counts[0]; var csq1= csq_counts[1]; var csq2= csq_counts[2]; var csq3= csq_counts[3]; var csq4= csq_counts[4]; var csq5= csq_counts[5];var csq6= csq_counts[6];var csq7= csq_counts[7];var csq8= csq_counts[8];var csq9= csq_counts[9];
-      for(var j= 0; j< 10; j++)
+      for(var o= 0; o< 10; o++)
       { 
-        let index = list_orders.findIndex(obj => obj.amount === j);
-        miss_counts[j] = index;
+        let index = list_orders.findIndex(obj => parseInt(obj.amount) === o);
+        miss_counts[o] = index;
       }
       var ms0= miss_counts[0]; var ms1= miss_counts[1]; var ms2= miss_counts[2]; var ms3= miss_counts[3]; var ms4= miss_counts[4]; var ms5= miss_counts[5];var ms6= miss_counts[6];var ms7= miss_counts[7];var ms8= miss_counts[8];var ms9= miss_counts[9];
       MISSING = `
@@ -164,10 +164,10 @@ function show_statistics(list_orders, x) {
               <span  class="number-cell">`+csq7+`</span>
               <span  class="number-cell">`+csq8+`</span>
               <span  class="number-cell">`+csq9+`</span>`;
-              $(".Trend__C-body1 .Trend__C-body1-line:eq(0) .Trend__C-body1-line-num").html(MISSING);
-              $(".Trend__C-body1 .Trend__C-body1-line:eq(1) .Trend__C-body1-line-num").html(AVG_MISSING);
-              $(".Trend__C-body1 .Trend__C-body1-line:eq(2) .Trend__C-body1-line-num").html(FREQUENCY);
-              $(".Trend__C-body1 .Trend__C-body1-line:eq(3) .Trend__C-body1-line-num").html(MAX_CONSECUTIVE);
+              $("#miss_num").html(MISSING);
+              $("#avg_num").html(AVG_MISSING);
+              $("#freq_num").html(FREQUENCY);
+              $("#max_consq").html(MAX_CONSECUTIVE);
     };
   };
 
@@ -1190,8 +1190,8 @@ $('#game-join .item').click(async function (e) {
     await callListOrder();
     await showMeJoin();
 
-    // $('.Loading').fadeOut(0);
     $('.minH .mark-box').hide();
+    $('#GetNoaverageEmerdList').click();
 
     let actionOld = $('#game-join').find('.action');
     actionOld.find('.img .van-image:eq(0)').fadeOut(0);
@@ -1393,7 +1393,7 @@ function div_click(e)
                     boxes.push(box);
                 });
             }
-            else if(e == "D")
+            else if(e == "E")
             {
                 sta_list_orders.forEach(function(e,index) {
                     inside_array = e.result.split('');
