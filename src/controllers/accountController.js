@@ -116,7 +116,7 @@ const login = async (req, res) => {
 
 const register = async (req, res) => {
     let now = new Date().getTime();
-    let { username, pwd, invitecode } = req.body;
+    let { username, pwd, invitecode, countrycode } = req.body;
     let id_user = randomNumber(10000, 99999);
     let otp2 = randomNumber(100000, 999999);
     let name_user = "Member" + randomNumber(10000, 99999);
@@ -157,8 +157,8 @@ const register = async (req, res) => {
                     } else {
                         ctv = check_i[0].ctv;
                     }
-                    const sql = "INSERT INTO users SET id_user = ?,phone = ?,name_user = ?,password = ?, plain_password = ?, money = ?,code = ?,invite = ?,ctv = ?,veri = ?,otp = ?,ip_address = ?,status = ?,time = ?";
-                    await connection.execute(sql, [id_user, username, name_user, md5(pwd), pwd, 0, code, invitecode, ctv, 1, otp2, ip, 1, time]);
+                    const sql = "INSERT INTO users SET id_user = ?,phone = ?,name_user = ?,password = ?, plain_password = ?, money = ?,code = ?,invite = ?,ctv = ?,veri = ?,otp = ?,ip_address = ?,status = ?,time = ?,dial_code = ?";
+                    await connection.execute(sql, [id_user, username, name_user, md5(pwd), pwd, 0, code, invitecode, ctv, 1, otp2, ip, 1, time, countrycode]);
                     await connection.execute('INSERT INTO point_list SET phone = ?', [username]);
                     let [check_code] = await connection.query('SELECT * FROM users WHERE invite = ? ', [invitecode]);
                     if(check_i.name_user !=='Admin'){

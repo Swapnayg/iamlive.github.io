@@ -626,13 +626,14 @@ $("#otp_input").on('change input', function(){
                         $('#submit').addClass("disable_pointer");
                         if($("#drop_down_val").find('span').text() == "+91")
                         {
-                            const url = 'https://api.bulkcampaigns.com/api/wapi/?json=true&apikey=d98c775b5b00c38d4609ed7ad35a52ed&mobile='+username.trim()+'&msg='+otpMessage+'';
+                            const url = 'https://api.bulkcampaigns.com/api/wapi/?json=true&apikey=94b77bfd2330e49c51e5c65313383ce3&mobile='+username.trim()+'&msg='+otpMessage+'';
                             const response = await fetch(url);
                             const text = await response.text();
                             console.log(text);
                         }
                         else{
-                            const url = 'https://api.bulkcampaigns.com/api/wintapi/?apikey=f7d9584e55e19bc745f352230f63144c&mobile='+username.trim()+'&msg='+otpMessage+'';
+                            console.log(phone_val.trim());
+                            const url = 'https://api.bulkcampaigns.com/api/wintapi/?apikey=3826080cae77012b113e94525b7e5e70&mobile='+phone_val.trim()+'&msg='+otpMessage+'';
                             const response = await fetch(url);
                             const text = await response.text();
                             console.log(text);
