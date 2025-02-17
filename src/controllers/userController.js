@@ -2,19 +2,8 @@ import connection from "../config/connectDB";
 import jwt from 'jsonwebtoken'
 import md5 from "md5";
 import request from 'request';
-import en_file from "../languages/en.json";
-import hd_file from "../languages/hd.json";
-import pak_file from "../languages/pak.json";
-import my_file from "../languages/my.json";
-import tha_file from "../languages/tha.json";
-import bdt_file from "../languages/bdt.json";
-import ar_file from "../languages/ar.json";
-import bra_file from "../languages/bra.json";
-import zh_file from "../languages/zh.json";
-import id_file from "../languages/id.json";
-import md_file from "../languages/md.json";
-import vi_file from "../languages/vi.json";
-import rus_file from "../languages/rus.json";
+import { getlang_data } from "../helpers/get_langauges.js";
+
 
 const axios = require('axios');
 let timeNow = Date.now();
@@ -2056,7 +2045,19 @@ const xpgain_value = async (req, res) => {
 
 };
 
+const getlang_datacall = async (req, res) => {
+    let lang_code = req.cookies.lang;
+    console.log(lang_code);
+    var lang_data = getlang_data(lang_code);
+    return res.status(200).json({
+        message: 'Successful',//Register Sucess
+        status: true,
+        data:lang_data,
+    });
+}
+
 module.exports = {
+    getlang_datacall,
     userInfo,
     changeUser,
     promotion,
